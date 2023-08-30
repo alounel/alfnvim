@@ -62,11 +62,11 @@
 
 ### nvim-dap
 
-- Neovim没有官方的nvim-dapconfig插件，插件来源于第三方作者，可能不是那么好用，只完成了lua,c/c++,bash的调试配置
+- Neovim没有官方的nvim-dapconfig插件，插件来源于第三方作者，可能不是那么好用，本人只完成了lua,c/c++,bash的调试配置
 
-- 自行完成调试配置
+- 自行配置
 
-1. 在debugger/lang/dap-filename.lua文件中, 添加或修改调试适配器, 具体可以看[dapInstall](https://github.com/mfussenegger/nvim-dap/wiki/Debug-Adapter-installation),自己选择自己需要的适配器，然后修改就可以了。
+1. 在debugger/lang/文件夹中, 添加或删除调试器配置，可以看[dapInstall](https://github.com/mfussenegger/nvim-dap/wiki/Debug-Adapter-installation),自己选择自己需要的适配器，然后修改就可以了。
 
 2. c/c++调试：来源于lldb-vscode
 
@@ -78,11 +78,11 @@
 
 ### Diagnotics
 
-- 使用null-ls插件来诊断，具体的诊断程序及其配置在plugins/lsp/init.lua文件夹，对于不用的诊断程序或语言可以删除，需要的也可以自行添加或修改
+- 使用null-ls插件来诊断，具体的诊断程序及其配置在plugins/editor/linter/init.lua文件，对于不用的诊断程序可以删除，也可以自行添加。
 
 ### Formatter
 
-- 使用fomatter.nvim插件和conform.nvim插件，为什么使用这两个插件呢，应为formatter.nvim插件支持的不够完善，而使用conform.nvim是因为此插件不能手动调用格式化命令。
+- 使用fomatter.nvim插件和conform.nvim插件，为什么使用这两个插件呢，formatter.nvim可以手动调用格式化命令，对于某些文件，有时候不想执行格式化命令，使用conform.nvim是因为此插件可以同时调用多个格式化程序进行格式化。
 
 ### treesitter
 
