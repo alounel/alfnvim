@@ -28,7 +28,7 @@ return {
     {
         "stevearc/conform.nvim",
         lazy = true,
-        ft = { "lua", "python", "sh", "cmake", "json" },
+        ft = { "lua", "python", "sh", "cmake", "json", "yaml" },
         config = function()
             require("conform").setup({
                 formatters_by_ft = {
@@ -40,6 +40,7 @@ return {
                         run_all_formatters = true,
                     },
                     sh = { "shfmt" },
+                    yaml = { "yamlfmt" },
 
                     format_on_save = {
                         timeout_ms = 500,
