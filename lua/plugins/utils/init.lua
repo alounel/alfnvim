@@ -79,7 +79,6 @@ return {
                 ["<leader>ep"] = { name = "+compiler" },
                 ["<leader>f"] = { name = "+find/format" },
                 ["<leader>fs"] = { name = "+telescope" },
-                ["<leader>fm"] = { name = "+format" },
                 ["<leader>g"] = { name = "+git" },
                 ["<leader>ga"] = { name = "+cellular" },
                 ["<leader>gf"] = { name = "+conflict" },
