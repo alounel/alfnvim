@@ -74,6 +74,47 @@ return {
             vim.keymap.set("x", "<leader>ys", genghis.moveSelectionToNewFile)
         end,
     },
+    -- 改进了Yank和Put功能
+    {
+        "gbprod/yanky.nvim",
+        lazy = true,
+        event = { "BufReadPost", "BufNewFile" },
+        keys = {
+            { "<leader>yr", "<cmd>YankyRingHistory<CR>", desc = "Show Yank History" },
+            { "<leader>yc", "<cmd>YankyClearHistory<CR>", desc = "Clear Yank History" },
+        },
+        dependencies = { "sqlite.lua" },
+        config = function()
+            require("yanky").setup({
+                ring = {
+                    history_length = 200,
+                    storage = "sqlite",
+                },
+                preserve_cursor_position = {
+                    enable = true,
+                },
+            })
+            vim.keymap.set({ "n", "x" }, "p", "<Plug>(YankyPutAfter)")
+            vim.keymap.set({ "n", "x" }, "P", "<Plug>(YankyPutBefore)")
+            vim.keymap.set({ "n", "x" }, "gp", "<Plug>(YankyGPutAfter)")
+            vim.keymap.set({ "n", "x" }, "gP", "<Plug>(YankyGPutBefore)")
+
+            vim.keymap.set({ "n", "x" }, "y", "<Plug>(YankyYank)")
+
+            vim.keymap.set("n", "]p", "<Plug>(YankyPutIndentAfterLinewise)")
+            vim.keymap.set("n", "[p", "<Plug>(YankyPutIndentBeforeLinewise)")
+            vim.keymap.set("n", "]P", "<Plug>(YankyPutIndentAfterLinewise)")
+            vim.keymap.set("n", "[P", "<Plug>(YankyPutIndentBeforeLinewise)")
+
+            vim.keymap.set("n", ">p", "<Plug>(YankyPutIndentAfterShiftRight)")
+            vim.keymap.set("n", "<p", "<Plug>(YankyPutIndentAfterShiftLeft)")
+            vim.keymap.set("n", ">P", "<Plug>(YankyPutIndentBeforeShiftRight)")
+            vim.keymap.set("n", "<P", "<Plug>(YankyPutIndentBeforeShiftLeft)")
+
+            vim.keymap.set("n", "=p", "<Plug>(YankyPutAfterFilter)")
+            vim.keymap.set("n", "=P", "<Plug>(YankyPutBeforeFilter)")
+        end,
+    },
     {
         import = "plugins.elevate.fulfill",
     },

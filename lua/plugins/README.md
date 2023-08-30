@@ -4,7 +4,7 @@
 
 - 插件规范
 
-- plugins/name.lua文件都能加载
+- plugins/{$Name}.lua文件都能加载
 
 - plugins/{$DirName}/init.lua文件都能加载
 

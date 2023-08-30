@@ -1,46 +1,4 @@
--- 功能加强和优化
 return {
-    -- 改进了Yank和Put功能
-    {
-        "gbprod/yanky.nvim",
-        lazy = true,
-        event = { "BufReadPost", "BufNewFile" },
-        keys = {
-            { "<leader>yr", "<cmd>YankyRingHistory<CR>", desc = "Show Yank History" },
-            { "<leader>yc", "<cmd>YankyClearHistory<CR>", desc = "Clear Yank History" },
-        },
-        dependencies = { "sqlite.lua" },
-        config = function()
-            require("yanky").setup({
-                ring = {
-                    history_length = 200,
-                    storage = "sqlite",
-                },
-                preserve_cursor_position = {
-                    enable = true,
-                },
-            })
-            vim.keymap.set({ "n", "x" }, "p", "<Plug>(YankyPutAfter)")
-            vim.keymap.set({ "n", "x" }, "P", "<Plug>(YankyPutBefore)")
-            vim.keymap.set({ "n", "x" }, "gp", "<Plug>(YankyGPutAfter)")
-            vim.keymap.set({ "n", "x" }, "gP", "<Plug>(YankyGPutBefore)")
-
-            vim.keymap.set({ "n", "x" }, "y", "<Plug>(YankyYank)")
-
-            vim.keymap.set("n", "]p", "<Plug>(YankyPutIndentAfterLinewise)")
-            vim.keymap.set("n", "[p", "<Plug>(YankyPutIndentBeforeLinewise)")
-            vim.keymap.set("n", "]P", "<Plug>(YankyPutIndentAfterLinewise)")
-            vim.keymap.set("n", "[P", "<Plug>(YankyPutIndentBeforeLinewise)")
-
-            vim.keymap.set("n", ">p", "<Plug>(YankyPutIndentAfterShiftRight)")
-            vim.keymap.set("n", "<p", "<Plug>(YankyPutIndentAfterShiftLeft)")
-            vim.keymap.set("n", ">P", "<Plug>(YankyPutIndentBeforeShiftRight)")
-            vim.keymap.set("n", "<P", "<Plug>(YankyPutIndentBeforeShiftLeft)")
-
-            vim.keymap.set("n", "=p", "<Plug>(YankyPutAfterFilter)")
-            vim.keymap.set("n", "=P", "<Plug>(YankyPutBeforeFilter)")
-        end,
-    },
     -- 预览寄存器内容
     {
         "tversteeg/registers.nvim",
@@ -52,6 +10,63 @@ return {
             { "<C-R>", mode = "i" },
         },
         opts = {},
+    },
+    -- 终端
+    {
+        "akinsho/toggleterm.nvim",
+        version = "*",
+        lazy = true,
+        cmd = "ToggleTerm",
+        keys = {
+            { "<leader>ttf", "<cmd>ToggleTerm<CR>", desc = "Toggle Terminal" },
+            { "<leader>ttg", "<cmd>ToggleTermToggleAll<CR>", desc = "Toggle All Terminal" },
+            { "<leader>ttv", "<cmd>ToggleTerm direction=vertical size=45<CR>", desc = "Open Vertical Terminal" },
+            { "<leader>tth", "<cmd>ToggleTerm direction=horizontal<CR>", desc = "Open Horizontal Terminal" },
+            { "<leader>ttb", "<cmd>ToggleTerm direction=tab<CR>", desc = "Open Tab Terminal" },
+            { "<leader>ttl", "<cmd>lua _lazygit_toggle()<CR>", desc = "Open Lazygit Terminal" },
+            { "<leader>tte", ":TermExec ", desc = "Use Custom Operate Open Terminal" },
+            { "<leader>ttc", ":ToggleTermSendCurrentLine ", desc = "Send Current Line To The Terminal" },
+            { "<leader>tts", ":ToggleTermSendVisualLines ", desc = "Send Visual Line To The Terminal" },
+            { "<leader>ttn", ":ToggleTermSendVisualSelection ", desc = "Send Visual Select Line To The Terminal" },
+        },
+        config = function()
+            local Terminal = require("toggleterm.terminal").Terminal
+            local lazygit = Terminal:new({
+                cmd = "lazygit",
+                hidden = true,
+                dir = "git_dir",
+                direction = "float",
+                float_opts = {
+                    border = "single",
+                },
+                on_open = function(term)
+                    vim.cmd("startinsert!")
+                    vim.api.nvim_buf_set_keymap(
+                        term.bufnr,
+                        "n",
+                        "q",
+                        "<cmd>close<CR>",
+                        { noremap = true, silent = true }
+                    )
+                end,
+                on_close = function(term)
+                    vim.cmd("startinsert!")
+                end,
+            })
+            function _lazygit_toggle()
+                lazygit:toggle()
+            end
+            require("toggleterm").setup({
+                persist_size = false,
+                direction = "float",
+                float_opts = {
+                    border = "shadow",
+                },
+                winbar = {
+                    enable = true,
+                },
+            })
+        end,
     },
     -- 弹出按键绑定和输入命令窗口
     {

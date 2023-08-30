@@ -198,6 +198,9 @@ return {
         },
     },
     {
+        import = "plugins.ui.launchpage"
+    },
+    {
         import = "plugins.ui.directory",
     },
     {
