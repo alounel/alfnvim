@@ -125,38 +125,11 @@ return {
                 highlight_on_hover = true,
                 autojump = true,
                 on_attach = function(bufnr)
-                    vim.keymap.set("n", "{", "<cmd>AeriaPrev<CR>", { buffer = bufnr })
-                    vim.keymap.set("n", "}", "<cmd>AeriaNext<CR>", { buffer = bufnr })
+                    vim.keymap.set("n", "[l", "<cmd>AeriaPrev<CR>", { buffer = bufnr })
+                    vim.keymap.set("n", "]l", "<cmd>AeriaNext<CR>", { buffer = bufnr })
                 end,
             })
         end,
-    },
-    -- 使用lsp生成的视图符号
-    {
-        "simrat39/symbols-outline.nvim",
-        lazy = true,
-        keys = {
-            { "<leader>al", "<cmd>SymbolsOutline<CR>", desc = "Switch Symbols Outline" },
-        },
-        opts = {
-            width = 30,
-            show_numbers = true,
-            show_relative_numbers = true,
-            keymaps = {
-                close = { "<Esc>", "q" },
-                goto_location = "<CR>",
-                focus_location = "O",
-                hover_symbol = "<M-H>",
-                toggle_preview = "X",
-                rename_symbol = "R",
-                code_actions = "A",
-                fold = "h",
-                unfold = "l",
-                fold_all = "W",
-                unfold_all = "E",
-                fold_reset = "R",
-            },
-        },
     },
     -- sensebar
     {
