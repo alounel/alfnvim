@@ -236,6 +236,14 @@ return {
             vim.api.nvim_set_keymap("n", "g*", [[g*<Cmd>lua require('hlslens').start()<CR>]], kopts)
             vim.api.nvim_set_keymap("n", "g#", [[g#<Cmd>lua require('hlslens').start()<CR>]], kopts)
             vim.api.nvim_set_keymap("n", "<Leader>hn", "<Cmd>nohlsearch<CR>", kopts)
+            vim.keymap.set({ "n", "x" }, "<leader>hl", function()
+                vim.schedule(function()
+                    if require("hlslens").exportLastSearchToQuickfix() then
+                        vim.cmd("cw")
+                    end
+                end)
+                return ":noh<CR>"
+            end, { expr = true })
         end,
     },
     -- 字符、颜色、数字增量/减量
