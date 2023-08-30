@@ -82,7 +82,7 @@
 
 ### Formatter
 
-- 使用fomatter.nvim插件和conform.nvim插件，为什么使用这两个插件呢，formatter.nvim可以手动调用格式化命令，对于某些文件，有时候不想执行格式化命令，使用conform.nvim是因为此插件可以同时调用多个格式化程序进行格式化。
+- 使用conform.nvim可以对单个文件同时调用多个格式化程序进行格式化。
 
 ### treesitter
 
