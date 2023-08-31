@@ -45,7 +45,6 @@ return {
                 diagnostics.ruff, --python
                 diagnostics.shellcheck, --sh
                 diagnostics.zsh, --zsh
-                diagnostics.fish, --fish
                 -- diagnostics.markuplint, --html
                 diagnostics.tidy.with({
                     disabled_filetypes = { "html" },
