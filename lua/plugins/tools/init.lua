@@ -33,6 +33,47 @@ return {
         event = "VeryLazy",
         opts = {},
     },
+    -- 函数重构
+    -- dependencies neovim nighty
+    {
+        "ThePrimeagen/refactoring.nvim",
+        lazy = true,
+        enabled = false,
+        cmd = "Refactor",
+        keys = {
+            { "<leader>rfe", mode = "x" },
+            { "<leader>rft", mode = "x" },
+            { "<leader>rfv", mode = "x" },
+            { "<leader>rfi", mode = { "n", "x" } },
+            { "<leader>rfb", mode = "n" },
+            { "<leader>rfk", mode = "n" },
+        },
+        dependencies = {
+            { "plenary.nvim" },
+            { "nvim-treesitter" },
+        },
+        config = function()
+            require("refactoring").setup({})
+            vim.keymap.set("x", "<leader>rfe", function()
+                require("refactoring").refactor("Extract Function")
+            end)
+            vim.keymap.set("x", "<leader>rft", function()
+                require("refactoring").refactor("Extract Function To File")
+            end)
+            vim.keymap.set("x", "<leader>rfv", function()
+                require("refactoring").refactor("Extract Variable")
+            end)
+            vim.keymap.set({ "n", "x" }, "<leader>rfi", function()
+                require("refactoring").refactor("Inline Variable")
+            end)
+            vim.keymap.set("n", "<leader>rfb", function()
+                require("refactoring").refactor("Extract Block")
+            end)
+            vim.keymap.set("n", "<leader>rfk", function()
+                require("refactoring").refactor("Extract Block To File")
+            end)
+        end,
+    },
     --侧边栏
     {
         "sidebar-nvim/sidebar.nvim",
