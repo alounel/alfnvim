@@ -31,7 +31,7 @@ return {
                     -- new_section("Settings ",          "e $MYVIMRC",           "Config"),
                     new_section("Session ", "lua require('persistence').load()", "Session"),
                     new_section("Lazy 鈴", "Lazy", "Config"),
-                    new_section("New file ", "ene | startinsert", "Built-in"),
+                    -- new_section("New file ", "ene | startinsert", "Built-in"),
                     new_section("Quit ", "qa", "Built-in"),
                 },
                 content_hooks = {
