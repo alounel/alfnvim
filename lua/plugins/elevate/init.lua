@@ -115,7 +115,4 @@ return {
             vim.keymap.set("n", "=P", "<Plug>(YankyPutBeforeFilter)")
         end,
     },
-    {
-        import = "plugins.elevate.fulfill",
-    },
 }
