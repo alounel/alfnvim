@@ -19,10 +19,7 @@ return {
                     sh = { "shfmt" },
                     yaml = { "yamlfmt" },
                 },
-                format_on_save = {
-                    timeout_ms = 500,
-                    lsp_fallback = true,
-                },
+                log_level = vim.log.levels.DEBUG,
             })
             vim.keymap.set("", "<leader>fm", function()
                 require("conform").format({ async = true, lsp_fallback = true })
@@ -30,7 +27,11 @@ return {
             vim.api.nvim_create_autocmd("BufWritePre", {
                 pattern = "*",
                 callback = function(args)
-                    require("conform").format({ buf = args.buf })
+                    local ignore_filetypes = { "c", "cpp", "java", "vim", "xml" }
+                    if vim.tbl_contains(ignore_filetypes, vim.bo[args.buf].filetype) then
+                        return
+                    end
+                    require("conform").format({ timeout_ms = 500, lsp_fallback = true, buf = args.buf })
                 end,
             })
         end,
