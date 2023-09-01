@@ -79,10 +79,6 @@ return {
         "gbprod/yanky.nvim",
         lazy = true,
         event = { "BufReadPost", "BufNewFile" },
-        keys = {
-            { "<leader>yr", "<cmd>YankyRingHistory<CR>", desc = "Show Yank History" },
-            { "<leader>yc", "<cmd>YankyClearHistory<CR>", desc = "Clear Yank History" },
-        },
         dependencies = { "sqlite.lua" },
         config = function()
             require("yanky").setup({
@@ -94,6 +90,10 @@ return {
                     enable = true,
                 },
             })
+            -- Yanky history
+            vim.keymap.set("n", "<leader>yr", "<cmd>YankyRingHistory<CR>", { desc = "Show Yanky History" })
+            vim.keymap.set("n", "<leader>yc", "<cmd>YankyClearHistory<CR>", { desc = "clear Yanky History" })
+            -- Yanky mappings
             vim.keymap.set({ "n", "x" }, "p", "<Plug>(YankyPutAfter)")
             vim.keymap.set({ "n", "x" }, "P", "<Plug>(YankyPutBefore)")
             vim.keymap.set({ "n", "x" }, "gp", "<Plug>(YankyGPutAfter)")
