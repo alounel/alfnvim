@@ -9,7 +9,11 @@ return {
             { '"', mode = { "n", "v" } },
             { "<C-R>", mode = "i" },
         },
-        opts = {},
+        opts = {
+            window = {
+                border = "rounded",
+            },
+        },
     },
     -- 终端
     {
