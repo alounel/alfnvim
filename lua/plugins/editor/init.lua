@@ -315,6 +315,9 @@ return {
         import = "plugins.editor.stamps",
     },
     {
+        import = "plugins.editor.fulfill",
+    },
+    {
         import = "plugins.editor.formatter",
     },
     {
