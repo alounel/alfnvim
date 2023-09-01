@@ -2,7 +2,7 @@ return {
     -- 自动保存
     {
         "okuuva/auto-save.nvim",
-        event = { "InsertLeave", "BufWrite" },
+        event = { "InsertLeave", "BufWinLeave" },
         keys = {
             { "<leader>at", "<cmd>ASToggle<CR>", desc = "Toggle Auto Save" },
         },
@@ -26,7 +26,7 @@ return {
     -- 自动匹配括号
     {
         "windwp/nvim-autopairs",
-        event = "InsertEnter",
+        event = { "InsertEnter", "CmdlineEnter" },
         -- 使用treesitter来检查
         config = function()
             local npairs = require("nvim-autopairs")
