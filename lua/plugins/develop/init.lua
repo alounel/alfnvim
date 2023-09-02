@@ -7,6 +7,13 @@ return {
             require("project_nvim").setup()
         end,
     },
+    -- 从终端缓冲区打开文件
+    {
+        "willothy/flatten.nvim",
+        lazy = true,
+        event = "VeryLazy",
+        opts = {},
+    },
     -- 会话管理
     {
         "folke/persistence.nvim",
@@ -60,6 +67,47 @@ return {
         },
         opts = {},
     },
+    -- 函数重构
+    -- dependencies neovim nighty
+    {
+        "ThePrimeagen/refactoring.nvim",
+        enabled = false,
+        lazy = true,
+        cmd = "Refactor",
+        keys = {
+            { "<leader>rfe", mode = "x" },
+            { "<leader>rft", mode = "x" },
+            { "<leader>rfv", mode = "x" },
+            { "<leader>rfi", mode = { "n", "x" } },
+            { "<leader>rfb", mode = "n" },
+            { "<leader>rfk", mode = "n" },
+        },
+        dependencies = {
+            { "plenary.nvim" },
+            { "nvim-treesitter" },
+        },
+        config = function()
+            require("refactoring").setup({})
+            vim.keymap.set("x", "<leader>rfe", function()
+                require("refactoring").refactor("Extract Function")
+            end)
+            vim.keymap.set("x", "<leader>rft", function()
+                require("refactoring").refactor("Extract Function To File")
+            end)
+            vim.keymap.set("x", "<leader>rfv", function()
+                require("refactoring").refactor("Extract Variable")
+            end)
+            vim.keymap.set({ "n", "x" }, "<leader>rfi", function()
+                require("refactoring").refactor("Inline Variable")
+            end)
+            vim.keymap.set("n", "<leader>rfb", function()
+                require("refactoring").refactor("Extract Block")
+            end)
+            vim.keymap.set("n", "<leader>rfk", function()
+                require("refactoring").refactor("Extract Block To File")
+            end)
+        end,
+    },
     -- 图标选择器
     {
         "ziontee113/icon-picker.nvim",
@@ -72,18 +120,6 @@ return {
         opts = {
             disable_legacy_commands = true,
         },
-    },
-    -- 将缓冲区锁定到窗口
-    {
-        "stevearc/stickybuf.nvim",
-        lazy = true,
-        keys = {
-            { "<leader>skf", "<cmd>PinBuffer<CR>", desc = "Fix Before Buffer In Window" },
-            { "<leader>skt", "<cmd>PinBuftype<CR>", desc = "Set Before Buftype Fix In Window" },
-            { "<leader>ske", "<cmd>PinFiletype<CR>", desc = "Set Before Filetype Fix In Window" },
-            { "<leader>sku", "<cmd>UnpinBuffer<CR>", desc = "Cancel Everything Fix Window" },
-        },
-        opts = {},
     },
     {
         import = "plugins.develop.comment",
