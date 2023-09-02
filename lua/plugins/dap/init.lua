@@ -105,6 +105,7 @@ return {
                 end,
             },
             { "nvim-dap-ui" },
+            { "nvim-dap-virtual-text" },
             { "telescope.nvim" },
         },
         config = function()
@@ -132,11 +133,21 @@ return {
         "rcarriga/nvim-dap-ui",
         lazy = true,
         keys = {
-            { "<leader>du", "<cmd>lua require('dapui').toggle()<CR>", desc = "Dapui Toggle" },
+            { "<leader>du", "<cmd>lua require('dapui').toggle()<CR>", desc = "Toggle DapUI" },
         },
         config = function()
             require("debugger.dapuisettings")
         end,
+    },
+    -- 显示虚拟文本
+    {
+        "theHamsta/nvim-dap-virtual-text",
+        lazy = true,
+        opts = {
+            commented = true,
+            all_frames = true,
+            virt_lines = true,
+        },
     },
     ------ 特定语言调试需要用到的插件 ------
     -- lua
