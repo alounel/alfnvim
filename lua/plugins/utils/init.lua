@@ -131,6 +131,7 @@ return {
                 ["<leader>td"] = { name = "+todo" },
                 ["<leader>tt"] = { name = "+terminal" },
                 ["<leader>w"] = { name = "+window" },
+                ["<leader>wf"] = { name = "+focus" },
                 ["<leader>x"] = { name = "+diagnostics/quickfix" },
                 ["<leader>y"] = { name = "+operate/yank" },
             },
