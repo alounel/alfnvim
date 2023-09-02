@@ -101,20 +101,4 @@ return {
             })
         end,
     },
-    {
-        "folke/edgy.nvim",
-        enabled = false,
-        -- requirement nvim version 0.10.0
-        event = "VeryLazy",
-        keys = {
-            {
-                "<leader>ue",
-                function()
-                    require("edgy").select()
-                end,
-                desc = "Edgy Select Window",
-            },
-        },
-        opts = {},
-    },
 }

@@ -1,4 +1,5 @@
 return {
+    -- 窗口分割
     {
         "nvim-focus/focus.nvim",
         version = false,
@@ -16,6 +17,13 @@ return {
             { "<leader>wfm", "<cmd>FocusMaximise<CR>", desc = "Temporarily Maximises The Focussed Window" },
             { "<leader>wfo", "<cmd>FocusMaxOrEqual<CR>", desc = "Swtich Equalises And Maximises" },
         },
+        opts = {},
+    },
+    -- 预定义窗口布局
+    {
+        "folke/edgy.nvim",
+        enabled = false,
+        event = "VeryLazy",
         opts = {},
     },
 }
