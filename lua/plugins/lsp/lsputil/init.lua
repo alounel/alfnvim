@@ -102,6 +102,15 @@ return {
             },
         },
     },
+    -- 调暗未使用的函数、变量、参数
+    {
+        -- depend = 0.10.0
+        "zbirenbaum/neodim",
+        enabled = false,
+        lazy = true,
+        event = "LspAttach",
+        opts = {},
+    },
     -- 代码大纲
     {
         "stevearc/aerial.nvim",
