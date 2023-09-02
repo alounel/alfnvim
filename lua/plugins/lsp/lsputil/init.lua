@@ -67,9 +67,6 @@ return {
                     show_server_name = true,
                     extend_gitsigns = true,
                 },
-                symbols_in_winbar = {
-                    enable = true,
-                },
                 ui = {
                     border = "rounded",
                 },
