@@ -79,6 +79,16 @@ return {
         },
         opts = {},
     },
+    -- 解释和测试正则表达式
+    {
+        "tomiis4/hypersonic.nvim",
+        lazy = true,
+        event = "CmdlineEnter",
+        keys = {
+            { "<leader>rx", ":Hypersonic", desc = "Explain Or Test Regex" },
+        },
+        opts = {},
+    },
     -- 函数重构
     -- dependencies neovim nighty
     {
