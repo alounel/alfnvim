@@ -14,6 +14,18 @@ return {
         event = "VeryLazy",
         opts = {},
     },
+    -- QuickFix窗口可编辑
+    {
+        "gabrielpoca/replacer.nvim",
+        lazy = true,
+        keys = {
+            { "<leader>xpr", "<cmd>lua require('replacer').run()<CR>", desc = "Run Replacer" },
+            { "<leader>xps", "<cmd>lua require('replacer').save()<CR>", desc = "Save Replacer" },
+        },
+        opts = {
+            rename_files = false,
+        },
+    },
     -- 会话管理
     {
         "folke/persistence.nvim",
@@ -120,6 +132,13 @@ return {
         opts = {
             disable_legacy_commands = true,
         },
+    },
+    -- 代替substitue
+    {
+        "chrisgrieser/nvim-alt-substitute",
+        lazy = true,
+        event = "CmdlineEnter",
+        opts = {},
     },
     {
         import = "plugins.develop.comment",
