@@ -104,7 +104,6 @@ return {
     {
         "folke/trouble.nvim",
         lazy = true,
-        cmd = { "TroubleToggle", "Trouble", "TroubleRefresh", "TroubleClose" },
         keys = {
             { "<leader>xt", "<cmd>TroubleToggle<CR>", desc = "Toggle Diagnostics List" },
             { "<leader>xr", "<cmd>TroubleRefresh<CR>", desc = "Refresh Action List" },
