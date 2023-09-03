@@ -43,6 +43,13 @@ return {
             )
         end,
     },
+    -- 代替substitue
+    {
+        "chrisgrieser/nvim-alt-substitute",
+        lazy = true,
+        event = "CmdlineEnter",
+        opts = {},
+    },
     -- 更加便捷文件操作
     {
         "chrisgrieser/nvim-genghis",

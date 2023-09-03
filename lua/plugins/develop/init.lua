@@ -133,13 +133,6 @@ return {
             disable_legacy_commands = true,
         },
     },
-    -- 代替substitue
-    {
-        "chrisgrieser/nvim-alt-substitute",
-        lazy = true,
-        event = "CmdlineEnter",
-        opts = {},
-    },
     {
         import = "plugins.develop.comment",
     },
