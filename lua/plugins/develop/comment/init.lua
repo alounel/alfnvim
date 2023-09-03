@@ -76,6 +76,90 @@ return {
             },
         },
     },
+    -- 美化注释
+    {
+        "LudoPinelli/comment-box.nvim",
+        lazy = true,
+        keys = {
+            -- ll,lc,lr/box
+            {
+                "<leader>cbl",
+                "<cmd>lua require('comment-box').llbox()<CR>",
+                mode = { "n", "v" },
+                desc = "Left Align Box Left Align",
+            },
+            {
+                "<leader>cbc",
+                "<cmd>lua require('comment-box').lcbox()<CR>",
+                mode = { "n", "v" },
+                desc = "Left Align Box Center Align",
+            },
+            {
+                "<leader>cbr",
+                "<cmd>lua require('comment-box').lrbox()<CR>",
+                mode = { "n", "v" },
+                desc = "Left Align Box Right Align",
+            },
+            -- cl,cc,cr/box
+            {
+                "<leader>cbL",
+                "<cmd>lua require('comment-box').clbox()<CR>",
+                mode = { "n", "v" },
+                desc = "Center Box Left Algin",
+            },
+            {
+                "<leader>cbC",
+                "<cmd>lua require('comment-box').ccbox()<CR>",
+                mode = { "n", "v" },
+                desc = "Center Box Center Align",
+            },
+            {
+                "<leader>cbR",
+                "<cmd>lua require('comment-box').crbox()<CR>",
+                mode = { "n", "v" },
+                desc = "Center Box Right Align",
+            },
+            -- rl,rc,rr/box
+            {
+                "<leader>cbi",
+                "<cmd>lua require('comment-box').rlbox()<CR>",
+                mode = { "n", "v" },
+                desc = "Right Algin Box Left Algin",
+            },
+            {
+                "<leader>cbj",
+                "<cmd>lua require('comment-box').rcbox()<CR>",
+                mode = { "n", "v" },
+                desc = "Right Align Box Center Algin",
+            },
+            {
+                "<leader>cbk",
+                "<cmd>lua require('comment-box').rrbox()<CR>",
+                mode = { "n", "v" },
+                desc = "Right Align Box Right Algin",
+            },
+            -- al,ac,ar/box
+            {
+                "<leader>cbo",
+                "<cmd>lua require('comment-box').albox()<CR>",
+                mode = { "n", "v" },
+                desc = "Left Aligned Adapted Box",
+            },
+            {
+                "<leader>cbp",
+                "<cmd>lua require('comment-box').acbox()<CR>",
+                mode = { "n", "v" },
+                desc = "Centered adapted box",
+            },
+            {
+                "<leader>cbq",
+                "<cmd>lua require('comment-box').arbox()<CR>",
+                mode = { "n", "v" },
+                desc = "Right Aligned Adapted Box",
+            },
+        },
+        opts = {},
+    },
     -- 注释生成器
     {
         "danymat/neogen",
