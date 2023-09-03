@@ -123,7 +123,7 @@ return {
                 ["<leader>pj"] = { name = "+jumplist" },
                 ["<leader>pq"] = { name = "+quickfix" },
                 ["<leader>q"] = { name = "+session" },
-                ["<leader>r"] = { name = "+reach/replace" },
+                ["<leader>r"] = { name = "+reach/replace/regex" },
                 ["<leader>rn"] = { name = "+muren" },
                 ["<leader>s"] = { name = "+show/style/fixed" },
                 ["<leader>sk"] = { name = "+fixed" },
