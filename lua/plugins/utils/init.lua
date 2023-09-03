@@ -133,6 +133,7 @@ return {
                 ["<leader>w"] = { name = "+window" },
                 ["<leader>wf"] = { name = "+focus" },
                 ["<leader>x"] = { name = "+diagnostics/quickfix" },
+                ["<leader>xp"] = { name = "+replacer" },
                 ["<leader>y"] = { name = "+operate/yank" },
             },
         },
