@@ -56,7 +56,7 @@ return {
             require("nightfox").setup({
                 options = {
                     styles = {
-                        comments = "italic",
+                        comments = "italic,bold",
                         functions = "bold",
                         keywords = "bold",
                         types = "bold",
