@@ -12,7 +12,7 @@ return {
         },
         opts = {
             save_on_toggle = true,
-            tabline = true,
+            tabline = false,
         },
     },
     -- 标记重要文件
