@@ -65,30 +65,31 @@ return {
     },
     -- 字符移动
     {
-        "echasnovski/mini.move",
-        version = false,
+        "fedepujol/move.nvim",
         lazy = true,
         keys = {
             { "<M-E>", mode = { "n", "v" }, desc = "Left Move" },
             { "<M-R>", mode = { "n", "v" }, desc = "Right Move" },
             { "<M-j>", mode = { "n", "v" }, desc = "Down Move" },
             { "<M-k>", mode = { "n", "v" }, desc = "Up Move" },
+            { "<leader>wg", mode = "n", desc = "Char Right Move" },
+            { "<leader>wb", mode = "n", desc = "Char Left Move" },
         },
         config = function()
-            require("mini.move").setup({
-                mappings = {
-                    -- Visual
-                    left = "<M-E>",
-                    right = "<M-R>",
-                    down = "<M-j>",
-                    up = "<M-k>",
-                    -- Nomal
-                    line_left = "<M-E>",
-                    line_right = "<M-R>",
-                    line_down = "<M-j>",
-                    line_up = "<M-k>",
-                },
-            })
+            local kopts = { noremap = true, silent = true }
+            -- Normal-mode commands
+            vim.keymap.set("n", "<M-j>", ":MoveLine(1)<CR>", kopts)
+            vim.keymap.set("n", "<M-k>", ":MoveLine(-1)<CR>", kopts)
+            vim.keymap.set("n", "<M-E>", ":MoveHChar(-1)<CR>", kopts)
+            vim.keymap.set("n", "<M-R>", ":MoveHChar(1)<CR>", kopts)
+            vim.keymap.set("n", "<leader>wg", ":MoveWord(1)<CR>", kopts)
+            vim.keymap.set("n", "<leader>wb", ":MoveWord(-1)<CR>", kopts)
+
+            -- Visual-mode commands
+            vim.keymap.set("v", "<M-j>", ":MoveBlock(1)<CR>", kopts)
+            vim.keymap.set("v", "<M-k>", ":MoveBlock(-1)<CR>", kopts)
+            vim.keymap.set("v", "<M-E>", ":MoveHBlock(-1)<CR>", kopts)
+            vim.keymap.set("v", "<M-R>", ":MoveHBlock(1)<CR>", kopts)
         end,
     },
     -- 字符替换
