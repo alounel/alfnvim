@@ -130,6 +130,13 @@ return {
             end)
         end,
     },
+    -- 大文件
+    {
+        "LunarVim/bigfile.nvim",
+        lazy = true,
+        event = "VimEnter",
+        opts = {},
+    },
     -- 图标选择器
     {
         "ziontee113/icon-picker.nvim",
