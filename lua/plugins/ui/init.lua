@@ -72,8 +72,13 @@ return {
         event = "VeryLazy",
         opts = {
             stages = "fade",
-            -- 消息框持续时间,默认5000(毫秒)
             timeout = 6000,
+            max_height = function()
+                return math.floor(vim.o.lines * 0.75)
+            end,
+            max_width = function()
+                return math.floor(vim.o.columns * 0.75)
+            end,
         },
     },
     -- 显示十六进制颜色

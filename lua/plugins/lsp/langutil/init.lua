@@ -5,7 +5,34 @@ return {
         "p00f/clangd_extensions.nvim",
         lazy = true,
         ft = { "c", "cpp" },
-        init = function()
+        config = function()
+            require("clangd_extensions").setup({
+                ast = {
+                    role_icons = {
+                        type = "",
+                        declaration = "",
+                        expression = "",
+                        specifier = "",
+                        statement = "",
+                        ["template argument"] = "",
+                    },
+                    kind_icons = {
+                        Compound = "",
+                        Recovery = "",
+                        TranslationUnit = "",
+                        PackExpansion = "",
+                        TemplateTypeParm = "",
+                        TemplateTemplateParm = "",
+                        TemplateParamObject = "",
+                    },
+                },
+                memory_usage = {
+                    border = "rounded",
+                },
+                symbol_info = {
+                    border = "single",
+                },
+            })
             vim.keymap.set("n", "<leader>cs", "<cmd>ClangdSymbolInfo<CR>", { desc = "Show Cursor Local Symbol Info" })
             vim.keymap.set(
                 "n",
@@ -19,18 +46,6 @@ return {
                 "<cmd>ClangdMemoryUsage expand_preamble<CR>",
                 { desc = "Show Memory Use Status" }
             )
-        end,
-        config = function()
-            require("clangd_extensions").setup({
-                extensions = {
-                    memory_usage = {
-                        border = "rounded",
-                    },
-                    symbol_info = {
-                        border = "single",
-                    },
-                },
-            })
         end,
     },
     -- java
@@ -47,9 +62,9 @@ return {
         "gennaro-tedesco/nvim-jqx",
         lazy = true,
         ft = { "json", "yaml" },
-        init = function()
-            vim.keymap.set("n", "<leader>jl", "<cmd>JqxList<CR>", { desc = "Json List" })
-            vim.keymap.set("n", "<leader>jq", "<cmd>JqxQuery<CR>", { desc = "Json Query" })
+        config = function()
+            vim.keymap.set("n", "<leader>jl", ":JqxList", { desc = "Json List" })
+            vim.keymap.set("n", "<leader>jq", ":JqxQuery", { desc = "Json Query" })
         end,
     },
     -- 提供对SchemaStore目录的访问
