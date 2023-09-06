@@ -1,2 +1,4 @@
 # Neovim Config
 lazy-lock.json
+.luarc.json
+.luarc.jsonc

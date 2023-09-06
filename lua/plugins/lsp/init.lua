@@ -52,23 +52,26 @@ return {
             lspconfig["lua_ls"].setup({
                 on_init = function(client)
                     local path = client.workspace_folders[1].name
-                    if not vim.uv.fs_stat(path .. "/.luarc.json") then
-                        client.config.settings.Lua = {
-                            diagnostics = {
-                                globals = { "vim" },
+                    if not vim.uv.fs_stat(path .. "/.luarc.json") and not vim.uv.fs_stat(path .. "/.luarc.jsonc") then
+                        client.config.settings = vim.tbl_deep_extend("force", client.config.settings, {
+                            lua = {
+                                diagnostics = {
+                                    globals = { "vim" },
+                                },
+                                completion = {
+                                    callSnippet = "Replace",
+                                },
+                                workspace = {
+                                    checkThirdParrty = false,
+                                    library = { vim.env.VIMRUNTIME },
+                                },
                             },
-                            completion = {
-                                callSnippet = "Replace",
-                            },
-                            workspace = {
-                                library = { vim.env.VIMRUNTIME },
-                                checkThirdParty = false,
-                            },
-                        }
+                        })
                         client.notify("workspace/didChangeConfiguration", {
                             settings = client.config.settings,
                         })
                     end
+                    return true
                 end,
                 capabilities = capabilities,
             })
