@@ -168,7 +168,7 @@ return {
         dependencies = { "nvim-treesitter" },
         opts = {},
         keys = {
-            { "<leader>ir", "<cmd>lua require('hlargs').toggle()<CR>", desc = "Toggle Highlight Args" },
+            { "<leader>kr", "<cmd>lua require('hlargs').toggle()<CR>", desc = "Toggle Highlight Args" },
         },
     },
     -- 在函数、方法、语句等之后显示当前上下文的虚拟文本
@@ -176,7 +176,7 @@ return {
         "haringsrob/nvim_context_vt",
         lazy = true,
         keys = {
-            { "<leader>iv", "<cmd>NvimContextVtToggle<CR>", desc = "Toggle Context Virtual Text" },
+            { "<leader>kv", "<cmd>NvimContextVtToggle<CR>", desc = "Toggle Context Virtual Text" },
         },
         dependencies = { "nvim-treesitter" },
         opts = {
@@ -191,7 +191,7 @@ return {
         lazy = true,
         event = { "BufReadPost", "BufNewFile" },
         keys = {
-            { "<leader>it", "<cmd>TSContextToggle<CR>", desc = "Toggle Context" },
+            { "<leader>kt", "<cmd>TSContextToggle<CR>", desc = "Toggle Context" },
         },
         dependencies = { "nvim-treesitter" },
         config = function()

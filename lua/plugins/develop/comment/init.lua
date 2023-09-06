@@ -83,76 +83,76 @@ return {
         keys = {
             -- ll,lc,lr/box
             {
-                "<leader>cbl",
+                "<leader>sbl",
                 "<cmd>lua require('comment-box').llbox()<CR>",
                 mode = { "n", "v" },
                 desc = "Left Align Box Left Align",
             },
             {
-                "<leader>cbc",
+                "<leader>sbc",
                 "<cmd>lua require('comment-box').lcbox()<CR>",
                 mode = { "n", "v" },
                 desc = "Left Align Box Center Align",
             },
             {
-                "<leader>cbr",
+                "<leader>sbr",
                 "<cmd>lua require('comment-box').lrbox()<CR>",
                 mode = { "n", "v" },
                 desc = "Left Align Box Right Align",
             },
             -- cl,cc,cr/box
             {
-                "<leader>cbL",
+                "<leader>sbL",
                 "<cmd>lua require('comment-box').clbox()<CR>",
                 mode = { "n", "v" },
                 desc = "Center Box Left Algin",
             },
             {
-                "<leader>cbC",
+                "<leader>sbC",
                 "<cmd>lua require('comment-box').ccbox()<CR>",
                 mode = { "n", "v" },
                 desc = "Center Box Center Align",
             },
             {
-                "<leader>cbR",
+                "<leader>sbR",
                 "<cmd>lua require('comment-box').crbox()<CR>",
                 mode = { "n", "v" },
                 desc = "Center Box Right Align",
             },
             -- rl,rc,rr/box
             {
-                "<leader>cbi",
+                "<leader>sbi",
                 "<cmd>lua require('comment-box').rlbox()<CR>",
                 mode = { "n", "v" },
                 desc = "Right Algin Box Left Algin",
             },
             {
-                "<leader>cbj",
+                "<leader>sbj",
                 "<cmd>lua require('comment-box').rcbox()<CR>",
                 mode = { "n", "v" },
                 desc = "Right Align Box Center Algin",
             },
             {
-                "<leader>cbk",
+                "<leader>sbk",
                 "<cmd>lua require('comment-box').rrbox()<CR>",
                 mode = { "n", "v" },
                 desc = "Right Align Box Right Algin",
             },
             -- al,ac,ar/box
             {
-                "<leader>cbo",
+                "<leader>sbo",
                 "<cmd>lua require('comment-box').albox()<CR>",
                 mode = { "n", "v" },
                 desc = "Left Aligned Adapted Box",
             },
             {
-                "<leader>cbp",
+                "<leader>sbp",
                 "<cmd>lua require('comment-box').acbox()<CR>",
                 mode = { "n", "v" },
                 desc = "Centered adapted box",
             },
             {
-                "<leader>cbq",
+                "<leader>sbq",
                 "<cmd>lua require('comment-box').arbox()<CR>",
                 mode = { "n", "v" },
                 desc = "Right Aligned Adapted Box",

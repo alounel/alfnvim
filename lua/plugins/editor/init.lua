@@ -174,9 +174,9 @@ return {
         "AckslD/muren.nvim",
         lazy = true,
         keys = {
-            { "<leader>rnt", "<cmd>MurenToggle<CR>", desc = "Switch User Face In Muren" },
-            { "<leader>rnf", "<cmd>MurenFresh<CR>", desc = "Fresh User Face In Muren" },
-            { "<leader>rnu", "<cmd>MurenUnique<CR>", desc = "Unique Muren" },
+            { "<leader>rrg", "<cmd>MurenToggle<CR>", desc = "Switch User Face In Muren" },
+            { "<leader>rrf", "<cmd>MurenFresh<CR>", desc = "Fresh User Face In Muren" },
+            { "<leader>rru", "<cmd>MurenUnique<CR>", desc = "Unique Muren" },
         },
         opts = {},
     },
@@ -244,7 +244,7 @@ return {
                     end
                 end)
                 return ":noh<CR>"
-            end, { expr = true })
+            end, { expr = true, desc = "Export Last Search To QuickFix" })
         end,
     },
     -- 字符、颜色、数字增量/减量

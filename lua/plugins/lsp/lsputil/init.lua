@@ -21,7 +21,7 @@ return {
         lazy = true,
         cmd = "IncRename",
         keys = {
-            { "<leader>nn", ":IncRename ", desc = "Inc Rename" },
+            { "<leader>rn", ":IncRename ", desc = "Inc Rename" },
         },
         config = function()
             require("inc_rename").setup({

@@ -5,7 +5,7 @@ return {
         version = false,
         lazy = true,
         keys = {
-            { "<leader>wfg", "<cmd>FocusToggle<CR>", desc = "Toggle Focus" },
+            { "<leader>wfn", "<cmd>FocusToggle<CR>", desc = "Toggle Focus" },
             { "<leader>wfn", "<cmd>FocusSplitNicely<CR>", desc = "Nicely Split Focus" },
             { "<leader>wfc", "<cmd>FocusSplitCycle<CR>", desc = "Cycle Split Foucus" },
             { "<leader>wfw", "<cmd>FocusToggleWindow<CR>", desc = "Again Toggle Window" },
@@ -31,10 +31,10 @@ return {
         "stevearc/stickybuf.nvim",
         lazy = true,
         keys = {
-            { "<leader>skf", "<cmd>PinBuffer<CR>", desc = "Fix Before Buffer In Window" },
-            { "<leader>skt", "<cmd>PinBuftype<CR>", desc = "Set Before Buftype Fix In Window" },
-            { "<leader>ske", "<cmd>PinFiletype<CR>", desc = "Set Before Filetype Fix In Window" },
-            { "<leader>sku", "<cmd>UnpinBuffer<CR>", desc = "Cancel Everything Fix Window" },
+            { "<leader>wmf", "<cmd>PinBuffer<CR>", desc = "Fix Before Buffer In Window" },
+            { "<leader>wmt", "<cmd>PinBuftype<CR>", desc = "Set Before Buftype Fix In Window" },
+            { "<leader>wme", "<cmd>PinFiletype<CR>", desc = "Set Before Filetype Fix In Window" },
+            { "<leader>wmu", "<cmd>UnpinBuffer<CR>", desc = "Cancel Everything Fix Window" },
         },
         opts = {},
     },

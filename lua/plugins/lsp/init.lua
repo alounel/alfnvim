@@ -4,10 +4,10 @@ return {
         "neovim/nvim-lspconfig",
         event = { "BufReadPre", "BufNewFile" },
         keys = {
-            { "<leader>nli", "<cmd>LspInfo<CR>", desc = "Show Lspconfig Info" },
-            { "<leader>nls", "<cmd>LspStart<CR>", desc = "Start LspConfig" },
-            { "<leader>nlt", "<cmd>LspStop<CR>", desc = "Stop Lspconfig" },
-            { "<leader>nlr", "<cmd>LspRestart<CR>", desc = "Restart LspConfig" },
+            { "<leader>ui", "<cmd>LspInfo<CR>", desc = "Show Lspconfig Info" },
+            { "<leader>us", "<cmd>LspStart<CR>", desc = "Start LspConfig" },
+            { "<leader>ut", "<cmd>LspStop<CR>", desc = "Stop Lspconfig" },
+            { "<leader>ur", "<cmd>LspRestart<CR>", desc = "Restart LspConfig" },
         },
         dependencies = {
             -- Neovim中lua API完整签名、帮助和补全

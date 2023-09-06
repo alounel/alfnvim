@@ -44,21 +44,21 @@ return {
                 desc = "Redirect Cmdline",
             },
             {
-                "<leader>nol",
+                "<leader>ul",
                 function()
                     require("noice").cmd("last")
                 end,
                 desc = "Noice Last Message",
             },
             {
-                "<leader>noh",
+                "<leader>uh",
                 function()
                     require("noice").cmd("history")
                 end,
                 desc = "Noice History",
             },
             {
-                "<leader>noa",
+                "<leader>ua",
                 function()
                     require("noice").cmd("all")
                 end,
@@ -198,7 +198,7 @@ return {
         },
     },
     {
-        import = "plugins.ui.launchpage"
+        import = "plugins.ui.launchpage",
     },
     {
         import = "plugins.ui.directory",
