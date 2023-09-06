@@ -6,9 +6,11 @@
 
 1. rnvimr插件：用于在浮动窗口调用ranger，由于windows用户无法使用ranger，则需要删除此插件或者屏蔽此插件
 
-2. sqlite.lua插件：由于Telescope frecency和yanky.nvim，以及一些其它功能需要sqlite，所以请在[sqlite.lua](https://github.com/kkharji/sqlite.lua)网站中查看详细配置
+2. nvim-genghis插件：在trashFile的配置中改为自己的绝对目录
 
-3. 需要说明的是，在将此配置使用之前，需要先修改这些设置，否则neovim使用会报错
+3. sqlite.lua插件：由于Telescope frecency和yanky.nvim，以及一些其它功能需要sqlite，所以请在[sqlite.lua](https://github.com/kkharji/sqlite.lua)网站中查看详细配置
+
+4. 需要说明的是，在将此配置使用之前，需要先修改这些设置，否则neovim使用会报错
 
 - **基础工具**
 
