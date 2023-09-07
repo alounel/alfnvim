@@ -177,11 +177,12 @@ return {
         lazy = true,
         keys = {
             { "<leader>kv", "<cmd>NvimContextVtToggle<CR>", desc = "Toggle Context Virtual Text" },
+            { "<leader>kd", "<cmd>NvimContextVtDebugCR>", desc = "Context Virtual Text Debug" },
         },
         dependencies = { "nvim-treesitter" },
         opts = {
             prefix = "",
-            disable_ft = { "markdown", "ini", "help", "vimdoc" },
+            disable_ft = { "markdown" },
             disable_virtual_lines_ft = { "yaml", "toml" },
         },
     },
