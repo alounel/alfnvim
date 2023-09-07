@@ -19,7 +19,6 @@ return {
     {
         "smjonas/inc-rename.nvim",
         lazy = true,
-        cmd = "IncRename",
         keys = {
             { "<leader>rn", ":IncRename ", desc = "Inc Rename" },
         },
@@ -141,7 +140,9 @@ return {
     {
         "SmiteshP/nvim-navbuddy",
         lazy = true,
-        event = "LspAttach",
+        keys = {
+            { "<leader>ny", "<cmd>Navbuddy<CR>", desc = "Show Navbuddy Interface" },
+        },
         dependencies = {
             {
                 "SmiteshP/nvim-navic",
@@ -163,9 +164,6 @@ return {
             lsp = {
                 auto_attach = true,
             },
-        },
-        keys = {
-            { "<leader>ny", "<cmd>Navbuddy<CR>", desc = "Show Navbuddy Interface" },
         },
     },
     {
