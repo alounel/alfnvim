@@ -133,8 +133,7 @@ return {
     -- 大文件
     {
         "LunarVim/bigfile.nvim",
-        lazy = true,
-        event = "VimEnter",
+        priority = 100,
         opts = {
             filesize = 2,
             pattern = { "*" },
@@ -147,7 +146,6 @@ return {
                 "matchparen",
                 "vimopts",
                 "filetype",
-                "treesitter-context",
             },
         },
     },
