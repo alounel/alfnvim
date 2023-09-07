@@ -33,16 +33,16 @@ return {
                     border = "single",
                 },
             })
-            vim.keymap.set("n", "<leader>cs", "<cmd>ClangdSymbolInfo<CR>", { desc = "Show Cursor Local Symbol Info" })
+            vim.keymap.set("n", "<leader>scs", "<cmd>ClangdSymbolInfo<CR>", { desc = "Show Cursor Local Symbol Info" })
             vim.keymap.set(
                 "n",
-                "<leader>cl",
+                "<leader>scl",
                 "<cmd>ClangdTypeHierarchy<CR>",
                 { desc = "Show Cursor Local Type Hierarchy" }
             )
             vim.keymap.set(
                 "n",
-                "<leader>cg",
+                "<leader>scg",
                 "<cmd>ClangdMemoryUsage expand_preamble<CR>",
                 { desc = "Show Memory Use Status" }
             )

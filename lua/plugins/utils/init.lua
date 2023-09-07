@@ -124,6 +124,7 @@ return {
                 ["<leader>rs"] = { name = "+switch" },
                 ["<leader>s"] = { name = "+show/style" },
                 ["<leader>sb"] = { name = "+box" },
+                ["<leader>sc"] = { name = "+clangdinfo" },
                 ["<leader>t"] = { name = "+trail/terminal/todo" },
                 ["<leader>td"] = { name = "+todo" },
                 ["<leader>tt"] = { name = "+terminal" },
