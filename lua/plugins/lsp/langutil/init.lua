@@ -61,17 +61,14 @@ return {
     {
         "gennaro-tedesco/nvim-jqx",
         lazy = true,
-        ft = { "json", "yaml" },
-        config = function()
-            vim.keymap.set("n", "<leader>jl", ":JqxList", { desc = "Json List" })
-            vim.keymap.set("n", "<leader>jq", ":JqxQuery", { desc = "Json Query" })
-        end,
+        keys = {
+            { "<leader>jl", ":JqxList", desc = "Json List" },
+            { "<leader>jq", ":JqxQuery", desc = "Json Query" },
+        },
     },
-    -- 提供对SchemaStore目录的访问
     {
         "b0o/SchemaStore.nvim",
         lazy = true,
-        ft = { "json", "yaml" },
     },
     -- typescript,javascript
     {
