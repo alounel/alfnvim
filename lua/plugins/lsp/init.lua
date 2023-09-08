@@ -47,7 +47,7 @@ return {
             local lspconfig = require("lspconfig")
             local capabilities = require("cmp_nvim_lsp").default_capabilities()
             capabilities.textDocument.completion.completionItem.snippetSupport = true --jsonls需要的代码片段支持
-            local servers = { "clangd", "pyright", "neocmake", "vimls", "bashls", "marksman", "lemminx" }
+            local servers = { "pyright", "neocmake", "vimls", "bashls", "marksman", "lemminx" }
 
             lspconfig["lua_ls"].setup({
                 on_init = function(client)
@@ -74,6 +74,20 @@ return {
                     return true
                 end,
                 capabilities = capabilities,
+            })
+            lspconfig["clangd"].setup({
+                cmd = {
+                    "clangd",
+                    "--background-index",
+                    "--clang-tidy",
+                    "--header-insertion=iwyu",
+                    "--header-insertion-decorators",
+                    "--function-arg-placeholders",
+                    "--log=verbose",
+                    "--enable-config",
+                    "--all-scopes-completion",
+                    "--clang-tidy-checks=performance-*, bugprone-*, misc-*, google-*, modernize-*, readability-*, portability-*,cppcoreguidelines-*",
+                },
             })
             lspconfig["jsonls"].setup({
                 settings = {
