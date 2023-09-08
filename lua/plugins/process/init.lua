@@ -3,7 +3,6 @@ return {
     {
         "m4xshen/hardtime.nvim",
         lazy = true,
-        cmd = "Hardtime",
         keys = {
             { "<leader>pt", "<cmd>Hardtime toggle<CR>", desc = "Toggle Hardtime" },
             { "<leader>pr", "<cmd>Hardtime report<CR>", desc = "Report Hardtime" },
@@ -13,7 +12,8 @@ return {
             { "plenary.nvim" },
         },
         opts = {
-            disabled_filetypes = { "qf", "netrw", "new-tree", "lazy", "mason", "aerial", "Outline" },
+            max_time = 500,
+            disabled_filetypes = { "qf", "netrw", "new-tree", "lazy", "mason", "aerial", "sagaoutline", "Trouble" },
             disable_mouse = false,
         },
     },

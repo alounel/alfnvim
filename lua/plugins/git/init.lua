@@ -71,20 +71,4 @@ return {
             },
         },
     },
-    -- 可视化和解决合并冲突
-    {
-        "akinsho/git-conflict.nvim",
-        version = "*",
-        lazy = true,
-        keys = {
-            { "<leader>gfo", "<cmd>GitConflictChooseOurs<CR>", desc = "Select the current changes" },
-            { "<leader>gft", "<cmd>GitConflictChooseTheirs<CR>", desc = "Select the incoming changes" },
-            { "<leader>gfb", "<cmd>GitConflictChooseBoth<CR>", desc = "Select both changes" },
-            { "<leader>gfe", "<cmd>GitConflictChooseNone<CR>", desc = "Select none of the changes" },
-            { "<leader>gfn", "<cmd>GitConflictNextConflict<CR>", desc = " Move to the next conflict" },
-            { "<leader>gfp", "<cmd>GitConflictPrevConflict<CR>", desc = "Move to the previous conflict" },
-            { "<leader>gfq", "<cmd>GitConflictListQf<CR>", desc = "Get all conflict to quickfix" },
-        },
-        opts = {},
-    },
 }

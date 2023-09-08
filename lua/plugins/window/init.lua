@@ -135,18 +135,6 @@ return {
             },
         },
     },
-    -- 将缓冲区锁定到窗口
-    {
-        "stevearc/stickybuf.nvim",
-        lazy = true,
-        keys = {
-            { "<leader>wmf", "<cmd>PinBuffer<CR>", desc = "Fix Before Buffer In Window" },
-            { "<leader>wmt", "<cmd>PinBuftype<CR>", desc = "Set Before Buftype Fix In Window" },
-            { "<leader>wme", "<cmd>PinFiletype<CR>", desc = "Set Before Filetype Fix In Window" },
-            { "<leader>wmu", "<cmd>UnpinBuffer<CR>", desc = "Cancel Everything Fix Window" },
-        },
-        opts = {},
-    },
     -- 右侧小地图
     {
         "gorbit99/codewindow.nvim",
