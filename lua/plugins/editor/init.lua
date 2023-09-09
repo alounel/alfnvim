@@ -304,12 +304,24 @@ return {
                     }),
                 },
             })
-            vim.keymap.set("n", "<M-b>", require("dial.map").inc_normal("chars_dial"), { noremap = true })
-            vim.keymap.set("n", "<M-d>", require("dial.map").dec_normal("chars_dial"), { noremap = true })
-            vim.keymap.set("n", "<M-f>", require("dial.map").inc_normal("color_dial"), { noremap = true })
-            vim.keymap.set("n", "<M-g>", require("dial.map").dec_normal("color_dial"), { noremap = true })
-            vim.keymap.set("n", "<M-z>", require("dial.map").inc_normal("date_dial"), { noremap = true })
-            vim.keymap.set("n", "<M-x>", require("dial.map").dec_normal("date_dial"), { noremap = true })
+            vim.keymap.set("n", "<M-b>", function()
+                require("dial.map").manipulate("increment", "normal", "chars_dial")
+            end, { noremap = true })
+            vim.keymap.set("n", "<M-d>", function()
+                require("dial.map").manipulate("decrement", "normal", "chars_dial")
+            end, { noremap = true })
+            vim.keymap.set("n", "<M-f>", function()
+                require("dial.map").manipulate("increment", "normal", "color_dial")
+            end, { noremap = true })
+            vim.keymap.set("n", "<M-g>", function()
+                require("dial.map").manipulate("decrement", "normal", "color_dial")
+            end, { noremap = true })
+            vim.keymap.set("n", "<M-z>", function()
+                require("dial.map").manipulate("increment", "normal", "date_dial")
+            end, { noremap = true })
+            vim.keymap.set("n", "<M-x>", function()
+                require("dial.map").manipulate("decrement", "normal", "date_dial")
+            end, { noremap = true })
         end,
     },
     {
