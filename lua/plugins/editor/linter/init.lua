@@ -80,8 +80,8 @@ return {
                         "rust",
                     },
                 }),
-                diagnostics.editorconfig_checker.with({ -- 检测编辑文件
-                    disabled_filetypes = { "c", "cpp", "txt", "help", "log" },
+                diagnostics.editorconfig_checker.with({
+                    disabled_filetypes = { "c", "cpp", "txt", "help", "log", "neorg" },
                 }),
             }
             null_ls.setup({
@@ -123,3 +123,4 @@ return {
         },
     },
 }
+

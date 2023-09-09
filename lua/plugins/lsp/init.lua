@@ -87,6 +87,7 @@ return {
                     "--all-scopes-completion",
                     "--clang-tidy-checks=performance-*, bugprone-*, misc-*, google-*, modernize-*, readability-*, portability-*,cppcoreguidelines-*",
                 },
+                capabilities = capabilities,
             })
             lspconfig["jsonls"].setup({
                 settings = {
@@ -102,7 +103,7 @@ return {
                     yaml = {
                         schemaStore = {
                             enable = false,
-                            url = "",
+                            url = "https://www.schemastore.org/api/json/catalog.json",
                         },
                         schemas = require("schemastore").yaml.schemas(),
                     },
@@ -152,3 +153,4 @@ return {
         import = "plugins.lsp.langutil",
     },
 }
+

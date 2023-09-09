@@ -8,12 +8,15 @@ return {
                 formatters_by_ft = {
                     cmake = { "cmake_format" },
                     json = { "jq" },
+                    jsonc = { "jq" },
                     javascript = { "prettier" },
+                    javascriptreact = { "prettier" },
                     typescript = { "prettier" },
+                    typescriptreact = { "prettier" },
                     markdown = { "prettier" },
                     lua = { "stylua" },
                     python = { "black", "isort" },
-                    sh = { "shfmt" },
+                    sh = { "shellharden", "shfmt" },
                     yaml = { "yamlfmt" },
                     ["*"] = { "trim_whitespace" },
                 },
@@ -35,3 +38,4 @@ return {
         end,
     },
 }
+
