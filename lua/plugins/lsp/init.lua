@@ -10,7 +10,6 @@ return {
             { "<leader>ur", "<cmd>LspRestart<CR>", desc = "Restart LspConfig" },
         },
         dependencies = {
-            -- Neovim中lua API完整签名、帮助和补全
             {
                 "folke/neodev.nvim",
                 lazy = true,
