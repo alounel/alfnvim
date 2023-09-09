@@ -1,21 +1,4 @@
 return {
-    -- 预览寄存器内容
-    {
-        "tversteeg/registers.nvim",
-        enabled = false,
-        name = "registers",
-        lazy = true,
-        cmd = "Registers",
-        keys = {
-            { '"', mode = { "n", "v" } },
-            { "<C-R>", mode = "i" },
-        },
-        opts = {
-            window = {
-                border = "rounded",
-            },
-        },
-    },
     -- 终端
     {
         "akinsho/toggleterm.nvim",
@@ -119,7 +102,7 @@ return {
                 ["<leader>pj"] = { name = "+jumplist" },
                 ["<leader>pq"] = { name = "+quickfix" },
                 ["<leader>q"] = { name = "+session" },
-                ["<leader>r"] = { name = "+reach/replace/regex" },
+                ["<leader>r"] = { name = "+replace/regex" },
                 ["<leader>rr"] = { name = "+muren" },
                 ["<leader>rs"] = { name = "+switch" },
                 ["<leader>s"] = { name = "+show/style" },
@@ -218,19 +201,6 @@ return {
         opts = {
             quit = false,
         },
-    },
-    -- 页面切换
-    {
-        "toppair/reach.nvim",
-        enabled = false,
-        lazy = true,
-        keys = {
-            { "<leader>rsb", "<cmd>ReachOpen buffers<CR>", desc = "Switch Buffers Page" },
-            { "<leader>rsc", "<cmd>ReachOpen colorschemes<CR>", desc = "Switch Scheme Page" },
-            { "<leader>rsm", "<cmd>ReachOpen marks<CR>", desc = "Switch Mark Page" },
-            { "<leader>rst", "<cmd>ReachOpen tabpages<CR>", desc = "Switch Tab Page" },
-        },
-        opts = {},
     },
     -- keyamps,command,functions示例
     {
