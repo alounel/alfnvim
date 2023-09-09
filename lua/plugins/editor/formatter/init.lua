@@ -12,12 +12,10 @@ return {
                     typescript = { "prettier" },
                     markdown = { "prettier" },
                     lua = { "stylua" },
-                    python = {
-                        formatters = { "black", "isort" },
-                        run_all_formatters = true,
-                    },
+                    python = { "black", "isort" },
                     sh = { "shfmt" },
                     yaml = { "yamlfmt" },
+                    ["*"] = { "trim_whitespace" },
                 },
                 log_level = vim.log.levels.DEBUG,
             })
