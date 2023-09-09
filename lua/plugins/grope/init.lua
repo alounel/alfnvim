@@ -74,6 +74,8 @@ return {
             require("telescope").load_extension("yank_history")
         end,
         keys = {
+            { "<leader>fsc", "<cmd>Telescope commands<CR>", desc = "Find Commands" },
+            { "<leader>fsi", "<cmd>Telescope registers<CR>", desc = "Find Registers" },
             { "<leader>fsw", "<cmd>Telescope find_files theme=ivy<CR>", desc = "Find Files" },
             { "<leader>fsg", "<cmd>Telescope live_grep theme=ivy<CR>", desc = "Grep Word" },
             { "<leader>fsb", "<cmd>Telescope buffers theme=ivy<CR>", desc = "Find Buffers" },
