@@ -82,6 +82,7 @@ return {
     -- 显示函数的引用和定义信息
     {
         "VidocqH/lsp-lens.nvim",
+        enabled = false,
         lazy = true,
         event = "LspAttach",
         keys = {

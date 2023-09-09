@@ -138,6 +138,7 @@ return {
     -- 右侧小地图
     {
         "gorbit99/codewindow.nvim",
+        enabled = false,
         lazy = true,
         keys = {
             {

@@ -91,6 +91,7 @@ return {
     -- fzf模糊查找
     {
         "ibhagwan/fzf-lua",
+        enabled = false,
         lazy = true,
         cmd = "FzfLua",
         keys = {

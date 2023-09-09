@@ -2,6 +2,7 @@ return {
     -- 预览寄存器内容
     {
         "tversteeg/registers.nvim",
+        enabled = false,
         name = "registers",
         lazy = true,
         cmd = "Registers",
@@ -170,6 +171,7 @@ return {
     -- 输入命令查看缓冲区
     {
         "nacro90/numb.nvim",
+        enabled = false,
         lazy = true,
         event = "CmdlineEnter",
         opts = {
@@ -220,6 +222,7 @@ return {
     -- 页面切换
     {
         "toppair/reach.nvim",
+        enabled = false,
         lazy = true,
         keys = {
             { "<leader>rsb", "<cmd>ReachOpen buffers<CR>", desc = "Switch Buffers Page" },

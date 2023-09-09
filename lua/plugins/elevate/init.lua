@@ -46,6 +46,7 @@ return {
     -- 代替substitue
     {
         "chrisgrieser/nvim-alt-substitute",
+        enabled = false,
         lazy = true,
         event = "CmdlineEnter",
         opts = {},

@@ -79,6 +79,7 @@ return {
     -- 美化注释
     {
         "LudoPinelli/comment-box.nvim",
+        enabled = false,
         lazy = true,
         keys = {
             -- ll,lc,lr/box

@@ -18,6 +18,7 @@ return {
     -- QuickFix窗口可编辑
     {
         "gabrielpoca/replacer.nvim",
+        enabled = false,
         lazy = true,
         keys = {
             { "<leader>xpr", "<cmd>lua require('replacer').run()<CR>", desc = "Run Replacer" },
@@ -83,6 +84,7 @@ return {
     -- 解释和测试正则表达式
     {
         "tomiis4/hypersonic.nvim",
+        enabled = false,
         lazy = true,
         event = "CmdlineEnter",
         keys = {
@@ -153,6 +155,7 @@ return {
     -- 图标选择器
     {
         "ziontee113/icon-picker.nvim",
+        enabled = false,
         lazy = true,
         keys = {
             { "<leader>ic", "<cmd>IconPickerNormal<CR>", desc = "Nomal Mode Pick Icon Insert Buffer" },
