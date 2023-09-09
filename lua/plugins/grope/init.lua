@@ -93,17 +93,19 @@ return {
     -- fzf模糊查找
     {
         "ibhagwan/fzf-lua",
-        enabled = false,
         lazy = true,
         cmd = "FzfLua",
         keys = {
-            { "<leader>fl", "<cmd>FzfLua<CR>", desc = "Open Fzf inquiry" },
-            { "<leader>ff", "<cmd>FzfLua files<CR>", desc = "Fzf inquiry files" },
-            { "<leader>fb", "<cmd>FzfLua buffers<CR>", desc = "Fzf inquiry buffers" },
-            { "<leader>fa", "<cmd>FzfLua args<CR>", desc = "Show Fzf args list" },
-            { "<leader>fh", "<cmd>FzfLua oldfiles<CR>", desc = "Show files history" },
-            { "<leader>fq", "<cmd>FzfLua quickfix<CR>", desc = "Open quickfix list" },
-            { "<leader>ft", "<cmd>FzfLua tabs<CR>", desc = "Fzf inquiry tab list" },
+            { "<leader>flz", "<cmd>FzfLua<CR>", desc = "Select FzfLua Moudule" },
+            { "<leader>flf", "<cmd>FzfLua files<CR>", desc = "Fzf inquiry files" },
+            { "<leader>flb", "<cmd>FzfLua buffers<CR>", desc = "Fzf inquiry buffers" },
+            { "<leader>fla", "<cmd>FzfLua args<CR>", desc = "Fzf args list" },
+            { "<leader>flh", "<cmd>FzfLua oldfiles<CR>", desc = "Fzf Show files history" },
+            { "<leader>flq", "<cmd>FzfLua quickfix<CR>", desc = "Fzf Open quickfix list" },
+            { "<leader>flt", "<cmd>FzfLua tabs<CR>", desc = "Fzf inquiry tab list" },
+            { "<leader>flg", "<cmd>FzfLua grep<CR>", desc = "Fzf Grep Text" },
+            { "<leader>fli", "<cmd>FzfLua live_grep<CR>", desc = "Fzf Live Grep Text" },
+            { "<leader>fll", "<cmd>FzfLua lines<CR>", desc = "Fzf Open lines" },
         },
         dependencies = {
             { "nvim-web-devicons" },

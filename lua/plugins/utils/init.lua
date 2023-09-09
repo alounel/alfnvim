@@ -80,8 +80,9 @@ return {
                 ["<leader>e"] = { name = "+generate/editor" },
                 ["<leader>ep"] = { name = "+compiler" },
                 ["<leader>f"] = { name = "+find/format" },
-                ["<leader>fs"] = { name = "+telescope" },
                 ["<leader>fd"] = { name = "+legendary" },
+                ["<leader>fl"] = { name = "+fzf" },
+                ["<leader>fs"] = { name = "+telescope" },
                 ["<leader>g"] = { name = "+git" },
                 ["<leader>gn"] = { name = "+neogit" },
                 ["<leader>h"] = { name = "+highlight" },
@@ -140,7 +141,7 @@ return {
         event = "InsertEnter",
         opts = {
             mapping = { "jk", "jj" },
-            timeout = vim.o.timeoutlen,
+            timeout = vim.go.timeoutlen,
             clear_empty_lines = false,
             keys = "<Esc>",
         },
@@ -148,13 +149,13 @@ return {
     -- 平滑滚动
     {
         "karb94/neoscroll.nvim",
-        event = "VimEnter",
+        lazy = true,
+        event = "VeryLazy",
         opts = {},
     },
     -- 输入命令查看缓冲区
     {
         "nacro90/numb.nvim",
-        enabled = false,
         lazy = true,
         event = "CmdlineEnter",
         opts = {
