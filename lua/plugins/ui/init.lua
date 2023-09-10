@@ -188,7 +188,7 @@ return {
         import = "plugins.ui.launch",
     },
     {
-        import = "plugins.ui.directory",
+        import = "plugins.ui.filetree",
     },
     {
         import = "plugins.ui.line",

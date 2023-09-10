@@ -11,7 +11,7 @@ return {
             { "<leader>nf", "<cmd>Neotree float<CR>", desc = "Open Float Tree" },
             { "<leader>ng", "<cmd>Neotree toggle<CR>", desc = "Toggle Tree" },
             { "<leader>nb", "<cmd>Neotree buffers<CR>", desc = "Show Buffers Tree" },
-            { "<leader>nr", "<cmd>Neotree filesystem reveal right<CR>", desc = "Select Right Open Tree" },
+            { "<leader>ns", "<cmd>Neotree filesystem reveal right<CR>", desc = "Select Right Open Tree" },
         },
         dependencies = {
             { "nvim-web-devicons" },
@@ -58,6 +58,15 @@ return {
                 },
             })
         end,
+    },
+    -- 在悬浮窗中运行ranger
+    {
+        "kevinhwang91/rnvimr",
+        lazy = true,
+        keys = {
+            { "<leader>nr", "<cmd>RnvimrToggle<CR>", desc = "Toggle Ranger in Float Window" },
+            { "<leader>nz", "<cmd>RnvimrResize<CR>", desc = "Resize Ranger in Window" },
+        },
     },
 }
 

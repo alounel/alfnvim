@@ -95,7 +95,7 @@ return {
                 ["<leader>m"] = { name = "+manager/mark" },
                 ["<leader>mh"] = { name = "+harpoon" },
                 ["<leader>mg"] = { name = "+grapple" },
-                ["<leader>n"] = { name = "+dir" },
+                ["<leader>n"] = { name = "+filetree" },
                 ["<leader>p"] = { name = "+portal/process" },
                 ["<leader>pc"] = { name = "+changelist" },
                 ["<leader>pg"] = { name = "+grapple" },
@@ -103,11 +103,10 @@ return {
                 ["<leader>pj"] = { name = "+jumplist" },
                 ["<leader>pq"] = { name = "+quickfix" },
                 ["<leader>q"] = { name = "+session" },
-                ["<leader>r"] = { name = "+replace/regex" },
+                ["<leader>r"] = { name = "+replace" },
                 ["<leader>rr"] = { name = "+muren" },
                 ["<leader>rs"] = { name = "+switch" },
                 ["<leader>s"] = { name = "+show/style" },
-                ["<leader>sb"] = { name = "+box" },
                 ["<leader>sc"] = { name = "+clangdinfo" },
                 ["<leader>t"] = { name = "+trail/terminal/todo" },
                 ["<leader>td"] = { name = "+todo" },
@@ -263,3 +262,4 @@ return {
         },
     },
 }
+

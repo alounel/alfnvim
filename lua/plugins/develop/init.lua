@@ -11,21 +11,20 @@ return {
     -- 从终端缓冲区打开文件
     {
         "willothy/flatten.nvim",
-        lazy = true,
-        event = "VeryLazy",
+        event = "VimEnter",
         opts = {},
     },
     -- QuickFix窗口可编辑
     {
         "gabrielpoca/replacer.nvim",
-        enabled = false,
         lazy = true,
-        keys = {
-            { "<leader>xpr", "<cmd>lua require('replacer').run()<CR>", desc = "Run Replacer" },
-            { "<leader>xps", "<cmd>lua require('replacer').save()<CR>", desc = "Save Replacer" },
-        },
         opts = {
             rename_files = false,
+            save_on_write = false,
+        },
+        keys = {
+            { "<leader>xpr", "<cmd>lua require('replacer').run()<CR>", desc = "Quickfix Editable" },
+            { "<leader>xps", "<cmd>lua require('replacer').save()<CR>", desc = "Save Quickfix Edit Text" },
         },
     },
     -- 会话管理
@@ -100,19 +99,40 @@ return {
         lazy = true,
         cmd = "Refactor",
         keys = {
-            { "<leader>rfe", mode = "x" },
-            { "<leader>rft", mode = "x" },
-            { "<leader>rfv", mode = "x" },
-            { "<leader>rfi", mode = { "n", "x" } },
-            { "<leader>rfb", mode = "n" },
-            { "<leader>rfk", mode = "n" },
+            { "<leader>rfe", mode = "x", desc = "Extract Function" },
+            { "<leader>rft", mode = "x", desc = "Extract Function To File" },
+            { "<leader>rfv", mode = "x", desc = "Extract Variable" },
+            { "<leader>rfi", mode = { "n", "x" }, desc = "Inline Variable" },
+            { "<leader>rfb", mode = "n", desc = "Extract Block" },
+            { "<leader>rfk", mode = "n", desc = "Extract Block To File" },
         },
         dependencies = {
             { "plenary.nvim" },
             { "nvim-treesitter" },
         },
         config = function()
-            require("refactoring").setup({})
+            require("refactoring").setup({
+                prompt_func_return_type = {
+                    go = false,
+                    java = true,
+
+                    cpp = true,
+                    c = true,
+                    h = true,
+                    hpp = true,
+                    cxx = true,
+                },
+                prompt_func_param_type = {
+                    go = false,
+                    java = false,
+
+                    cpp = true,
+                    c = true,
+                    h = true,
+                    hpp = true,
+                    cxx = true,
+                },
+            })
             vim.keymap.set("x", "<leader>rfe", function()
                 require("refactoring").refactor("Extract Function")
             end)
@@ -133,7 +153,7 @@ return {
             end)
         end,
     },
-    -- 大文件
+    -- 打开大文件
     {
         "LunarVim/bigfile.nvim",
         priority = 100,
@@ -170,3 +190,4 @@ return {
         import = "plugins.develop.comment",
     },
 }
+
