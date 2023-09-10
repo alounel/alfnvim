@@ -138,7 +138,6 @@ return {
     -- 右侧小地图
     {
         "gorbit99/codewindow.nvim",
-        enabled = false,
         lazy = true,
         keys = {
             {
@@ -158,9 +157,10 @@ return {
         },
         config = function()
             require("codewindow").setup({
-                exclude_filetypes = { "help", "vimdoc", "log", "txt" },
+                exclude_filetypes = { "help", "vimdoc", "log", "txt", "text" },
                 window_border = "rounded",
             })
         end,
     },
 }
+
