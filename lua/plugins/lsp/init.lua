@@ -85,7 +85,7 @@ return {
                     "--log=verbose",
                     "--enable-config",
                     "--all-scopes-completion",
-                    "--clang-tidy-checks=performance-*, bugprone-*, misc-*, google-*, modernize-*, readability-*, portability-*,cppcoreguidelines-*",
+                    "--clang-tidy-checks=bugprone-*, cert-*, clang-analyzer-*, concurrency-*, cppcoreguidelines-*, google-*, hicpp-*, misc-*, modernize-*, performance-*, portability-*, readability-*",
                 },
                 capabilities = capabilities,
             })

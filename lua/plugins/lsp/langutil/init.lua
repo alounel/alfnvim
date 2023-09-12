@@ -75,6 +75,11 @@ return {
         "pmizio/typescript-tools.nvim",
         lazy = true,
         ft = { "typescript", "javascript", "tsx", "jsx", "javascriptreact", "typescriptreact" },
+        dependencies = {
+            { "plenary.nvim" },
+            { "nvim-lspconfig" },
+        },
         opts = {},
     },
 }
+
