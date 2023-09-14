@@ -21,7 +21,6 @@ return {
                             "markdownlint",
                             "shellcheck",
                             "jsonlint",
-                            "yamllint",
                             "cspell",
                             "editorconfig_checker",
                         },
