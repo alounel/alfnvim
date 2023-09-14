@@ -116,6 +116,7 @@ return {
                     title = "FZF Search",
                     title_pos = "center",
                     preview = {
+                        default = "bat",
                         winopts = {
                             relativenumber = true,
                         },
