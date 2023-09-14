@@ -21,7 +21,7 @@ return {
                 json = { "jq" },
                 jsonc = { "jq" },
                 lua = { "stylua" },
-                markdown = { "prettierd", "prettier" },
+                markdown = { "markdownlint" },
                 javascript = { "prettierd", "prettier" },
                 javascriptreact = { "prettierd", "prettier" },
                 typescript = { "prettierd", "prettier" },
