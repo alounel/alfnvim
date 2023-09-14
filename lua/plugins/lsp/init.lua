@@ -26,13 +26,12 @@ return {
                 -- tsserver:无法使用tsc,所以使用包管理器安装
                 -- clangd:存在clang-tools-extra包，直接安装比较好
                 -- neocmake:未安装cargo
-                -- pyright:mason安装带来不必要的node_modules
+                -- pyright,yaml-language-server:mason安装带来不必要的node_modules或site-packages
                 opts = {
                     ensure_installed = {
                         "jdtls",
                         "lua_ls",
                         "jsonls",
-                        "yamlls",
                         "vimls",
                         "bashls",
                         "marksman",
