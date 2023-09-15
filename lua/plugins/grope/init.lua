@@ -106,6 +106,7 @@ return {
             { "<leader>flg", "<cmd>FzfLua grep<CR>", desc = "Fzf Grep Text" },
             { "<leader>fli", "<cmd>FzfLua live_grep<CR>", desc = "Fzf Live Grep Text" },
             { "<leader>fll", "<cmd>FzfLua lines<CR>", desc = "Fzf Open lines" },
+            { "<leader>flc", "<cmd>FzfLua colorschemes<CR>", desc = "Fzf Colorscheme" },
         },
         dependencies = {
             { "nvim-web-devicons" },
