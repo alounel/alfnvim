@@ -173,8 +173,8 @@ PackConstructorInitializers: NextLine
 # 指针对齐风格
 PointerAlignment: Right
 # 限定符对齐
-QualifierAlignment: Custom
-QualifierOrder: ['inline', 'static', 'type', 'const', 'volatile']
+QualifierAlignment: Leave
+# QualifierOrder: ['const', 'constexpr', 'static', 'type', 'inline', 'volatile']
 # 引用对齐格式
 ReferenceAlignment: Right
 # 允许重新排版注释
