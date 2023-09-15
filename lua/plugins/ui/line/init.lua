@@ -51,6 +51,9 @@ return {
             { "<leader>be", "<cmd>BufferOrderByLanguage<CR>", desc = "Buffer Sort By Language" },
             { "<leader>bw", "<cmd>BufferOrderByWindowNumber<CR>", desc = "Buffer Sort By Window Number" },
         },
+        dependencies = {
+            { "nvim-web-devicons" },
+        },
         opts = {
             highlight_inactive_file_icons = true,
             highlight_visible = false,
