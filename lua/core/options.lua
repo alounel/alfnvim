@@ -2,7 +2,7 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 -- 自动缩进策略
-vim.opt.filetype = "plugin"
+vim.bo.filetype = "plugin"
 -- 防止包裹
 vim.wo.wrap = false
 -- 默认新窗口在右和下
@@ -44,7 +44,7 @@ vim.go.incsearch = true
 vim.go.hlsearch = true
 -- 拼写建议
 vim.wo.spell = true
-vim.opt.spelllang = { "en_us" }
+vim.bo.spelllang = "en_us"
 -- 鼠标支持
 vim.go.mouse = "a"
 -- 启用系统剪切板
@@ -107,10 +107,12 @@ vim.go.foldlevelstart = 99
 vim.wo.foldcolumn = "1"
 -- 筛选设置
 -- -- :grep使用的程序
-vim.opt.grepprg = "rg --vimgrep"
+vim.bo.grepprg = "rg --vimgrep"
 -- -- grepprg输出格式
-vim.opt.grepformat = "%f:%l:%c:%m"
+vim.go.grepformat = "%f:%l:%c:%m"
 -- 会话
 vim.opt.sessionoptions = { "buffers", "curdir", "tabpages", "winsize" }
 -- 命令行高度
 vim.go.cmdheight = 0
+-- 设置python地址
+vim.g.python3_host_prog = "/usr/bin/python"

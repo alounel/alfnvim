@@ -17,7 +17,7 @@ return {
             formatters_by_ft = {
                 c = { "clang_format" },
                 cpp = { "clang_format" },
-                cmake = { "cmake_fomat" },
+                cmake = { "cmake_format" },
                 json = { "jq" },
                 jsonc = { "jq" },
                 lua = { "stylua" },
@@ -27,7 +27,7 @@ return {
                 typescript = { "prettierd", "prettier" },
                 typescriptreact = { "prettierd", "prettier" },
                 python = { "isort", "black" },
-                sh = { "shfmt" },
+                sh = { "shellharden", "shfmt" },
                 yaml = { "yamlfmt" },
                 ["*"] = { "trim_whitespace" },
             },
