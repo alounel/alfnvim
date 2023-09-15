@@ -31,8 +31,11 @@ return {
         config = function()
             local null_ls = require("null-ls")
             local diagnostics = null_ls.builtins.diagnostics
+            local code_actions = null_ls.builtins.code_actions
 
             local sources = {
+                -- Code_actions
+                code_actions.eslint_d, -- javascript,javascriptact,typescript,typescriptact,vue
                 -- Diagnostics
                 diagnostics.cmake_lint, --cmake
                 diagnostics.eslint, --javascript,javascriptact,typescript,typescriptact,vue
@@ -78,7 +81,7 @@ return {
                     },
                 }),
                 diagnostics.editorconfig_checker.with({
-                    disabled_filetypes = { "c", "cpp", "txt", "help", "log", "neorg" },
+                    disabled_filetypes = { "c", "cpp", "txt", "help", "log", "neorg", "norg" },
                 }),
             }
             null_ls.setup({
