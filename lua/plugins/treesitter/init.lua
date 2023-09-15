@@ -10,8 +10,6 @@ return {
             { "nvim-treesitter/nvim-treesitter-textobjects", lazy = true },
             -- 根据光标在文件中的位置设置注释字符串
             { "JoosepAlviste/nvim-ts-context-commentstring", lazy = true },
-            -- 重构模块
-            { "nvim-treesitter/nvim-treesitter-refactor", lazy = true },
             -- 自动添加end
             { "RRethy/nvim-treesitter-endwise", lazy = true },
         },
@@ -60,31 +58,6 @@ return {
                 },
                 endwise = {
                     enable = true,
-                },
-                refactor = {
-                    highlight_definitions = {
-                        enable = true,
-                        clear_on_cursor_move = true,
-                    },
-                    highlight_current_scope = {
-                        enable = false,
-                    },
-                    smart_rename = {
-                        enable = true,
-                        keymaps = {
-                            smart_rename = "grr",
-                        },
-                    },
-                    navigation = {
-                        enable = true,
-                        keymaps = {
-                            goto_definition = "gnd",
-                            list_definitions = "gnD",
-                            list_definitions_toc = "gnO",
-                            goto_next_usage = "<M-*>",
-                            goto_previous_usage = "<M-#>",
-                        },
-                    },
                 },
                 context_commentstring = {
                     enable = true,
@@ -246,4 +219,3 @@ return {
         },
     },
 }
-
