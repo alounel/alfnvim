@@ -43,11 +43,13 @@ return {
             { "<leader>gnk", ":Neogit kind=", desc = "Open Neogit Overrride Kind" },
         },
         dependencies = {
-            { "diffview.nvim" },
             { "plenary.nvim" },
+            { "diffview.nvim" },
+            { "telescope.nvim" },
         },
         opts = {
             integrations = {
+                telescope = true,
                 diffview = true,
             },
         },
@@ -72,4 +74,3 @@ return {
         },
     },
 }
-
