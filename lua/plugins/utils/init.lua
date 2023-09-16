@@ -44,6 +44,7 @@ return {
             function _lazygit_toggle()
                 lazygit:toggle()
             end
+
             require("toggleterm").setup({
                 persist_size = false,
                 direction = "float",
@@ -262,4 +263,3 @@ return {
         },
     },
 }
-
