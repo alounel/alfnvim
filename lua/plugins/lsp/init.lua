@@ -122,24 +122,68 @@ return {
                 group = vim.api.nvim_create_augroup("UserLspConifg", {}),
                 callback = function(ev)
                     vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
-                    local bufopts = { buffer = ev.buf }
-                    vim.keymap.set("n", "<leader>lce", vim.lsp.buf.declaration, bufopts)
-                    vim.keymap.set("n", "<leader>lcd", vim.lsp.buf.definition, bufopts)
-                    vim.keymap.set("n", "<leader>lch", vim.lsp.buf.hover, bufopts)
-                    vim.keymap.set("n", "<leader>lci", vim.lsp.buf.implementation, bufopts)
-                    vim.keymap.set("n", "<leader>lcs", vim.lsp.buf.signature_help, bufopts)
-                    vim.keymap.set("n", "<leader>lca", vim.lsp.buf.add_workspace_folder, bufopts)
-                    vim.keymap.set("n", "<leader>lcm", vim.lsp.buf.remove_workspace_folder, bufopts)
+                    vim.keymap.set(
+                        "n",
+                        "<leader>lce",
+                        vim.lsp.buf.declaration,
+                        { buffer = ev.buf, desc = "Lsp Declaration" }
+                    )
+                    vim.keymap.set(
+                        "n",
+                        "<leader>lcd",
+                        vim.lsp.buf.definition,
+                        { buffer = ev.buf, desc = "Lsp Show Definition" }
+                    )
+                    vim.keymap.set("n", "<leader>lch", vim.lsp.buf.hover, { buffer = ev.buf, desc = "Lsp Show Hover" })
+                    vim.keymap.set(
+                        "n",
+                        "<leader>lci",
+                        vim.lsp.buf.implementation,
+                        { buffer = ev.buf, desc = "Lsp Implementation" }
+                    )
+                    vim.keymap.set(
+                        "n",
+                        "<leader>lcs",
+                        vim.lsp.buf.signature_help,
+                        { buffer = ev.buf, desc = "Lsp Signature Help" }
+                    )
+                    vim.keymap.set(
+                        "n",
+                        "<leader>lca",
+                        vim.lsp.buf.add_workspace_folder,
+                        { buffer = ev.buf, desc = "Lsp Add Workspace Folder" }
+                    )
+                    vim.keymap.set(
+                        "n",
+                        "<leader>lcm",
+                        vim.lsp.buf.remove_workspace_folder,
+                        { buffer = ev.buf, desc = "Lsp Remove Workspace Folder" }
+                    )
                     vim.keymap.set("n", "<leader>lcl", function()
                         print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-                    end, bufopts)
-                    vim.keymap.set("n", "<leader>lct", vim.lsp.buf.type_definition, bufopts)
-                    vim.keymap.set("n", "<leader>lcn", vim.lsp.buf.rename, bufopts)
-                    vim.keymap.set("n", "<leader>lcc", vim.lsp.buf.code_action, bufopts)
-                    vim.keymap.set("n", "<leader>lcr", vim.lsp.buf.references, bufopts)
+                    end, { buffer = ev.buf, desc = "Lsp List Workspace Folder" })
+                    vim.keymap.set(
+                        "n",
+                        "<leader>lct",
+                        vim.lsp.buf.type_definition,
+                        { buffer = ev.buf, desc = "Lsp Show Type Definition" }
+                    )
+                    vim.keymap.set("n", "<leader>lcn", vim.lsp.buf.rename, { buffer = ev.buf, desc = "Lsp Rename" })
+                    vim.keymap.set(
+                        { "n", "v" },
+                        "<leader>lcc",
+                        vim.lsp.buf.code_action,
+                        { buffer = ev.buf, desc = "Lsp Code Action" }
+                    )
+                    vim.keymap.set(
+                        "n",
+                        "<leader>lcr",
+                        vim.lsp.buf.references,
+                        { buffer = ev.buf, desc = "Lsp References" }
+                    )
                     vim.keymap.set("n", "<leader>lcf", function()
                         vim.lsp.buf.format({ async = true })
-                    end, bufopts)
+                    end, { buffer = ev.buf, desc = "Lsp Format" })
                 end,
             })
         end,
