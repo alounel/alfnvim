@@ -33,6 +33,10 @@ return {
             },
             log_level = vim.log.levels.DEBUG,
             format_on_save = function(bufnr)
+                local ignore_filetypes = { "java", "vim", "xml" }
+                if vim.tbl_contains(ignore_filetypes, vim.bo[bufnr].filetype) then
+                    return
+                end
                 local async_format = vim.g.async_format_filetypes[vim.bo[bufnr].filetype]
                 if async_format or vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
                     return
