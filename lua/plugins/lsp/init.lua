@@ -45,7 +45,7 @@ return {
             local lspconfig = require("lspconfig")
             local capabilities = require("cmp_nvim_lsp").default_capabilities()
             capabilities.textDocument.completion.completionItem.snippetSupport = true --jsonls需要的代码片段支持
-            local servers = { "pyright", "neocmake", "vimls", "bashls", "marksman", "lemminx" }
+            local servers = { "pyright", "vimls", "bashls", "marksman", "lemminx" }
 
             lspconfig["lua_ls"].setup({
                 on_init = function(client)
@@ -85,6 +85,20 @@ return {
                     "--enable-config",
                     "--all-scopes-completion",
                     "--clang-tidy-checks=bugprone-*, cert-*, clang-analyzer-*, concurrency-*, cppcoreguidelines-*, google-*, hicpp-*, misc-*, modernize-*, performance-*, portability-*, readability-*",
+                },
+                capabilities = capabilities,
+            })
+            lspconfig["neocmake"].setup({
+                cmd = { "neocmakelsp", "--stdio" },
+                filetypes = { "cmake" },
+                root_dir = function(fname)
+                    return lspconfig.util.find_git_ancestor(fname)
+                end,
+                single_file_support = true,
+                init_options = {
+                    format = {
+                        enable = true,
+                    },
                 },
                 capabilities = capabilities,
             })
