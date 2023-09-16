@@ -1,7 +1,6 @@
 return {
     {
         "akinsho/bufferline.nvim",
-        enabled = false,
         version = "*",
         event = "VeryLazy",
         keys = {
@@ -16,13 +15,16 @@ return {
                 numbers = "ordinal",
                 diagnostics = "nvim_lsp",
                 separator_style = "thin",
-                diagnostics_indicator = function(count, level, diagnostics_dict, context)
-                    local s = " "
-                    for e, n in ipairs(diagnostics_dict) do
-                        local sym = e == "error" and " " or (e == "warning" and " " or "")
-                        s = s .. n .. sym
-                    end
-                    return s
+                diagnostics_indicator = function(_, _, diag)
+                    local diagnostics_icons = {
+                        Error = " ",
+                        Warn = " ",
+                        Hint = " ",
+                        Info = " ",
+                    }
+                    local ret = (diag.error and diagnostics_icons.Error .. diag.error .. " " or "")
+                        .. (diag.warning and diagnostics_icons.Warn .. diag.warning or "")
+                    return vim.trim(ret)
                 end,
                 offsets = {
                     {
@@ -37,6 +39,7 @@ return {
     },
     {
         "romgrk/barbar.nvim",
+        enabled = false,
         event = "VeryLazy",
         init = function()
             vim.g.barbar_auto_setup = false
@@ -72,6 +75,102 @@ return {
                 aerial = { event = "BufWinLeave", text = "outline" },
             },
         },
+    },
+    {
+        "willothy/nvim-cokeline",
+        enabled = false,
+        event = "VeryLazy",
+        dependencies = {
+            { "plenary.nvim" },
+            { "nvim-web-devicons" },
+        },
+        config = function()
+            local is_picking_focus = require("cokeline.mappings").is_picking_focus
+            local is_picking_close = require("cokeline.mappings").is_picking_close
+            local get_hex = require("cokeline.utils").get_hex
+
+            local red = vim.g.terminal_color_1
+            local green = vim.g.terminal_color_2
+            local yellow = vim.g.terminal_color_3
+
+            require("cokeline").setup({
+                default_hl = {
+                    fg = function(buffer)
+                        return buffer.is_focused and get_hex("Normal", "fg") or get_hex("Comment", "fg")
+                    end,
+                    bg = get_hex("ColorColumn", "bg"),
+                },
+
+                components = {
+                    {
+                        text = "｜",
+                        fg = function(buffer)
+                            return buffer.is_modified and yellow or green
+                        end,
+                    },
+                    {
+                        text = "  ",
+                    },
+                    {
+                        text = function(buffer)
+                            return (is_picking_focus() or is_picking_close()) and buffer.pick_letter .. " "
+                                or buffer.devicon.icon
+                        end,
+                        fg = function(buffer)
+                            return (is_picking_focus() and yellow)
+                                or (is_picking_close() and red)
+                                or buffer.devicon.color
+                        end,
+                        style = function(_)
+                            return (is_picking_focus() or is_picking_close()) and "italic,bold" or nil
+                        end,
+                    },
+                    {
+                        text = " ",
+                    },
+                    {
+                        text = function(buffer)
+                            return buffer.index .. ": "
+                        end,
+                    },
+                    {
+                        text = function(buffer)
+                            return buffer.unique_prefix
+                        end,
+                        fg = get_hex("Comment", "fg"),
+                        italic = true,
+                    },
+                    {
+                        text = function(buffer)
+                            return buffer.filename .. "  "
+                        end,
+                        style = function(buffer)
+                            return buffer.is_focused and "bold" or nil
+                        end,
+                    },
+                    {
+                        text = "",
+                        on_click = function(buffer)
+                            buffer:delete()
+                        end,
+                    },
+                    {
+                        text = "  ",
+                    },
+                },
+                sidebar = {
+                    filetype = "neo-tree",
+                    components = {
+                        {
+                            text = "Neo-tree",
+                            fg = yellow,
+                            bg = get_hex("NvimTreeNormal", "bg"),
+                            style = "bold",
+                        },
+                    },
+                },
+            })
+        end,
     },
     -- statusLine
     {
