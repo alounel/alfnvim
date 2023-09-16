@@ -48,7 +48,7 @@ vim.bo.spelllang = "en_us"
 -- 鼠标支持
 vim.go.mouse = "a"
 -- 启用系统剪切板
-vim.opt.clipboard:append("unnamedplus")
+vim.go.clipboard = "unnamedplus"
 -- 缓存文件设置
 vim.go.backup = false
 vim.go.writebackup = false
@@ -110,9 +110,23 @@ vim.wo.foldcolumn = "1"
 vim.bo.grepprg = "rg --vimgrep"
 -- -- grepprg输出格式
 vim.go.grepformat = "%f:%l:%c:%m"
+-- 格式化行为
+vim.bo.formatoptions = "jcroqlnt"
 -- 会话
 vim.opt.sessionoptions = { "buffers", "curdir", "tabpages", "winsize" }
+-- 短消息显示
+vim.opt.shortmess:append({ W = true, I = true, c = true })
 -- 命令行高度
 vim.go.cmdheight = 0
+-- 增量预览
+vim.go.inccommand = "nosplit"
+-- 可见窗口的顶部和底部之间保留的上下滚动行数
+vim.wo.scrolloff = 4
+-- 窗口左右保留的字符列数
+vim.wo.sidescrolloff = 8
+-- 始终显示状态栏
+vim.go.laststatus = 2
+-- 窗口最小宽度
+vim.go.winminwidth = 5
 -- 设置python地址
 vim.g.python3_host_prog = "/usr/bin/python"
