@@ -97,7 +97,7 @@ return {
                 single_file_support = true,
                 init_options = {
                     format = {
-                        enable = true,
+                        enable = false,
                     },
                 },
                 capabilities = capabilities,
