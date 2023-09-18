@@ -107,9 +107,11 @@ vim.go.foldlevelstart = 99
 vim.wo.foldcolumn = "1"
 -- 筛选设置
 -- -- :grep使用的程序
-vim.bo.grepprg = "rg --vimgrep"
+-- vim.bo.grepprg = "rg --vimgrep"
+vim.bo.grepprg = "ugrep -RInk -j -u --tabs=1 --ignore-files"
 -- -- grepprg输出格式
-vim.go.grepformat = "%f:%l:%c:%m"
+-- vim.go.grepformat = "%f:%l:%c:%m"
+vim.go.grepformat = "%f:%l:%c:%m,%f+%l+%c+%m,%-G%f\\|%l\\|%c\\|%m"
 -- 格式化行为
 vim.bo.formatoptions = "jcroqlnt"
 -- 会话
