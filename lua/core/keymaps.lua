@@ -6,6 +6,7 @@ vim.keymap.set("n", "<leader>cE", "<cmd>e!<CR>", { desc = "Revoke all file chang
 vim.keymap.set("n", "<leader>cq", "<cmd>q<CR>", { desc = "Quit" })
 vim.keymap.set("n", "<leader>cQ", "<cmd>q!<CR>", { desc = "Force Quit" })
 vim.keymap.set("n", "<leader>cx", "<cmd>x<CR>", { desc = "Save And Quit" })
+vim.keymap.set("n", "<leader>cc", "<cmd>copen<CR>", { desc = "Open Quickfix" })
 vim.keymap.set("n", "<leader>ch", "<cmd>checkhealth<CR>", { desc = "Neovim Health Check" })
 
 ------ keybinds ------
