@@ -20,6 +20,35 @@ return {
         "kevinhwang91/nvim-bqf",
         lazy = true,
         ft = "qf",
+        config = function()
+            vim.cmd([[
+                hi BqfPreviewBorder guifg=#3e8e2d ctermfg=71
+                hi BqfPreviewTitle guifg=#3e8e2d ctermfg=71
+                hi BqfPreviewThumb guibg=#3e8e2d ctermbg=71
+                hi link BqfPreviewRange Search
+            ]])
+            require("bqf").setup({
+                auto_enable = true,
+                auto_resize_height = true,
+                preview = {
+                    win_height = 12,
+                    win_vheight = 12,
+                    delay_syntax = 80,
+                    border = { "┏", "━", "┓", "┃", "┛", "━", "┗", "┃" },
+                },
+                func_map = {
+                    vsplit = "",
+                    ptogglemode = "z,",
+                    stoggleup = "",
+                },
+                filter = {
+                    fzf = {
+                        action_for = { ["ctrl-s"] = "split" },
+                        extra_opts = { "--bind", "ctrl-o:toggle-all", "--prompt", "> " },
+                    },
+                },
+            })
+        end,
     },
     -- 增强了w,e,b,ge的功能
     {
