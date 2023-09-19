@@ -19,7 +19,7 @@ return {
         end,
         keys = {
             { "<leader>gi", "<cmd>Gitsigns<CR>", desc = "Open Gitsigns Select Args" },
-            { "<leader>gt", "<cmd>Gitsigns toggle_signs<CR>", desc = "Gitsigns Toggle Sings" },
+            { "<leader>gs", "<cmd>Gitsigns toggle_signs<CR>", desc = "Gitsigns Toggle Sings" },
             { "<leader>gl", "<cmd>Gitsigns toggle_numhl<CR>", desc = "Gitsigns Toggle Numhl" },
             { "<leader>ge", "<cmd>Gitsigns toggle_linehl<CR>", desc = "Gitsigns Toggle Linehl" },
             { "<leader>gw", "<cmd>Gitsigns toggle_word_diff<CR>", desc = "Gitsigns Toggle Word Diff" },
@@ -30,6 +30,29 @@ return {
             },
             { "<leader>gd", "<cmd>Gitsigns diffthis<CR>", desc = "Gitsigns This Diif" },
         },
+    },
+    -- 补充gitsigns功能
+    {
+        "chrisgrieser/nvim-tinygit",
+        lazy = true,
+        keys = {
+            {
+                "<leader>gtm",
+                "<cmd>lua require('tinygit').amendOnlyMsg ({ forcePush = false })<CR>",
+                desc = "Change Last Commit Message",
+            },
+            {
+                "<leader>gtn",
+                "<cmd>lua require('tinygit').amendNoEdit ({ forcePush = false })<CR>",
+                desc = "Keep Last Commit Message",
+            },
+            {
+                "<leader>gti",
+                "<cmd>lua require('tinygit').issuesAndPrs({ type = 'all', state = 'all' })<CR>",
+                desc = "Search Issues & PRs",
+            },
+        },
+        dependencies = "dressing.nvim",
     },
     -- neovim的magit
     {
