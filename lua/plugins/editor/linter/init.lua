@@ -17,7 +17,6 @@ return {
                     require("mason-null-ls").setup({
                         ensure_installed = {
                             "cmake_format",
-                            "luacheck",
                             "markdownlint",
                             "shellcheck",
                             "jsonlint",
