@@ -51,6 +51,17 @@ return {
                 "<cmd>lua require('tinygit').issuesAndPrs({ type = 'all', state = 'all' })<CR>",
                 desc = "Search Issues & PRs",
             },
+            {
+                "<leader>gtu",
+                "<cmd>require('tinygit').githubUrl('file')<CR>",
+                mode = { "n", "v" },
+                desc = "Open At Github And Copy URL To Clipboard",
+            },
+            {
+                "<leader>gtp",
+                "<cmd>require('tinygit').push({ pullBefore = false, force = false })<CR>",
+                desc = "Git Push",
+            },
         },
         dependencies = "dressing.nvim",
     },
