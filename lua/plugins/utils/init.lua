@@ -86,6 +86,7 @@ return {
                 ["<leader>fs"] = { name = "+telescope" },
                 ["<leader>g"] = { name = "+git" },
                 ["<leader>gn"] = { name = "+neogit" },
+                ["<leader>gt"] = { name = "+tinygit" },
                 ["<leader>h"] = { name = "+highlight" },
                 ["<leader>hr"] = { name = "+hshighlight" },
                 ["<leader>i"] = { name = "icon/illuminate" },
