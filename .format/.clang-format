@@ -1,3 +1,4 @@
+---
 # None,Cpp,Java,Javascript,ObjC,Proto,TableGen,TextProto
 Language: Cpp
 # LLVM,Google,Chromium,Mozilla,WebKit,Microsoft,GNU
@@ -143,7 +144,7 @@ IncludeCategories:
     Priority: 1
     SortPriority: 0
 # 访问修饰符缩进
-IndentAccessModifiers: true
+IndentAccessModifiers: false
 # case块缩进
 IndentCaseBlocks: true
 # 缩进case标签
