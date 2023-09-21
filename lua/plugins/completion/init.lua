@@ -24,20 +24,19 @@ return {
         "hrsh7th/nvim-cmp",
         event = { "InsertEnter", "CmdlineEnter" },
         dependencies = {
-            { "onsails/lspkind.nvim", lazy = true }, --为补全添加类似vscode的图标
-            { "saadparwaiz1/cmp_luasnip", lazy = true }, --luasnip补全源
-            { "hrsh7th/cmp-nvim-lsp", lazy = true }, --替换内置omnifunc,获得更多补全
-            { "hrsh7th/cmp-buffer", lazy = true }, --缓冲区补全
-            { "hrsh7th/cmp-cmdline", lazy = true }, --命令补全
-            { "hrsh7th/cmp-path", lazy = true }, --路径补全
-            { "lukas-reineke/cmp-rg", lazy = true }, --rg补全源
-            { "f3fora/cmp-spell", lazy = true }, --拼写建议
-            { "lukas-reineke/cmp-under-comparator" }, --更好的排序
+            { "onsails/lspkind.nvim", lazy = true },
+            { "saadparwaiz1/cmp_luasnip", lazy = true },
+            { "hrsh7th/cmp-nvim-lsp", lazy = true },
+            { "hrsh7th/cmp-buffer", lazy = true },
+            { "hrsh7th/cmp-cmdline", lazy = true },
+            { "hrsh7th/cmp-path", lazy = true },
+            { "lukas-reineke/cmp-rg", lazy = true },
+            { "f3fora/cmp-spell", lazy = true },
+            { "lukas-reineke/cmp-under-comparator" },
         },
         config = function()
             local cmp_autopairs = require("nvim-autopairs.completion.cmp")
             local handlers = require("nvim-autopairs.completion.handlers")
-            local lspkind = require("lspkind")
             local luasnip = require("luasnip")
             local cmp = require("cmp")
             cmp.setup({
@@ -81,7 +80,7 @@ return {
                 }),
                 -- 格式化补全菜单
                 formatting = {
-                    format = lspkind.cmp_format({
+                    format = require("lspkind").cmp_format({
                         mode = "symbol_text",
                         with_text = true,
                         maxwidth = 50,
