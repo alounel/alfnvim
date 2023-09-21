@@ -147,15 +147,16 @@ return {
     {
         "haringsrob/nvim_context_vt",
         lazy = true,
-        keys = {
-            { "<leader>kv", "<cmd>NvimContextVtToggle<CR>", desc = "Toggle Context Virtual Text" },
-            { "<leader>kd", "<cmd>NvimContextVtDebugCR>", desc = "Context Virtual Text Debug" },
-        },
+        ft = { "c", "cpp", "java", "lua", "python", "typescript", "javascript", "typescriptreact", "javascriptreact" },
         dependencies = { "nvim-treesitter" },
         opts = {
             prefix = "",
             disable_ft = { "markdown" },
             disable_virtual_lines_ft = { "yaml", "toml" },
+        },
+        keys = {
+            { "<leader>kv", "<cmd>NvimContextVtToggle<CR>", desc = "Toggle Context Virtual Text" },
+            { "<leader>kd", "<cmd>NvimContextVtDebug<CR>", desc = "Context Virtual Text Debug" },
         },
     },
     -- 将函数头显示在界面前几行
