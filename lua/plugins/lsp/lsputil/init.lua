@@ -115,7 +115,6 @@ return {
     {
         "stevearc/aerial.nvim",
         lazy = true,
-        cmd = "AerialToggle",
         keys = {
             { "<leader>ag", "<cmd>AerialToggle<CR>", desc = "Toggle Aerial" },
             { "<leader>ao", "<cmd>AerialOpenAll<CR>", desc = "Open All Aerial" },

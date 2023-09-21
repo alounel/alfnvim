@@ -39,9 +39,6 @@ return {
                 desc = "Edgy Select Window",
             },
         },
-        init = function()
-            vim.opt.laststatus = 3
-        end,
         opts = {
             bottom = {
                 {
@@ -107,11 +104,6 @@ return {
                     end,
                     pinned = true,
                     open = "Neotree position=top buffers",
-                },
-                {
-                    ft = "aerial",
-                    pinned = true,
-                    open = "AerialToggle",
                 },
                 "neo-tree",
             },

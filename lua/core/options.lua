@@ -126,8 +126,8 @@ vim.go.inccommand = "nosplit"
 vim.wo.scrolloff = 4
 -- 窗口左右保留的字符列数
 vim.wo.sidescrolloff = 8
--- 始终显示状态栏
-vim.go.laststatus = 2
+-- 始终显示状态栏,一个文件时自动隐藏
+vim.go.laststatus = 3
 -- 窗口最小宽度
 vim.go.winminwidth = 5
 -- 设置python地址
