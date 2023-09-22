@@ -55,44 +55,64 @@ return {
         "chrisgrieser/nvim-spider",
         lazy = true,
         keys = {
-            { "w", mode = { "n", "o", "x" } },
-            { "e", mode = { "n", "o", "x" } },
-            { "b", mode = { "n", "o", "x" } },
-            { "ge", mode = { "n", "o", "x" } },
+            { "w", "<cmd>lua require('spider').motion('w')<CR>", mode = { "n", "o", "x" }, desc = "Spider-w" },
+            { "e", "<cmd>lua require('spider').motion('e')<CR>", mode = { "n", "o", "x" }, desc = "Spider-e" },
+            { "b", "<cmd>lua require('spider').motion('b')<CR>", mode = { "n", "o", "x" }, desc = "Spider-b" },
+            { "ge", "<cmd>lua require('spider').motion('ge')<CR>", mode = { "n", "o", "x" }, desc = "Spider-ge" },
         },
-        config = function()
-            vim.keymap.set({ "n", "o", "x" }, "w", "<cmd>lua require('spider').motion('w')<CR>", { desc = "Spider-w" })
-            vim.keymap.set({ "n", "o", "x" }, "e", "<cmd>lua require('spider').motion('e')<CR>", { desc = "Spider-e" })
-            vim.keymap.set({ "n", "o", "x" }, "b", "<cmd>lua require('spider').motion('b')<CR>", { desc = "Spider-b" })
-            vim.keymap.set(
-                { "n", "o", "x" },
-                "ge",
-                "<cmd>lua require('spider').motion('ge')<CR>",
-                { desc = "Spider-ge" }
-            )
-        end,
+    },
+    -- 添加内联注释以忽略规则
+    {
+        "chrisgrieser/nvim-rulebook",
+        lazy = true,
+        keys = {
+            {
+                "<leader>ri",
+                function()
+                    require("rulebook").ignoreRule()
+                end,
+                desc = "Rule Ignore",
+            },
+            {
+                "<leader>rl",
+                function()
+                    require("rulebook").lookupRule()
+                end,
+                desc = "Rule Loopup",
+            },
+        },
     },
     -- 代替substitue
     {
         "chrisgrieser/nvim-alt-substitute",
-        enabled = false,
         lazy = true,
         event = "CmdlineEnter",
-        opts = {},
+        keys = {
+            { "<leader>sa", mode = { "n", "x" }, desc = "󱗘 :AltSubstitute" },
+            { "<leader>sA", mode = { "n", "x" }, desc = "󱗘 :AltSubstitute (word under cursor)" },
+        },
+        dependencies = "dressing.nvim",
+        config = function()
+            require("alt-substitute").setup()
+            vim.keymap.set({ "n", "x" }, "<leader>sa", [[:S ///g<Left><Left><Left>]])
+            vim.keymap.set({ "n", "x" }, "<leader>sA", function()
+                return ":S /" .. vim.fn.expand("<cword>") .. "//g<Left><Left>"
+            end, { expr = true })
+        end,
     },
     -- 更加便捷文件操作
     {
         "chrisgrieser/nvim-genghis",
         lazy = true,
         keys = {
-            { "<leader>yp", mode = "n", desc = "Copy File Path" },
-            { "<leader>ym", mode = "n", desc = "Copy File Name" },
-            { "<leader>yx", mode = "n", desc = "Make File Chmod +X" },
-            { "<leader>yf", mode = "n", desc = "Rename File" },
-            { "<leader>yo", mode = "n", desc = "Move And Rename File" },
-            { "<leader>yn", mode = "n", desc = "Create New File" },
-            { "<leader>yu", mode = "n", desc = "Duplicate File" },
-            { "<leader>yR", mode = "n", desc = "File Trash" },
+            { "<leader>yp", desc = "Copy File Path" },
+            { "<leader>ym", desc = "Copy File Name" },
+            { "<leader>yx", desc = "Make File Chmod +X" },
+            { "<leader>yf", desc = "Rename File" },
+            { "<leader>yo", desc = "Move And Rename File" },
+            { "<leader>yn", desc = "Create New File" },
+            { "<leader>yu", desc = "Duplicate File" },
+            { "<leader>yR", desc = "File Trash" },
             { "<leader>ys", mode = "x", desc = "Move Selection To New File" },
         },
         init = function()
@@ -140,12 +160,13 @@ return {
             { "=p", "<Plug>(YankyPutAfterFilter)", desc = "Put after applying a filter" },
             { "=P", "<Plug>(YankyPutBeforeFilter)", desc = "Put before applying a filter" },
         },
-        dependencies = { "sqlite.lua" },
+        dependencies = "sqlite.lua",
         config = function()
             require("yanky").setup({
                 ring = {
                     history_length = 200,
                     storage = "sqlite",
+                    storage_path = vim.fn.stdpath("data") .. "/databases/yanky.db",
                     sync_with_numbered_registers = true,
                     cancel_event = "update",
                 },

@@ -105,7 +105,7 @@ return {
                 ["<leader>pj"] = { name = "+jumplist" },
                 ["<leader>pq"] = { name = "+quickfix" },
                 ["<leader>q"] = { name = "+session" },
-                ["<leader>r"] = { name = "+replace" },
+                ["<leader>r"] = { name = "+replace/rule" },
                 ["<leader>rr"] = { name = "+muren" },
                 ["<leader>rs"] = { name = "+switch" },
                 ["<leader>s"] = { name = "+show/style" },
