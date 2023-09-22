@@ -22,7 +22,7 @@ return {
                 json = { "jq" },
                 jsonc = { "jq" },
                 lua = { "stylua" },
-                markdown = { "markdownlint" },
+                markdown = { "mdformat" },
                 javascript = { "prettierd", "prettier" },
                 javascriptreact = { "prettierd", "prettier" },
                 typescript = { "prettierd", "prettier" },
