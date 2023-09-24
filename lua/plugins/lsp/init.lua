@@ -118,6 +118,7 @@ return {
                             url = "https://www.schemastore.org/api/json/catalog.json",
                         },
                         schemas = require("schemastore").yaml.schemas(),
+                        vaildate = true,
                     },
                 },
                 capabilities = capabilities,
