@@ -39,7 +39,7 @@ local dap_breakpoint = {
         numhl = "DapBreakpint",
     },
     logpoint = {
-        text = "",
+        text = ".>",
         texthl = "DapLogPoint",
         linehl = "DapLogPoint",
         numhl = "DapLogPoint",

@@ -22,12 +22,11 @@ vim.keymap.set("n", "<M-0>", "<c-w>>", { desc = "Increase window width" })
 vim.keymap.set("n", "<M-->", "<c-w>-", { desc = "Reduce window height" })
 vim.keymap.set("n", "<M-=>", "<c-w>+", { desc = "Increase window height" })
 -- line move
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
-vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
-vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+vim.keymap.set({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+vim.keymap.set({ "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 -- indent
 vim.keymap.set("v", "<", "<gv")
 vim.keymap.set("v", ">", ">gv")
 -- search
 vim.keymap.set("n", "<leader>se", "/\\<lt>\\><left><left>")
+vim.keymap.set("n", "<leader>ss", vim.show_pos, { desc = "Inspect Pos" })
