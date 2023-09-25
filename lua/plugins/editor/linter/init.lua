@@ -86,7 +86,7 @@ return {
             null_ls.setup({
                 sources = sources,
                 border = "rounded",
-                debug = true,
+                debug = false,
                 diagnostics_config = {
                     underline = true,
                     virtual_text = true,

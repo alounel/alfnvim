@@ -9,10 +9,6 @@ return {
             window = {
                 border = "rounded",
             },
-            debug = {
-                logging = true,
-                strict = true,
-            },
         },
     },
     -- 基于LSP带有即时视觉反馈的重命名
