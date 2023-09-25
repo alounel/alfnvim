@@ -77,10 +77,11 @@ return {
                         "vim",
                         "java",
                         "rust",
+                        "norg",
                     },
                 }),
                 diagnostics.editorconfig_checker.with({
-                    disabled_filetypes = { "c", "cpp", "txt", "help", "log", "neorg", "norg" },
+                    disabled_filetypes = { "c", "cpp", "txt", "help", "log", "norg" },
                 }),
             }
             null_ls.setup({
