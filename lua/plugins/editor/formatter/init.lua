@@ -59,7 +59,8 @@ return {
             vim.bo.formatexpr = "v:lua.require'conform'.formatexpr()"
         end,
         config = function(_, opts)
-            vim.list_extend(require("conform.formatters.shfmt").args, { "-i", "4" })
+            local util = require("conform.util")
+            util.add_formatter_args(require("conform.formatters.shfmt"), { "-i", "4" })
             require("conform").setup(opts)
         end,
     },
