@@ -1,9 +1,9 @@
 return {
     -- 使用lua注入诊断、格式化、补全服务
     {
-        "jose-elias-alvarez/null-ls.nvim",
+        "nvimtools/none-ls.nvim",
         lazy = true,
-        event = { "BufReadPost", "BufNewFile" },
+        event = { "BufReadPre", "BufNewFile" },
         keys = {
             { "<leader>un", "<cmd>NullLsInfo<CR>", desc = "Show Null-ls Info" },
         },
@@ -28,9 +28,9 @@ return {
             },
         },
         config = function()
-            local null_ls = require("null-ls")
-            local diagnostics = null_ls.builtins.diagnostics
-            local code_actions = null_ls.builtins.code_actions
+            local none_ls = require("null-ls")
+            local diagnostics = none_ls.builtins.diagnostics
+            local code_actions = none_ls.builtins.code_actions
 
             local sources = {
                 -- Code_actions
@@ -84,7 +84,7 @@ return {
                     disabled_filetypes = { "c", "cpp", "txt", "help", "log", "norg" },
                 }),
             }
-            null_ls.setup({
+            none_ls.setup({
                 sources = sources,
                 border = "rounded",
                 debug = false,
