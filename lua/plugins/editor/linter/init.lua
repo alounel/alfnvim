@@ -21,7 +21,7 @@ return {
                             "markdownlint",
                             "shellcheck",
                             "jsonlint",
-                            "cspell",
+                            "proselint",
                             "editorconfig_checker",
                         },
                     })
