@@ -1,4 +1,3 @@
-local slow_format_filetypes = {}
 return {
     {
         "stevearc/conform.nvim",
@@ -26,34 +25,15 @@ return {
                 typescript = { "biome" },
                 typescriptreact = { "biome" },
                 lua = { "stylua" },
-                markdown = { "mdformat" },
+                markdown = { "mdformat", "injected" },
+                norg = { "injected" },
                 python = { "isort", "black" },
                 sh = { "shellharden", "shfmt" },
                 yaml = { "yamlfmt" },
                 ["_"] = { "trim_whitespace", "trim_newlines" },
             },
             log_level = vim.log.levels.DEBUG,
-            format_on_save = function(bufnr)
-                local ignore_filetypes = { "java", "vim", "xml" }
-                if vim.tbl_contains(ignore_filetypes, vim.bo[bufnr].filetype) then
-                    return
-                end
-                if slow_format_filetypes[vim.bo[bufnr].filetype] then
-                    return
-                end
-                local function on_format(err)
-                    if err and err:match("timeout$") then
-                        slow_format_filetypes[vim.bo[bufnr].filetype] = true
-                    end
-                end
-                return { timeout_ms = 200, lsp_fallback = true }, on_format
-            end,
-            format_after_save = function(bufnr)
-                if not slow_format_filetypes[vim.bo[bufnr].filetype] then
-                    return
-                end
-                return { lsp_fallback = true }
-            end,
+            format_after_save = { timeout_ms = 5000, lsp_fallback = true },
         },
         init = function()
             vim.bo.formatexpr = "v:lua.require'conform'.formatexpr()"
