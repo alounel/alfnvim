@@ -84,16 +84,12 @@ return {
             })
         end,
     },
-    -- 补充c,cpp的代码诊断
+    -- 对某些文件不使用类似代码注入方式诊断的代码诊断,或者说是
     {
         "mfussenegger/nvim-lint",
         lazy = true,
-        ft = { "c", "cpp" },
         opts = {
-            linters_by_ft = {
-                c = { "cppcheck" },
-                cpp = { "cppcheck" },
-            },
+            linters_by_ft = {},
             linters = {},
         },
         config = function(_, opts)
