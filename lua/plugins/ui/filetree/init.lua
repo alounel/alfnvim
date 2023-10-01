@@ -30,7 +30,16 @@ return {
             { "nui.nvim" },
         },
         opts = {
-            open_files_do_not_replace_types = { "terminal", "Trouble", "qf", "Outline", "aerial", "sagaoutline" },
+            sources = { "filesystem", "buffers", "git_status", "document_symbols" },
+            open_files_do_not_replace_types = {
+                "terminal",
+                "toggleterm",
+                "Trouble",
+                "qf",
+                "Outline",
+                "aerial",
+                "sagaoutline",
+            },
             default_component_configs = {
                 indent = {
                     with_expander = true,

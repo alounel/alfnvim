@@ -58,9 +58,11 @@ return {
                     disabled_filetypes = {
                         "c",
                         "cpp",
+                        "markdown",
                         "norg",
-                        "text",
+                        "tex",
                         "toml",
+                        "txt",
                         "vim",
                         "yaml",
                     },

@@ -1,6 +1,6 @@
 -- Configuration implement auto commands
 local function augroup(name)
-    return vim.api.nvim_create_augroup("alfvim_" .. name, { clear = true })
+    return vim.api.nvim_create_augroup("alfnvim_" .. name, { clear = true })
 end
 
 -- Check if we need to reload the file when it changed

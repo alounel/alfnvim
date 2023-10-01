@@ -15,7 +15,7 @@ return {
             { "<leader>wfr", ":FocusSplitRight", desc = "Right Split + Open File Or Custom Command" },
             { "<leader>wfe", "<cmd>FocusEqualise<CR>", desc = "Temporarily Equalises The Splits" },
             { "<leader>wfm", "<cmd>FocusMaximise<CR>", desc = "Temporarily Maximises The Focussed Window" },
-            { "<leader>wfo", "<cmd>FocusMaxOrEqual<CR>", desc = "Swtich Equalises And Maximises" },
+            { "<leader>wfo", "<cmd>FocusMaxOrEqual<CR>", desc = "Switch Equalises And Maximises" },
         },
         opts = {},
     },
