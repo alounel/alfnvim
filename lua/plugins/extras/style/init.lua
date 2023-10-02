@@ -87,21 +87,53 @@ return {
     -- 显示缩进线
     {
         "lukas-reineke/indent-blankline.nvim",
+        main = "ibl",
         enabled = false,
         lazy = true,
         event = { "BufReadPost", "BufNewFile" },
         config = function()
-            require("indent_blankline").setup({
-                -- 显示当前所在区域
-                show_current_context = true,
-                -- 显示当前所在区域的开始位置
-                show_current_context_start = true,
-                -- 显示行尾符
-                show_end_of_line = true,
-                -- 空格字符缩进样式
-                space_char_blankline = " ",
+            local highlight = {
+                "RainbowRed",
+                "RainbowYellow",
+                "RainbowBlue",
+                "RainbowOrange",
+                "RainbowGreen",
+                "RainbowViolet",
+                "RainbowCyan",
+            }
+            local hooks = require("ibl.hooks")
+            hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
+                vim.api.nvim_set_hl(0, "RainbowRed", { fg = "#E06C75" })
+                vim.api.nvim_set_hl(0, "RainbowYellow", { fg = "#E5C07B" })
+                vim.api.nvim_set_hl(0, "RainbowBlue", { fg = "#61AFEF" })
+                vim.api.nvim_set_hl(0, "RainbowOrange", { fg = "#D19A66" })
+                vim.api.nvim_set_hl(0, "RainbowGreen", { fg = "#98C379" })
+                vim.api.nvim_set_hl(0, "RainbowViolet", { fg = "#C678DD" })
+                vim.api.nvim_set_hl(0, "RainbowCyan", { fg = "#56B6C2" })
+            end)
+
+            vim.g.rainbow_delimiters = { highlight = highlight }
+            require("ibl").setup({
+                scope = { highlight = highlight },
+                indent = {
+                    char = "│",
+                    tab_char = "│",
+                },
+                exclude = {
+                    filetypes = {
+                        "help",
+                        "starter",
+                        "neo-tree",
+                        "Trouble",
+                        "lazy",
+                        "mason",
+                        "notify",
+                        "toggleterm",
+                    },
+                },
             })
+
+            hooks.register(hooks.type.SCOPE_HIGHLIGHT, hooks.builtin.scope_highlight_from_extmark)
         end,
     },
 }
-

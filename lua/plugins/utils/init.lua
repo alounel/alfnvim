@@ -135,7 +135,7 @@ return {
             { "<leader>st", "<cmd>StartupTime<CR>", desc = "Show Neovim Start Time" },
         },
     },
-    -- 更好的模式切换
+    -- 模式切换
     {
         "max397574/better-escape.nvim",
         lazy = true,
@@ -249,18 +249,8 @@ return {
         },
         opts = {},
     },
-    -- 尾随空白行
+    -- 位置完成
     {
-        "echasnovski/mini.trailspace",
-        version = false,
-        lazy = true,
-        event = { "BufReadPost", "BufNewFile" },
-        config = function()
-            require("mini.trailspace").setup()
-        end,
-        keys = {
-            { "<leader>te", ":lua MiniTrailspace.trim()<CR>", desc = "Trail All Space" },
-            { "<leader>tn", ":lua MiniTrailspace.trim_last_lines()<CR>", desc = "Trail All Space Lines" },
-        },
+        import = "plugins.extras.fulfill",
     },
 }

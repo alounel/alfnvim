@@ -63,37 +63,6 @@ return {
             },
         },
     },
-    -- flash jump telescope tag
-    {
-        "nvim-telescope/telescope.nvim",
-        optional = true,
-        opts = function(_, opts)
-            local function flash(prompt_bufnr)
-                require("flash").jump({
-                    pattern = "^",
-                    label = { after = { 0, 0 } },
-                    search = {
-                        mode = "search",
-                        exclude = {
-                            function(win)
-                                return vim.bo[vim.api.nvim_win_get_buf(win)].filetype ~= "TelescopeResults"
-                            end,
-                        },
-                    },
-                    action = function(match)
-                        local picker = require("telescope.actions.state").get_current_picker(prompt_bufnr)
-                        picker:set_selection(match.pos[1] - 1)
-                    end,
-                })
-            end
-            opts.defaults = vim.tbl_deep_extend("force", opts.defaults or {}, {
-                mappings = {
-                    n = { s = flash },
-                    i = { ["<c-s>"] = flash },
-                },
-            })
-        end,
-    },
     -- 字符移动
     {
         "fedepujol/move.nvim",
@@ -199,17 +168,6 @@ return {
                 visual = "gs",
             },
         },
-    },
-    -- 多个参数替换
-    {
-        "AckslD/muren.nvim",
-        lazy = true,
-        keys = {
-            { "<leader>rrg", "<cmd>MurenToggle<CR>", desc = "Switch User Face In Muren" },
-            { "<leader>rrf", "<cmd>MurenFresh<CR>", desc = "Fresh User Face In Muren" },
-            { "<leader>rru", "<cmd>MurenUnique<CR>", desc = "Unique Muren" },
-        },
-        opts = {},
     },
     -- 搜索时显示条目
     {
@@ -350,16 +308,34 @@ return {
             end, { noremap = true })
         end,
     },
+    -- 处理空格和空白行
     {
-        import = "plugins.editor.stamps",
+        "echasnovski/mini.trailspace",
+        version = false,
+        lazy = true,
+        event = { "BufReadPost", "BufNewFile" },
+        config = function()
+            require("mini.trailspace").setup()
+        end,
+        keys = {
+            { "<leader>te", ":lua MiniTrailspace.trim()<CR>", desc = "Trail All Space" },
+            { "<leader>tn", ":lua MiniTrailspace.trim_last_lines()<CR>", desc = "Trail All Space Lines" },
+        },
     },
+    -- 格式化
     {
-        import = "plugins.editor.fulfill",
+        import = "plugins.extras.editor.formatter",
     },
+    -- 诊断
     {
-        import = "plugins.editor.formatter",
+        import = "plugins.extras.editor.linter",
     },
+    -- 参数替换
     {
-        import = "plugins.editor.linter",
+        import = "plugins.extras.editor.muren",
+    },
+    -- 文本标记
+    {
+        import = "plugins.extras.editor.stamps",
     },
 }

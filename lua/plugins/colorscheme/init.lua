@@ -16,4 +16,8 @@ return {
             vim.cmd("colorscheme nightfox")
         end,
     },
+    -- 更多主题
+    {
+        import = "plugins.extras.themes",
+    },
 }

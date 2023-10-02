@@ -121,10 +121,6 @@ function M.toggle_diagnostics()
     end
 end
 
-function M.deprecate(old, new)
-    Util.warn(("`%s` is deprecated. Please use `%s` instead"):format(old, new), { title = "LazyVim" })
-end
-
 function M.lazy_notify()
     local notifs = {}
     local function temp(...)
@@ -194,14 +190,6 @@ function M.on_load(name, fn)
             end,
         })
     end
-end
-
-function M.changelog()
-    local lv = require("lazy.core.config").plugins.LazyVim
-    local float = require("lazy.util").open(lv.dir .. "/CHANGELOG.md")
-    vim.wo[float.win].spell = false
-    vim.wo[float.win].wrap = false
-    vim.diagnostic.disable(float.buf)
 end
 
 function M.on_rename(from, to)

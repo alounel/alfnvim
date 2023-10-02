@@ -80,17 +80,6 @@ return {
         },
         opts = {},
     },
-    -- 解释和测试正则表达式
-    {
-        "tomiis4/hypersonic.nvim",
-        enabled = false,
-        lazy = true,
-        event = "CmdlineEnter",
-        keys = {
-            { "<leader>rx", ":Hypersonic", desc = "Explain Or Test Regex" },
-        },
-        opts = {},
-    },
     -- 函数重构
     -- dependencies neovim nighty
     {
@@ -172,21 +161,20 @@ return {
             },
         },
     },
-    -- 图标选择器
+    -- 良好工作流程
     {
-        "ziontee113/icon-picker.nvim",
-        enabled = false,
-        lazy = true,
-        keys = {
-            { "<leader>ic", "<cmd>IconPickerNormal<CR>", desc = "Nomal Mode Pick Icon Insert Buffer" },
-            { "<leader>iy", "<cmd>IconPickerYank<CR>", desc = "Pick Icon And Yank To Register" },
-        },
-        dependencies = { "telescope.nvim" },
-        opts = {
-            disable_legacy_commands = true,
-        },
+        import = "plugins.extras.develop.process",
     },
+    -- 优雅的注释
     {
-        import = "plugins.develop.comment",
+        import = "plugins.extras.develop.comments",
+    },
+    -- 正则表达式解释器
+    {
+        import = "plugins.extras.develop.regex",
+    },
+    -- 选择器
+    {
+        import = "plugins.extras.develop.pick",
     },
 }

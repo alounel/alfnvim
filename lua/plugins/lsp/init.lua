@@ -204,9 +204,10 @@ return {
     },
     -- lsp增强插件
     {
-        import = "plugins.lsp.lsputil",
+        import = "plugins.extras.lsp.strength",
     },
+    -- 语言增强插件
     {
-        import = "plugins.lsp.langutil",
+        import = "plugins.extras.lsp.lang",
     },
 }

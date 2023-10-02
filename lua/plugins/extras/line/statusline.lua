@@ -1,18 +1,4 @@
 return {
-    -- SideLine
-    {
-        "sidebar-nvim/sidebar.nvim",
-        enabled = false,
-        lazy = true,
-        cmd = "SidebarNvimToggle",
-        keys = {
-            { "<leader>sbt", "<cmd>SidebarNvimToggle<CR>", desc = "Toggle SideBar" },
-            { "<leader>sbu", "<cmd>SidebarNvimUpdate<CR>", desc = "Update SideBar" },
-            { "<leader>sbf", "<cmd>SidebarNvimFocus<CR>", desc = "Focus Sidebar" },
-            { "<leader>sbr", ":SidebarNvimResize ", desc = "Resize Sidebar" },
-        },
-        opts = {},
-    },
     -- statusline
     {
         "nvim-lualine/lualine.nvim",
@@ -219,5 +205,100 @@ return {
             lualine.setup(config)
         end,
     },
-}
+    {
+        "willothy/nvim-cokeline",
+        enabled = false,
+        event = "VeryLazy",
+        dependencies = {
+            { "plenary.nvim" },
+            { "nvim-web-devicons" },
+        },
+        config = function()
+            local is_picking_focus = require("cokeline.mappings").is_picking_focus
+            local is_picking_close = require("cokeline.mappings").is_picking_close
+            local get_hex = require("cokeline.utils").get_hex
 
+            local red = vim.g.terminal_color_1
+            local green = vim.g.terminal_color_2
+            local yellow = vim.g.terminal_color_3
+
+            require("cokeline").setup({
+                default_hl = {
+                    fg = function(buffer)
+                        return buffer.is_focused and get_hex("Normal", "fg") or get_hex("Comment", "fg")
+                    end,
+                    bg = get_hex("ColorColumn", "bg"),
+                },
+
+                components = {
+                    {
+                        text = "｜",
+                        fg = function(buffer)
+                            return buffer.is_modified and yellow or green
+                        end,
+                    },
+                    {
+                        text = "  ",
+                    },
+                    {
+                        text = function(buffer)
+                            return (is_picking_focus() or is_picking_close()) and buffer.pick_letter .. " "
+                                or buffer.devicon.icon
+                        end,
+                        fg = function(buffer)
+                            return (is_picking_focus() and yellow)
+                                or (is_picking_close() and red)
+                                or buffer.devicon.color
+                        end,
+                        style = function(_)
+                            return (is_picking_focus() or is_picking_close()) and "italic,bold" or nil
+                        end,
+                    },
+                    {
+                        text = " ",
+                    },
+                    {
+                        text = function(buffer)
+                            return buffer.index .. ": "
+                        end,
+                    },
+                    {
+                        text = function(buffer)
+                            return buffer.unique_prefix
+                        end,
+                        fg = get_hex("Comment", "fg"),
+                        italic = true,
+                    },
+                    {
+                        text = function(buffer)
+                            return buffer.filename .. "  "
+                        end,
+                        style = function(buffer)
+                            return buffer.is_focused and "bold" or nil
+                        end,
+                    },
+                    {
+                        text = "",
+                        on_click = function(buffer)
+                            buffer:delete()
+                        end,
+                    },
+                    {
+                        text = "  ",
+                    },
+                },
+                sidebar = {
+                    filetype = "neo-tree",
+                    components = {
+                        {
+                            text = "Neo-tree",
+                            fg = yellow,
+                            bg = get_hex("NvimTreeNormal", "bg"),
+                            style = "bold",
+                        },
+                    },
+                },
+            })
+        end,
+    },
+}
