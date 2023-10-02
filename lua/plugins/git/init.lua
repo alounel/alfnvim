@@ -73,8 +73,8 @@ return {
         keys = {
             { "<leader>gnt", "<cmd>Neogit<CR>", desc = "Open Neoget Tab Page" },
             { "<leader>gnc", "<cmd>Neogit commit<CR>", desc = "Open Neogit Commit Page" },
-            { "<leader>gnd", ":Neogit cwd=", desc = "Open Neoget Overrride CWD" },
-            { "<leader>gnk", ":Neogit kind=", desc = "Open Neogit Overrride Kind" },
+            { "<leader>gnd", ":Neogit cwd=", desc = "Open Neoget Override CWD" },
+            { "<leader>gnk", ":Neogit kind=", desc = "Open Neogit Override Kind" },
         },
         dependencies = {
             { "plenary.nvim" },

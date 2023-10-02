@@ -31,11 +31,11 @@ return {
         event = "LspAttach",
         keys = {
             -- 诊断跳转，<c-o>跳回
-            { "[e", "<cmd>Lspsaga diagnostic_jump_prev<CR>", desc = "Diagnotics Jump Prev" },
-            { "]e", "<cmd>Lspsaga diagnostic_jump_next<CR>", desc = "Diagnotics Jump Next" },
+            { "[e", "<cmd>Lspsaga diagnostic_jump_prev<CR>", desc = "Diagnostics Jump Prev" },
+            { "]e", "<cmd>Lspsaga diagnostic_jump_next<CR>", desc = "Diagnostics Jump Next" },
             { "<leader>lga", "<cmd>Lspsaga code_action<CR>", desc = "Lspsaga Show Code Action" },
-            { "<leader>lgb", "<cmd>Lspsaga show_buf_diagnostics<CR>", desc = "Show Buffer Diagnotics" },
-            { "<leader>lgd", "<cmd>Lspsaga show_cursor_diagnostics<CR>", desc = "Show Cursor Local Diagnotics" },
+            { "<leader>lgb", "<cmd>Lspsaga show_buf_diagnostics<CR>", desc = "Show Buffer Diagnostics" },
+            { "<leader>lgd", "<cmd>Lspsaga show_cursor_diagnostics<CR>", desc = "Show Cursor Local Diagnostics" },
             { "<leader>lgr", "<cmd>Lspsaga rename<CR>", desc = "Lspsaga Rename" },
             { "<leader>lgp", "<cmd>Lspsaga rename ++project<CR>", desc = "Lspsaga Rename Project" },
             { "<leader>lgf", "<cmd>Lspsaga peek_definition<CR>", desc = "Peek Definition" },
@@ -44,7 +44,7 @@ return {
             { "<leader>lgx", "<cmd>Lspsaga goto_type_definition<CR>", desc = "Goto Type Definition" },
             { "<leader>lgh", "<cmd>Lspsaga hover_doc<CR>", desc = "Show Hover Doc" },
             { "<leader>lgk", "<cmd>Lspsaga hover_doc ++keep<CR>", desc = "Hover In Upper Right Corner" },
-            { "<leader>lgl", "<cmd>Lspsaga show_line_diagnostics<CR>", desc = "Show Line Diagnotics" },
+            { "<leader>lgl", "<cmd>Lspsaga show_line_diagnostics<CR>", desc = "Show Line Diagnostics" },
             { "<leader>lgo", "<cmd>Lspsaga outline<CR>", desc = "Lspsaga Toggle Outline" },
             { "<Leader>lgi", "<cmd>Lspsaga incoming_calls<CR>", desc = "Call Incoming" },
             { "<Leader>lgt", "<cmd>Lspsaga outgoing_calls<CR>", desc = "Call Outgoing" },
@@ -69,11 +69,18 @@ return {
             -- 带过滤器的诊断跳转，如之跳转到错误处
             vim.keymap.set("n", "[E", function()
                 require("lspsaga.diagnostic"):goto_prev({ severity = vim.diagnostic.severity.ERROR })
-            end, { desc = "Goto Prev Diagnotics Serverity ERROR" })
+            end, { desc = "Goto Prev Diagnostics Severity ERROR" })
             vim.keymap.set("n", "]E", function()
                 require("lspsaga.diagnostic"):goto_next({ severity = vim.diagnostic.severity.ERROR })
-            end, { desc = "Goto Next Diagnotics Serverity ERROR" })
+            end, { desc = "Goto Next Diagnostics Severity ERROR" })
         end,
+    },
+    -- 自动停止未使用的lsp服务
+    {
+        "hinell/lsp-timeout.nvim",
+        lazy = true,
+        event = "BufReadPost",
+        dependencies = "nvim-lspconfig",
     },
     -- 显示函数的引用和定义信息
     {

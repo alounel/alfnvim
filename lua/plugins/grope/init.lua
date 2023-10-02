@@ -102,7 +102,7 @@ return {
         lazy = true,
         cmd = "FzfLua",
         keys = {
-            { "<leader>flz", "<cmd>FzfLua<CR>", desc = "Select FzfLua Moudule" },
+            { "<leader>flz", "<cmd>FzfLua<CR>", desc = "Select FzfLua Module" },
             { "<leader>flf", "<cmd>FzfLua files<CR>", desc = "Fzf inquiry files" },
             { "<leader>flb", "<cmd>FzfLua buffers<CR>", desc = "Fzf inquiry buffers" },
             { "<leader>fla", "<cmd>FzfLua args<CR>", desc = "Fzf args list" },

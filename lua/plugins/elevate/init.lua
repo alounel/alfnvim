@@ -78,7 +78,7 @@ return {
                 function()
                     require("rulebook").lookupRule()
                 end,
-                desc = "Rule Loopup",
+                desc = "Rule Lookup",
             },
         },
     },
