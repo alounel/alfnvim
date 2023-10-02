@@ -24,11 +24,12 @@ return {
                 header = logo,
                 items = {
                     new_section("Find file ", "Telescope find_files", "Inquiry"),
-                    -- new_section("Recent files ",      "Telescope oldfiles",   "Inquiry"),
+                    -- new_section("Recent files ", "Telescope oldfiles", "Inquiry"),
                     new_section("Grep text ", "Telescope live_grep", "Inquiry"),
                     new_section("Open last projects ", "Telescope projects", "Inquiry"),
                     new_section("MRU ", "Telescope frecency", "Inquiry"),
-                    -- new_section("Settings ",          "e $MYVIMRC",           "Config"),
+                    new_section("Browser ", "Telescope file_browser", "FileTree"),
+                    -- new_section("Settings ", "e $MYVIMRC", "Config"),
                     new_section("Session ", "lua require('persistence').load()", "Session"),
                     new_section("Lazy 鈴", "Lazy", "Config"),
                     -- new_section("New file ", "ene | startinsert", "Built-in"),
@@ -53,7 +54,22 @@ return {
             end
             local starter = require("mini.starter")
             starter.setup(config)
+
+            vim.api.nvim_create_autocmd("User", {
+                pattern = "LazyVimStarted",
+                callback = function()
+                    local stats = require("lazy").stats()
+                    local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
+                    local pad_footer = string.rep(" ", 8)
+                    starter.config.footer = pad_footer
+                        .. "⚡ Neovim loaded "
+                        .. stats.count
+                        .. " plugins in "
+                        .. ms
+                        .. "ms"
+                    pcall(starter.refresh)
+                end,
+            })
         end,
     },
 }
-

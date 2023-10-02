@@ -70,6 +70,14 @@ return {
     {
         "rcarriga/nvim-notify",
         event = "VeryLazy",
+        init = function()
+            local Util = require("core.util")
+            if not Util.has("noice.nvim") then
+                Util.on_very_lazy(function()
+                    vim.notify = require("notify")
+                end)
+            end
+        end,
         opts = {
             stages = "fade",
             timeout = 6000,
