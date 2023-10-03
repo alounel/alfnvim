@@ -147,26 +147,6 @@ return {
             keys = "<Esc>",
         },
     },
-    -- 平滑滚动
-    {
-        "karb94/neoscroll.nvim",
-        lazy = true,
-        event = "VeryLazy",
-        opts = {},
-    },
-    -- 输入命令查看缓冲区
-    {
-        "nacro90/numb.nvim",
-        lazy = true,
-        event = "CmdlineEnter",
-        opts = {
-            number_only = true,
-        },
-        keys = {
-            { "<leader>bc", "<cmd>lua require('numb').setup()<CR>", desc = "Start Command Show Current Buffer" },
-            { "<leader>bk", "<cmd>lua require('numb').disable()<CR>", desc = "Disable Command Show Current Buffer" },
-        },
-    },
     -- 改进位置列表导航
     {
         "cbochs/portal.nvim",
@@ -252,5 +232,13 @@ return {
     -- 位置完成
     {
         import = "plugins.extras.fulfill",
+    },
+    -- 平滑滚动
+    {
+        import = "plugins.extras.utils.scroll",
+    },
+    -- 查看特定行内容
+    {
+        import = "plugins.extras.utils.numb",
     },
 }
