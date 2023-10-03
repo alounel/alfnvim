@@ -127,14 +127,6 @@ return {
             wk.register(opts.defaults)
         end,
     },
-    -- 测量启动时间
-    {
-        "dstein64/vim-startuptime",
-        lazy = true,
-        keys = {
-            { "<leader>st", "<cmd>StartupTime<CR>", desc = "Show Neovim Start Time" },
-        },
-    },
     -- 模式切换
     {
         "max397574/better-escape.nvim",
@@ -204,6 +196,7 @@ return {
             which_key = {
                 auto_register = true,
             },
+            log_level = "error",
         },
     },
     -- 非活动代码变暗
@@ -229,7 +222,7 @@ return {
         },
         opts = {},
     },
-    -- 位置完成
+    -- 自动动作完成
     {
         import = "plugins.extras.fulfill",
     },
@@ -240,5 +233,9 @@ return {
     -- 查看特定行内容
     {
         import = "plugins.extras.utils.numb",
+    },
+    -- 测量启动时间
+    {
+        import = "plugins.extras.utils.startuptime",
     },
 }

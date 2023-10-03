@@ -180,6 +180,6 @@ return {
     },
     -- 样式形式
     {
-        import = "plugins.extras.style",
+        import = "plugins.extras.ui.style",
     },
 }
