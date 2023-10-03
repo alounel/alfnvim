@@ -29,7 +29,7 @@ return {
                 "<leader>sbL",
                 "<cmd>lua require('comment-box').clbox()<CR>",
                 mode = { "n", "v" },
-                desc = "Center Box Left Algin",
+                desc = "Center Box Left Align",
             },
             {
                 "<leader>sbC",
@@ -48,19 +48,19 @@ return {
                 "<leader>sbi",
                 "<cmd>lua require('comment-box').rlbox()<CR>",
                 mode = { "n", "v" },
-                desc = "Right Algin Box Left Algin",
+                desc = "Right Align Box Left Align",
             },
             {
                 "<leader>sbj",
                 "<cmd>lua require('comment-box').rcbox()<CR>",
                 mode = { "n", "v" },
-                desc = "Right Align Box Center Algin",
+                desc = "Right Align Box Center Align",
             },
             {
                 "<leader>sbk",
                 "<cmd>lua require('comment-box').rrbox()<CR>",
                 mode = { "n", "v" },
-                desc = "Right Align Box Right Algin",
+                desc = "Right Align Box Right Align",
             },
             -- al,ac,ar/box
             {
@@ -165,4 +165,3 @@ return {
         },
     },
 }
-
