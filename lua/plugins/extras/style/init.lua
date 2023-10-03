@@ -136,4 +136,33 @@ return {
             hooks.register(hooks.type.SCOPE_HIGHLIGHT, hooks.builtin.scope_highlight_from_extmark)
         end,
     },
+    -- 自动缩进样式检测
+    {
+        "NMAC427/guess-indent.nvim",
+        lazy = true,
+        keys = {
+            { "<leader>si", "<cmd>GuessIndent<CR>", desc = "Guess Indent Check" },
+        },
+        opts = {
+            filetype_exclude = {
+                "netrw",
+                "tutor",
+                "neo-tree",
+                "aerial",
+                "Outline",
+                "Trouble",
+                "qf",
+                "tex",
+                "txt",
+            },
+            buftype_exclude = {
+                "help",
+                "nofile",
+                "terminal",
+                "prompt",
+                "quickfix",
+            },
+        },
+    },
 }
+

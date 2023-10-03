@@ -7,7 +7,17 @@ return {
             { "<leader>at", "<cmd>ASToggle<CR>", desc = "Toggle Auto Save" },
         },
         opts = {
-            debug = true,
+            condition = function(buf)
+                local fn = vim.fn
+                local utils = require("auto-save.utils.data")
+                local exclude_filetypes = { "neo-tree", "Trouble", "Outline", "aerial", "sagaoutline", "starter" }
+
+                -- 不保存指定文件类型
+                if utils.not_in(fn.getbufvar(buf, "&filetype"), exclude_filetypes) then
+                    return true
+                end
+                return false
+            end,
         },
     },
     -- 自动恢复光标位置
@@ -17,9 +27,9 @@ return {
         event = "BufReadPost",
         opts = {
             --这些 buffer 类型不记录光标位置
-            ignore_buftype = { "quickfix", "nofile", "help", "starter" },
+            ignore_buftype = { "quickfix", "nofile", "help", "terminal", "directory", "scratch", "unlisted" },
             -- 这些文件类型不记录光标位置
-            ignore_filetype = { "gitcommit", "gitrebase", "svn", "hgcommit" },
+            ignore_filetype = { "gitcommit", "gitrebase", "svn", "hgcommit", "starter" },
             -- 代码折叠时，恢复光标时展开
             open_folds = true,
         },
@@ -59,31 +69,5 @@ return {
                 Rule("$", "$", "lua"):with_pair(ts_conds.is_not_ts_node({ "function" })),
             })
         end,
-    },
-    -- 自动缩进样式检测
-    {
-        "NMAC427/guess-indent.nvim",
-        lazy = true,
-        keys = {
-            { "<leader>si", "<cmd>GuessIndent<CR>", desc = "Guess Indent Check" },
-        },
-        opts = {
-            filetype_exclude = {
-                "netrw",
-                "tutor",
-                "neo-tree",
-                "aerial",
-                "Outline",
-            },
-            buftype_exclude = {
-                "help",
-                "nofile",
-                "terminal",
-                "prompt",
-                "qf",
-                "Trouble",
-                "log",
-            },
-        },
     },
 }

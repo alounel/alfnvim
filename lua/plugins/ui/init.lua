@@ -178,4 +178,8 @@ return {
     {
         import = "plugins.extras.ui.starter",
     },
+    -- 样式形式
+    {
+        import = "plugins.extras.style",
+    },
 }
