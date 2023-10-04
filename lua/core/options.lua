@@ -134,3 +134,5 @@ vim.go.laststatus = 3
 vim.go.winminwidth = 5
 -- 设置python地址
 vim.g.python3_host_prog = "/usr/bin/python"
+-- 日志等级级别
+-- "TRACE","DEBUG","INFO","WARN","ERROR","OFF"
