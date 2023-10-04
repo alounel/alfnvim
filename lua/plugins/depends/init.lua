@@ -32,6 +32,7 @@ return {
             { "<leader>ml", "<cmd>MasonLog<CR>", desc = "Open Mason Log" },
         },
         opts = {
+            log_level = vim.log.levels.DEBUG,
             ui = {
                 border = "rounded",
                 icons = {
