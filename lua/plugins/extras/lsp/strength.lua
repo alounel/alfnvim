@@ -75,13 +75,6 @@ return {
             end, { desc = "Goto Next Diagnostics Severity ERROR" })
         end,
     },
-    -- 自动停止未使用的lsp服务
-    {
-        "hinell/lsp-timeout.nvim",
-        lazy = true,
-        event = "BufReadPost",
-        dependencies = "nvim-lspconfig",
-    },
     -- 显示函数的引用和定义信息
     {
         "VidocqH/lsp-lens.nvim",
