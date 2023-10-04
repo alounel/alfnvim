@@ -55,21 +55,21 @@ return {
             local starter = require("mini.starter")
             starter.setup(config)
 
-            vim.api.nvim_create_autocmd("User", {
-                pattern = "LazyVimStarted",
-                callback = function()
-                    local stats = require("lazy").stats()
-                    local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
-                    local pad_footer = string.rep(" ", 8)
-                    starter.config.footer = pad_footer
-                        .. "⚡ Neovim loaded "
-                        .. stats.count
-                        .. " plugins in "
-                        .. ms
-                        .. "ms"
-                    pcall(starter.refresh)
-                end,
-            })
+            -- vim.api.nvim_create_autocmd("User", {
+            --     pattern = "LazyVimStarted",
+            --     callback = function()
+            --         local stats = require("lazy").stats()
+            --         local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
+            --         local pad_footer = string.rep(" ", 8)
+            --         starter.config.footer = pad_footer
+            --             .. "⚡ Neovim loaded "
+            --             .. stats.count
+            --             .. " plugins in "
+            --             .. ms
+            --             .. "ms"
+            --         pcall(starter.refresh)
+            --     end,
+            -- })
         end,
     },
 }
