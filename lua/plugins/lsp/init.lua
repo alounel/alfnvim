@@ -21,21 +21,14 @@ return {
                 lazy = true,
                 cmd = { "LspInstall", "LspUninstall" },
                 dependencies = { "mason.nvim" },
-                -- 不使用mason安装的：tsserver,clangd,neocmake,pyright,yamlls,jsonls
+                -- 不使用mason安装的：tsserver,clangd,neocmake,pyright,yamlls,jsonls,bashls
                 -- 缘由：
-                -- tsserver:无法使用tsc,所以使用包管理器安装
+                -- tsserver:无法单独使用tsc,所以使用包管理器安装
                 -- clangd:存在clang-tools-extra包，直接安装比较好
                 -- neocmake:未安装cargo
-                -- pyright,yaml-language-server,json-lsp:mason安装带来不必要的node_modules或site-packages
+                -- pyright,yamlls,json-lsp,bashls:mason安装带来不必要的node_modules或site-packages
                 opts = {
-                    ensure_installed = {
-                        "jdtls",
-                        "lua_ls",
-                        "vimls",
-                        "bashls",
-                        "marksman",
-                        "lemminx",
-                    },
+                    ensure_installed = { "jdtls", "lua_ls", "vimls", "marksman", "lemminx" },
                     automatic_installation = false,
                 },
             },
