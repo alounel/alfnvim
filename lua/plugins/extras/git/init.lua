@@ -31,6 +31,6 @@ return {
                 desc = "Git Push",
             },
         },
-        dependencies = "dressing.nvim",
+        dependencies = { "dressing.nvim" },
     },
 }

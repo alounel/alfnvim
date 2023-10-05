@@ -10,6 +10,6 @@ return {
             { "<leader>dls", "<cmd>lua =require('osv').stop_trace()<CR>", desc = "Lua Debug Stop Trace" },
             { "<leader>dll", "<cmd>lua require('osv').launch({port = 8086})<CR>", desc = "Lua Debug Launch" },
         },
-        dependencies = "nvim-dap",
+        dependencies = { "nvim-dap" },
     },
 }

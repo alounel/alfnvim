@@ -91,7 +91,7 @@ return {
             { "<leader>sa", mode = { "n", "x" }, desc = "󱗘 :AltSubstitute" },
             { "<leader>sA", mode = { "n", "x" }, desc = "󱗘 :AltSubstitute (word under cursor)" },
         },
-        dependencies = "dressing.nvim",
+        dependencies = { "dressing.nvim" },
         config = function()
             require("alt-substitute").setup()
             vim.keymap.set({ "n", "x" }, "<leader>sa", [[:S ///g<Left><Left><Left>]])
@@ -160,7 +160,7 @@ return {
             { "=p", "<Plug>(YankyPutAfterFilter)", desc = "Put after applying a filter" },
             { "=P", "<Plug>(YankyPutBeforeFilter)", desc = "Put before applying a filter" },
         },
-        dependencies = "sqlite.lua",
+        dependencies = { "sqlite.lua" },
         config = function()
             require("yanky").setup({
                 ring = {
@@ -169,6 +169,9 @@ return {
                     storage_path = vim.fn.stdpath("data") .. "/databases/yanky.db",
                     sync_with_numbered_registers = true,
                     cancel_event = "update",
+                },
+                textobject = {
+                    enabled = true,
                 },
             })
         end,
