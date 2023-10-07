@@ -137,10 +137,9 @@ function M.lazy_notify()
         timer:stop()
         check:stop()
         if vim.notify == temp then
-            vim.notify = orig -- put back the original notify if needed
+            vim.notify = orig
         end
         vim.schedule(function()
-            ---@diagnostic disable-next-line: no-unknown
             for _, notif in ipairs(notifs) do
                 vim.notify(vim.F.unpack_len(notif))
             end

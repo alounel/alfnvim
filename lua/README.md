@@ -9,3 +9,5 @@
 - plugins 插件安装及其配置
 
 - ftplugin 某些插件需要调用的配置
+
+- periph 外加优化设置

@@ -3,13 +3,11 @@ local function augroup(name)
     return vim.api.nvim_create_augroup("alfnvim_" .. name, { clear = true })
 end
 
--- Check if we need to reload the file when it changed
 vim.api.nvim_create_autocmd({ "FocusGained", "TermClose", "TermLeave" }, {
     group = augroup("checktime"),
     command = "checktime",
 })
 
--- resize splits if window got resized
 vim.api.nvim_create_autocmd({ "VimResized" }, {
     group = augroup("resize_splits"),
     callback = function()
@@ -35,7 +33,6 @@ vim.api.nvim_create_autocmd("BufReadPost", {
     end,
 })
 
--- close some filetypes with <q>
 vim.api.nvim_create_autocmd("FileType", {
     group = augroup("close_with_q"),
     pattern = {
@@ -56,7 +53,6 @@ vim.api.nvim_create_autocmd("FileType", {
     end,
 })
 
--- Auto create dir when saving a file, in case some intermediate directory does not exist
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
     group = augroup("auto_create_dir"),
     callback = function(event)
@@ -65,6 +61,17 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
         end
         local file = vim.loop.fs_realpath(event.match) or event.match
         vim.fn.mkdir(vim.fn.fnamemodify(file, ":p:h"), "p")
+    end,
+})
+
+vim.api.nvim_create_autocmd("BufEnter", {
+    group = augroup("fix_folds"),
+    callback = function()
+        if vim.opt.foldmethod:get() == "expr" then
+            vim.schedule(function()
+                vim.opt.foldmethod = "expr"
+            end)
+        end
     end,
 })
 

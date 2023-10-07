@@ -24,6 +24,7 @@ return {
                             "proselint",
                             "editorconfig_checker",
                         },
+                        automatic_installation = false,
                     })
                 end,
             },
@@ -58,17 +59,19 @@ return {
                     disabled_filetypes = {
                         "c",
                         "cpp",
+                        "help",
                         "markdown",
                         "norg",
                         "tex",
                         "toml",
                         "txt",
                         "vim",
+                        "vimdoc",
                         "yaml",
                     },
                 }),
                 diagnostics.editorconfig_checker.with({
-                    disabled_filetypes = { "c", "cpp", "txt", "help", "log", "norg" },
+                    disabled_filetypes = { "c", "cpp", "help", "log", "norg", "txt", "vimdoc" },
                 }),
             }
             none_ls.setup({
@@ -83,10 +86,11 @@ return {
                     severity_sort = true,
                 },
                 diagnostics_format = "[#{c}] #{m} (#{s})",
+                log_level = "error",
             })
         end,
     },
-    -- 对某些文件不使用类似代码注入方式诊断的代码诊断,或者说是
+    -- 对某些文件不使用类似代码注入方式诊断的代码诊断
     {
         "mfussenegger/nvim-lint",
         lazy = true,
@@ -103,7 +107,7 @@ return {
             local timer = assert(uv.new_timer())
             local DEBOUNCE_MS = 500
             local aug = vim.api.nvim_create_augroup("lint", { clear = true })
-            vim.api.nvim_create_autocmd({ "BufWritePost", "BufReadPost", "InsertEnter" }, {
+            vim.api.nvim_create_autocmd({ "BufWritePost", "BufReadPost", "BufNewFile", "InsertEnter" }, {
                 group = aug,
                 callback = function()
                     local bufnr = vim.api.nvim_get_current_buf()
