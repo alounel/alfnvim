@@ -4,5 +4,5 @@ require("core.options")
 require("core.keymaps")
 -- nvim执行自动命令
 require("core.autocmds")
--- nvim基础配置图标
-require("core.config")
+-- nvim加载自定义图标或高亮
+require("core.magic")

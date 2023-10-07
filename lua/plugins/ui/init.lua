@@ -71,7 +71,7 @@ return {
         "rcarriga/nvim-notify",
         event = "VeryLazy",
         init = function()
-            local Util = require("core.util")
+            local Util = require("periph.util")
             if not Util.has("noice.nvim") then
                 Util.on_very_lazy(function()
                     vim.notify = require("notify")
