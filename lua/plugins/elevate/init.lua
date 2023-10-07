@@ -81,6 +81,7 @@ return {
                 desc = "Rule Lookup",
             },
         },
+        dependencies = { "dressing.nvim" },
     },
     -- 代替substitue
     {
