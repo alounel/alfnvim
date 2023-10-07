@@ -98,7 +98,7 @@ return {
                 settings = {
                     json = {
                         schemas = require("schemastore").json.schemas(),
-                        vaildate = { enable = true },
+                        validate = { enable = true },
                     },
                 },
                 capabilities = capabilities,
@@ -111,7 +111,7 @@ return {
                             url = "https://www.schemastore.org/api/json/catalog.json",
                         },
                         schemas = require("schemastore").yaml.schemas(),
-                        vaildate = true,
+                        validate = true,
                     },
                 },
                 capabilities = capabilities,

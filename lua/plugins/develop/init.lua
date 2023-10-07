@@ -46,7 +46,11 @@ return {
                 "<cmd>lua require('persistence').load({ last = true })<CR>",
                 desc = "Restore The Last Session",
             },
-            { "<leader>qd", "<cmd>lua require('persistence').stop()<CR>", desc = "Session Won't Be Saved On Exit" },
+            {
+                "<leader>qd",
+                "<cmd>lua require('persistence').stop()<CR>",
+                desc = "Session Won't Be Saved On Exit",
+            },
         },
     },
     -- 构建和运行代码
@@ -142,7 +146,7 @@ return {
             end)
         end,
     },
-    -- 打开大文件
+    -- 大文件控制
     {
         "LunarVim/bigfile.nvim",
         priority = 100,

@@ -72,8 +72,8 @@ return {
             { "<M-R>", mode = { "n", "v" }, desc = "Right Move" },
             { "<M-j>", mode = { "n", "v" }, desc = "Down Move" },
             { "<M-k>", mode = { "n", "v" }, desc = "Up Move" },
-            { "<leader>wg", mode = "n", desc = "Char Right Move" },
-            { "<leader>wb", mode = "n", desc = "Char Left Move" },
+            { "<leader>wg", desc = "Char Right Move" },
+            { "<leader>wb", desc = "Char Left Move" },
         },
         config = function()
             local kopts = { noremap = true, silent = true }
@@ -98,10 +98,10 @@ return {
         lazy = true,
         cmd = "Spectre",
         keys = {
-            { "<leader>rg", mode = "n", desc = "Toggle Spectre" },
-            { "<leader>rw", mode = "n", desc = "Search Current Word" },
+            { "<leader>rg", desc = "Toggle Spectre" },
+            { "<leader>rw", desc = "Search Current Word" },
             { "<leader>rw", mode = "v", desc = "Search Current Word" },
-            { "<leader>rf", mode = "n", desc = "Search On Current File" },
+            { "<leader>rf", desc = "Search On Current File" },
         },
         config = function()
             require("spectre").setup({
@@ -318,8 +318,8 @@ return {
             require("mini.trailspace").setup()
         end,
         keys = {
-            { "<leader>te", ":lua MiniTrailspace.trim()<CR>", desc = "Trail All Space" },
-            { "<leader>tn", ":lua MiniTrailspace.trim_last_lines()<CR>", desc = "Trail All Space Lines" },
+            { "<leader>te", "<cmd>lua MiniTrailspace.trim()<CR>", desc = "Trail All Space" },
+            { "<leader>tn", "<cmd>lua MiniTrailspace.trim_last_lines()<CR>", desc = "Trail All Space Lines" },
         },
     },
     -- 格式化
@@ -332,7 +332,7 @@ return {
     },
     -- 参数替换
     {
-        import = "plugins.extras.editor.muren",
+        import = "plugins.extras.editor.replacer",
     },
     -- 文本标记
     {

@@ -176,29 +176,6 @@ return {
             quit = false,
         },
     },
-    -- keyamps,command,functions示例
-    {
-        "mrjones2014/legendary.nvim",
-        lazy = true,
-        cmd = { "LegendaryLog", "LegendaryRepeat" },
-        keys = {
-            { "<leader>fdy", "<cmd>Legendary<CR>", desc = "Show Legendary" },
-            { "<leader>fdk", "<cmd>Legendary keymaps<CR>", desc = "Search Keymaps" },
-            { "<leader>fdc", "<cmd>Legendary commands<CR>", desc = "Search Commands" },
-            { "<leader>fdf", "<cmd>Legendary functions<CR>", desc = "Search Functions" },
-            { "<leader>fda", "<cmd>Legendary autocmds<CR>", desc = "Search Autocmds" },
-        },
-        dependencies = { "telescope.nvim" },
-        opts = {
-            lazy_nvim = {
-                auto_register = true,
-            },
-            which_key = {
-                auto_register = true,
-            },
-            log_level = "error",
-        },
-    },
     -- 非活动代码变暗
     {
         "folke/twilight.nvim",
@@ -233,6 +210,10 @@ return {
     -- 查看特定行内容
     {
         import = "plugins.extras.utils.numb",
+    },
+    -- 函数，命令，按键绑定示例
+    {
+        import = "plugins.extras.utils.legendary",
     },
     -- 测量启动时间
     {
