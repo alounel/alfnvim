@@ -45,7 +45,6 @@ return {
                 end,
                 desc = "Restart Debug",
             },
-
             {
                 "<leader>db",
                 function()
@@ -74,11 +73,6 @@ return {
                 end,
                 desc = "Dap Session",
             },
-            { "<leader>de", ":DapSetLogLevel", desc = "Dap Set Log Level" },
-            { "<leader>dk", "<cmd>DapRestartFrame<CR>", desc = "Dap Restart Frame" },
-            { "<leader>dj", "<cmd>DapLoadLaunchJSON<CR>", desc = "Direct Load Json File Debug" },
-            { "<leader>dg", "<cmd>DapShowLog<CR>", desc = "Show Debug Log" },
-
             {
                 "<leader>dt",
                 function()
@@ -86,11 +80,17 @@ return {
                 end,
                 desc = "Toggle Repl",
             },
+
+            { "<leader>de", ":DapSetLogLevel", desc = "Dap Setting Log Level" },
+            { "<leader>dk", "<cmd>DapRestartFrame<CR>", desc = "Dap Restart Frame" },
+            { "<leader>dj", "<cmd>DapLoadLaunchJSON<CR>", desc = "Direct Load Json File Debug" },
+            { "<leader>dg", "<cmd>DapShowLog<CR>", desc = "Show Debug Log" },
+
             -- 小部件UI
             { "<leader>dwh", mode = { "n", "v" }, desc = "dap.ui.widgets hover" },
             { "<Leader>dwp", mode = { "n", "v" }, desc = "dap.ui.widgets preview" },
-            { "<Leader>dwc", mode = { "n" }, desc = "dap.ui.widgets float centered frames" },
-            { "<Leader>dws", mode = { "n" }, desc = "dap.ui.widgets float centered scopes" },
+            { "<Leader>dwc", desc = "dap.ui.widgets float centered frames" },
+            { "<Leader>dws", desc = "dap.ui.widgets float centered scopes" },
         },
         dependencies = {
             {
@@ -101,6 +101,7 @@ return {
                 config = function()
                     require("mason-nvim-dap").setup({
                         ensure_installed = { "bash" },
+                        automatic_installation = false,
                     })
                 end,
             },
@@ -133,10 +134,38 @@ return {
         "rcarriga/nvim-dap-ui",
         lazy = true,
         keys = {
-            { "<leader>du", "<cmd>lua require('dapui').toggle()<CR>", desc = "Toggle DapUI" },
+            {
+                "<leader>du",
+                function()
+                    require("dapui").toggle({})
+                end,
+                desc = "Toggle DapUI",
+            },
+            {
+                "<leader>dx",
+                function()
+                    require("dapui").eval()
+                end,
+                mode = { "n", "v" },
+                desc = "Eval DapUI",
+            },
         },
         config = function()
-            require("debugger.dapuisettings")
+            local dap, dapui = require("dap"), require("dapui")
+
+            dapui.setup()
+            dap.listeners.after.event_initialized["dapui_config"] = function()
+                dapui.open()
+            end
+            dap.listeners.before.event_terminated["dapui_config"] = function()
+                dapui.close()
+            end
+            dap.listeners.before.event_exited["dapui_config"] = function()
+                dapui.close()
+            end
+            dap.listeners.before.disconnect["dapui_config"] = function()
+                dapui.close()
+            end
         end,
     },
     -- 显示虚拟文本
