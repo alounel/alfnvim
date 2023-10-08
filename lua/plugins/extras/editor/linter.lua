@@ -43,6 +43,7 @@ return {
                 diagnostics.cmake_lint, --cmake
                 diagnostics.eslint, --javascript,javascriptact,typescript,typescriptact,vue
                 diagnostics.luacheck, --lua
+                diagnostics.selene, -- lua,luau
                 diagnostics.markdownlint, --markdown
                 diagnostics.ruff, --python
                 diagnostics.shellcheck, --sh
