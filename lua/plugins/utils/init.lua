@@ -215,7 +215,7 @@ return {
             dimming = {
                 inactive = true,
             },
-            exclude = { "txt", "markdown", "log", "help", "tex" },
+            exclude = { "help", "log", "tex", "text", "vimdoc" },
         },
     },
     -- 禅模式

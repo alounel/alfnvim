@@ -20,7 +20,7 @@ return {
         },
         config = function()
             require("codewindow").setup({
-                exclude_filetypes = { "help", "vimdoc", "log", "txt", "tex" },
+                exclude_filetypes = { "help", "log", "tex", "text", "vimdoc" },
                 window_border = "rounded",
             })
         end,

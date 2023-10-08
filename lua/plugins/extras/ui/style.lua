@@ -87,8 +87,8 @@ return {
     -- 显示缩进线
     {
         "lukas-reineke/indent-blankline.nvim",
-        main = "ibl",
         enabled = false,
+        main = "ibl",
         lazy = true,
         event = { "BufReadPost", "BufNewFile" },
         config = function()
@@ -148,12 +148,13 @@ return {
                 "netrw",
                 "tutor",
                 "neo-tree",
+                "norg",
                 "aerial",
                 "Outline",
                 "Trouble",
                 "qf",
                 "tex",
-                "txt",
+                "text",
             },
             buftype_exclude = {
                 "help",

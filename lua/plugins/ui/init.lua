@@ -91,7 +91,8 @@ return {
     },
     -- 缩进样式
     {
-        "shellRaining/hlchunk.nvim",
+        "alounel/hlchunk.nvim",
+        branch = "add-test",
         lazy = true,
         event = { "BufReadPost", "BufNewFile" },
         opts = {},

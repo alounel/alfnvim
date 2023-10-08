@@ -33,48 +33,61 @@ return {
             local none_ls = require("null-ls")
             local diagnostics = none_ls.builtins.diagnostics
             local code_actions = none_ls.builtins.code_actions
+            local hovers = none_ls.builtins.hover
 
-            local sources = {
-                -- Code_actions
-                code_actions.eslint_d, -- javascript,javascriptact,typescript,typescriptact,vue
-                code_actions.proselint, -- markdown,tex
-                code_actions.shellcheck, -- sh
-                -- Diagnostics
-                diagnostics.cmake_lint, --cmake
-                diagnostics.eslint, --javascript,javascriptact,typescript,typescriptact,vue
-                diagnostics.luacheck, --lua
-                diagnostics.selene, -- lua,luau
-                diagnostics.markdownlint, --markdown
-                diagnostics.ruff, --python
-                diagnostics.shellcheck, --sh
-                diagnostics.zsh, --zsh
-                -- diagnostics.markuplint, --html
+            local default_sources = {}
+
+            local code_actions_servers = { "eslint_d", "proselint", "shellcheck" }
+            for _, action in ipairs(code_actions_servers) do
+                table.insert(default_sources, code_actions[action])
+            end
+
+            local diagnostics_servers = {
+                "cmake_lint", -- cmake
+                "eslint", -- ts,js,tsx,jsx
+                "luacheck", -- lua
+                "selene", -- lua,luau
+                "markdownlint", -- markdown
+                "ltrs", -- markdown,text
+                "jsonlint", -- json
+                "ruff", -- python
+                "shellcheck", -- sh
+                "vint", -- vim
+                "yamllint", -- yaml
+                "zsh", -- zsh
+            }
+            for _, diag in ipairs(diagnostics_servers) do
+                table.insert(default_sources, diagnostics[diag])
+            end
+
+            local hover_servers = { "dictionary" }
+            for _, hover in ipairs(hover_servers) do
+                table.insert(default_sources, hovers[hover])
+            end
+
+            local conf_sources = {
                 diagnostics.tidy.with({
                     disabled_filetypes = { "html" },
-                }), --xml
-                -- diagnostics.stylelint, -- css
-                diagnostics.jsonlint, --json
-                diagnostics.yamllint, --yaml
-                diagnostics.vint, --vim
+                }),
                 diagnostics.typos.with({
-                    disabled_filetypes = {
-                        "c",
-                        "cpp",
-                        "help",
-                        "markdown",
-                        "norg",
-                        "tex",
-                        "toml",
-                        "txt",
-                        "vim",
-                        "vimdoc",
-                        "yaml",
-                    },
+                    disabled_filetypes = { "c", "cpp", "help", "markdown", "norg", "tex", "text", "vimdoc" },
                 }),
                 diagnostics.editorconfig_checker.with({
-                    disabled_filetypes = { "c", "cpp", "help", "log", "norg", "txt", "vimdoc" },
+                    disabled_filetypes = { "c", "cpp", "help", "log", "norg", "tex", "text", "vimdoc" },
                 }),
             }
+
+            local sources = {}
+            for _, source in ipairs(default_sources) do
+                table.insert(sources, source)
+            end
+            for _, source in ipairs(conf_sources) do
+                table.insert(sources, source)
+            end
+            -- local sources = {
+            --     -- diagnostics.markuplint, --html
+            --     -- diagnostics.stylelint, -- css
+            --     }
             none_ls.setup({
                 sources = sources,
                 border = "rounded",
