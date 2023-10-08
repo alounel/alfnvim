@@ -32,7 +32,7 @@ return {
                 yaml = { "yamlfmt" },
                 ["_"] = { "trim_whitespace", "trim_newlines" },
             },
-            log_level = vim.log.levels.DEBUG,
+            log_level = vim.log.levels.ERROR,
             format_after_save = { timeout_ms = 5000, lsp_fallback = true },
             formatters = {
                 injected = {
