@@ -6,19 +6,19 @@
 
 1. rnvimr插件：用于在浮动窗口调用ranger，由于windows用户无法使用ranger，则需要删除此插件或者屏蔽此插件
 
-2. nvim-genghis插件：在trashFile的配置中改为自己的绝对目录
+1. nvim-genghis插件：在trashFile的配置中改为自己的绝对目录
 
-3. sqlite.lua插件：由于Telescope frecency和yanky.nvim，以及一些其它功能需要sqlite，所以请在[sqlite.lua](https://github.com/kkharji/sqlite.lua)网站中查看详细配置
+1. sqlite.lua插件：由于Telescope frecency和yanky.nvim，以及一些其它功能需要sqlite，所以请在[sqlite.lua](https://github.com/kkharji/sqlite.lua)网站中查看详细配置
 
-4. 需要说明的是，在将此配置使用之前，需要先修改这些设置，否则neovim使用会报错
+1. 需要说明的是，在将此配置使用之前，需要先修改这些设置，否则neovim使用会报错
 
 - **基础工具**
 
 1. 需要在系统环境中安装一些基础工具,安装：gcc,node,git,curl,wget,unzip,gzip,tar,make,fd,rg,python等
 
-2. Windows下推荐使用Msys2安装基础工具，官网:[msys2](https://www.msys2.org)
+1. Windows下推荐使用Msys2安装基础工具，官网:[msys2](https://www.msys2.org)
 
-3. 确保系统能正常连接国际互联网，即能正常访问github
+1. 确保系统能正常连接国际互联网，即能正常访问github
 
 ## Neovim的安装
 
@@ -52,7 +52,7 @@
 
 1. 具体需要安装的语言服务可以去mason.nvim插件的地址[mason.nvim](https://github.com/williamboman/mason.nvim)查看
 
-2. 使用mason.nvim安装语言服务，在plugins/lsp/init.lua文件中查看语言的服务器，可以自行进行修改。
+1. 使用mason.nvim安装语言服务，在plugins/lsp/init.lua文件中查看语言的服务器，可以自行进行修改。
 
 - 自行安装语言服务
 
@@ -70,15 +70,15 @@
 
 1. 在debugger/lang/文件夹中, 添加或删除调试器配置，可以看[dapInstall](https://github.com/mfussenegger/nvim-dap/wiki/Debug-Adapter-installation),自己选择自己需要的适配器，然后修改就可以了。
 
-2. c/c++调试：来源于lldb-vscode
+1. c/c++调试：来源于lldb-vscode
 
-3. lua调试：来源于一个插件。dap-lua.lua文件基本上不用修改。
+1. lua调试：来源于一个插件。dap-lua.lua文件基本上不用修改。
 
-4. bash调试，使用的是mason安装调试器，毕竟作者推荐的就是这个。
+1. bash调试，使用的是mason安装调试器，毕竟作者推荐的就是这个。
 
-5. 如果不想neovim实现调试功能，则可以删除debugger文件夹及内部所有文件，以及plugins/dap/init.lua文件。
+1. 如果不想neovim实现调试功能，则可以删除debugger文件夹及内部所有文件，以及plugins/dap/init.lua文件。
 
-### Diagnotics
+### Diagnostics
 
 - 使用null-ls插件来诊断，具体的诊断程序及其配置在plugins/editor/linter/init.lua文件，对于不用的诊断程序可以删除，也可以自行添加。
 
