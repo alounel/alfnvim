@@ -5,7 +5,7 @@ return {
         enabled = false,
         lazy = true,
         keys = {
-            { "<leader>ic", "<cmd>IconPickerNormal<CR>", desc = "Nomal Mode Pick Icon Insert Buffer" },
+            { "<leader>ic", "<cmd>IconPickerNormal<CR>", desc = "Normal Mode Pick Icon Insert Buffer" },
             { "<leader>iy", "<cmd>IconPickerYank<CR>", desc = "Pick Icon And Yank To Register" },
         },
         dependencies = { "telescope.nvim" },

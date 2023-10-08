@@ -56,7 +56,7 @@ return {
                 diagnostics.jsonlint, --json
                 diagnostics.yamllint, --yaml
                 diagnostics.vint, --vim
-                diagnostics.codespell.with({
+                diagnostics.typos.with({
                     disabled_filetypes = {
                         "c",
                         "cpp",
