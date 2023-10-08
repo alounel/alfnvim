@@ -12,6 +12,8 @@ return {
             { "<leader>tth", "<cmd>ToggleTerm direction=horizontal<CR>", desc = "Open Horizontal Terminal" },
             { "<leader>ttb", "<cmd>ToggleTerm direction=tab<CR>", desc = "Open Tab Terminal" },
             { "<leader>ttl", "<cmd>lua _lazygit_toggle()<CR>", desc = "Open Lazygit Terminal" },
+            { "<leader>ttp", "<cmd>lua _htop_toggle()<CR>", desc = "Open Htop Terminal" },
+            { "<leader>ttr", "<cmd>lua _procs_toggle()<CR>", desc = "Open Procs Terminal" },
             { "<leader>tte", ":TermExec ", desc = "Use Custom Operate Open Terminal" },
             { "<leader>ttc", ":ToggleTermSendCurrentLine ", desc = "Send Current Line To The Terminal" },
             { "<leader>tts", ":ToggleTermSendVisualLines ", desc = "Send Visual Line To The Terminal" },
@@ -43,6 +45,32 @@ return {
             })
             function _lazygit_toggle()
                 lazygit:toggle()
+            end
+
+            local htop = Terminal:new({
+                cmd = "htop",
+                hidden = true,
+                direction = "float",
+                float_opts = {
+                    border = "curved",
+                },
+            })
+
+            function _htop_toggle()
+                htop:toggle()
+            end
+
+            local procs = Terminal:new({
+                cmd = "procs -t",
+                hidden = true,
+                direction = "float",
+                float_opts = {
+                    border = "curved",
+                },
+            })
+
+            function _procs_toggle()
+                procs:toggle()
             end
 
             require("toggleterm").setup({
