@@ -43,6 +43,8 @@ function M.opts(name)
     return Plugin.values(plugin, "opts", false)
 end
 
+M.get_clients = vim.lsp.get_clients or vim.lsp.get_active_clients
+
 function M.get_root()
     local path = vim.api.nvim_buf_get_name(0)
     path = path ~= "" and vim.loop.fs_realpath(path) or nil
