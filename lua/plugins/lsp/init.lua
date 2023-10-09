@@ -15,6 +15,13 @@ return {
                 lazy = true,
                 opts = {},
             },
+            {
+                "folke/neoconf.nvim",
+                lazy = true,
+                cmd = "Neoconf",
+                dependencies = { "nvim-lspconfig" },
+                config = false,
+            },
             -- 连接mason.nvim和lspconfig的桥梁
             {
                 "williamboman/mason-lspconfig.nvim",
@@ -36,35 +43,21 @@ return {
         config = function()
             local lspconfig = require("lspconfig")
             local capabilities = require("cmp_nvim_lsp").default_capabilities()
-            capabilities.textDocument.completion.completionItem.snippetSupport = true --jsonls需要的代码片段支持
+
+            local clangd_capabilities = vim.tbl_deep_extend("keep", {}, capabilities, {
+                offsetEncoding = { "utf-16" },
+            })
+            local json_capabilities = vim.tbl_deep_extend("keep", {}, capabilities, {
+                textDocument = {
+                    completion = {
+                        completionItem = {
+                            snippetSupport = true,
+                        },
+                    },
+                },
+            })
             local servers = { "pyright", "vimls", "bashls", "marksman", "lemminx" }
 
-            lspconfig["lua_ls"].setup({
-                on_init = function(client)
-                    local path = client.workspace_folders[1].name
-                    if not vim.uv.fs_stat(path .. "/.luarc.json") and not vim.uv.fs_stat(path .. "/.luarc.jsonc") then
-                        client.config.settings = vim.tbl_deep_extend("force", client.config.settings, {
-                            lua = {
-                                diagnostics = {
-                                    globals = { "vim" },
-                                },
-                                completion = {
-                                    callSnippet = "Replace",
-                                },
-                                workspace = {
-                                    checkThirdParrty = false,
-                                    library = { vim.env.VIMRUNTIME },
-                                },
-                            },
-                        })
-                        client.notify("workspace/didChangeConfiguration", {
-                            settings = client.config.settings,
-                        })
-                    end
-                    return true
-                end,
-                capabilities = capabilities,
-            })
             lspconfig["clangd"].setup({
                 cmd = {
                     "clangd",
@@ -78,8 +71,14 @@ return {
                     "--all-scopes-completion",
                     "--clang-tidy-checks=bugprone-*, cert-*, clang-analyzer-*, concurrency-*, cppcoreguidelines-*, google-*, hicpp-*, misc-*, modernize-*, performance-*, portability-*, readability-*",
                 },
-                capabilities = capabilities,
+                init_options = {
+                    usePlaceholders = true,
+                    completeUnimported = true,
+                    clangdFileStatus = true,
+                },
+                capabilities = clangd_capabilities,
             })
+
             lspconfig["neocmake"].setup({
                 cmd = { "neocmakelsp", "--stdio" },
                 filetypes = { "cmake" },
@@ -94,6 +93,22 @@ return {
                 },
                 capabilities = capabilities,
             })
+
+            lspconfig["lua_ls"].setup({
+                settings = {
+                    diagnostics = {
+                        globals = { "vim" },
+                    },
+                    completion = {
+                        callSnippet = "Replace",
+                    },
+                    workspace = {
+                        checkThirdParrty = false,
+                    },
+                },
+                capabilities = capabilities,
+            })
+
             lspconfig["jsonls"].setup({
                 settings = {
                     json = {
@@ -101,7 +116,7 @@ return {
                         validate = { enable = true },
                     },
                 },
-                capabilities = capabilities,
+                capabilities = json_capabilities,
             })
             lspconfig["yamlls"].setup({
                 settings = {
@@ -116,6 +131,7 @@ return {
                 },
                 capabilities = capabilities,
             })
+
             for _, lsp in ipairs(servers) do
                 lspconfig[lsp].setup({
                     capabilities = capabilities,
@@ -201,6 +217,6 @@ return {
     },
     -- 语言增强插件
     {
-        import = "plugins.extras.lsp.lang",
+        import = "plugins.extras.lsp.extensions",
     },
 }

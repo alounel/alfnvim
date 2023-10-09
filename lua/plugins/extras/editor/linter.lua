@@ -43,6 +43,7 @@ return {
             end
 
             local diagnostics_servers = {
+                "clang_check", -- c/cpp
                 "cmake_lint", -- cmake
                 "eslint", -- ts,js,tsx,jsx
                 "luacheck", -- lua
@@ -70,10 +71,10 @@ return {
                     disabled_filetypes = { "html" },
                 }),
                 diagnostics.typos.with({
-                    disabled_filetypes = { "c", "cpp", "help", "markdown", "norg", "tex", "text", "vimdoc" },
+                    disabled_filetypes = { "help", "markdown", "norg", "tex", "text", "vimdoc" },
                 }),
                 diagnostics.editorconfig_checker.with({
-                    disabled_filetypes = { "c", "cpp", "help", "log", "norg", "tex", "text", "vimdoc" },
+                    disabled_filetypes = { "help", "log", "norg", "tex", "text", "vimdoc" },
                 }),
             }
 
