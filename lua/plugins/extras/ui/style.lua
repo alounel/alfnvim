@@ -84,37 +84,15 @@ return {
         },
         opts = {},
     },
-    -- 显示缩进线
+    -- 缩进线
     {
         "lukas-reineke/indent-blankline.nvim",
-        enabled = false,
         main = "ibl",
         lazy = true,
         event = { "BufReadPost", "BufNewFile" },
         config = function()
-            local highlight = {
-                "RainbowRed",
-                "RainbowYellow",
-                "RainbowBlue",
-                "RainbowOrange",
-                "RainbowGreen",
-                "RainbowViolet",
-                "RainbowCyan",
-            }
-            local hooks = require("ibl.hooks")
-            hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
-                vim.api.nvim_set_hl(0, "RainbowRed", { fg = "#E06C75" })
-                vim.api.nvim_set_hl(0, "RainbowYellow", { fg = "#E5C07B" })
-                vim.api.nvim_set_hl(0, "RainbowBlue", { fg = "#61AFEF" })
-                vim.api.nvim_set_hl(0, "RainbowOrange", { fg = "#D19A66" })
-                vim.api.nvim_set_hl(0, "RainbowGreen", { fg = "#98C379" })
-                vim.api.nvim_set_hl(0, "RainbowViolet", { fg = "#C678DD" })
-                vim.api.nvim_set_hl(0, "RainbowCyan", { fg = "#56B6C2" })
-            end)
-
-            vim.g.rainbow_delimiters = { highlight = highlight }
             require("ibl").setup({
-                scope = { highlight = highlight },
+                scope = { enabled = false },
                 indent = {
                     char = "│",
                     tab_char = "│",
@@ -132,8 +110,35 @@ return {
                     },
                 },
             })
-
-            hooks.register(hooks.type.SCOPE_HIGHLIGHT, hooks.builtin.scope_highlight_from_extmark)
+        end,
+    },
+    -- 可视化缩进范围
+    {
+        "echasnovski/mini.indentscope",
+        version = false,
+        event = { "BufReadPost", "BufNewFile" },
+        opts = {
+            symbol = "│",
+            options = { try_as_border = true },
+        },
+        init = function()
+            vim.api.nvim_create_autocmd("FileType", {
+                pattern = {
+                    "help",
+                    "alpha",
+                    "dashboard",
+                    "neo-tree",
+                    "Trouble",
+                    "lazy",
+                    "mason",
+                    "notify",
+                    "toggleterm",
+                    "lazyterm",
+                },
+                callback = function()
+                    vim.b.miniindentscope_disable = true
+                end,
+            })
         end,
     },
     -- 自动缩进样式检测
@@ -164,5 +169,13 @@ return {
                 "quickfix",
             },
         },
+    },
+    -- hlchunk缩进实现
+    {
+        "shellRaining/hlchunk.nvim",
+        enabled = false,
+        lazy = true,
+        event = { "BufReadPost", "BufNewFile" },
+        opts = {},
     },
 }

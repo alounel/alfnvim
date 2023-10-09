@@ -89,14 +89,6 @@ return {
             end,
         },
     },
-    -- 缩进样式
-    {
-        "alounel/hlchunk.nvim",
-        branch = "add-test",
-        lazy = true,
-        event = { "BufReadPost", "BufNewFile" },
-        opts = {},
-    },
     -- 显示滚动条
     {
         "petertriho/nvim-scrollbar",
