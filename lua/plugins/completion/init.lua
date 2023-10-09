@@ -6,20 +6,17 @@ return {
         version = "2.*",
         build = "make install_jsregexp",
         event = "InsertEnter",
-        dependencies = {
-            "rafamadriz/friendly-snippets",
-        },
+        dependencies = { "rafamadriz/friendly-snippets" },
         config = function()
             require("luasnip.loaders.from_vscode").lazy_load()
             require("luasnip.loaders.from_lua").lazy_load()
             require("luasnip.loaders.from_snipmate").lazy_load()
             require("luasnip").setup({
-                history = true,
+                update_events = { "TextChanged", "TextChangedI" },
                 delete_check_events = "TextChanged",
             })
         end,
     },
-    --代码补全插件
     {
         "hrsh7th/nvim-cmp",
         event = { "InsertEnter", "CmdlineEnter" },
@@ -29,7 +26,7 @@ return {
             { "hrsh7th/cmp-nvim-lsp", lazy = true },
             { "hrsh7th/cmp-buffer", lazy = true },
             { "hrsh7th/cmp-cmdline", lazy = true },
-            { "hrsh7th/cmp-path", lazy = true },
+            { "FelipeLema/cmp-async-path", lazy = true },
             { "lukas-reineke/cmp-rg", lazy = true },
             { "f3fora/cmp-spell", lazy = true },
             { "lukas-reineke/cmp-under-comparator" },
@@ -42,7 +39,7 @@ return {
             cmp.setup({
                 snippet = {
                     expand = function(args)
-                        require("luasnip").lsp_expand(args.body)
+                        luasnip.lsp_expand(args.body)
                     end,
                 },
                 window = {
@@ -52,13 +49,9 @@ return {
                 sources = cmp.config.sources({
                     {
                         name = "luasnip",
-                        option = {
-                            use_show_condition = false,
-                            show_autosnippets = true,
-                        },
                     },
                     { name = "nvim_lsp" },
-                    { name = "path" },
+                    { name = "async_path" },
                     {
                         name = "buffer",
                         option = {
@@ -154,7 +147,7 @@ return {
             cmp.setup.cmdline(":", {
                 mapping = cmp.mapping.preset.cmdline(),
                 sources = cmp.config.sources({
-                    { name = "path" },
+                    { name = "async_path" },
                 }, {
                     { name = "cmdline" },
                 }),

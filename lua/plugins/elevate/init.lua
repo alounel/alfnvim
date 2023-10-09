@@ -175,6 +175,7 @@ return {
                     enabled = true,
                 },
             })
+            require("telescope").load_extension("yank_history")
         end,
     },
     -- 增强选项卡范围

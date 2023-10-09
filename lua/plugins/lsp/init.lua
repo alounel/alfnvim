@@ -20,7 +20,12 @@ return {
                 lazy = true,
                 cmd = "Neoconf",
                 dependencies = { "nvim-lspconfig" },
-                config = false,
+                opts = {
+                    import = {
+                        vscode = false,
+                        coc = false,
+                    },
+                },
             },
             -- 连接mason.nvim和lspconfig的桥梁
             {
@@ -100,7 +105,7 @@ return {
                         globals = { "vim" },
                     },
                     completion = {
-                        callSnippet = "Replace",
+                        callSnippet = "Both",
                     },
                     workspace = {
                         checkThirdParrty = false,

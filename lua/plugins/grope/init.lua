@@ -21,12 +21,18 @@ return {
         },
         config = function()
             local trouble = require("trouble.providers.telescope")
+            local actions = require("telescope.actions")
+
             require("telescope").setup({
                 defaults = {
+                    prompt_prefix = " ",
+                    selection_caret = " ",
                     mappings = {
                         i = {
                             ["<M-w>"] = "which_key",
                             ["<M-a>"] = trouble.open_with_trouble,
+                            ["<C-Down>"] = actions.cycle_history_next,
+                            ["<C-Up>"] = actions.cycle_history_prev,
                         },
                         n = {
                             ["<M-a>"] = trouble.open_with_trouble,
@@ -71,7 +77,6 @@ return {
             require("telescope").load_extension("projects")
             require("telescope").load_extension("noice")
             require("telescope").load_extension("harpoon")
-            require("telescope").load_extension("yank_history")
             require("telescope").load_extension("scope")
         end,
         keys = {
