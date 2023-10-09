@@ -30,6 +30,11 @@ return {
                 routes = {
                     filter = {
                         event = "msg_show",
+                        any = {
+                            { find = "%d+L, %d+B" },
+                            { find = "; after #%d+" },
+                            { find = "; before #%d+" },
+                        },
                     },
                 },
             })
@@ -157,6 +162,18 @@ return {
         event = { "BufReadPost", "BufNewFile" },
         config = function()
             require("illuminate").configure()
+            vim.keymap.set(
+                "n",
+                "[l",
+                "<cmd>lua require('illuminate').goto_prev_reference()<CR>",
+                { desc = "Goto Prev Referencce" }
+            )
+            vim.keymap.set(
+                "n",
+                "]l",
+                "<cmd>lua require('illuminate').goto_next_reference()<CR>",
+                { desc = "Goto Next Referencce" }
+            )
         end,
         keys = {
             { "<leader>ig", "<cmd>IlluminateToggle<CR>", desc = "Toggle Illuminate" },
