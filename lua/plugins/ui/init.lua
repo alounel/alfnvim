@@ -179,6 +179,10 @@ return {
     {
         import = "plugins.extras.ui.starter",
     },
+    -- 搜索高亮条目
+    {
+        import = "plugins.extras.ui.hlslens",
+    },
     -- 样式形式
     {
         import = "plugins.extras.ui.style",

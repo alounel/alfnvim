@@ -65,31 +65,29 @@ return {
     },
     -- 字符移动
     {
-        "fedepujol/move.nvim",
+        "hinell/move.nvim",
         lazy = true,
         keys = {
-            { "<M-E>", mode = { "n", "v" }, desc = "Left Move" },
+            { "<M-j>", mode = { "n", "x" }, desc = "Down Move" },
+            { "<M-k>", mode = { "n", "x" }, desc = "Up Move" },
             { "<M-R>", mode = { "n", "v" }, desc = "Right Move" },
-            { "<M-j>", mode = { "n", "v" }, desc = "Down Move" },
-            { "<M-k>", mode = { "n", "v" }, desc = "Up Move" },
+            { "<M-E>", mode = { "n", "v" }, desc = "Left Move" },
             { "<leader>wg", desc = "Char Right Move" },
             { "<leader>wb", desc = "Char Left Move" },
         },
         config = function()
             local kopts = { noremap = true, silent = true }
-            -- Normal-mode commands
-            vim.keymap.set("n", "<M-j>", ":MoveLine(1)<CR>", kopts)
-            vim.keymap.set("n", "<M-k>", ":MoveLine(-1)<CR>", kopts)
-            vim.keymap.set("n", "<M-E>", ":MoveHChar(-1)<CR>", kopts)
-            vim.keymap.set("n", "<M-R>", ":MoveHChar(1)<CR>", kopts)
-            vim.keymap.set("n", "<leader>wg", ":MoveWord(1)<CR>", kopts)
-            vim.keymap.set("n", "<leader>wb", ":MoveWord(-1)<CR>", kopts)
+            vim.keymap.set("n", "<M-j>", ":MoveLine 1<CR>", kopts)
+            vim.keymap.set("n", "<M-k>", ":MoveLine -1<CR>", kopts)
+            vim.keymap.set("n", "<M-R>", ":MoveHchar 1", kopts)
+            vim.keymap.set("n", "<M-E>", ":MoveHchar -1<CR>", kopts)
+            vim.keymap.set("n", "<leader>wg", ":MoveWord 1<CR>", kopts)
+            vim.keymap.set("n", "<leader>wb", ":MoveWord -1<CR>", kopts)
 
-            -- Visual-mode commands
-            vim.keymap.set("v", "<M-j>", ":MoveBlock(1)<CR>", kopts)
-            vim.keymap.set("v", "<M-k>", ":MoveBlock(-1)<CR>", kopts)
-            vim.keymap.set("v", "<M-E>", ":MoveHBlock(-1)<CR>", kopts)
-            vim.keymap.set("v", "<M-R>", ":MoveHBlock(1)<CR>", kopts)
+            vim.keymap.set("x", "<M-j>", ":MoveBlock 1<CR>", kopts)
+            vim.keymap.set("x", "<M-k>", ":MoveBlock -1<CR>", kopts)
+            vim.keymap.set("v", "<M-R>", ":MoveHBlock 1<CR>", kopts)
+            vim.keymap.set("v", "<M-E>", ":MoveHBlock -1<CR>", kopts)
         end,
     },
     -- 字符替换
@@ -169,104 +167,44 @@ return {
             },
         },
     },
-    -- 搜索时显示条目
-    {
-        "kevinhwang91/nvim-hlslens",
-        lazy = true,
-        event = "VeryLazy",
-        keys = {
-            { "<leader>hg", "<cmd>HlSearchLensToggle<CR>", desc = "Toggle HlSearchLens" },
-        },
-        config = function()
-            require("scrollbar.handlers.search").setup({
-                calm_down = true,
-                nearest_only = true,
-                nearest_float_when = "always",
-            })
-            local kopts = { noremap = true, silent = true }
-            vim.keymap.set(
-                "n",
-                "n",
-                [[<Cmd>execute('normal! ' . v:count1 . 'n')<CR><Cmd>lua require('hlslens').start()<CR>]],
-                kopts
-            )
-            vim.keymap.set(
-                "n",
-                "N",
-                [[<Cmd>execute('normal! ' . v:count1 . 'N')<CR><Cmd>lua require('hlslens').start()<CR>]],
-                kopts
-            )
-            vim.keymap.set(
-                "n",
-                "*",
-                [[:let @/='\v<'.expand('<cword>').'>'<CR>:let v:searchforward=1<CR>:lua require('hlslens').start()<CR>nzv]],
-                kopts
-            )
-            vim.keymap.set(
-                "n",
-                "#",
-                [[:let @/='\v<'.expand('<cword>').'>'<CR>:let v:searchforward=0<CR>:lua require('hlslens').start()<CR>nzv]],
-                kopts
-            )
-            vim.keymap.set(
-                "n",
-                "g*",
-                [[:let @/='\v'.expand('<cword>')<CR>:let v:searchforward=1<CR>:lua require('hlslens').start()<CR>nzv]],
-                kopts
-            )
-            vim.keymap.set(
-                "n",
-                "g#",
-                [[:let @/='\v'.expand('<cword>')<CR>:let v:searchforward=0<CR>:lua require('hlslens').start()<CR>nzv]],
-                kopts
-            )
-            vim.keymap.set("n", "<Leader>hn", "<cmd>nohlsearch<CR>", kopts)
-            vim.keymap.set({ "n", "x" }, "<leader>hl", function()
-                vim.schedule(function()
-                    if require("hlslens").exportLastSearchToQuickfix() then
-                        vim.cmd("cw")
-                    end
-                end)
-                return ":noh<CR>"
-            end, { expr = true, desc = "Export Last Search To QuickFix" })
-        end,
-    },
     -- 字符、颜色、数字增量/减量
     {
         "monaqa/dial.nvim",
         lazy = true,
         keys = {
-            { "<M-b>", mode = "n", desc = "Word Dial Inc" },
-            { "<M-d>", mode = "n", desc = "Word Dial Dec" },
-            { "<M-f>", mode = "n", desc = "Color Dial Inc" },
-            { "<M-g>", mode = "n", desc = "Color Dial Dec" },
-            { "<M-z>", mode = "n", desc = "Date Dial Inc" },
-            { "<M-x>", mode = "n", desc = "Date Dial Dec" },
+            { "<M-b>", desc = "Word Dial Inc" },
+            { "<M-d>", desc = "Word Dial Dec" },
+            { "<M-f>", desc = "Color Dial Inc" },
+            { "<M-g>", desc = "Color Dial Dec" },
+            { "<M-z>", desc = "Date Dial Inc" },
+            { "<M-x>", desc = "Date Dial Dec" },
         },
         config = function()
             local augend = require("dial.augend")
+            local augnew = require("dial.augend").constant.new
+
             require("dial.config").augends:register_group({
                 -- 字符循环跳转
                 chars_dial = {
-                    augend.constant.new({ elements = { "+", "-" }, word = false, cyclic = true }),
-                    augend.constant.new({ elements = { "x", "/" }, word = false, cyclic = true }),
-                    augend.constant.new({ elements = { ">", "<" }, word = false, cyclic = true }),
-                    augend.constant.new({ elements = { "=", "!=" }, word = false, cyclic = true }),
-                    augend.constant.new({ elements = { "|", "&" }, word = false, cyclic = true }),
-                    augend.constant.new({ elements = { "||", "&&" }, word = false, cyclic = true }),
-                    augend.constant.new({ elements = { "true", "false" }, word = true, cyclic = true }),
-                    augend.constant.new({ elements = { "and", "or" }, word = true, cyclic = true }),
-                    augend.constant.new({ elements = { "if", "else" }, word = true, cyclic = true }),
-                    augend.constant.new({ elements = { "yes", "no" }, word = true, cyclic = true }),
-                    augend.constant.new({ elements = { "on", "off" }, word = true, cyclic = true }),
-                    augend.constant.new({ elements = { "left", "right" }, word = true, cyclic = true }),
-                    augend.constant.new({ elements = { "out", "in" }, word = true, cyclic = true }),
-                    augend.constant.new({ elements = { "up", "down" }, word = true, cyclic = true }),
-                    augend.constant.new({ elements = { "disable", "enable" }, word = true, cyclic = true }),
-                    augend.constant.new({ elements = { "output", "input" }, word = true, cyclic = true }),
-                    augend.constant.new({ elements = { "front", "rear" }, word = true, cyclic = true }),
-                    augend.constant.new({ elements = { "start", "end" }, word = true, cyclic = true }),
-                    augend.constant.new({
+                    augnew({ elements = { "true", "false" }, word = true, cyclic = true }),
+                    augnew({ elements = { "and", "or", "not" }, word = true, cyclic = true }),
+                    augnew({ elements = { "if", "else" }, word = true, cyclic = true }),
+                    augnew({ elements = { "yes", "no" }, word = true, cyclic = true }),
+                    augnew({ elements = { "on", "off" }, word = true, cyclic = true }),
+                    augnew({ elements = { "left", "right" }, word = true, cyclic = true }),
+                    augnew({ elements = { "out", "in" }, word = true, cyclic = true }),
+                    augnew({ elements = { "up", "down" }, word = true, cyclic = true }),
+                    augnew({ elements = { "disable", "enable" }, word = true, cyclic = true }),
+                    augnew({ elements = { "output", "input" }, word = true, cyclic = true }),
+                    augnew({ elements = { "front", "rear" }, word = true, cyclic = true }),
+                    augnew({ elements = { "start", "end" }, word = true, cyclic = true }),
+                    augnew({ elements = { "+", "-" }, word = false, cyclic = true }),
+                    augnew({ elements = { "*", "/" }, word = false, cyclic = true }),
+                    augnew({ elements = { ">", "<" }, word = false, cyclic = true }),
+                    augnew({ elements = { "=", "!=" }, word = false, cyclic = true }),
+                    augnew({ elements = { "|", "&" }, word = false, cyclic = true }),
+                    augnew({ elements = { "||", "&&" }, word = false, cyclic = true }),
+                    augnew({
                         elements = { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9" },
                         word = false,
                         cyclic = true,

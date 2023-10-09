@@ -96,8 +96,8 @@ return {
             { "<leader>rft", mode = "x", desc = "Extract Function To File" },
             { "<leader>rfv", mode = "x", desc = "Extract Variable" },
             { "<leader>rfi", mode = { "n", "x" }, desc = "Inline Variable" },
-            { "<leader>rfb", mode = "n", desc = "Extract Block" },
-            { "<leader>rfk", mode = "n", desc = "Extract Block To File" },
+            { "<leader>rfb", desc = "Extract Block" },
+            { "<leader>rfk", desc = "Extract Block To File" },
         },
         dependencies = {
             { "plenary.nvim" },

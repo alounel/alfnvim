@@ -37,18 +37,18 @@ return {
         enabled = false,
         lazy = true,
         keys = {
-            { "<M-N>", mode = { "n" }, desc = "In Cursor/Design Window/Buffer/ Create/Toggle Trail Mark" },
-            { "<M-B>", mode = { "n" }, desc = "Goto Back Trail Mark And Delete" },
-            { "<M-J>", mode = { "n" }, desc = "Goto Prev Trail Mark To Old Mark" },
-            { "<M-K>", mode = { "n" }, desc = "Goto Next Trail Mark To New Mark" },
-            { "<M-n>", mode = { "n" }, desc = "Toggle Design Buffer All Mark List" },
-            { "<M-L>", mode = { "n" }, desc = "Delete All Trail Mark" },
-            { "<M-p>", mode = { "n" }, desc = "Paste Registers To Last And Delete" },
-            { "<M-P>", mode = { "n" }, desc = "Paste Registers To All" },
-            { "<M-S>", mode = { "n" }, desc = "Cycle Set Trail Mark Select Mode" },
-            { "<M-.>", mode = { "n" }, desc = "Switch Design Trail Mark Stack" },
-            { "<M-,>", mode = { "n" }, desc = "Use Design Sort Mode Switch To Trail Mark Stack" },
-            { "<M-s>", mode = { "n" }, desc = "Cycle Set Current Trail Mark Sort Mode Stack" },
+            { "<M-N>", desc = "In Cursor/Design Window/Buffer/ Create/Toggle Trail Mark" },
+            { "<M-B>", desc = "Goto Back Trail Mark And Delete" },
+            { "<M-J>", desc = "Goto Prev Trail Mark To Old Mark" },
+            { "<M-K>", desc = "Goto Next Trail Mark To New Mark" },
+            { "<M-n>", desc = "Toggle Design Buffer All Mark List" },
+            { "<M-L>", desc = "Delete All Trail Mark" },
+            { "<M-p>", desc = "Paste Registers To Last And Delete" },
+            { "<M-P>", desc = "Paste Registers To All" },
+            { "<M-S>", desc = "Cycle Set Trail Mark Select Mode" },
+            { "<M-.>", desc = "Switch Design Trail Mark Stack" },
+            { "<M-,>", desc = "Use Design Sort Mode Switch To Trail Mark Stack" },
+            { "<M-s>", desc = "Cycle Set Current Trail Mark Sort Mode Stack" },
         },
         opts = {
             mappings = {
@@ -75,4 +75,3 @@ return {
         },
     },
 }
-
