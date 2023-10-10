@@ -84,6 +84,8 @@ vim.go.shiftround = true
 vim.go.showmatch = true
 -- 光标在行首尾时<Left><Right>可以跳到下一行
 vim.go.whichwrap = "<,>,[,]"
+-- 在视觉块模式下，允许光标在没有文字的地方移动
+vim.wo.virtualedit = "block"
 -- 补全优化
 -- -- 补全菜单背景透明
 vim.go.pumblend = 10

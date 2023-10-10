@@ -162,21 +162,18 @@ return {
             { "=P", "<Plug>(YankyPutBeforeFilter)", desc = "Put before applying a filter" },
         },
         dependencies = { "sqlite.lua" },
-        config = function()
-            require("yanky").setup({
-                ring = {
-                    history_length = 200,
-                    storage = "sqlite",
-                    storage_path = vim.fn.stdpath("data") .. "/databases/yanky.db",
-                    sync_with_numbered_registers = true,
-                    cancel_event = "update",
-                },
-                textobject = {
-                    enabled = true,
-                },
-            })
-            require("telescope").load_extension("yank_history")
-        end,
+        opts = {
+            ring = {
+                history_length = 200,
+                storage = "sqlite",
+                storage_path = vim.fn.stdpath("data") .. "/databases/yanky.db",
+                sync_with_numbered_registers = true,
+                cancel_event = "update",
+            },
+            textobject = {
+                enabled = true,
+            },
+        },
     },
     -- 增强选项卡范围
     {

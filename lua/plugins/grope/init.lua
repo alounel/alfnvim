@@ -16,7 +16,16 @@ return {
             },
             { "nvim-telescope/telescope-file-browser.nvim", lazy = true },
             { "nvim-telescope/telescope-ui-select.nvim", lazy = true },
-            { "nvim-telescope/telescope-fzf-native.nvim", build = "make", lazy = true },
+            {
+                "nvim-telescope/telescope-fzf-native.nvim",
+                build = "make",
+                lazy = true,
+                config = function()
+                    require("periph.util").on_load("telescope.nvim", function()
+                        require("telescope").load_extension("fzf")
+                    end)
+                end,
+            },
             { "plenary.nvim" },
         },
         config = function()
@@ -72,12 +81,13 @@ return {
                 },
             })
             require("telescope").load_extension("ui-select")
-            require("telescope").load_extension("notify")
             require("telescope").load_extension("file_browser")
             require("telescope").load_extension("projects")
+            require("telescope").load_extension("notify")
             require("telescope").load_extension("noice")
-            require("telescope").load_extension("harpoon")
+            -- require("telescope").load_extension("harpoon")
             require("telescope").load_extension("scope")
+            require("telescope").load_extension("yank_history")
         end,
         keys = {
             { "<leader>fsc", "<cmd>Telescope commands<CR>", desc = "Find Commands" },
@@ -95,7 +105,7 @@ return {
                 "<cmd>Telescope file_browser path=%:p:h select_buffer=true<CR>",
                 desc = "Use Current Buffer Open Browser",
             },
-            { "<leader>fss", "<cmd>Telescope harpoon marks<CR>", desc = "Find Harpoon File Marks" },
+            -- { "<leader>fss", "<cmd>Telescope harpoon marks<CR>", desc = "Find Harpoon File Marks" },
             { "<leader>fsr", "<cmd>Telescope frecency theme=ivy<CR>", desc = "Find Frecency" },
             { "<leader>fsy", "<cmd>Telescope yank_history<CR>", desc = "Find Yank History" },
             { "<leader>fst", "<cmd>Telescope scope buffers<CR>", desc = "Find Scope Buffer" },

@@ -2,6 +2,7 @@ return {
     -- 文件标记
     {
         "ThePrimeagen/harpoon",
+        enabled = false,
         lazy = true,
         keys = {
             { "<leader>mha", "<cmd>lua require('harpoon.mark').add_file()<CR>", desc = "Mark Files" },

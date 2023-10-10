@@ -185,7 +185,7 @@ return {
             { "<leader>pgf", "<cmd>Portal grapple forward<CR>", desc = "Portal Grapple Forward" },
         },
         dependencies = {
-            { "harpoon" },
+            -- { "harpoon" },
             { "grapple.nvim" },
         },
     },
