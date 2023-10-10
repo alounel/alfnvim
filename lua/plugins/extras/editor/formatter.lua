@@ -25,7 +25,7 @@ return {
                 typescript = { "biome" },
                 typescriptreact = { "biome" },
                 lua = { "stylua" },
-                markdown = { "mdformat", "injected" },
+                markdown = { "markdownlint", "injected" },
                 norg = { "injected" },
                 python = { "isort", "black" },
                 sh = { "shellharden", "shfmt" },

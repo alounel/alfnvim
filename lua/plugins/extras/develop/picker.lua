@@ -2,7 +2,6 @@ return {
     -- 图标选择器
     {
         "ziontee113/icon-picker.nvim",
-        -- enabled = false,
         lazy = true,
         keys = {
             { "<leader>ic", "<cmd>IconPickerNormal<CR>", desc = "Normal Mode Pick Icon Insert Buffer" },

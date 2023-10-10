@@ -3,42 +3,41 @@ return {
     {
         "folke/noice.nvim",
         event = "VeryLazy",
-        config = function()
-            require("noice").setup({
-                lsp = {
-                    override = {
-                        ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-                        ["vim.lsp.util.stylize_markdown"] = true,
-                        ["cmp.entry.get_documentation"] = true,
-                    },
-                    hover = {
-                        silent = true,
-                    },
+        opts = {
+            lsp = {
+                override = {
+                    ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+                    ["vim.lsp.util.stylize_markdown"] = true,
+                    ["cmp.entry.get_documentation"] = true,
                 },
-                presets = {
-                    bottom_search = true,
-                    command_palette = true,
-                    long_message_to_split = true,
-                    inc_rename = true,
-                    lsp_doc_border = true,
+                hover = {
+                    silent = true,
                 },
-                views = {
-                    split = {
-                        enter = true,
-                    },
+            },
+            presets = {
+                bottom_search = true,
+                command_palette = true,
+                long_message_to_split = true,
+                inc_rename = true,
+                lsp_doc_border = true,
+            },
+            views = {
+                split = {
+                    enter = true,
                 },
-                routes = {
-                    filter = {
-                        event = "msg_show",
-                        any = {
-                            { find = "%d+L, %d+B" },
-                            { find = "; after #%d+" },
-                            { find = "; before #%d+" },
-                        },
+            },
+            routes = {
+                filter = {
+                    event = "msg_show",
+                    any = {
+                        { find = "%d+L, %d+B" },
+                        { find = "; after #%d+" },
+                        { find = "; before #%d+" },
                     },
                 },
-            })
-        end,
+                view = "mini",
+            },
+        },
         keys = {
             {
                 "<S-Enter>",
@@ -69,12 +68,28 @@ return {
                 end,
                 desc = "Noice All",
             },
+            {
+                "<leader>ud",
+                function()
+                    require("noice").cmd("dismiss")
+                end,
+                desc = "Dismiss All",
+            },
         },
     },
-    -- 精美弹窗
+    -- 消息弹窗
     {
         "rcarriga/nvim-notify",
         event = "VeryLazy",
+        keys = {
+            {
+                "<leader>uy",
+                function()
+                    require("notify").dismiss({ silent = true, pending = true })
+                end,
+                desc = "Dismiss All Notifications",
+            },
+        },
         init = function()
             local Util = require("periph.util")
             if not Util.has("noice.nvim") then
@@ -94,7 +109,7 @@ return {
             end,
         },
     },
-    -- 显示滚动条
+    -- 滚动条
     {
         "petertriho/nvim-scrollbar",
         event = "VeryLazy",
@@ -129,32 +144,6 @@ return {
             })
         end,
     },
-    -- 彩虹括号
-    {
-        "HiPhish/rainbow-delimiters.nvim",
-        lazy = true,
-        event = { "BufReadPost", "BufNewFile" },
-        config = function()
-            local rainbow_delimiters = require("rainbow-delimiters")
-            require("rainbow-delimiters.setup")({
-                strategy = {
-                    [""] = rainbow_delimiters.strategy["global"],
-                },
-                query = {
-                    [""] = "rainbow-delimiters",
-                },
-                highlight = {
-                    "RainbowDelimiterRed",
-                    "RainbowDelimiterYellow",
-                    "RainbowDelimiterBlue",
-                    "RainbowDelimiterOrange",
-                    "RainbowDelimiterGreen",
-                    "RainbowDelimiterViolet",
-                    "RainbowDelimiterCyan",
-                },
-            })
-        end,
-    },
     -- 显示光标下相同词汇
     {
         "RRethy/vim-illuminate",
@@ -180,11 +169,7 @@ return {
             { "<leader>ib", "<cmd>IlluminateToggleBuf<CR>", desc = "Toggle Local Buffer Illuminate" },
         },
     },
-    -- 显示16进制颜色
-    {
-        import = "plugins.extras.ui.colorizer",
-    },
-    -- 显示启动界面
+    -- 启动界面
     {
         {
             import = "plugins.extras.ui.starter",
@@ -193,13 +178,28 @@ return {
             import = "plugins.extras.ui.alpha",
         },
     },
+    -- 屏保
+    {
+        import = "plugins.extras.ui.screensaver",
+    },
+    -- 彩虹括号
+    {
+        import = "plugins.extras.ui.rainbow",
+    },
+    -- 16进制颜色
+    {
+        import = "plugins.extras.ui.colorizer",
+    },
     -- 搜索高亮条目
     {
         import = "plugins.extras.ui.hlslens",
     },
-    -- 样式形式
+    -- 缩进样式
     {
-        import = "plugins.extras.ui.style",
+        import = "plugins.extras.ui.indentstyle",
+    },
+    -- 注释美化
+    {
+        import = "plugins.extras.ui.annotbox",
     },
 }
-

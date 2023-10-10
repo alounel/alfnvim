@@ -1,4 +1,3 @@
--- 字符处理: 跳转、修改、转换、搜索
 return {
     -- 跳转
     {
@@ -302,6 +301,10 @@ return {
     -- 参数替换
     {
         import = "plugins.extras.editor.replacer",
+    },
+    -- 自动处理工具
+    {
+        import = "plugins.extras.editor.autotools",
     },
     -- 文本标记
     {

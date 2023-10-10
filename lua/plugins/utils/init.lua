@@ -99,6 +99,7 @@ return {
                 ["g"] = { name = "+goto" },
                 ["]"] = { name = "+next" },
                 ["["] = { name = "+prev" },
+                ["<leader><tab>"] = { name = "+tablist" },
                 ["<leader>a"] = { name = "+outline" },
                 ["<leader>b"] = { name = "+buffer" },
                 ["<leader>c"] = { name = "+command" },
@@ -226,10 +227,6 @@ return {
             { "<leader>ez", "<cmd>ZenMode<CR>", desc = "Zen Mode" },
         },
         opts = {},
-    },
-    -- 自动动作完成
-    {
-        import = "plugins.extras.fulfill",
     },
     -- 平滑滚动
     {

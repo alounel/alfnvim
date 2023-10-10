@@ -61,29 +61,7 @@ return {
             { "ge", "<cmd>lua require('spider').motion('ge')<CR>", mode = { "n", "o", "x" }, desc = "Spider-ge" },
         },
     },
-    -- 添加内联注释以忽略规则
-    {
-        "chrisgrieser/nvim-rulebook",
-        lazy = true,
-        keys = {
-            {
-                "<leader>ri",
-                function()
-                    require("rulebook").ignoreRule()
-                end,
-                desc = "Rule Ignore",
-            },
-            {
-                "<leader>rl",
-                function()
-                    require("rulebook").lookupRule()
-                end,
-                desc = "Rule Lookup",
-            },
-        },
-        dependencies = { "dressing.nvim" },
-    },
-    -- 代替substitue
+    -- 代替substitute
     {
         "chrisgrieser/nvim-alt-substitute",
         lazy = true,
@@ -177,11 +155,6 @@ return {
     },
     -- 增强选项卡范围
     {
-        "tiagovla/scope.nvim",
-        lazy = true,
-        keys = {
-            { "<leader>sp", ":ScopeMoveBuf", desc = "Move Current Buffer To The Specified Tab" },
-        },
-        opts = {},
+        import = "plugins.extras.elevate.scope",
     },
 }

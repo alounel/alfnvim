@@ -64,7 +64,3 @@ require("lazy").setup("plugins", settings)
 
 -- 打开lazy界面
 vim.keymap.set({ "n", "v" }, "<leader>ma", "<cmd>Lazy<CR>", { desc = "Open Lazy Menu" })
--- 查看lazygit日志
-vim.keymap.set("n", "<leader>ll", function()
-    require("lazy.util").float_term({ "lazygit", "log" })
-end, { desc = "Show Lazygit Log" })
