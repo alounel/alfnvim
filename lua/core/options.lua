@@ -3,6 +3,8 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 -- 自动缩进策略
 vim.bo.filetype = "plugin"
+-- 控制隐藏文本级别
+vim.wo.conceallevel = 3
 -- 防止包裹
 vim.wo.wrap = false
 -- 默认新窗口在右和下
