@@ -50,14 +50,13 @@ return {
                 [[:let @/='\v'.expand('<cword>')<CR>:let v:searchforward=0<CR>:lua require('hlslens').start()<CR>nzv]],
                 kopts
             )
-            vim.keymap.set("n", "<Leader>hn", "<cmd>nohlsearch<CR>", kopts)
             vim.keymap.set({ "n", "x" }, "<leader>hl", function()
                 vim.schedule(function()
                     if require("hlslens").exportLastSearchToQuickfix() then
                         vim.cmd("cw")
                     end
                 end)
-                return ":noh<CR>"
+                return "<cmd>noh<CR>"
             end, { expr = true, desc = "Export Last Search To QuickFix" })
         end,
     },

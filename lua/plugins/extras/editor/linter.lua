@@ -22,7 +22,6 @@ return {
                             "shellcheck",
                             "jsonlint",
                             "proselint",
-                            "editorconfig_checker",
                         },
                         automatic_installation = false,
                     })

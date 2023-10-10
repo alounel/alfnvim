@@ -36,3 +36,4 @@ vim.keymap.set("v", ">", ">gv")
 -- search
 vim.keymap.set("n", "<leader>se", "/\\<lt>\\><left><left>")
 vim.keymap.set("n", "<leader>ss", vim.show_pos, { desc = "Inspect Pos" })
+vim.keymap.set("n", "<leader>hn", "<cmd>nohlsearch<CR>", { desc = "Close Search Highlight" })

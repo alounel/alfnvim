@@ -11,8 +11,6 @@ return {
             "typescript",
             "javascriptreact",
             "typescriptreact",
-            "jsx",
-            "tsx",
         },
         dependencies = { "nvim-treesitter" },
         opts = {
@@ -24,8 +22,6 @@ return {
                 "typescript",
                 "javascriptreact",
                 "typescriptreact",
-                "jsx",
-                "tsx",
             },
         },
     },
