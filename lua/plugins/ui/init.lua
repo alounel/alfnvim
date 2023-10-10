@@ -186,7 +186,12 @@ return {
     },
     -- 显示启动界面
     {
-        import = "plugins.extras.ui.starter",
+        {
+            import = "plugins.extras.ui.starter",
+        },
+        {
+            import = "plugins.extras.ui.alpha",
+        },
     },
     -- 搜索高亮条目
     {
@@ -197,3 +202,4 @@ return {
         import = "plugins.extras.ui.style",
     },
 }
+

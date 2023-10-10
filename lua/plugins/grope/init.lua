@@ -11,8 +11,8 @@ return {
                 lazy = true,
                 config = function()
                     require("telescope").load_extension("frecency")
+                    vim.keymap.set("n", "<leader>fv", "<cmd>FrecencyValidate<CR>", { desc = "Clean Frecency DB" })
                 end,
-                dependencies = { "sqlite.lua" },
             },
             { "nvim-telescope/telescope-file-browser.nvim", lazy = true },
             { "nvim-telescope/telescope-ui-select.nvim", lazy = true },

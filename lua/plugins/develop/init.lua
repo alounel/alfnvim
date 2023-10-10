@@ -8,12 +8,6 @@ return {
             require("project_nvim").setup()
         end,
     },
-    -- 从终端缓冲区打开文件
-    {
-        "willothy/flatten.nvim",
-        event = "VimEnter",
-        opts = {},
-    },
     -- QuickFix窗口可编辑
     {
         "gabrielpoca/replacer.nvim",
@@ -169,6 +163,10 @@ return {
     {
         import = "plugins.extras.develop.process",
     },
+    -- 终端缓冲区打开文件
+    {
+        import = "plugins.extras.develop.flatten",
+    },
     -- 优雅的注释
     {
         import = "plugins.extras.develop.comments",
@@ -179,6 +177,6 @@ return {
     },
     -- 选择器
     {
-        import = "plugins.extras.develop.pick",
+        import = "plugins.extras.develop.picker",
     },
 }

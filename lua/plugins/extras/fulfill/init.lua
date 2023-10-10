@@ -10,7 +10,8 @@ return {
             condition = function(buf)
                 local fn = vim.fn
                 local utils = require("auto-save.utils.data")
-                local exclude_filetypes = { "neo-tree", "Trouble", "Outline", "aerial", "sagaoutline", "starter" }
+                local exclude_filetypes =
+                    { "neo-tree", "Trouble", "Outline", "aerial", "sagaoutline", "starter", "alpha", "qf" }
 
                 -- 不保存指定文件类型
                 if utils.not_in(fn.getbufvar(buf, "&filetype"), exclude_filetypes) then
@@ -26,11 +27,18 @@ return {
         lazy = true,
         event = "BufReadPost",
         opts = {
-            --这些 buffer 类型不记录光标位置
-            ignore_buftype = { "quickfix", "nofile", "help", "terminal", "directory", "scratch", "unlisted" },
-            -- 这些文件类型不记录光标位置
-            ignore_filetype = { "gitcommit", "gitrebase", "svn", "hgcommit", "starter" },
-            -- 代码折叠时，恢复光标时展开
+            ignore_buftype = {
+                "acwrite",
+                "quickfix",
+                "nofile",
+                "nowrite",
+                "help",
+                "terminal",
+                "popup",
+                "main",
+                "prompt",
+            },
+            ignore_filetype = { "gitcommit", "gitrebase", "svn", "hgcommit", "starter", "alpha" },
             open_folds = true,
         },
     },

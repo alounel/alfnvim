@@ -1,3 +1,11 @@
+local function get_args(config)
+    local args = type(config.args) == "function" and (config.args() or {}) or config.args or {}
+    config.args = function()
+        local new_args = vim.fn.input("Run with args: ", table.concat(args, " "))
+        return vim.split(vim.fn.expand(new_args) --[[@as string]], " ")
+    end
+    return config
+end
 return {
     {
         "mfussenegger/nvim-dap",
@@ -9,6 +17,13 @@ return {
                     require("dap").continue()
                 end,
                 desc = "Start Debug Or Gogo Next Continue",
+            },
+            {
+                "<leader>dn",
+                function()
+                    require("dap").continue({ before = get_args })
+                end,
+                desc = "Run with Args",
             },
             {
                 "<leader>di",
