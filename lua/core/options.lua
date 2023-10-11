@@ -55,6 +55,8 @@ vim.go.clipboard = "unnamedplus"
 vim.go.backup = false
 vim.go.writebackup = false
 vim.bo.swapfile = false
+vim.bo.undofile = true
+vim.bo.undolevels = 10000
 -- 显示特殊字符
 vim.wo.list = true
 -- 使用不可见字符的显示方式

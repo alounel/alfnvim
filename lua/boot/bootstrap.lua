@@ -1,10 +1,25 @@
-local settings = {
-    -- dev = {
-    --     path = vim.fn.stdpath("data") .. "/local-plugin",
-    -- },
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+    vim.fn.system({
+        "git",
+        "clone",
+        "--filter=blob:none",
+        "https://github.com/folke/lazy.nvim.git",
+        "--branch=stable",
+        lazypath,
+    })
+end
+vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
+
+require("lazy").setup({
+    spec = {
+        { import = "plugins" },
+    },
+    defaults = {
+        version = false,
+    },
     install = {
-        missing = true,
-        colorscheme = { "nightfox" },
+        colorscheme = { "nightfox", "habamax" },
     },
     ui = {
         border = "rounded",
@@ -14,12 +29,6 @@ local settings = {
             not_loaded = "",
         },
     },
-    -- checker = {
-    --     enabled = true,
-    --     concurrency = 10,
-    --     notify = true,
-    --     frequency = 7200,
-    -- },
     performance = {
         rtp = {
             disabled_plugins = {
@@ -59,8 +68,5 @@ local settings = {
             },
         },
     },
-}
-require("lazy").setup("plugins", settings)
-
--- 打开lazy界面
-vim.keymap.set({ "n", "v" }, "<leader>ma", "<cmd>Lazy<CR>", { desc = "Open Lazy Menu" })
+})
+vim.keymap.set({ "n", "v" }, "<leader>ma", "<cmd>Lazy<CR>", { desc = "Open Lazy Manager Menu" })

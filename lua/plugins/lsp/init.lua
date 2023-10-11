@@ -19,13 +19,8 @@ return {
                 "folke/neoconf.nvim",
                 lazy = true,
                 cmd = "Neoconf",
+                config = false,
                 dependencies = { "nvim-lspconfig" },
-                opts = {
-                    import = {
-                        vscode = false,
-                        coc = false,
-                    },
-                },
             },
             -- 连接mason.nvim和lspconfig的桥梁
             {
@@ -61,6 +56,13 @@ return {
                 severity_sort = true,
             })
             vim.lsp.set_log_level("error")
+
+            local Util = require("periph.util")
+
+            if Util.has("neoconf.nvim") then
+                local plugin = require("lazy.core.config").spec.plugins["neoconf.nvim"]
+                require("neoconf").setup(require("lazy.core.plugin").values(plugin, "opts", false))
+            end
 
             local lspconfig = require("lspconfig")
             local capabilities = require("cmp_nvim_lsp").default_capabilities()

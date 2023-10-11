@@ -101,8 +101,4 @@ return {
     {
         import = "plugins.extras.develop.regex",
     },
-    -- 恢复撤销数据
-    {
-        import = "plugins.extras.develop.fundo",
-    },
 }

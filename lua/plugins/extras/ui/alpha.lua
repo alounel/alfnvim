@@ -16,7 +16,7 @@ return {
             dashboard.section.buttons.val = {
                 dashboard.button("f", " " .. " Find file", "<cmd> Telescope find_files <CR>"),
                 dashboard.button("n", " " .. " New file", "<cmd> ene <BAR> startinsert <CR>"),
-                dashboard.button("r", " " .. " Recent files", "<cmd> Telescope frecency <CR>"),
+                dashboard.button("r", " " .. " Recent files", "<cmd> Telescope oldfiles <CR>"),
                 dashboard.button("g", " " .. " Find text", "<cmd> Telescope live_grep <CR>"),
                 dashboard.button("p", " " .. " Find projects", "<cmd> Telescope projects <CR>"),
                 dashboard.button("s", " " .. " Restore Session", [[<cmd> lua require("persistence").load() <CR>]]),

@@ -1,3 +1,4 @@
+local Util = require("periph.util")
 return {
     -- telescope模糊查找
     {
@@ -11,17 +12,20 @@ return {
                 build = "make",
                 lazy = true,
                 config = function()
-                    require("periph.util").on_load("telescope.nvim", function()
+                    Util.on_load("telescope.nvim", function()
                         require("telescope").load_extension("fzf")
                     end)
                 end,
             },
+            -- 暂时和noice.nvim插件冲突 2023-10-11,23:12
             {
                 "nvim-telescope/telescope-frecency.nvim",
+                enabled = false,
                 lazy = true,
                 config = function()
-                    require("telescope").load_extension("frecency")
-                    vim.keymap.set("n", "<leader>fv", "<cmd>FrecencyValidate<CR>", { desc = "Clean Frecency DB" })
+                    Util.on_load("telescope.nvim", function()
+                        require("telescope").load_extension("frecency")
+                    end)
                 end,
             },
             { "nvim-telescope/telescope-file-browser.nvim", lazy = true },
@@ -29,8 +33,24 @@ return {
             { "plenary.nvim" },
         },
         config = function()
-            local trouble = require("trouble.providers.telescope")
             local actions = require("telescope.actions")
+
+            local open_with_trouble = function(...)
+                return require("trouble.providers.telescope").open_with_trouble(...)
+            end
+            local open_selected_with_trouble = function(...)
+                return require("trouble.providers.telescope").open_selected_with_trouble(...)
+            end
+            local find_files_no_ignore = function()
+                local action_state = require("telescope.actions.state")
+                local line = action_state.get_current_line()
+                Util.telescope("find_files", { no_ignore = true, default_text = line })()
+            end
+            local find_files_with_hidden = function()
+                local action_state = require("telescope.actions.state")
+                local line = action_state.get_current_line()
+                Util.telescope("find_files", { hidden = true, default_text = line })()
+            end
 
             require("telescope").setup({
                 defaults = {
@@ -39,12 +59,17 @@ return {
                     mappings = {
                         i = {
                             ["<M-w>"] = "which_key",
-                            ["<M-a>"] = trouble.open_with_trouble,
+                            ["<M-t>"] = open_with_trouble,
+                            ["<M-a>"] = open_selected_with_trouble,
+                            ["<a-i>"] = find_files_no_ignore,
+                            ["<a-h>"] = find_files_with_hidden,
                             ["<C-Down>"] = actions.cycle_history_next,
                             ["<C-Up>"] = actions.cycle_history_prev,
+                            ["<C-F>"] = actions.preview_scrolling_down,
+                            ["<C-B>"] = actions.preview_scrolling_up,
                         },
                         n = {
-                            ["<M-a>"] = trouble.open_with_trouble,
+                            ["q"] = actions.close,
                         },
                     },
                 },
@@ -65,18 +90,7 @@ return {
                         case_mode = "smart_case",
                     },
                     ["ui-select"] = {
-                        require("telescope.themes").get_dropdown({
-                            -- cmake-tools插件需要用到
-                            -- width = 0.8,
-                            -- previewer = false,
-                            -- prompt_title = false,
-                            -- borderchars = {
-                            --     { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
-                            --     prompt = { "─", "│", " ", "│", "┌", "┐", "│", "│" },
-                            --     results = { "─", "│", "─", "│", "├", "┤", "┘", "└" },
-                            --     preview = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
-                            -- }
-                        }),
+                        require("telescope.themes").get_dropdown({}),
                     },
                 },
             })
@@ -92,21 +106,27 @@ return {
         keys = {
             { "<leader>fsc", "<cmd>Telescope commands<CR>", desc = "Find Commands" },
             { "<leader>fsi", "<cmd>Telescope registers<CR>", desc = "Find Registers" },
+            { "<leader>fs<space>", Util.telescope("files"), desc = "Find Files (root dir)" },
             { "<leader>fsw", "<cmd>Telescope find_files theme=ivy<CR>", desc = "Find Files" },
             { "<leader>fsg", "<cmd>Telescope live_grep theme=ivy<CR>", desc = "Grep Word" },
-            { "<leader>fsb", "<cmd>Telescope buffers theme=ivy<CR>", desc = "Find Buffers" },
+            { "<leader>fsb", "<cmd>Telescope buffers show_all_buffer=true theme=ivy<CR>", desc = "Find Buffers" },
             { "<leader>fsh", "<cmd>Telescope help_tags theme=ivy<CR>", desc = "Find Help Tags" },
             { "<leader>fso", "<cmd>Telescope oldfiles theme=ivy<CR>", desc = "Find Old Files" },
             { "<leader>fsm", "<cmd>Telescope marks theme=ivy<CR>", desc = "Find Marks" },
+            {
+                "<leader>fsd",
+                Util.telescope("colorscheme", { enable_preview = true }),
+                desc = "Colorscheme with preview",
+            },
             { "<leader>fsn", "<cmd>Telescope notify theme=ivy<CR>", desc = "Notify History" },
             { "<leader>fsp", "<cmd>Telescope projects<CR>", desc = "Find Projects" },
             {
                 "<leader>fse",
                 "<cmd>Telescope file_browser path=%:p:h select_buffer=true<CR>",
-                desc = "Use Current Buffer Open Browser",
+                desc = "Use Buffer Location Open Browser",
             },
             { "<leader>fss", "<cmd>Telescope harpoon marks<CR>", desc = "Find Harpoon File Marks" },
-            { "<leader>fsr", "<cmd>Telescope frecency theme=ivy<CR>", desc = "Find Frecency" },
+            -- { "<leader>fsr", "<cmd>Telescope frecency theme=ivy<CR>", desc = "Find Frecency" },
             { "<leader>fsy", "<cmd>Telescope yank_history<CR>", desc = "Find Yank History" },
             { "<leader>fst", "<cmd>Telescope scope buffers<CR>", desc = "Find Scope Buffer" },
         },
