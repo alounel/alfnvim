@@ -17,12 +17,7 @@ return {
                 diagnostics = "nvim_lsp",
                 separator_style = "thin",
                 diagnostics_indicator = function(_, _, diag)
-                    local diagnostics_icons = {
-                        Error = " ",
-                        Warn = " ",
-                        Hint = " ",
-                        Info = " ",
-                    }
+                    local diagnostics_icons = require("core.magic").icons.diagnostics
                     local ret = (diag.error and diagnostics_icons.Error .. diag.error .. " " or "")
                         .. (diag.warning and diagnostics_icons.Warn .. diag.warning or "")
                     return vim.trim(ret)

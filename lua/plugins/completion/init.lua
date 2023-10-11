@@ -21,7 +21,6 @@ return {
         "hrsh7th/nvim-cmp",
         event = { "InsertEnter", "CmdlineEnter" },
         dependencies = {
-            { "onsails/lspkind.nvim", lazy = true },
             { "saadparwaiz1/cmp_luasnip", lazy = true },
             { "hrsh7th/cmp-nvim-lsp", lazy = true },
             { "hrsh7th/cmp-buffer", lazy = true },
@@ -72,17 +71,26 @@ return {
                     { name = "spell" },
                 }),
                 -- 格式化补全菜单
+                -- formatting = {
+                --     format = require("lspkind").cmp_format({
+                --         mode = "symbol_text",
+                --         with_text = true,
+                --         maxwidth = 50,
+                --         ellipsis_char = "...",
+                --         before = function(entry, vim_item)
+                --             vim_item.menu = "[" .. string.upper(entry.source.name) .. "]"
+                --             return vim_item
+                --         end,
+                --     }),
+                -- },
                 formatting = {
-                    format = require("lspkind").cmp_format({
-                        mode = "symbol_text",
-                        with_text = true,
-                        maxwidth = 50,
-                        ellipsis_char = "...",
-                        before = function(entry, vim_item)
-                            vim_item.menu = "[" .. string.upper(entry.source.name) .. "]"
-                            return vim_item
-                        end,
-                    }),
+                    format = function(_, item)
+                        local icons = require("core.magic").icons.kinds
+                        if icons[item.kind] then
+                            item.kind = icons[item.kind] .. item.kind
+                        end
+                        return item
+                    end,
                 },
                 experimental = {
                     ghost_text = {

@@ -46,6 +46,20 @@ return {
             },
         },
         config = function()
+            vim.diagnostic.config({
+                virtual_text = {
+                    prefix = "●",
+                    source = "always",
+                },
+                float = {
+                    source = "always",
+                },
+                signs = true,
+                underline = true,
+                update_in_insert = true,
+                severity_sort = true,
+            })
+
             local lspconfig = require("lspconfig")
             local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
