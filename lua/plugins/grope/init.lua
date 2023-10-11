@@ -85,7 +85,7 @@ return {
             require("telescope").load_extension("projects")
             require("telescope").load_extension("notify")
             require("telescope").load_extension("noice")
-            -- require("telescope").load_extension("harpoon")
+            require("telescope").load_extension("harpoon")
             require("telescope").load_extension("scope")
             require("telescope").load_extension("yank_history")
         end,
@@ -105,7 +105,7 @@ return {
                 "<cmd>Telescope file_browser path=%:p:h select_buffer=true<CR>",
                 desc = "Use Current Buffer Open Browser",
             },
-            -- { "<leader>fss", "<cmd>Telescope harpoon marks<CR>", desc = "Find Harpoon File Marks" },
+            { "<leader>fss", "<cmd>Telescope harpoon marks<CR>", desc = "Find Harpoon File Marks" },
             { "<leader>fsr", "<cmd>Telescope frecency theme=ivy<CR>", desc = "Find Frecency" },
             { "<leader>fsy", "<cmd>Telescope yank_history<CR>", desc = "Find Yank History" },
             { "<leader>fst", "<cmd>Telescope scope buffers<CR>", desc = "Find Scope Buffer" },

@@ -2,7 +2,6 @@ return {
     -- 文件标记
     {
         "ThePrimeagen/harpoon",
-        enabled = false,
         lazy = true,
         keys = {
             { "<leader>mha", "<cmd>lua require('harpoon.mark').add_file()<CR>", desc = "Mark Files" },
@@ -31,6 +30,9 @@ return {
             { "<leader>mgg", "<cmd>GrappleToggle<CR>", desc = "Toggle Grapple" },
         },
         dependencies = { "plenary.nvim" },
+        opts = {
+            log_level = "error",
+        },
     },
     -- 文本字符标记
     {

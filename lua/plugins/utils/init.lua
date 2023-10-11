@@ -128,7 +128,7 @@ return {
                 ["z"] = { name = "+fold" },
                 ["]"] = { name = "+next" },
                 ["["] = { name = "+prev" },
-                ["<leader><tab>"] = { name = "+tablist" },
+                ["<leader><tab>"] = { name = "+tabs" },
                 ["<leader>a"] = { name = "+outline" },
                 ["<leader>b"] = { name = "+buffer" },
                 ["<leader>c"] = { name = "+command" },
@@ -214,9 +214,11 @@ return {
             { "<leader>pgb", "<cmd>Portal grapple backward<CR>", desc = "Portal Grapple Backward" },
             { "<leader>pgf", "<cmd>Portal grapple forward<CR>", desc = "Portal Grapple Forward" },
         },
-        dependencies = {
-            -- { "harpoon" },
-            { "grapple.nvim" },
+        opts = {
+            log_level = "error",
+            window_options = {
+                border = "rounded",
+            },
         },
     },
     -- 改进缓冲区删除
@@ -239,7 +241,7 @@ return {
         "folke/twilight.nvim",
         lazy = true,
         keys = {
-            { "<leader>el", "<cmd>Twilight<CR>", desc = "Inactive Code Shade" },
+            { "<leader>el", "<cmd>Twilight<CR>", desc = "Non active Code Shade" },
         },
         opts = {
             dimming = {

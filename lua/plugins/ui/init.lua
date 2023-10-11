@@ -21,11 +21,6 @@ return {
                 inc_rename = true,
                 lsp_doc_border = true,
             },
-            views = {
-                split = {
-                    enter = true,
-                },
-            },
             routes = {
                 filter = {
                     event = "msg_show",
