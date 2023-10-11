@@ -49,22 +49,4 @@ return {
             require("kanagawa").load()
         end,
     },
-    {
-        "catppuccin/nvim",
-        name = "catppuccin",
-        lazy = true,
-        opts = {
-            styles = {
-                comments = { "italic" },
-                functions = { "bold" },
-                keywords = { "bold" },
-            },
-            integrations = {
-                alpha = true,
-                cmp = true,
-                flash = true,
-                gitsigns = true,
-            },
-        },
-    },
 }
