@@ -21,6 +21,8 @@ return {
         },
         config = function()
             local Terminal = require("toggleterm.terminal").Terminal
+
+            -- Lazygit终端
             local lazygit = Terminal:new({
                 cmd = "lazygit",
                 hidden = true,
@@ -47,6 +49,7 @@ return {
                 lazygit:toggle()
             end
 
+            -- htop终端
             local htop = Terminal:new({
                 cmd = "htop",
                 hidden = true,
@@ -54,12 +57,25 @@ return {
                 float_opts = {
                     border = "curved",
                 },
+                on_open = function(term)
+                    vim.cmd("startinsert!")
+                    vim.api.nvim_buf_set_keymap(
+                        term.bufnr,
+                        "n",
+                        "q",
+                        "<cmd>close<CR>",
+                        { noremap = true, silent = true }
+                    )
+                end,
+                on_close = function(term)
+                    vim.cmd("startinsert!")
+                end,
             })
-
             function _htop_toggle()
                 htop:toggle()
             end
 
+            -- procs终端
             local procs = Terminal:new({
                 cmd = "procs -t",
                 hidden = true,
@@ -67,8 +83,20 @@ return {
                 float_opts = {
                     border = "curved",
                 },
+                on_open = function(term)
+                    vim.cmd("startinsert!")
+                    vim.api.nvim_buf_set_keymap(
+                        term.bufnr,
+                        "n",
+                        "q",
+                        "<cmd>close<CR>",
+                        { noremap = true, silent = true }
+                    )
+                end,
+                on_close = function(term)
+                    vim.cmd("startinsert!")
+                end,
             })
-
             function _procs_toggle()
                 procs:toggle()
             end
@@ -147,7 +175,7 @@ return {
                 ["<leader>w"] = { name = "+window" },
                 ["<leader>wf"] = { name = "+focus" },
                 ["<leader>x"] = { name = "+diagnostics/quickfix" },
-                ["<leader>xp"] = { name = "+replacer" },
+                ["<leader>xp"] = { name = "+editquickfix" },
                 ["<leader>y"] = { name = "+operate/yank" },
             },
         },

@@ -33,11 +33,11 @@ return {
             -- 诊断跳转，<c-o>跳回
             { "[e", "<cmd>Lspsaga diagnostic_jump_prev<CR>", desc = "Diagnostics Jump Prev" },
             { "]e", "<cmd>Lspsaga diagnostic_jump_next<CR>", desc = "Diagnostics Jump Next" },
-            { "<leader>lga", "<cmd>Lspsaga code_action<CR>", desc = "Lspsaga Show Code Action" },
+            { "<leader>lga", "<cmd>Lspsaga code_action<CR>", desc = "Show Code Action" },
             { "<leader>lgb", "<cmd>Lspsaga show_buf_diagnostics<CR>", desc = "Show Buffer Diagnostics" },
             { "<leader>lgd", "<cmd>Lspsaga show_cursor_diagnostics<CR>", desc = "Show Cursor Local Diagnostics" },
-            { "<leader>lgr", "<cmd>Lspsaga rename<CR>", desc = "Lspsaga Rename" },
-            { "<leader>lgp", "<cmd>Lspsaga rename ++project<CR>", desc = "Lspsaga Rename Project" },
+            { "<leader>lgr", "<cmd>Lspsaga rename<CR>", desc = "Rename" },
+            { "<leader>lgp", "<cmd>Lspsaga rename ++project<CR>", desc = "Rename Project" },
             { "<leader>lgf", "<cmd>Lspsaga peek_definition<CR>", desc = "Peek Definition" },
             { "<leader>lgg", "<cmd>Lspsaga goto_definition<CR>", desc = "Goto Definition" },
             { "<leader>lgy", "<cmd>Lspsaga peek_type_definition<CR>", desc = "Peek Type Definition,<C-t> BackWard" },
@@ -45,10 +45,10 @@ return {
             { "<leader>lgh", "<cmd>Lspsaga hover_doc<CR>", desc = "Show Hover Doc" },
             { "<leader>lgk", "<cmd>Lspsaga hover_doc ++keep<CR>", desc = "Hover In Upper Right Corner" },
             { "<leader>lgl", "<cmd>Lspsaga show_line_diagnostics<CR>", desc = "Show Line Diagnostics" },
-            { "<leader>lgo", "<cmd>Lspsaga outline<CR>", desc = "Lspsaga Toggle Outline" },
+            { "<leader>lgo", "<cmd>Lspsaga outline<CR>", desc = "Toggle Outline" },
             { "<Leader>lgi", "<cmd>Lspsaga incoming_calls<CR>", desc = "Call Incoming" },
             { "<Leader>lgt", "<cmd>Lspsaga outgoing_calls<CR>", desc = "Call Outgoing" },
-            { "<leader>lgm", "<cmd>Lspsaga term_toggle<CR>", desc = "Lspsaga Float Terminal" },
+            { "<leader>lgm", "<cmd>Lspsaga term_toggle<CR>", desc = "Float Terminal" },
             { "<leader>lgn", "<cmd>Lspsaga finder<CR>", desc = "Search Finder Definition,<C-t> BackWard" },
         },
         dependencies = {
@@ -113,12 +113,12 @@ return {
         lazy = true,
         keys = {
             { "<leader>ag", "<cmd>AerialToggle<CR>", desc = "Toggle Aerial" },
-            { "<leader>ao", "<cmd>AerialOpenAll<CR>", desc = "Open All Aerial" },
-            { "<leader>ac", "<cmd>AerialCloseAll<CR>", desc = "Close All Aerial" },
+            { "<leader>an", "<cmd>AerialNavToggle<CR>", desc = "Toggle Aerial Navigator" },
             { "<leader>ai", "<cmd>AerialInfo<CR>", desc = "Show Aerial Info" },
         },
         config = function()
             require("aerial").setup({
+                backends = { "lsp", "treesitter" },
                 layout = {
                     min_width = 20,
                     default_direction = "prefer_left",
@@ -127,8 +127,8 @@ return {
                 highlight_on_hover = true,
                 autojump = true,
                 on_attach = function(bufnr)
-                    vim.keymap.set("n", "[l", "<cmd>AeriaPrev<CR>", { buffer = bufnr })
-                    vim.keymap.set("n", "]l", "<cmd>AeriaNext<CR>", { buffer = bufnr })
+                    vim.keymap.set("n", "[a", "<cmd>AerialPrev<CR>", { buffer = bufnr, desc = "Goto Prev Aerial" })
+                    vim.keymap.set("n", "]a", "<cmd>AerialNext<CR>", { buffer = bufnr, desc = "Goto Next Aerial" })
                 end,
             })
         end,

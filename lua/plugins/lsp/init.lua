@@ -48,15 +48,16 @@ return {
         config = function()
             vim.diagnostic.config({
                 virtual_text = {
+                    spacing = 4,
                     prefix = "●",
-                    source = "always",
+                    source = "if_many",
                 },
                 float = {
-                    source = "always",
+                    source = "if_many",
                 },
                 signs = true,
                 underline = true,
-                update_in_insert = true,
+                update_in_insert = false,
                 severity_sort = true,
             })
 
@@ -136,6 +137,22 @@ return {
                     },
                 },
                 capabilities = json_capabilities,
+                on_attach = function(bufnr)
+                    vim.api.nvim_create_autocmd("CursorHold", {
+                        buffer = bufnr,
+                        callback = function()
+                            local opts = {
+                                focusable = false,
+                                close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
+                                border = "rounded",
+                                source = "always",
+                                prefix = " ",
+                                scope = "cursor",
+                            }
+                            vim.diagnostic.open_float(nil, opts)
+                        end,
+                    })
+                end,
             })
             lspconfig["yamlls"].setup({
                 settings = {
@@ -156,76 +173,71 @@ return {
                     capabilities = capabilities,
                 })
             end
-            vim.keymap.set("n", "<leader>lf", vim.diagnostic.open_float, { desc = "Open Float In Vim Diagnostic" })
-            vim.keymap.set("n", "<leader>lp", vim.diagnostic.goto_prev, { desc = "Goto Prev In Vim Diagnostic" })
-            vim.keymap.set("n", "<leader>ln", vim.diagnostic.goto_next, { desc = "Goto Next In Vim Diagnostic" })
-            vim.keymap.set("n", "<leader>lq", vim.diagnostic.setloclist, { desc = "Setloclist In Vim Diagnostic" })
+            vim.keymap.set("n", "<leader>lw", vim.diagnostic.open_float, { desc = "Float Window View Diagnostic" })
+            vim.keymap.set("n", "[n", vim.diagnostic.goto_prev, { desc = "Goto Prev Diagnostic Location" })
+            vim.keymap.set("n", "]n", vim.diagnostic.goto_next, { desc = "Goto Next Diagnostic Location" })
+            vim.keymap.set("n", "<leader>lq", vim.diagnostic.setloclist, { desc = "QuickFix Window View Diagnostic" })
             vim.api.nvim_create_autocmd("LspAttach", {
                 group = vim.api.nvim_create_augroup("UserLspConifg", {}),
                 callback = function(ev)
                     vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
                     vim.keymap.set(
-                        "n",
-                        "<leader>lce",
-                        vim.lsp.buf.declaration,
-                        { buffer = ev.buf, desc = "Lsp Declaration" }
-                    )
-                    vim.keymap.set(
-                        "n",
-                        "<leader>lcd",
-                        vim.lsp.buf.definition,
-                        { buffer = ev.buf, desc = "Lsp Show Definition" }
-                    )
-                    vim.keymap.set("n", "<leader>lch", vim.lsp.buf.hover, { buffer = ev.buf, desc = "Lsp Show Hover" })
-                    vim.keymap.set(
-                        "n",
-                        "<leader>lci",
-                        vim.lsp.buf.implementation,
-                        { buffer = ev.buf, desc = "Lsp Implementation" }
-                    )
-                    vim.keymap.set(
-                        "n",
-                        "<leader>lcs",
-                        vim.lsp.buf.signature_help,
-                        { buffer = ev.buf, desc = "Lsp Signature Help" }
-                    )
-                    vim.keymap.set(
-                        "n",
-                        "<leader>lca",
-                        vim.lsp.buf.add_workspace_folder,
-                        { buffer = ev.buf, desc = "Lsp Add Workspace Folder" }
-                    )
-                    vim.keymap.set(
-                        "n",
-                        "<leader>lcm",
-                        vim.lsp.buf.remove_workspace_folder,
-                        { buffer = ev.buf, desc = "Lsp Remove Workspace Folder" }
-                    )
-                    vim.keymap.set("n", "<leader>lcl", function()
-                        print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-                    end, { buffer = ev.buf, desc = "Lsp List Workspace Folder" })
-                    vim.keymap.set(
-                        "n",
-                        "<leader>lct",
-                        vim.lsp.buf.type_definition,
-                        { buffer = ev.buf, desc = "Lsp Show Type Definition" }
-                    )
-                    vim.keymap.set("n", "<leader>lcn", vim.lsp.buf.rename, { buffer = ev.buf, desc = "Lsp Rename" })
-                    vim.keymap.set(
                         { "n", "v" },
-                        "<leader>lcc",
+                        "<leader>lc",
                         vim.lsp.buf.code_action,
-                        { buffer = ev.buf, desc = "Lsp Code Action" }
+                        { buffer = ev.buf, desc = "Code Action" }
                     )
                     vim.keymap.set(
                         "n",
-                        "<leader>lcr",
-                        vim.lsp.buf.references,
-                        { buffer = ev.buf, desc = "Lsp References" }
+                        "<leader>le",
+                        vim.lsp.buf.declaration,
+                        { buffer = ev.buf, desc = "View Declaration" }
                     )
-                    vim.keymap.set("n", "<leader>lcf", function()
+                    vim.keymap.set(
+                        "n",
+                        "<leader>ld",
+                        vim.lsp.buf.definition,
+                        { buffer = ev.buf, desc = "Show Definition" }
+                    )
+                    vim.keymap.set(
+                        "n",
+                        "<leader>lt",
+                        vim.lsp.buf.type_definition,
+                        { buffer = ev.buf, desc = "Show Type Definition" }
+                    )
+                    vim.keymap.set(
+                        "n",
+                        "<leader>li",
+                        vim.lsp.buf.implementation,
+                        { buffer = ev.buf, desc = "Implementation" }
+                    )
+                    vim.keymap.set("n", "<leader>lh", vim.lsp.buf.hover, { buffer = ev.buf, desc = "Show Hover" })
+                    vim.keymap.set(
+                        "n",
+                        "<leader>ls",
+                        vim.lsp.buf.signature_help,
+                        { buffer = ev.buf, desc = "Signature Help" }
+                    )
+                    vim.keymap.set(
+                        "n",
+                        "<leader>la",
+                        vim.lsp.buf.add_workspace_folder,
+                        { buffer = ev.buf, desc = "Add Workspace Folder" }
+                    )
+                    vim.keymap.set(
+                        "n",
+                        "<leader>lm",
+                        vim.lsp.buf.remove_workspace_folder,
+                        { buffer = ev.buf, desc = "Remove Workspace Folder" }
+                    )
+                    vim.keymap.set("n", "<leader>ll", function()
+                        print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+                    end, { buffer = ev.buf, desc = "Print Workspace Folder List" })
+                    vim.keymap.set("n", "<leader>ln", vim.lsp.buf.rename, { buffer = ev.buf, desc = "Rename" })
+                    vim.keymap.set("n", "<leader>lr", vim.lsp.buf.references, { buffer = ev.buf, desc = "References" })
+                    vim.keymap.set("n", "<leader>lf", function()
                         vim.lsp.buf.format({ async = true })
-                    end, { buffer = ev.buf, desc = "Lsp Format" })
+                    end, { buffer = ev.buf, desc = "Async Format" })
                 end,
             })
         end,
