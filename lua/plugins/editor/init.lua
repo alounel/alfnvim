@@ -67,7 +67,7 @@ return {
         "nvim-telescope/telescope.nvim",
         optional = true,
         opts = function(_, opts)
-            if not require("periph.util").has("flash.nvim") then
+            if not require("core.util").has("flash.nvim") then
                 return
             end
             local function flash(prompt_bufnr)

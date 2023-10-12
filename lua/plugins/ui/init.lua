@@ -83,7 +83,7 @@ return {
             },
         },
         init = function()
-            local Util = require("periph.util")
+            local Util = require("core.util")
             if not Util.has("noice.nvim") then
                 Util.on_very_lazy(function()
                     vim.notify = require("notify")
@@ -163,17 +163,20 @@ return {
     },
     -- 启动界面
     {
-        {
-            import = "plugins.extras.ui.starter",
-        },
+        -- {
+        --     import = "plugins.extras.ui.starter",
+        -- },
         {
             import = "plugins.extras.ui.alpha",
         },
+        -- {
+        --     import = "plugins.extras.ui.dashboard",
+        -- },
     },
     -- 屏保
-    {
-        import = "plugins.extras.ui.screensaver",
-    },
+    -- {
+    --     import = "plugins.extras.ui.screensaver",
+    -- },
     -- 彩虹括号
     {
         import = "plugins.extras.ui.rainbow",
@@ -191,7 +194,7 @@ return {
         import = "plugins.extras.ui.indentstyle",
     },
     -- 注释美化
-    {
-        import = "plugins.extras.ui.annotbox",
-    },
+    -- {
+    --     import = "plugins.extras.ui.annotbox",
+    -- },
 }

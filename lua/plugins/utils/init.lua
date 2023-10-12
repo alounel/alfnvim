@@ -264,9 +264,9 @@ return {
         import = "plugins.extras.utils.scroll",
     },
     -- 查看特定行内容
-    {
-        import = "plugins.extras.utils.numb",
-    },
+    -- {
+    --     import = "plugins.extras.utils.numb",
+    -- },
     -- 函数，命令，按键绑定示例
     {
         import = "plugins.extras.utils.legendary",

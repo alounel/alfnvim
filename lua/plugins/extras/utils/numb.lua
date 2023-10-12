@@ -2,6 +2,7 @@ return {
     -- 输入命令查看缓冲区
     {
         "nacro90/numb.nvim",
+        enabled = false,
         lazy = true,
         event = "CmdlineEnter",
         opts = {

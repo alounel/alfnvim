@@ -7,6 +7,7 @@ vim.keymap.set("n", "<leader>cq", "<cmd>q<CR>", { desc = "Quit" })
 vim.keymap.set("n", "<leader>cQ", "<cmd>q!<CR>", { desc = "Force Quit" })
 vim.keymap.set("n", "<leader>cx", "<cmd>x<CR>", { desc = "Save And Quit" })
 vim.keymap.set("n", "<leader>cc", "<cmd>copen<CR>", { desc = "Open Quickfix" })
+vim.keymap.set("n", "<leader>cl", "<cmd>lopen<CR>", { desc = "Open Locationlist" })
 vim.keymap.set("n", "<leader>ch", "<cmd>checkhealth<CR>", { desc = "Neovim Health Check" })
 
 ------ keybinds ------
@@ -36,4 +37,9 @@ vim.keymap.set("v", ">", ">gv")
 -- search
 vim.keymap.set("n", "<leader>se", "/\\<lt>\\><left><left>")
 vim.keymap.set("n", "<leader>ss", vim.show_pos, { desc = "Inspect Pos" })
-vim.keymap.set("n", "<leader>hn", "<cmd>nohlsearch<CR>", { desc = "Close Search Highlight" })
+vim.keymap.set(
+    "n",
+    "<leader>hn",
+    "<Cmd>nohlsearch<Bar>diffupdate<Bar>normal! <C-L><CR>",
+    { desc = "Redraw / clear hlsearch / diff update" }
+)

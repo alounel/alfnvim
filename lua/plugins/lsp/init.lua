@@ -57,7 +57,7 @@ return {
             })
             vim.lsp.set_log_level("error")
 
-            local Util = require("periph.util")
+            local Util = require("core.util")
 
             if Util.has("neoconf.nvim") then
                 local plugin = require("lazy.core.config").spec.plugins["neoconf.nvim"]

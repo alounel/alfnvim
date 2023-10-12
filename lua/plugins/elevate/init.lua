@@ -65,7 +65,6 @@ return {
     {
         "chrisgrieser/nvim-alt-substitute",
         lazy = true,
-        event = "CmdlineEnter",
         keys = {
             { "<leader>sa", mode = { "n", "x" }, desc = "󱗘 :AltSubstitute" },
             { "<leader>sA", mode = { "n", "x" }, desc = "󱗘 :AltSubstitute (word under cursor)" },

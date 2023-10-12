@@ -1,4 +1,4 @@
-local Util = require("periph.util")
+local Util = require("core.util")
 return {
     -- telescope模糊查找
     {
@@ -113,11 +113,11 @@ return {
             { "<leader>fsh", "<cmd>Telescope help_tags theme=ivy<CR>", desc = "Find Help Tags" },
             { "<leader>fso", "<cmd>Telescope oldfiles theme=ivy<CR>", desc = "Find Old Files" },
             { "<leader>fsm", "<cmd>Telescope marks theme=ivy<CR>", desc = "Find Marks" },
-            {
-                "<leader>fsd",
-                Util.telescope("colorscheme", { enable_preview = true }),
-                desc = "Colorscheme with preview",
-            },
+            -- {
+            --     "<leader>fsd",
+            --     Util.telescope("colorscheme", { enable_preview = true }),
+            --     desc = "Colorscheme with preview",
+            -- },
             { "<leader>fsn", "<cmd>Telescope notify theme=ivy<CR>", desc = "Notify History" },
             { "<leader>fsp", "<cmd>Telescope projects<CR>", desc = "Find Projects" },
             {

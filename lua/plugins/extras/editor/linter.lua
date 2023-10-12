@@ -1,4 +1,3 @@
-local uv = vim.uv or vim.loop
 return {
     -- 使用lua注入诊断、格式化、补全服务
     {
@@ -21,7 +20,6 @@ return {
                             "markdownlint",
                             "shellcheck",
                             "jsonlint",
-                            "proselint",
                         },
                         automatic_installation = false,
                     })
@@ -35,7 +33,7 @@ return {
 
             local default_sources = {}
 
-            local code_actions_servers = { "eslint_d", "proselint", "shellcheck" }
+            local code_actions_servers = { "eslint_d", "shellcheck" }
             for _, action in ipairs(code_actions_servers) do
                 table.insert(default_sources, code_actions[action])
             end
@@ -44,13 +42,8 @@ return {
                 "clang_check", -- c/cpp
                 "cmake_lint", -- cmake
                 "eslint", -- ts,js,tsx,jsx
-                "luacheck", -- lua
                 "selene", -- lua,luau
-                "markdownlint", -- markdown
                 "ltrs", -- markdown,text
-                "jsonlint", -- json
-                "ruff", -- python
-                "shellcheck", -- sh
                 "vint", -- vim
                 "yamllint", -- yaml
                 "zsh", -- zsh
@@ -78,10 +71,6 @@ return {
             for _, source in ipairs(conf_sources) do
                 table.insert(sources, source)
             end
-            -- local sources = {
-            --     -- diagnostics.markuplint, --html
-            --     -- diagnostics.stylelint, -- css
-            --     }
             none_ls.setup({
                 sources = sources,
                 border = "rounded",
@@ -102,38 +91,62 @@ return {
     {
         "mfussenegger/nvim-lint",
         lazy = true,
+        ft = {
+            "json",
+            "markdown",
+            "python",
+            "sh",
+        },
         opts = {
-            linters_by_ft = {},
+            events = { "BufWritePost", "BufReadPost", "InsertLeave" },
+            linters_by_ft = {
+                json = { "jsonlint" },
+                markdown = { "markdownlint" },
+                python = { "ruff" },
+                sh = { "shellcheck" },
+            },
             linters = {},
         },
         config = function(_, opts)
+            local M = {}
+
             local lint = require("lint")
-            lint.linters_by_ft = opts.linters_by_ft
-            for k, v in pairs(opts.linters) do
-                lint.linters[k] = v
+            for name, linter in pairs(opts.linters) do
+                if type(linter) == "table" and type(lint.linters) == "table" then
+                    lint.linters[name] = vim.tbl_deep_extend("force", lint.linters[name], linter)
+                end
             end
-            local timer = assert(uv.new_timer())
-            local DEBOUNCE_MS = 500
-            local aug = vim.api.nvim_create_augroup("lint", { clear = true })
-            vim.api.nvim_create_autocmd({ "BufWritePost", "BufReadPost", "BufNewFile", "InsertEnter" }, {
-                group = aug,
-                callback = function()
-                    local bufnr = vim.api.nvim_get_current_buf()
-                    timer:stop()
-                    timer:start(
-                        DEBOUNCE_MS,
-                        0,
-                        vim.schedule_wrap(function()
-                            if vim.api.nvim_buf_is_valid(bufnr) then
-                                vim.api.nvim_buf_call(bufnr, function()
-                                    lint.try_lint(nil, { ignore_errors = true })
-                                end)
-                            end
-                        end)
-                    )
-                end,
+            lint.linters_by_ft = opts.linters_by_ft
+
+            function M.debounce(ms, fn)
+                local timer = vim.loop.new_timer()
+                return function(...)
+                    local argv = { ... }
+                    timer:start(ms, 0, function()
+                        timer:stop()
+                        vim.schedule_wrap(fn)(unpack(argv))
+                    end)
+                end
+            end
+
+            function M.lint()
+                local names = lint.linters_by_ft[vim.bo.filetype] or {}
+                local ctx = { filename = vim.api.nvim_buf_get_name(0) }
+                ctx.dirname = vim.fn.fnamemodify(ctx.filename, ":h")
+                names = vim.tbl_filter(function(name)
+                    local linter = lint.linters[name]
+                    return linter and not (type(linter) == "table" and linter.condition and not linter.condition(ctx))
+                end, names)
+
+                if #names > 0 then
+                    lint.try_lint(names)
+                end
+            end
+
+            vim.api.nvim_create_autocmd(opts.events, {
+                group = vim.api.nvim_create_augroup("nvim-lint", { clear = true }),
+                callback = M.debounce(100, M.lint),
             })
-            lint.try_lint(nil, { ignore_errors = true })
         end,
     },
     --显示代码诊断, 参考, telescope结果, quickfix和位置列表
