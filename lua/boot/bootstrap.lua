@@ -15,20 +15,17 @@ require("lazy").setup({
     spec = {
         { import = "plugins" },
     },
-    defaults = {
-        version = false,
-    },
-    install = {
-        colorscheme = { "nightfox", "habamax" },
-    },
+    defaults = { version = false },
+    install = { colorscheme = { "nightfox", "habamax" } },
     ui = {
-        border = "rounded",
+        border = "shadow",
         icons = {
             ft = "",
             loaded = "",
             not_loaded = "",
         },
     },
+    custom_keys = false,
     performance = {
         rtp = {
             disabled_plugins = {
@@ -70,3 +67,6 @@ require("lazy").setup({
     },
 })
 vim.keymap.set({ "n", "v" }, "<leader>ma", "<cmd>Lazy<CR>", { desc = "Open Lazy Manager Menu" })
+vim.keymap.set("n", "<leader>tl", function()
+    require("lazy.util").float_term()
+end, { desc = "Open terminal in current dir" })
