@@ -101,7 +101,6 @@ return {
             require("telescope").load_extension("noice")
             require("telescope").load_extension("harpoon")
             require("telescope").load_extension("scope")
-            require("telescope").load_extension("yank_history")
         end,
         keys = {
             { "<leader>fsc", "<cmd>Telescope commands<CR>", desc = "Find Commands" },
@@ -127,7 +126,6 @@ return {
             },
             { "<leader>fss", "<cmd>Telescope harpoon marks<CR>", desc = "Find Harpoon File Marks" },
             -- { "<leader>fsr", "<cmd>Telescope frecency theme=ivy<CR>", desc = "Find Frecency" },
-            { "<leader>fsy", "<cmd>Telescope yank_history<CR>", desc = "Find Yank History" },
             { "<leader>fst", "<cmd>Telescope scope buffers<CR>", desc = "Find Scope Buffer" },
         },
     },
