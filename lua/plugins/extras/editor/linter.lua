@@ -32,7 +32,6 @@ return {
             local none_ls = require("null-ls")
             local diagnostics = none_ls.builtins.diagnostics
             local code_actions = none_ls.builtins.code_actions
-            local hovers = none_ls.builtins.hover
 
             local default_sources = {}
 
@@ -58,11 +57,6 @@ return {
             }
             for _, diag in ipairs(diagnostics_servers) do
                 table.insert(default_sources, diagnostics[diag])
-            end
-
-            local hover_servers = { "dictionary" }
-            for _, hover in ipairs(hover_servers) do
-                table.insert(default_sources, hovers[hover])
             end
 
             local conf_sources = {

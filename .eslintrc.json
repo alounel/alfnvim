@@ -1,0 +1,23 @@
+{
+    "env": {
+        "node": true,
+        "commonjs": true
+    },
+    "parserOptions": {
+        "ecmaVersion": "latest",
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "jsx": true
+        }
+    },
+    "rules": {
+        "curly": "error",
+        "eqeqeq": "error",
+        "indent": ["error", 4],
+        "no-console": "warn",
+        "no-unused-vars": "warn",
+        "prefer-const": "error",
+        "quotes": "error",
+        "semi": "error"
+    }
+}
