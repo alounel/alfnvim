@@ -12,10 +12,10 @@ vim.keymap.set("n", "<leader>ch", "<cmd>checkhealth<CR>", { desc = "Neovim Healt
 
 ------ keybinds ------
 -- window
-vim.keymap.set("n", "<leader>wh", "<c-w>h", { desc = "Goto left window" })
-vim.keymap.set("n", "<leader>wj", "<c-w>j", { desc = "Goto lower window" })
-vim.keymap.set("n", "<leader>wk", "<c-w>k", { desc = "Goto upper window" })
-vim.keymap.set("n", "<leader>wl", "<c-w>l", { desc = "Goto right window" })
+vim.keymap.set("n", "gh", "<c-w>h", { desc = "Goto left window" })
+vim.keymap.set("n", "gj", "<c-w>j", { desc = "Goto lower window" })
+vim.keymap.set("n", "gk", "<c-w>k", { desc = "Goto upper window" })
+vim.keymap.set("n", "gl", "<c-w>l", { desc = "Goto right window" })
 vim.keymap.set("n", "<leader>wv", "<c-w>v", { desc = "Horizontal addition window" })
 vim.keymap.set("n", "<leader>ws", "<c-w>s", { desc = "Vertical addition window" })
 vim.keymap.set("n", "<M-9>", "<c-w><", { desc = "Reduce window width" })

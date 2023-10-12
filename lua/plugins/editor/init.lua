@@ -102,8 +102,8 @@ return {
             { "<M-k>", mode = { "n", "x" }, desc = "Up Move" },
             { "<M-R>", mode = { "n", "v" }, desc = "Right Move" },
             { "<M-E>", mode = { "n", "v" }, desc = "Left Move" },
-            { "<leader>wg", desc = "Char Right Move" },
-            { "<leader>wb", desc = "Char Left Move" },
+            { "<leader>wl", desc = "Char Right Move" },
+            { "<leader>wh", desc = "Char Left Move" },
         },
         config = function()
             local kopts = { noremap = true, silent = true }

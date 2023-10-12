@@ -5,30 +5,54 @@ return {
         lazy = true,
         keys = {
             {
+                "<leader>gts",
+                function()
+                    require("tinygit").smartCommit({ push = false, openReferencedIssue = false })
+                end,
+                desc = "Smart Commit",
+            },
+            {
                 "<leader>gtm",
-                "<cmd>lua require('tinygit').amendOnlyMsg ({ forcePush = false })<CR>",
+                function()
+                    require("tinygit").amendOnlyMsg({ forcePush = false })
+                end,
                 desc = "Change Last Commit Message",
             },
             {
                 "<leader>gtn",
-                "<cmd>lua require('tinygit').amendNoEdit ({ forcePush = false })<CR>",
+                function()
+                    require("tinygit").amendNoEdit({ forcePush = false })
+                end,
                 desc = "Keep Last Commit Message",
             },
             {
                 "<leader>gti",
-                "<cmd>lua require('tinygit').issuesAndPrs({ type = 'all', state = 'all' })<CR>",
+                function()
+                    require("tinygit").issuesAndPrs({ type = "all", state = "all" })
+                end,
                 desc = "Search Issues & PRs",
             },
             {
                 "<leader>gtu",
-                "<cmd>require('tinygit').githubUrl('file')<CR>",
+                function()
+                    require("tinygit").githubUrl("file")
+                end,
                 mode = { "n", "v" },
                 desc = "Open At Github And Copy URL To Clipboard",
             },
             {
                 "<leader>gtp",
-                "<cmd>require('tinygit').push({ pullBefore = false, force = false })<CR>",
+                function()
+                    require("tinygit").push({ pullBefore = false, force = false })
+                end,
                 desc = "Git Push",
+            },
+            {
+                "<leader>gts",
+                function()
+                    require("tinygit").searchFileHistory()
+                end,
+                desc = "Search File History",
             },
         },
         dependencies = { "dressing.nvim" },
