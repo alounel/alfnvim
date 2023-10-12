@@ -12,6 +12,20 @@ return {
             { "<leader>nf", "<cmd>Neotree float<CR>", desc = "Open Float Tree" },
             { "<leader>ng", "<cmd>Neotree toggle<CR>", desc = "Toggle Tree" },
             { "<leader>nb", "<cmd>Neotree buffers<CR>", desc = "Show Buffers Tree" },
+            {
+                "<leader>ne",
+                function()
+                    require("neo-tree.command").execute({ source = "git_status", toggle = true })
+                end,
+                desc = "Git explorer",
+            },
+            {
+                "<leader>nl",
+                function()
+                    require("neo-tree.command").execute({ source = "buffers", toggle = true })
+                end,
+                desc = "Buffer explorer",
+            },
             { "<leader>ns", "<cmd>Neotree filesystem reveal right<CR>", desc = "Select Right Open Tree" },
         },
         deactivate = function()
