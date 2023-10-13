@@ -18,7 +18,7 @@ require("lazy").setup({
     defaults = { version = false },
     install = { colorscheme = { "nightfox", "habamax" } },
     ui = {
-        border = "shadow",
+        border = "rounded",
         icons = {
             ft = "",
             loaded = "",

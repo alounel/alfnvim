@@ -61,8 +61,8 @@ return {
                             ["<M-w>"] = "which_key",
                             ["<M-t>"] = open_with_trouble,
                             ["<M-a>"] = open_selected_with_trouble,
-                            ["<a-i>"] = find_files_no_ignore,
-                            ["<a-h>"] = find_files_with_hidden,
+                            ["<M-i>"] = find_files_no_ignore,
+                            ["<M-h>"] = find_files_with_hidden,
                             ["<C-Down>"] = actions.cycle_history_next,
                             ["<C-Up>"] = actions.cycle_history_prev,
                             ["<C-F>"] = actions.preview_scrolling_down,
@@ -123,7 +123,6 @@ return {
                 desc = "Use Buffer Location Open Browser",
             },
             -- { "<leader>fsr", "<cmd>Telescope frecency theme=ivy<CR>", desc = "Find Frecency" },
-            { "<leader>fst", "<cmd>Telescope scope buffers<CR>", desc = "Find Scope Buffer" },
         },
     },
     -- fzf模糊查找
