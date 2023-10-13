@@ -84,12 +84,19 @@ return {
                 --     }),
                 -- },
                 formatting = {
-                    format = function(_, item)
-                        local icons = require("core.magic").icons.kinds
-                        if icons[item.kind] then
-                            item.kind = icons[item.kind] .. item.kind
-                        end
-                        return item
+                    format = function(entry, vim_item)
+                        vim_item.kind =
+                            string.format("%s %s", require("core.magic").icons.kinds[vim_item.kind], vim_item.kind)
+                        vim_item.menu = ({
+                            buffer = "[Buffer]",
+                            nvim_lsp = "[LSP]",
+                            luasnip = "[LuaSnip]",
+                            spell = "[Spell]",
+                            rg = "[Rg]",
+                            async_path = "[Path]",
+                            cmdline = "[Cmdline]",
+                        })[entry.source.name]
+                        return vim_item
                     end,
                 },
                 experimental = {

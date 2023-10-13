@@ -1,4 +1,3 @@
--- 此文件作为其它插件公共依赖调用
 return {
     -- 减少lua函数的编写
     {
@@ -16,7 +15,7 @@ return {
         lazy = true,
         opts = {},
     },
-    -- 提供对sqlite的操作，用户保存会话，输入历史
+    -- 提供对sqlite数据库的操作
     {
         "kkharji/sqlite.lua",
         lazy = true,
@@ -28,8 +27,7 @@ return {
         lazy = true,
         cmd = { "Mason", "MasonInstall", "MasonUninstall", "MasonLog", "MasonUpdate" },
         keys = {
-            { "<leader>ms", "<cmd>Mason<CR>", desc = "Manager Mason Install Server" },
-            { "<leader>ml", "<cmd>MasonLog<CR>", desc = "Open Mason Log" },
+            { "<leader>ms", "<cmd>Mason<CR>", desc = "Open Mason Manager Interface" },
         },
         opts = {
             log_level = vim.log.levels.ERROR,
