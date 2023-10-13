@@ -2,6 +2,7 @@ return {
     {
         "stevearc/conform.nvim",
         lazy = true,
+        cmd = "ConformInfo",
         event = "BufWritePre",
         keys = {
             {
@@ -39,6 +40,7 @@ return {
                 norg = { "injected" },
                 python = { "isort", "black" },
                 sh = { "shellharden", "shfmt" },
+                toml = { "taplo" },
                 yaml = { "yamlfmt" },
                 ["_"] = { "trim_whitespace", "trim_newlines" },
             },

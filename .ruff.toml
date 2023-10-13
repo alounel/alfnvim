@@ -1,5 +1,7 @@
-select = ["E","F","B","Q"]
+select = ["E", "F", "B", "Q"]
+
 
 line-length = 120
+
 
 target-version = "py311"
