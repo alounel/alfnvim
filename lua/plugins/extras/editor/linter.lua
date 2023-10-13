@@ -93,6 +93,7 @@ return {
         lazy = true,
         ft = {
             "json",
+            "lua",
             "markdown",
             "python",
             "sh",
@@ -101,6 +102,7 @@ return {
             events = { "BufWritePost", "BufReadPost", "InsertLeave" },
             linters_by_ft = {
                 json = { "jsonlint" },
+                lua = { "luacheck" },
                 markdown = { "markdownlint" },
                 python = { "ruff" },
                 sh = { "shellcheck" },

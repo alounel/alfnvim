@@ -9,6 +9,7 @@ return {
             { "<leader>mhp", "<cmd>lua require('harpoon.ui').nav_prev()<CR>", desc = "Prev Mark Files" },
             { "<leader>mhn", "<cmd>lua require('harpoon.ui').nav_next()<CR>", desc = "Next Mark Files" },
             { "<leader>mht", "<cmd>lua require('harpoon.term').gotoTerminal(1)<CR>", desc = "Navigate to 1 Terminal" },
+            { "<leader>mhs", "<cmd>Telescope harpoon marks<CR>", desc = "Find Harpoon File Marks" },
         },
         opts = {
             save_on_toggle = true,

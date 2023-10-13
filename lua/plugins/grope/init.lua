@@ -99,8 +99,6 @@ return {
             require("telescope").load_extension("projects")
             require("telescope").load_extension("notify")
             require("telescope").load_extension("noice")
-            require("telescope").load_extension("harpoon")
-            require("telescope").load_extension("scope")
         end,
         keys = {
             { "<leader>fsc", "<cmd>Telescope commands<CR>", desc = "Find Commands" },
@@ -112,11 +110,11 @@ return {
             { "<leader>fsh", "<cmd>Telescope help_tags theme=ivy<CR>", desc = "Find Help Tags" },
             { "<leader>fso", "<cmd>Telescope oldfiles theme=ivy<CR>", desc = "Find Old Files" },
             { "<leader>fsm", "<cmd>Telescope marks theme=ivy<CR>", desc = "Find Marks" },
-            -- {
-            --     "<leader>fsd",
-            --     Util.telescope("colorscheme", { enable_preview = true }),
-            --     desc = "Colorscheme with preview",
-            -- },
+            {
+                "<leader>fsd",
+                Util.telescope("colorscheme", { enable_preview = true }),
+                desc = "Colorscheme with preview",
+            },
             { "<leader>fsn", "<cmd>Telescope notify theme=ivy<CR>", desc = "Notify History" },
             { "<leader>fsp", "<cmd>Telescope projects<CR>", desc = "Find Projects" },
             {
@@ -124,7 +122,6 @@ return {
                 "<cmd>Telescope file_browser path=%:p:h select_buffer=true<CR>",
                 desc = "Use Buffer Location Open Browser",
             },
-            { "<leader>fss", "<cmd>Telescope harpoon marks<CR>", desc = "Find Harpoon File Marks" },
             -- { "<leader>fsr", "<cmd>Telescope frecency theme=ivy<CR>", desc = "Find Frecency" },
             { "<leader>fst", "<cmd>Telescope scope buffers<CR>", desc = "Find Scope Buffer" },
         },

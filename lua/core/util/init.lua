@@ -6,6 +6,7 @@ local deprecated = {
     get_clients = "lsp",
     on_attach = "lsp",
     on_rename = "lsp",
+    root_patterns = { "root", "patterns" },
     toggle = { "toggle", "option" },
     toggle_diagnostics = { "toggle", "diagnostics" },
     toggle_number = { "toggle", "number" },
