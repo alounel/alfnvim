@@ -33,7 +33,7 @@ return {
 
             local default_sources = {}
 
-            local code_actions_servers = { "eslint_d", "shellcheck" }
+            local code_actions_servers = { "ltrs", "eslint_d", "shellcheck" }
             for _, action in ipairs(code_actions_servers) do
                 table.insert(default_sources, code_actions[action])
             end
@@ -91,13 +91,7 @@ return {
     {
         "mfussenegger/nvim-lint",
         lazy = true,
-        ft = {
-            "json",
-            "lua",
-            "markdown",
-            "python",
-            "sh",
-        },
+        ft = { "json", "lua", "markdown", "python", "sh" },
         opts = {
             events = { "BufWritePost", "BufReadPost", "InsertLeave" },
             linters_by_ft = {

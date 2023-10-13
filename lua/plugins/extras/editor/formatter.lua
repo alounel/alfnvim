@@ -48,9 +48,7 @@ return {
             format_after_save = { timeout_ms = 5000, lsp_fallback = true },
             formatters = {
                 injected = {
-                    options = {
-                        ignore_errors = true,
-                    },
+                    options = { ignore_errors = true },
                 },
             },
         },
@@ -66,6 +64,10 @@ return {
                     local ok, defaults = pcall(require, "conform.formatters." .. name)
                     if ok and type(defaults) == "table" then
                         opts.formatters[name] = vim.tbl_deep_extend("force", {}, defaults, formatter)
+                    end
+                    if opts.formatters[name].extra_args then
+                        opts.formatters[name].args =
+                            util.extend_args(opts.formatters[name].args or {}, opts.formatters[name].extra_args)
                     end
                 end
             end

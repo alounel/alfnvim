@@ -8,8 +8,10 @@
 
 - 插件规范
 
-- plugins/{$Name}.lua文件都能加载
+- `plugins/*.lua`文件都能加载
 
-- plugins/{$DirName}/init.lua文件都能加载
+- `plugins/{$DirName}/init.lua`文件都能加载
 
-- 可以自由使用这两种方法
+- 也可以在可加载的文件下使用`import = "plugins.yourpath.xxx"`
+
+- 可以自由使用这些方法
