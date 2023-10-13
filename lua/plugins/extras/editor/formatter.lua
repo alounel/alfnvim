@@ -5,7 +5,7 @@ return {
         event = "BufWritePre",
         keys = {
             {
-                "<leader>fm",
+                "<leader>F",
                 function()
                     require("conform").format({ async = true, lsp_fallback = true }, function(err)
                         if not err then

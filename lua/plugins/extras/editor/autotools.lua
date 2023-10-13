@@ -10,8 +10,20 @@ return {
             condition = function(buf)
                 local fn = vim.fn
                 local utils = require("auto-save.utils.data")
-                local exclude_filetypes =
-                    { "neo-tree", "Trouble", "Outline", "aerial", "sagaoutline", "starter", "alpha", "qf" }
+                local exclude_filetypes = {
+                    "neo-tree",
+                    "Trouble",
+                    "Outline",
+                    "aerial",
+                    "sagaoutline",
+                    "starter",
+                    "alpha",
+                    "dashboard",
+                    "qf",
+                    "noice",
+                    "notify",
+                    "NeogitStatus",
+                }
 
                 -- 不保存指定文件类型
                 if utils.not_in(fn.getbufvar(buf, "&filetype"), exclude_filetypes) then

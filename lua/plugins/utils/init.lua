@@ -138,13 +138,12 @@ return {
                 ["<leader>dw"] = { name = "+widget debug" },
                 ["<leader>e"] = { name = "+generate/editor" },
                 ["<leader>ep"] = { name = "+compiler" },
-                ["<leader>f"] = { name = "+find/format" },
+                ["<leader>f"] = { name = "+find" },
                 ["<leader>fd"] = { name = "+legendary" },
                 ["<leader>fl"] = { name = "+fzf" },
                 ["<leader>fs"] = { name = "+telescope" },
                 ["<leader>g"] = { name = "+git" },
                 ["<leader>gn"] = { name = "+neogit" },
-                ["<leader>gt"] = { name = "+tinygit" },
                 ["<leader>h"] = { name = "+highlight" },
                 ["<leader>hr"] = { name = "+hshighlight" },
                 ["<leader>i"] = { name = "icon/illuminate" },
@@ -263,10 +262,6 @@ return {
     {
         import = "plugins.extras.utils.scroll",
     },
-    -- 查看特定行内容
-    -- {
-    --     import = "plugins.extras.utils.numb",
-    -- },
     -- 函数，命令，按键绑定示例
     {
         import = "plugins.extras.utils.legendary",
