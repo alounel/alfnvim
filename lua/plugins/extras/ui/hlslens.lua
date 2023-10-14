@@ -5,7 +5,7 @@ return {
         lazy = true,
         event = "VeryLazy",
         keys = {
-            { "<leader>hg", "<cmd>HlSearchLensToggle<CR>", desc = "Toggle HlSearchLens" },
+            { "<leader>hg", "<cmd>HlSearchLensToggle<CR>", desc = "Toggle Highlight Search Lens" },
         },
         config = function()
             require("scrollbar.handlers.search").setup({

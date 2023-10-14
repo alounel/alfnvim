@@ -157,8 +157,8 @@ return {
             )
         end,
         keys = {
-            { "<leader>ig", "<cmd>IlluminateToggle<CR>", desc = "Toggle Illuminate" },
-            { "<leader>ib", "<cmd>IlluminateToggleBuf<CR>", desc = "Toggle Local Buffer Illuminate" },
+            { "<leader>hi", "<cmd>IlluminateToggle<CR>", desc = "Toggle Overall Word Illuminate" },
+            { "<leader>hb", "<cmd>IlluminateToggleBuf<CR>", desc = "Toggle Local Buffer Word Illuminate" },
         },
     },
     -- 启动界面

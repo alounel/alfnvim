@@ -81,10 +81,6 @@ return {
     {
         import = "plugins.extras.develop.comments",
     },
-    -- 添加内联注释忽略规则
-    {
-        import = "plugins.extras.develop.rulebook",
-    },
     -- 大文件控制
     {
         import = "plugins.extras.develop.bigfile",
