@@ -1,8 +1,6 @@
 -- 设置leader
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
--- 自动缩进策略
-vim.bo.filetype = "plugin"
 -- 控制隐藏文本级别
 vim.wo.conceallevel = 3
 -- 防止包裹
@@ -18,7 +16,7 @@ vim.wo.relativenumber = true
 -- 显示标尺
 vim.go.ruler = true
 -- 无操作时候交换文件写入磁盘等待的时间
-vim.go.updatetime = 100
+vim.go.updatetime = 200
 -- 高亮当前文本行
 vim.wo.cursorline = true
 -- 等待按键时长的时间
@@ -65,10 +63,6 @@ vim.opt.listchars = { space = "·", tab = "▸ ", eol = "↴", trail = "•" }
 vim.opt.fillchars = { foldopen = "", foldclose = "", fold = " ", foldsep = " ", diff = "╱", eob = " " }
 -- 终端24位色彩支持
 vim.go.termguicolors = true
--- 判断终端是否支持真色彩，如果支持就开启，否则不开启
---if (vim.fn.has('termguicolors') == 1) then
---    vim.o.termguicolors = true
---end
 -- 设置缩进
 -- -- 保证在折行时维持缩进不变
 vim.wo.breakindent = true
@@ -104,7 +98,7 @@ vim.go.showmode = false
 -- redrawtime
 vim.go.redrawtime = 10000
 -- 菜单栏语言
-vim.go.langmenu = "en_US.UTF-8"
+-- vim.go.langmenu = "en_US.UTF-8"
 -- 代码折叠
 vim.wo.foldmethod = "expr"
 vim.wo.foldexpr = "nvim_treesitter#foldexpr()"
