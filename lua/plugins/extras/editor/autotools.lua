@@ -50,14 +50,14 @@ return {
                 "main",
                 "prompt",
             },
-            ignore_filetype = { "gitcommit", "gitrebase", "svn", "hgcommit", "starter", "alpha" },
+            ignore_filetype = { "gitcommit", "gitrebase", "svn", "hgcommit", "starter", "alpha", "dashboard" },
             open_folds = true,
         },
     },
     -- 自动匹配括号
     {
         "windwp/nvim-autopairs",
-        event = { "InsertEnter", "CmdlineEnter" },
+        event = "InsertEnter",
         -- 使用treesitter来检查
         config = function()
             local npairs = require("nvim-autopairs")
@@ -69,7 +69,7 @@ return {
                 ts_config = {
                     lua = { "string" },
                     javascript = { "template_string" },
-                    java = false,
+                    typescript = { "template_string" },
                 },
                 enable_check_bracket_line = false,
                 fast_wrap = {
@@ -77,6 +77,9 @@ return {
                     chars = { "{", "[", "(", '"', "'" },
                     pattern = [=[[%'%"%>%]%)%}%,]]=],
                     end_key = "$",
+                    before_key = "h",
+                    after_key = "l",
+                    cursor_pos_before = true,
                     keys = "qwertyuiopzxcvbnmasdfghjkl",
                     check_comma = true,
                     highlight = "Search",

@@ -19,16 +19,21 @@ return {
                         },
                     },
                 },
+                ["core.presenter"] = {
+                    config = {
+                        zen_mode = "zen-mode",
+                    },
+                },
             },
         },
     },
-    -- 处理文本
+    -- 处理markdown,zettelkasten,wiki
     {
         "renerocksai/telekasten.nvim",
         lazy = true,
         cmd = "Telekasten",
         keys = {
-            { "<leader>ea", ":Telekasten", desc = "Telekasten commands" },
+            { "<leader>ea", "<cmd>Telekasten panel<CR>", desc = "Open Telekasten Commands Panel" },
         },
         dependencies = { "telescope.nvim" },
         opts = {

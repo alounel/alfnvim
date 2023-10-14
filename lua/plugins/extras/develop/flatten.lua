@@ -2,6 +2,10 @@ return {
     {
         "willothy/flatten.nvim",
         event = "VimEnter",
-        opts = {},
+        opts = {
+            window = {
+                open = "tab",
+            },
+        },
     },
 }

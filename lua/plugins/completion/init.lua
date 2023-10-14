@@ -1,4 +1,3 @@
--- nvim-cmp的补全及其代码片段插件
 return {
     -- 代码片段支持
     {
@@ -28,11 +27,10 @@ return {
             { "FelipeLema/cmp-async-path", lazy = true },
             { "lukas-reineke/cmp-rg", lazy = true },
             { "f3fora/cmp-spell", lazy = true },
-            { "lukas-reineke/cmp-under-comparator" },
+            { "lukas-reineke/cmp-under-comparator", lazy = true },
         },
         config = function()
             local cmp_autopairs = require("nvim-autopairs.completion.cmp")
-            local handlers = require("nvim-autopairs.completion.handlers")
             local luasnip = require("luasnip")
             local cmp = require("cmp")
             cmp.setup({
@@ -151,14 +149,12 @@ return {
                     end, { "i", "s" }),
                 }),
             })
-            -- 命令行 / ? 模式提示
             cmp.setup.cmdline({ "/", "?" }, {
                 mapping = cmp.mapping.preset.cmdline(),
                 sources = cmp.config.sources({
                     { name = "buffer" },
                 }),
             })
-            -- 命令行 : 模式提示
             cmp.setup.cmdline(":", {
                 mapping = cmp.mapping.preset.cmdline(),
                 sources = cmp.config.sources({
@@ -167,32 +163,7 @@ return {
                     { name = "cmdline" },
                 }),
             })
-            cmp.event:on(
-                "confirm_done",
-                cmp_autopairs.on_confirm_done({
-                    filetypes = {
-                        ["*"] = {
-                            ["("] = {
-                                kind = {
-                                    cmp.lsp.CompletionItemKind.Function,
-                                    cmp.lsp.CompletionItemKind.Method,
-                                },
-                                handler = handlers["*"],
-                            },
-                        },
-                        lua = {
-                            ["("] = {
-                                kind = {
-                                    cmp.lsp.CompletionItemKind.Function,
-                                    cmp.lsp.CompletionItemKind.Method,
-                                },
-                                handler = function(char, item, bufnr, rules, commit_character) end,
-                            },
-                        },
-                        tex = false,
-                    },
-                })
-            )
+            cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
         end,
     },
 }

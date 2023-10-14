@@ -105,36 +105,26 @@ return {
     {
         "petertriho/nvim-scrollbar",
         event = "VeryLazy",
-        config = function()
-            local colors = {
-                Handle = "#892E42",
-                Search = "#FFC860",
-                Error = "#FD6883",
-                Warn = "#FFD886",
-                Info = "#A9DC76",
-                Hint = "#78DCE8",
-                Misc = "#AB9DF2",
-            }
-            require("scrollbar").setup({
-                handle = {
-                    -- 滚动条颜色
-                    color = colors.Handle,
-                },
-                marks = {
-                    -- 诊断颜色
-                    Search = { color = colors.Search },
-                    Error = { color = colors.Error },
-                    Warn = { color = colors.Warn },
-                    Info = { color = colors.Info },
-                    Hint = { color = colors.Hint },
-                    Misc = { color = colors.Misc },
-                },
-                handlers = {
-                    gitsigns = true,
-                    search = true,
-                },
-            })
-        end,
+        opts = {
+            handle = { color = "#892E42" },
+            marks = {
+                Cursor = { color = "#FD5622" },
+                Search = { color = "#FFC860" },
+                Error = { color = "#FD6883" },
+                Warn = { color = "#FFD886" },
+                Info = { color = "#A9DC76" },
+                Hint = { color = "#78DCE8" },
+                Misc = { color = "#AB9DF2" },
+                GitAdd = { color = "#E85236" },
+                GitChange = { color = "#D89D80" },
+                GitDelete = { color = "#AB56B5" },
+            },
+            excluded_buftypes = { "terminal", "help", "nofile", "quickfix" },
+            handlers = {
+                gitsigns = true,
+                search = true,
+            },
+        },
     },
     -- 显示光标下相同词汇
     {
