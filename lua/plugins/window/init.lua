@@ -18,14 +18,18 @@ return {
             { "<leader>wo", "<cmd>FocusMaxOrEqual<CR>", desc = "Switch Equalises And Maximises" },
         },
         opts = {
+            split = {
+                bufnew = true,
+                tmux = true,
+            },
             ui = {
-                hybridnumber = true,
+                number = true,
+                relativenumber = true,
+                absolutenumber_unfocussed = true,
                 cursorline = true,
                 cursorcolumn = false,
             },
-            split = {
-                tmux = true,
-            },
+            winhighlight = true,
         },
     },
     -- 预定义窗口布局

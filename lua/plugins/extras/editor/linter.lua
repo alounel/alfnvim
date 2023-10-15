@@ -44,8 +44,6 @@ return {
                 "eslint", -- ts,js,tsx,jsx
                 "selene", -- lua,luau
                 "ltrs", -- markdown,text
-                "vint", -- vim
-                "yamllint", -- yaml
                 "zsh", -- zsh
             }
             for _, diag in ipairs(diagnostics_servers) do
@@ -53,11 +51,8 @@ return {
             end
 
             local conf_sources = {
-                diagnostics.tidy.with({
-                    disabled_filetypes = { "html" },
-                }),
                 diagnostics.typos.with({
-                    disabled_filetypes = { "help", "markdown", "norg", "tex", "text", "vimdoc" },
+                    disabled_filetypes = { "help", "log", "markdown", "norg", "tex", "text", "vimdoc" },
                 }),
                 diagnostics.editorconfig_checker.with({
                     disabled_filetypes = { "help", "log", "norg", "tex", "text", "vimdoc" },
@@ -91,7 +86,7 @@ return {
     {
         "mfussenegger/nvim-lint",
         lazy = true,
-        ft = { "json", "lua", "markdown", "python", "sh" },
+        ft = { "json", "lua", "markdown", "python", "sh", "yaml", "vim" },
         opts = {
             events = { "BufWritePost", "BufReadPost", "InsertLeave" },
             linters_by_ft = {
@@ -100,6 +95,8 @@ return {
                 markdown = { "markdownlint" },
                 python = { "ruff" },
                 sh = { "shellcheck" },
+                vim = { "vint" },
+                yaml = { "yamllint" },
             },
             linters = {},
         },

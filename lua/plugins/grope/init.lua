@@ -102,6 +102,7 @@ return {
         end,
         keys = {
             { "<leader>fsc", "<cmd>Telescope commands<CR>", desc = "Find Commands" },
+            { "<leader>fsC", "<cmd>Telescope command_history<CR>", desc = "Find Command History" },
             { "<leader>fsi", "<cmd>Telescope registers<CR>", desc = "Find Registers" },
             { "<leader>fs<space>", Util.telescope("files"), desc = "Find Files (root dir)" },
             { "<leader>fsw", "<cmd>Telescope find_files theme=ivy<CR>", desc = "Find Files" },

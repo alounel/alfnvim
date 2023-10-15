@@ -15,7 +15,11 @@ return {
             dashboard.section.header.val = vim.split(logo, "\n")
             dashboard.section.buttons.val = {
                 dashboard.button("f", " " .. " Find file", "<cmd> Telescope find_files <CR>"),
-                dashboard.button("n", " " .. " New file", "<cmd> ene <BAR> startinsert <CR>"),
+                dashboard.button(
+                    "c",
+                    " " .. " Config",
+                    "<cmd> lua require('core.util').telescope.config_files()() <CR>"
+                ),
                 dashboard.button("r", " " .. " Recent files", "<cmd> Telescope oldfiles <CR>"),
                 dashboard.button("g", " " .. " Find text", "<cmd> Telescope live_grep <CR>"),
                 dashboard.button("p", " " .. " Find projects", "<cmd> Telescope projects <CR>"),

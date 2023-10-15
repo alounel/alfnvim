@@ -50,7 +50,7 @@ return {
                 "main",
                 "prompt",
             },
-            ignore_filetype = { "gitcommit", "gitrebase", "svn", "hgcommit", "starter", "alpha", "dashboard" },
+            ignore_filetype = { "gitcommit", "gitrebase", "svn", "hgcommit", "starter", "alpha", "dashboard", "lazy" },
             open_folds = true,
         },
     },
