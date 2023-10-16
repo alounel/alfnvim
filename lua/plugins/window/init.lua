@@ -36,8 +36,4 @@ return {
     {
         import = "plugins.extras.window.edgy",
     },
-    -- 右侧小地图
-    {
-        import = "plugins.extras.window.codewindow",
-    },
 }

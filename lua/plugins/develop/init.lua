@@ -65,10 +65,6 @@ return {
         },
         opts = {},
     },
-    -- 良好工作流程
-    {
-        import = "plugins.extras.develop.process",
-    },
     -- 终端缓冲区打开文件
     {
         import = "plugins.extras.develop.flatten",
@@ -92,9 +88,5 @@ return {
     -- 重构代码
     {
         import = "plugins.extras.develop.refactor",
-    },
-    -- 正则表达式解释器
-    {
-        import = "plugins.extras.develop.regex",
     },
 }

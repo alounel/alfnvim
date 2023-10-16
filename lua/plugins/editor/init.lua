@@ -286,8 +286,8 @@ return {
             require("mini.trailspace").setup()
         end,
         keys = {
-            { "<leader>te", "<cmd>lua MiniTrailspace.trim()<CR>", desc = "Trail All Space" },
-            { "<leader>tn", "<cmd>lua MiniTrailspace.trim_last_lines()<CR>", desc = "Trail All Space Lines" },
+            { "<leader>rb", "<cmd>lua MiniTrailspace.trim()<CR>", desc = "Trail All Space" },
+            { "<leader>rc", "<cmd>lua MiniTrailspace.trim_last_lines()<CR>", desc = "Trail All Space Lines" },
         },
     },
     -- 格式化
