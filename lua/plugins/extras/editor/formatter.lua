@@ -58,16 +58,15 @@ return {
         config = function(_, opts)
             local util = require("conform.util")
             util.add_formatter_args(require("conform.formatters.shfmt"), { "-i", "4" })
-            opts.formatters = opts.formatters or {}
-            for name, formatter in pairs(opts.formatters) do
+
+            for name, formatter in pairs(opts.formatters or {}) do
                 if type(formatter) == "table" then
-                    local ok, defaults = pcall(require, "conform.formatters." .. name)
-                    if ok and type(defaults) == "table" then
-                        opts.formatters[name] = vim.tbl_deep_extend("force", {}, defaults, formatter)
-                    end
-                    if opts.formatters[name].extra_args then
-                        opts.formatters[name].args =
-                            util.extend_args(opts.formatters[name].args or {}, opts.formatters[name].extra_args)
+                    if formatter.extra_args then
+                        formatter.prepend_args = formatter.extra_args
+                        require("core.util").deprecate(
+                            ("opts.formatters.%s.extra_args"):format(name),
+                            ("opts.formatters.%s.prepend_args"):format(name)
+                        )
                     end
                 end
             end

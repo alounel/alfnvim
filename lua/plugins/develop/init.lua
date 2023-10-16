@@ -65,10 +65,6 @@ return {
         },
         opts = {},
     },
-    -- 终端缓冲区打开文件
-    {
-        import = "plugins.extras.develop.flatten",
-    },
     -- 可编辑quickfix窗口
     {
         import = "plugins.extras.develop.qfedit",

@@ -46,6 +46,10 @@ function M.bufpath(buf)
     return M.realpath(vim.api.nvim_buf_get_name(assert(buf)))
 end
 
+function M.cwd()
+    return M.realpath(vim.loop.cwd()) or ""
+end
+
 function M.realpath(path)
     if path == "" or path == nil then
         return nil
@@ -118,7 +122,6 @@ function M.info()
     return roots[1] and roots[1].paths[1] or vim.loop.cwd()
 end
 
----@return string
 function M.get()
     local roots = M.detect({ all = false })
     return roots[1] and roots[1].paths[1] or vim.loop.cwd()
@@ -126,7 +129,7 @@ end
 
 M.pretty_cache = {}
 function M.pretty_path()
-    local path = vim.fn.expand("%:p") --[[@as string]]
+    local path = vim.fn.expand("%:p")
     if path == "" then
         return ""
     end
