@@ -22,7 +22,7 @@ return {
             },
             {
                 "r",
-                mode = { "o" },
+                mode = "o",
                 function()
                     require("flash").remote()
                 end,
@@ -133,6 +133,7 @@ return {
         },
         config = function()
             require("spectre").setup({
+                open_cmd = "noswapfile vnew",
                 live_update = true,
                 mapping = {
                     ["toggle_line"] = {

@@ -1,8 +1,9 @@
 local function get_args(config)
     local args = type(config.args) == "function" and (config.args() or {}) or config.args or {}
+    config = vim.deepcopy(config)
     config.args = function()
         local new_args = vim.fn.input("Run with args: ", table.concat(args, " "))
-        return vim.split(vim.fn.expand(new_args) --[[@as string]], " ")
+        return vim.split(vim.fn.expand(new_args), " ")
     end
     return config
 end
@@ -120,8 +121,53 @@ return {
                     })
                 end,
             },
-            { "nvim-dap-ui" },
-            { "nvim-dap-virtual-text" },
+            {
+                "rcarriga/nvim-dap-ui",
+                lazy = true,
+                keys = {
+                    {
+                        "<leader>du",
+                        function()
+                            require("dapui").toggle({})
+                        end,
+                        desc = "Toggle DapUI",
+                    },
+                    {
+                        "<leader>dx",
+                        function()
+                            require("dapui").eval()
+                        end,
+                        mode = { "n", "v" },
+                        desc = "Eval DapUI",
+                    },
+                },
+                config = function()
+                    local dap, dapui = require("dap"), require("dapui")
+
+                    dapui.setup()
+                    dap.listeners.after.event_initialized["dapui_config"] = function()
+                        dapui.open()
+                    end
+                    dap.listeners.before.event_terminated["dapui_config"] = function()
+                        dapui.close()
+                    end
+                    dap.listeners.before.event_exited["dapui_config"] = function()
+                        dapui.close()
+                    end
+                    dap.listeners.before.disconnect["dapui_config"] = function()
+                        dapui.close()
+                    end
+                end,
+            },
+            {
+                "theHamsta/nvim-dap-virtual-text",
+                lazy = true,
+                opts = {
+                    commented = true,
+                    all_frames = true,
+                    virt_lines = true,
+                },
+            },
             { "telescope.nvim" },
         },
         config = function()
@@ -144,57 +190,8 @@ return {
             end)
         end,
     },
-    -- 调试UI界面
-    {
-        "rcarriga/nvim-dap-ui",
-        lazy = true,
-        keys = {
-            {
-                "<leader>du",
-                function()
-                    require("dapui").toggle({})
-                end,
-                desc = "Toggle DapUI",
-            },
-            {
-                "<leader>dx",
-                function()
-                    require("dapui").eval()
-                end,
-                mode = { "n", "v" },
-                desc = "Eval DapUI",
-            },
-        },
-        config = function()
-            local dap, dapui = require("dap"), require("dapui")
-
-            dapui.setup()
-            dap.listeners.after.event_initialized["dapui_config"] = function()
-                dapui.open()
-            end
-            dap.listeners.before.event_terminated["dapui_config"] = function()
-                dapui.close()
-            end
-            dap.listeners.before.event_exited["dapui_config"] = function()
-                dapui.close()
-            end
-            dap.listeners.before.disconnect["dapui_config"] = function()
-                dapui.close()
-            end
-        end,
-    },
-    -- 显示虚拟文本
-    {
-        "theHamsta/nvim-dap-virtual-text",
-        lazy = true,
-        opts = {
-            commented = true,
-            all_frames = true,
-            virt_lines = true,
-        },
-    },
     ------ 特定语言调试需要用到的插件 ------
-    -- lua
+    -- neovim lua
     {
         import = "plugins.extras.dap.luadap",
     },

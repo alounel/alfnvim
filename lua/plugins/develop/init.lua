@@ -65,10 +65,6 @@ return {
         },
         opts = {},
     },
-    -- 可编辑quickfix窗口
-    {
-        import = "plugins.extras.develop.qfedit",
-    },
     -- 优雅的注释
     {
         import = "plugins.extras.develop.comments",

@@ -166,7 +166,6 @@ return {
                 ["<leader>u"] = { name = "+ui/message" },
                 ["<leader>w"] = { name = "+window" },
                 ["<leader>x"] = { name = "+diagnostics/quickfix" },
-                ["<leader>xp"] = { name = "+editquickfix" },
                 ["<leader>y"] = { name = "+operate/yank" },
             },
         },
