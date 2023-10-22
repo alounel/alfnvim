@@ -152,7 +152,6 @@ return {
                 ["<leader>lg"] = { name = "+lspsaga" },
                 ["<leader>m"] = { name = "+manager/mark" },
                 ["<leader>mh"] = { name = "+harpoon" },
-                ["<leader>mg"] = { name = "+grapple" },
                 ["<leader>n"] = { name = "+filetree" },
                 ["<leader>p"] = { name = "+portal" },
                 ["<leader>q"] = { name = "+session" },
@@ -201,8 +200,6 @@ return {
             { "<leader>pg", "<cmd>Portal changelist forward<CR>", desc = "Changelist Forward" },
             { "<leader>ph", "<cmd>Portal harpoon backward<CR>", desc = "Harpoon Backward" },
             { "<leader>pi", "<cmd>Portal harpoon forward<CR>", desc = "Harpoon Forward" },
-            { "<leader>pj", "<cmd>Portal grapple backward<CR>", desc = "Grapple Backward" },
-            { "<leader>pk", "<cmd>Portal grapple forward<CR>", desc = "Grapple Forward" },
         },
         opts = {
             log_level = "error",

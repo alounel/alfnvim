@@ -39,20 +39,6 @@ return {
             excluded_filetypes = { "harpoon", "neo-tree", "qf", "Trouble", "aerial", "alpha", "starter", "dashboard" },
         },
     },
-    -- 标记重要文件
-    {
-        "cbochs/grapple.nvim",
-        lazy = true,
-        keys = {
-            { "<leader>mgp", "<cmd>GrapplePopup tags<CR>", desc = "Float Popup View Tags" },
-            { "<leader>mgr", "<cmd>GrappleReset<CR>", desc = "Reset All Tags" },
-            { "<leader>mgg", "<cmd>GrappleToggle<CR>", desc = "Toggle Tag" },
-        },
-        dependencies = { "plenary.nvim" },
-        opts = {
-            log_level = "error",
-        },
-    },
     -- 文本字符标记
     {
         "LeonHeidelbach/trailblazer.nvim",
