@@ -78,6 +78,15 @@ return {
                         pinned = true,
                         open = "Neotree position=top buffers",
                     },
+                    {
+                        title = "Neo-Tree Symbols",
+                        ft = "neo-tree",
+                        filter = function(buf)
+                            return vim.b[buf].neo_tree_source == "document_symbols"
+                        end,
+                        pinned = true,
+                        open = "Neotree document_symbols",
+                    },
                     "neo-tree",
                 },
                 keys = {

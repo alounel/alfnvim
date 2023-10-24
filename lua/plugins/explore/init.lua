@@ -7,11 +7,20 @@ return {
         lazy = true,
         cmd = "Neotree",
         keys = {
-            { "<leader>nt", "<cmd>Neotree<CR>", desc = "Open Neo Tree" },
-            { "<leader>nc", "<cmd>Neotree close<CR>", desc = "Close Neo Tree" },
-            { "<leader>nf", "<cmd>Neotree float<CR>", desc = "Open Float Tree" },
-            { "<leader>ng", "<cmd>Neotree toggle<CR>", desc = "Toggle Tree" },
-            { "<leader>nb", "<cmd>Neotree buffers<CR>", desc = "Show Buffers Tree" },
+            {
+                "<leader>ng",
+                function()
+                    require("neo-tree.command").execute({ toggle = true, dir = Util.root() })
+                end,
+                desc = "Explorer NeoTree (root)",
+            },
+            {
+                "<leader>nG",
+                function()
+                    require("neo-tree.command").execute({ toggle = true, dir = vim.loop.cwd() })
+                end,
+                desc = "Explorer NeoTree (cwd)",
+            },
             {
                 "<leader>ne",
                 function()
@@ -20,19 +29,25 @@ return {
                 desc = "Git explorer",
             },
             {
-                "<leader>nl",
+                "<leader>nb",
                 function()
                     require("neo-tree.command").execute({ source = "buffers", toggle = true })
                 end,
                 desc = "Buffer explorer",
             },
-            { "<leader>ns", "<cmd>Neotree filesystem reveal right<CR>", desc = "Select Right Open Tree" },
+            {
+                "<leader>nd",
+                function()
+                    require("neo-tree.command").execute({ source = "document_symbols", toggle = true })
+                end,
+                desc = "Document Symbols Explorer",
+            },
         },
         deactivate = function()
             vim.cmd([[Neotree close]])
         end,
         init = function()
-            if vim.fn.argc() == 1 then
+            if vim.fn.argc(-1) == 1 then
                 local stat = vim.loop.fs_stat(vim.fn.argv(0))
                 if stat and stat.type == "directory" then
                     require("neo-tree")
@@ -69,9 +84,8 @@ return {
                 },
             },
             filesystem = {
-                follow_current_file = {
-                    enable = true,
-                },
+                bind_to_cwd = false,
+                follow_current_file = { enable = true },
                 use_libuv_file_watcher = true,
             },
             source_selector = {
