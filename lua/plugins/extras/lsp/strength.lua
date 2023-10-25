@@ -62,9 +62,6 @@ return {
                     show_server_name = true,
                     extend_gitsigns = true,
                 },
-                ui = {
-                    border = "rounded",
-                },
             })
             -- 带过滤器的诊断跳转，如之跳转到错误处
             vim.keymap.set("n", "[E", function()
@@ -95,6 +92,7 @@ return {
                 "json",
                 "xml",
                 "vim",
+                "toml",
             },
         },
     },
