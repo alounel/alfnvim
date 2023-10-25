@@ -107,7 +107,11 @@ return {
             { "<leader>fs<space>", Util.telescope("files"), desc = "Find Files (root dir)" },
             { "<leader>fsw", "<cmd>Telescope find_files theme=ivy<CR>", desc = "Find Files" },
             { "<leader>fsg", "<cmd>Telescope live_grep theme=ivy<CR>", desc = "Grep Word" },
-            { "<leader>fsb", "<cmd>Telescope buffers show_all_buffer=true theme=ivy<CR>", desc = "Find Buffers" },
+            {
+                "<leader>fsb",
+                "<cmd>Telescope buffers sort_mru=true sort_lastused=true theme=ivy<CR>",
+                desc = "Find Buffers",
+            },
             { "<leader>fsh", "<cmd>Telescope help_tags theme=ivy<CR>", desc = "Find Help Tags" },
             { "<leader>fso", "<cmd>Telescope oldfiles theme=ivy<CR>", desc = "Find Old Files" },
             { "<leader>fsm", "<cmd>Telescope marks theme=ivy<CR>", desc = "Find Marks" },

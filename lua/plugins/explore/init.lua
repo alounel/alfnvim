@@ -65,6 +65,7 @@ return {
                 "terminal",
                 "toggleterm",
                 "Trouble",
+                "trouble",
                 "qf",
                 "Outline",
                 "aerial",

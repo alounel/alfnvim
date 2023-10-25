@@ -111,8 +111,8 @@ return {
             vim.keymap.set("n", "<M-k>", ":MoveLine -1<CR>", kopts)
             vim.keymap.set("n", "<M-R>", ":MoveHchar 1", kopts)
             vim.keymap.set("n", "<M-E>", ":MoveHchar -1<CR>", kopts)
-            vim.keymap.set("n", "<leader>wg", ":MoveWord 1<CR>", kopts)
-            vim.keymap.set("n", "<leader>wb", ":MoveWord -1<CR>", kopts)
+            vim.keymap.set("n", "<leader>wl", ":MoveWord 1<CR>", kopts)
+            vim.keymap.set("n", "<leader>wh", ":MoveWord -1<CR>", kopts)
 
             vim.keymap.set("x", "<M-j>", ":MoveBlock 1<CR>", kopts)
             vim.keymap.set("x", "<M-k>", ":MoveBlock -1<CR>", kopts)
