@@ -16,7 +16,7 @@ return {
         "smjonas/inc-rename.nvim",
         lazy = true,
         keys = {
-            { "<leader>N", ":IncRename ", desc = "Inc Rename" },
+            { "<leader>N", ":IncRename ", desc = "Rename" },
         },
         config = function()
             require("inc_rename").setup({

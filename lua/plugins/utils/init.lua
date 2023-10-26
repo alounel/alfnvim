@@ -139,9 +139,6 @@ return {
                 ["<leader>e"] = { name = "+generate/editor" },
                 ["<leader>ep"] = { name = "+compiler" },
                 ["<leader>f"] = { name = "+find" },
-                ["<leader>fd"] = { name = "+legendary" },
-                ["<leader>fl"] = { name = "+fzf" },
-                ["<leader>fs"] = { name = "+telescope" },
                 ["<leader>g"] = { name = "+git" },
                 ["<leader>gn"] = { name = "+neogit" },
                 ["<leader>h"] = { name = "+highlight" },
@@ -249,10 +246,6 @@ return {
     -- 平滑滚动
     {
         import = "plugins.extras.utils.scroll",
-    },
-    -- 函数，命令，按键绑定示例
-    {
-        import = "plugins.extras.utils.legendary",
     },
     -- 测量启动时间
     {

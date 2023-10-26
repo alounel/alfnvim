@@ -4,17 +4,7 @@ return {
         lazy = true,
         cmd = "FzfLua",
         keys = {
-            { "<leader>flz", "<cmd>FzfLua<CR>", desc = "Select FzfLua Module" },
-            { "<leader>flf", "<cmd>FzfLua files<CR>", desc = "Fzf inquiry files" },
-            { "<leader>flb", "<cmd>FzfLua buffers<CR>", desc = "Fzf inquiry buffers" },
-            { "<leader>fla", "<cmd>FzfLua args<CR>", desc = "Fzf args list" },
-            { "<leader>flh", "<cmd>FzfLua oldfiles<CR>", desc = "Fzf Show files history" },
-            { "<leader>flq", "<cmd>FzfLua quickfix<CR>", desc = "Fzf Open quickfix list" },
-            { "<leader>flt", "<cmd>FzfLua tabs<CR>", desc = "Fzf inquiry tab list" },
-            { "<leader>flg", "<cmd>FzfLua grep<CR>", desc = "Fzf Grep Text" },
-            { "<leader>fli", "<cmd>FzfLua live_grep<CR>", desc = "Fzf Live Grep Text" },
-            { "<leader>fll", "<cmd>FzfLua lines<CR>", desc = "Fzf Open lines" },
-            { "<leader>flc", "<cmd>FzfLua colorschemes<CR>", desc = "Fzf Colorscheme" },
+            { "<leader>S", "<cmd>FzfLua<CR>", desc = "Fzf Search" },
         },
         dependencies = {
             { "nvim-web-devicons" },

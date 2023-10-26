@@ -21,7 +21,7 @@ return {
                     end)
                 end,
                 mode = "",
-                desc = "Format Buffer",
+                desc = "Format",
             },
         },
         opts = {
