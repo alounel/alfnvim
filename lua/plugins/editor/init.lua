@@ -186,18 +186,6 @@ return {
             vim.keymap.set("n", "<leader>rf", "<cmd>lua require('spectre').open_file_search({select_word=true})<CR>")
         end,
     },
-    -- 添加/更改/删除周围的定界符对
-    {
-        "kylechui/nvim-surround",
-        version = "*",
-        lazy = true,
-        event = "VeryLazy",
-        opts = {
-            keymaps = {
-                visual = "gs",
-            },
-        },
-    },
     -- 字符、颜色、数字增量/减量
     {
         "monaqa/dial.nvim",
@@ -306,6 +294,10 @@ return {
     -- 自动处理工具
     {
         import = "plugins.extras.editor.autotools",
+    },
+    -- 修改定界符
+    {
+        import = "plugins.extras.editor.surround",
     },
     -- 文本标记
     {
