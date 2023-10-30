@@ -33,6 +33,7 @@ return {
             local cmp_autopairs = require("nvim-autopairs.completion.cmp")
             local luasnip = require("luasnip")
             local cmp = require("cmp")
+            vim.api.nvim_set_hl(0, "CmpGhostText", { link = "Comment", default = true })
             cmp.setup({
                 snippet = {
                     expand = function(args)
