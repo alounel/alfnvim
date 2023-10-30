@@ -95,8 +95,8 @@ vim.go.wildmode = "longest:full,full"
 vim.go.wildmenu = true
 -- 使用增强状态栏插件后不再需要 vim 的模式提示
 vim.go.showmode = false
--- redrawtime
-vim.go.redrawtime = 10000
+-- 屏幕重绘时间
+vim.go.redrawtime = 5000
 -- 菜单栏语言
 -- vim.go.langmenu = "en_US.UTF-8"
 -- 代码折叠
