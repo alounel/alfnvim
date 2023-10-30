@@ -117,7 +117,7 @@ vim.go.grepformat = "%f:%l:%c:%m,%f+%l+%c+%m,%-G%f\\|%l\\|%c\\|%m"
 -- 格式化行为
 vim.bo.formatoptions = "jcroqlnt"
 -- 会话
-vim.opt.sessionoptions = { "buffers", "curdir", "tabpages", "winsize" }
+vim.opt.sessionoptions = { "buffers", "curdir", "tabpages", "winsize", "help", "globals", "skiprtp", "folds" }
 -- 短消息显示
 vim.opt.shortmess:append({ W = true, I = true, c = true })
 -- 命令行高度

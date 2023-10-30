@@ -14,7 +14,7 @@ return {
         lazy = true,
         event = "BufReadPre",
         opts = {
-            options = { "buffers", "curdir", "tabpages", "winsize", "help", "globals", "skiprtp" },
+            options = vim.opt.sessionoptions:get(),
         },
         keys = {
             {
