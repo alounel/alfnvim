@@ -1,6 +1,19 @@
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
+local jdtls_capabilities = vim.tbl_deep_extend("keep", {}, capabilities, {
+    workspace = {
+        configuration = true,
+    },
+    textDocument = {
+        completion = {
+            completionItem = {
+                snippetSupport = true,
+            },
+        },
+    },
+})
+
 local config = {
-    capabilities = capabilities,
+    capabilities = jdtls_capabilities,
     cmd = {
         "java",
         "-Declipse.application=org.eclipse.jdt.ls.core.id1",
@@ -28,7 +41,7 @@ local config = {
             signatureHelp = {
                 enable = true,
             },
-            contenProvider = {
+            contentProvider = {
                 preferred = "fernflower",
             },
             completion = {
