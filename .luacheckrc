@@ -1,7 +1,26 @@
---vim: ft=lua tw=80
+--vim: ft=lua tw=120
 
 stds.nvim = {
-    read_globals = {"jit"}
+    read_globals = {
+        "jit",
+        "os",
+        "env",
+        "bufnr",
+        "vim",
+        "vim.o",
+        "vim.g",
+        "vim.b",
+        "vim.w",
+        "vim.go",
+        "vim.bo",
+        "vim.wo",
+        "vim.opt",
+        "vim.env",
+    },
+    globals = {
+        vim = { fields = { "g" } },
+        os = { fields = { "capture" } },
+    },
 }
 std = "lua51+nvim"
 
@@ -12,23 +31,4 @@ cache = true
 ignore = {
     "631",
     "212/_.*",
-    "121",
-    "122"
-}
-
-read_globals = {
-    "vim",
-    "bufnr",
-}
-
-globals = {
-    "vim.g",
-    "vim.o",
-    "vim.w",
-    "vim.b",
-    "vim.bo",
-    "vim.wo",
-    "vim.go",
-    "vim.env",
-    "vim.opt"
 }

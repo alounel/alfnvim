@@ -1,5 +1,5 @@
 return {
-     -- 测量启动时间
+    -- 测量启动时间
     {
         "dstein64/vim-startuptime",
         lazy = true,

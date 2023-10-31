@@ -3,7 +3,7 @@ return {
     {
         "nvimtools/none-ls.nvim",
         lazy = true,
-        event = { "BufReadPre", "BufNewFile" },
+        event = { "BufReadPost", "BufNewFile" },
         keys = {
             { "<leader>un", "<cmd>NullLsInfo<CR>", desc = "Show Null-ls Info" },
         },
@@ -33,18 +33,12 @@ return {
 
             local default_sources = {}
 
-            local code_actions_servers = { "ltrs", "eslint_d", "shellcheck" }
+            local code_actions_servers = { "ltrs", "shellcheck" }
             for _, action in ipairs(code_actions_servers) do
                 table.insert(default_sources, code_actions[action])
             end
 
-            local diagnostics_servers = {
-                "cmake_lint", -- cmake
-                "eslint", -- ts,js,tsx,jsx
-                "selene", -- lua,luau
-                "ltrs", -- markdown,text
-                "zsh", -- zsh
-            }
+            local diagnostics_servers = { "cmake_lint", "selene", "ltrs", "zsh" }
             for _, diag in ipairs(diagnostics_servers) do
                 table.insert(default_sources, diagnostics[diag])
             end
@@ -85,10 +79,15 @@ return {
     {
         "mfussenegger/nvim-lint",
         lazy = true,
-        ft = { "json", "lua", "markdown", "python", "sh", "yaml", "vim" },
+        event = { "BufReadPost", "BufNewFile" },
         opts = {
             events = { "BufWritePost", "BufReadPost", "InsertLeave" },
             linters_by_ft = {
+                env = { "dotenv_linter" },
+                javascript = { "eslint" },
+                javascriptreact = { "eslint" },
+                typescript = { "eslint" },
+                typescriptreact = { "eslint" },
                 json = { "jsonlint" },
                 lua = { "luacheck" },
                 markdown = { "markdownlint" },
@@ -100,6 +99,8 @@ return {
             linters = {},
         },
         config = function(_, opts)
+            local Util = require("core.util")
+
             local M = {}
 
             local lint = require("lint")
@@ -134,6 +135,9 @@ return {
                 ctx.dirname = vim.fn.fnamemodify(ctx.filename, ":h")
                 names = vim.tbl_filter(function(name)
                     local linter = lint.linters[name]
+                    if not linter then
+                        Util.warn("Linter not found: " .. name, { title = "nvim-lint" })
+                    end
                     return linter and not (type(linter) == "table" and linter.condition and not linter.condition(ctx))
                 end, names)
 
