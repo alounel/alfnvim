@@ -1,5 +1,5 @@
 return {
-    -- 代码片段支持
+    -- 片段支持
     {
         "L3MON4D3/luasnip",
         version = "2.*",
@@ -8,8 +8,7 @@ return {
         dependencies = { "rafamadriz/friendly-snippets" },
         config = function()
             require("luasnip.loaders.from_vscode").lazy_load()
-            require("luasnip.loaders.from_lua").lazy_load()
-            require("luasnip.loaders.from_snipmate").lazy_load()
+            require("luasnip.loaders.from_snipmate").lazy_load({ path = { vim.fn.stdpath("config") .. "snippets" } })
             require("luasnip").setup({
                 update_events = { "TextChanged", "TextChangedI" },
                 delete_check_events = "TextChanged",
@@ -27,10 +26,10 @@ return {
             { "FelipeLema/cmp-async-path", lazy = true },
             { "lukas-reineke/cmp-rg", lazy = true },
             { "f3fora/cmp-spell", lazy = true },
-            { "lukas-reineke/cmp-under-comparator", lazy = true },
         },
         config = function()
             local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+            local defaults = require("cmp.config.default")()
             local luasnip = require("luasnip")
             local cmp = require("cmp")
             vim.api.nvim_set_hl(0, "CmpGhostText", { link = "Comment", default = true })
@@ -45,9 +44,7 @@ return {
                     documentation = cmp.config.window.bordered(),
                 },
                 sources = cmp.config.sources({
-                    {
-                        name = "luasnip",
-                    },
+                    { name = "luasnip" },
                     { name = "nvim_lsp" },
                     { name = "async_path" },
                     {
@@ -105,28 +102,15 @@ return {
                     },
                 },
                 -- 对补全建议排序
-                sorting = {
-                    comparators = {
-                        cmp.config.compare.offset,
-                        cmp.config.compare.exact,
-                        cmp.config.compare.score,
-                        cmp.config.compare.recently_used,
-                        require("cmp-under-comparator").under,
-                        cmp.config.compare.kind,
-                        cmp.config.compare.sort_text,
-                        cmp.config.compare.length,
-                        cmp.config.compare.order,
-                    },
-                },
+                sorting = defaults.sorting,
                 -- 绑定补全相关的按键
                 mapping = cmp.mapping.preset.insert({
-                    ["<C-u>"] = cmp.mapping.scroll_docs(-4), --Up
-                    ["<C-d>"] = cmp.mapping.scroll_docs(4), --Down
-                    -- C-b (back) C-f (forward) for snippet placeholder navigation.
+                    ["<C-b>"] = cmp.mapping.scroll_docs(-4), --Up
+                    ["<C-f>"] = cmp.mapping.scroll_docs(4), --Down
                     ["<C-Space>"] = cmp.mapping.complete(),
                     ["<C-e>"] = cmp.mapping.abort(), --关闭补全
-                    ["<C-p>"] = cmp.mapping.select_prev_item(), --选择上一个
-                    ["<C-n>"] = cmp.mapping.select_next_item(), --选择下一个
+                    ["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }), --选择上一个
+                    ["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }), --选择下一个
                     ["<CR>"] = cmp.mapping.confirm({ --确认选择
                         behavior = cmp.ConfirmBehavior.Replace,
                         select = true,
