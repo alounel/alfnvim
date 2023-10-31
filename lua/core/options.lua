@@ -29,6 +29,7 @@ vim.opt.autoread = true
 vim.opt.confirm = true
 -- 编码设置和检测
 vim.opt.fileencodings = { "ucs-bom", "utf-8", "utf-16", "utf-32", "gb18030", "gbk", "gb2312", "latin1" }
+vim.opt.fileformats = { "unix", "dos" }
 -- 显示左侧图标指示列
 vim.opt.signcolumn = "yes"
 -- 搜索设置
@@ -86,8 +87,8 @@ vim.opt.virtualedit = "block"
 -- -- 补全菜单背景透明
 vim.opt.pumblend = 10
 -- -- 补全菜单长度
-vim.opt.pumheight = 16
--- --  'wildchar' 命令行扩展所用的模式
+vim.opt.pumheight = 12
+-- -- 'wildchar' 命令行扩展所用的模式
 vim.opt.wildmode = "longest:full,full"
 -- -- 增强模式的命令行补全
 vim.opt.wildmenu = true

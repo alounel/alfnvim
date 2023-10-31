@@ -132,7 +132,20 @@ return {
         lazy = true,
         event = { "BufReadPost", "BufNewFile" },
         config = function()
-            require("illuminate").configure()
+            require("illuminate").configure({
+                providers = {
+                    "lsp",
+                    "treesitter",
+                },
+                delay = 200,
+                large_file_cutoff = 2000,
+                large_file_overrides = {
+                    providers = {
+                        "lsp",
+                        "treesitter",
+                    },
+                },
+            })
             vim.keymap.set(
                 "n",
                 "[l",

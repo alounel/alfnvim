@@ -54,7 +54,7 @@ return {
                     disabled_filetypes = { "help", "log", "markdown", "norg", "tex", "text", "vimdoc" },
                 }),
                 diagnostics.editorconfig_checker.with({
-                    disabled_filetypes = { "help", "log", "norg", "tex", "text", "vimdoc" },
+                    disabled_filetypes = { "help", "log", "markdown", "norg", "tex", "text", "vimdoc" },
                 }),
             }
 

@@ -116,14 +116,37 @@ return {
         },
         config = function()
             require("aerial").setup({
-                backends = { "lsp", "treesitter" },
+                backends = { "lsp", "treesitter", "markdown", "man" },
                 layout = {
                     min_width = 20,
+                    win_opts = {
+                        winhl = "Normal:NormalFloat,FloatBorder:NormalFloat,SignColumn:SignColumnSB",
+                        signcolumn = "yes",
+                        statuscolumn = " ",
+                    },
                     default_direction = "prefer_left",
                 },
+                attach_mode = "global",
                 show_guides = true,
+                guides = {
+                    mid_item = "├╴",
+                    last_item = "└╴",
+                    nested_top = "│ ",
+                    whitespace = "  ",
+                },
                 highlight_on_hover = true,
                 autojump = true,
+                ignore = {
+                    filetypes = {
+                        "neo-tree",
+                        "sagaoutline",
+                        "qf",
+                        "Trouble",
+                        "trouble",
+                        "spectre_panel",
+                        "notify",
+                    },
+                },
                 on_attach = function(bufnr)
                     vim.keymap.set("n", "[a", "<cmd>AerialPrev<CR>", { buffer = bufnr, desc = "Goto Prev Aerial" })
                     vim.keymap.set("n", "]a", "<cmd>AerialNext<CR>", { buffer = bufnr, desc = "Goto Next Aerial" })

@@ -17,6 +17,7 @@ return {
             options = {
                 numbers = "ordinal",
                 diagnostics = "nvim_lsp",
+                always_show_bufferline = false,
                 separator_style = "thin",
                 diagnostics_indicator = function(_, _, diag)
                     local diagnostics_icons = require("core.magic").icons.diagnostics
@@ -69,7 +70,7 @@ return {
                 options = {
                     theme = "auto",
                     globalstatus = true,
-                    disabled_filetypes = { statusline = { "dashboard", "alpha", "starter" } },
+                    disabled_filetypes = { statusline = { "alpha", "starter", "dashboard" } },
                 },
                 sections = {
                     lualine_a = { "mode" },

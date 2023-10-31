@@ -41,5 +41,5 @@ vim.keymap.set(
     "n",
     "<leader>hn",
     "<Cmd>nohlsearch<Bar>diffupdate<Bar>normal! <C-L><CR>",
-    { desc = "Redraw / clear hlsearch / diff update" }
+    { silent = true, noremap = true, desc = "Redraw / clear hlsearch / diff update" }
 )

@@ -23,6 +23,7 @@ return {
                     "noice",
                     "notify",
                     "NeogitStatus",
+                    "spectre_panel",
                 }
 
                 -- 不保存指定文件类型
@@ -50,7 +51,18 @@ return {
                 "main",
                 "prompt",
             },
-            ignore_filetype = { "gitcommit", "gitrebase", "svn", "hgcommit", "starter", "alpha", "dashboard", "lazy" },
+            ignore_filetype = {
+                "gitcommit",
+                "gitrebase",
+                "svn",
+                "hgcommit",
+                "starter",
+                "alpha",
+                "dashboard",
+                "lazy",
+                "spectre_panel",
+                "neo-tree",
+            },
             open_folds = true,
         },
     },

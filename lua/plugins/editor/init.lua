@@ -93,7 +93,7 @@ return {
             })
         end,
     },
-    -- 字符移动
+    -- 文本移动
     {
         "hinell/move.nvim",
         lazy = true,
@@ -120,7 +120,7 @@ return {
             vim.keymap.set("v", "<M-E>", ":MoveHBlock -1<CR>", kopts)
         end,
     },
-    -- 字符替换
+    -- 文本替换
     {
         "nvim-pack/nvim-spectre",
         lazy = true,
@@ -275,8 +275,8 @@ return {
             require("mini.trailspace").setup()
         end,
         keys = {
-            { "<leader>rb", "<cmd>lua MiniTrailspace.trim()<CR>", desc = "Trail All Space" },
-            { "<leader>rc", "<cmd>lua MiniTrailspace.trim_last_lines()<CR>", desc = "Trail All Space Lines" },
+            { "<leader>rb", "<cmd>lua MiniTrailspace.trim()<CR>", desc = "Trail All End of Line Space" },
+            { "<leader>rc", "<cmd>lua MiniTrailspace.trim_last_lines()<CR>", desc = "Trail All Blank Line" },
         },
     },
     -- 格式化
