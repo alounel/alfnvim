@@ -39,7 +39,6 @@ return {
             end
 
             local diagnostics_servers = {
-                "clang_check", -- c/cpp
                 "cmake_lint", -- cmake
                 "eslint", -- ts,js,tsx,jsx
                 "selene", -- lua,luau
