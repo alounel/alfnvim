@@ -119,7 +119,7 @@ vim.opt.sessionoptions = { "buffers", "curdir", "tabpages", "winsize", "help", "
 -- 短消息显示
 vim.opt.shortmess:append({ W = true, I = true, c = true })
 -- 命令行高度
-vim.opt.cmdheight = 0
+-- vim.opt.cmdheight = 0
 -- 增量预览
 vim.opt.inccommand = "nosplit"
 -- 可见窗口的顶部和底部之间保留的上下滚动行数
