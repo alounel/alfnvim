@@ -7,9 +7,10 @@ local deprecated = {
     on_attach = "lsp",
     on_rename = "lsp",
     root_patterns = { "root", "patterns" },
-    toggle = { "toggle", "option" },
+    get_root = { "root", "get" },
     toggle_diagnostics = { "toggle", "diagnostics" },
     toggle_number = { "toggle", "number" },
+    fg = "ui",
 }
 
 setmetatable(M, {

@@ -52,6 +52,11 @@ M.icons = {
         Hint = " ",
         Info = " ",
     },
+    git = {
+        added = " ",
+        modified = " ",
+        removed = " ",
+    },
 }
 
 return M
