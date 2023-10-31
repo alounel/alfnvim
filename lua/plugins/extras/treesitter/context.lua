@@ -12,7 +12,6 @@ return {
         },
         keys = {
             { "<leader>kv", "<cmd>NvimContextVtToggle<CR>", desc = "Toggle Context Virtual Text" },
-            { "<leader>kd", "<cmd>NvimContextVtDebug<CR>", desc = "Context Virtual Text Debug" },
         },
     },
     -- 将函数头显示在界面前几行
