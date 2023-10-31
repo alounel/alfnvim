@@ -32,19 +32,19 @@ return {
     {
         "sindrets/diffview.nvim",
         lazy = true,
+        cmd = { "DiffviewOpen", "DiffviewFileHistory" },
         keys = {
-            { "<leader>dvh", ":DiffviewFileHistory", desc = "View Files History Diff" },
+            { "<leader>dvp", "<cmd>DiffviewOpen<CR>", desc = "Open New Diffview " },
+            { "<leader>dvc", "<cmd>DiffviewClose<CR>", desc = "Close Current Diffview " },
+            { "<leader>dvh", "<cmd>DiffviewFileHistory<CR>", desc = "View Files History Diff" },
             { "<leader>dvt", "<cmd>DiffviewToggleFiles<CR>", desc = "Toggle File Diff Panel" },
-            { "<leader>dvl", "<cmd>DiffviewLog<CR>", desc = "Show File Log" },
             { "<leader>dvr", "<cmd>DiffviewRefresh<CR>", desc = "Update Current Entries And File List" },
             { "<leader>dvu", "<cmd>DiffviewFocusFiles<CR>", desc = "Bring Focus To The File Panel" },
         },
-        opts = {
-            view = {
-                default = {
-                    winbar_info = true,
-                },
-            },
-        },
+        config = function()
+            require("diffview").setup({
+                enhanced_diff_hl = true,
+            })
+        end,
     },
 }
