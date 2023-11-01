@@ -91,12 +91,4 @@ return {
             },
         },
     },
-    -- hlchunk缩进实现
-    {
-        "shellRaining/hlchunk.nvim",
-        enabled = false,
-        lazy = true,
-        event = { "BufReadPost", "BufNewFile" },
-        opts = {},
-    },
 }

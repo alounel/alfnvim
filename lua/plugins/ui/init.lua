@@ -176,10 +176,10 @@ return {
         --     import = "plugins.extras.ui.dashboard",
         -- },
     },
-    -- 屏保
-    -- {
-    --     import = "plugins.extras.ui.screensaver",
-    -- },
+    -- 预定义布局
+    {
+        import = "plugins.extras.ui.edgy",
+    },
     -- 彩虹括号
     {
         import = "plugins.extras.ui.rainbow",

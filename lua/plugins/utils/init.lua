@@ -125,7 +125,6 @@ return {
             defaults = {
                 mode = { "n", "v" },
                 ["g"] = { name = "+goto" },
-                ["z"] = { name = "+fold/scroll" },
                 ["]"] = { name = "+next" },
                 ["["] = { name = "+prev" },
                 ["<leader><tab>"] = { name = "+tabs" },
