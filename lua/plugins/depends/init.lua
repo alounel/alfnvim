@@ -27,7 +27,7 @@ return {
         lazy = true,
         cmd = { "Mason", "MasonInstall", "MasonUninstall", "MasonLog", "MasonUpdate" },
         keys = {
-            { "<leader>ms", "<cmd>Mason<CR>", desc = "Open Mason Manager Interface" },
+            { "<leader>mm", "<cmd>Mason<CR>", desc = "Open Mason Manager Interface" },
         },
         opts = {
             log_level = vim.log.levels.ERROR,

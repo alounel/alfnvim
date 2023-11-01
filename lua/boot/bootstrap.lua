@@ -69,7 +69,7 @@ require("lazy").setup({
         },
     },
 })
-vim.keymap.set({ "n", "v" }, "<leader>ma", "<cmd>Lazy<CR>", { desc = "Open Lazy Manager Interface" })
+vim.keymap.set({ "n", "v" }, "<leader>ml", "<cmd>Lazy<CR>", { desc = "Open Lazy Manager Interface" })
 vim.keymap.set("n", "<leader>tl", function()
     require("lazy.util").float_term()
-end, { desc = "Open Lazy Float Terminal In Current Directory" })
+end, { desc = "Open Lazy Float Terminal" })

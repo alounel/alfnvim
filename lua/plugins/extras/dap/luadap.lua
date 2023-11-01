@@ -1,6 +1,4 @@
 return {
-    ------ 特定语言调试插件 ------
-    -- lua
     "mfussenegger/nvim-dap",
     dependencies = {
         {

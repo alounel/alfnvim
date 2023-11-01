@@ -4,7 +4,7 @@ return {
         lazy = true,
         cmd = "FzfLua",
         keys = {
-            { "<leader>S", "<cmd>FzfLua<CR>", desc = "Fzf Search" },
+            { "<leader>S", "<cmd>FzfLua<CR>", desc = "Fzf" },
         },
         dependencies = {
             { "nvim-web-devicons" },

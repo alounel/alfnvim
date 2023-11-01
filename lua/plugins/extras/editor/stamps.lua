@@ -5,34 +5,34 @@ return {
         lazy = true,
         keys = {
             {
-                "<leader>mhm",
+                "<leader>mt",
                 function()
                     require("harpoon.mark").add_file()
                 end,
                 desc = "Mark Files",
             },
             {
-                "<leader>mhu",
+                "<leader>mu",
                 function()
                     require("harpoon.ui").toggle_quick_menu()
                 end,
                 desc = "Use Popup View Mark Files",
             },
             {
-                "<leader>mhp",
+                "<leader>mp",
                 function()
                     require("harpoon.ui").nav_prev()
                 end,
                 desc = "Prev Mark Files",
             },
             {
-                "<leader>mhn",
+                "<leader>mn",
                 function()
                     require("harpoon.ui").nav_next()
                 end,
                 desc = "Next Mark Files",
             },
-            { "<leader>mhs", "<cmd>Telescope harpoon marks<CR>", desc = "Find Harpoon File Marks" },
+            { "<leader>mf", "<cmd>Telescope harpoon marks<CR>", desc = "Find Harpoon File Marks" },
         },
         opts = {
             save_on_toggle = true,
