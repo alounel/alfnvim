@@ -7,6 +7,7 @@ local function get_args(config)
     end
     return config
 end
+
 return {
     {
         "mfussenegger/nvim-dap",
@@ -100,7 +101,6 @@ return {
             { "<leader>de", ":DapSetLogLevel", desc = "Dap Setting Log Level" },
             { "<leader>dk", "<cmd>DapRestartFrame<CR>", desc = "Dap Restart Frame" },
             { "<leader>dj", "<cmd>DapLoadLaunchJSON<CR>", desc = "Direct Load Json File Debug" },
-            { "<leader>dg", "<cmd>DapShowLog<CR>", desc = "Show Debug Log" },
 
             -- 小部件UI
             { "<leader>dwh", mode = { "n", "v" }, desc = "dap.ui.widgets hover" },
@@ -162,11 +162,7 @@ return {
             {
                 "theHamsta/nvim-dap-virtual-text",
                 lazy = true,
-                opts = {
-                    commented = true,
-                    all_frames = true,
-                    virt_lines = true,
-                },
+                opts = {},
             },
             { "telescope.nvim" },
         },
