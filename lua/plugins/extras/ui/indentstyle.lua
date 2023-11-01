@@ -74,11 +74,13 @@ return {
                 "aerial",
                 "sagaoutline",
                 "Trouble",
+                "trouble",
                 "qf",
                 "tex",
                 "text",
                 "alpha",
                 "starter",
+                "dashboard",
             },
             buftype_exclude = {
                 "help",

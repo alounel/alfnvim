@@ -12,15 +12,4 @@ return {
             disable_legacy_commands = true,
         },
     },
-    -- nerdfont图标选择
-    {
-        "2KAbhishek/nerdy.nvim",
-        enabled = false,
-        lazy = true,
-        cmd = "Nerdy",
-        dependencies = {
-            { "dressing.nvim" },
-            { "telescope.nvim" },
-        },
-    },
 }

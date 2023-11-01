@@ -163,4 +163,8 @@ return {
     {
         import = "plugins.extras.elevate.scope",
     },
+    -- 平滑滚动
+    {
+        import = "plugins.extras.elevate.scroll",
+    },
 }

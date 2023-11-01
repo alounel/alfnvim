@@ -243,10 +243,6 @@ return {
         },
         opts = {},
     },
-    -- 平滑滚动
-    {
-        import = "plugins.extras.utils.scroll",
-    },
     -- 测量启动时间
     {
         import = "plugins.extras.utils.startuptime",
