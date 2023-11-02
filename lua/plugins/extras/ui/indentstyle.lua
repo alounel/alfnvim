@@ -58,37 +58,4 @@ return {
             })
         end,
     },
-    -- 自动缩进样式检测
-    {
-        "NMAC427/guess-indent.nvim",
-        lazy = true,
-        keys = {
-            { "<leader>si", "<cmd>GuessIndent<CR>", desc = "Guess Indent Check" },
-        },
-        opts = {
-            filetype_exclude = {
-                "netrw",
-                "tutor",
-                "neo-tree",
-                "norg",
-                "aerial",
-                "sagaoutline",
-                "Trouble",
-                "trouble",
-                "qf",
-                "tex",
-                "text",
-                "alpha",
-                "starter",
-                "dashboard",
-            },
-            buftype_exclude = {
-                "help",
-                "nofile",
-                "terminal",
-                "prompt",
-                "quickfix",
-            },
-        },
-    },
 }

@@ -6,8 +6,8 @@ return {
         lazy = true,
         cmd = "ToggleTerm",
         keys = {
-            { "<leader>ttf", "<cmd>ToggleTerm<CR>", desc = "Toggle Terminal" },
-            { "<leader>ttg", "<cmd>ToggleTermToggleAll<CR>", desc = "Toggle All Terminal" },
+            { "<leader>ttg", "<cmd>ToggleTerm<CR>", desc = "Toggle Terminal" },
+            { "<leader>tta", "<cmd>ToggleTermToggleAll<CR>", desc = "Toggle All Terminal" },
             { "<leader>ttv", "<cmd>ToggleTerm direction=vertical size=45<CR>", desc = "Open Vertical Terminal" },
             { "<leader>tth", "<cmd>ToggleTerm direction=horizontal<CR>", desc = "Open Horizontal Terminal" },
             { "<leader>ttb", "<cmd>ToggleTerm direction=tab<CR>", desc = "Open Tab Terminal" },

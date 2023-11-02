@@ -192,39 +192,38 @@ return {
         "monaqa/dial.nvim",
         lazy = true,
         keys = {
-            { "<M-b>", desc = "Word Dial Inc" },
-            { "<M-d>", desc = "Word Dial Dec" },
-            { "<M-f>", desc = "Color Dial Inc" },
-            { "<M-g>", desc = "Color Dial Dec" },
-            { "<M-z>", desc = "Date Dial Inc" },
-            { "<M-x>", desc = "Date Dial Dec" },
+            { "<M-c>", desc = "Word Increment" },
+            { "<M-d>", desc = "Word Decrement" },
+            { "<M-f>", desc = "Color Increment" },
+            { "<M-g>", desc = "Color Decrement" },
+            { "<M-x>", desc = "Date Increment" },
+            { "<M-y>", desc = "Date Decrement" },
         },
         config = function()
             local augend = require("dial.augend")
-            local augnew = require("dial.augend").constant.new
 
             require("dial.config").augends:register_group({
                 -- 字符循环跳转
                 chars_dial = {
-                    augnew({ elements = { "true", "false" }, word = true, cyclic = true }),
-                    augnew({ elements = { "and", "or", "not" }, word = true, cyclic = true }),
-                    augnew({ elements = { "if", "else" }, word = true, cyclic = true }),
-                    augnew({ elements = { "yes", "no" }, word = true, cyclic = true }),
-                    augnew({ elements = { "on", "off" }, word = true, cyclic = true }),
-                    augnew({ elements = { "left", "right" }, word = true, cyclic = true }),
-                    augnew({ elements = { "out", "in" }, word = true, cyclic = true }),
-                    augnew({ elements = { "up", "down" }, word = true, cyclic = true }),
-                    augnew({ elements = { "disable", "enable" }, word = true, cyclic = true }),
-                    augnew({ elements = { "output", "input" }, word = true, cyclic = true }),
-                    augnew({ elements = { "front", "rear" }, word = true, cyclic = true }),
-                    augnew({ elements = { "start", "end" }, word = true, cyclic = true }),
-                    augnew({ elements = { "+", "-" }, word = false, cyclic = true }),
-                    augnew({ elements = { "*", "/" }, word = false, cyclic = true }),
-                    augnew({ elements = { ">", "<" }, word = false, cyclic = true }),
-                    augnew({ elements = { "=", "!=" }, word = false, cyclic = true }),
-                    augnew({ elements = { "|", "&" }, word = false, cyclic = true }),
-                    augnew({ elements = { "||", "&&" }, word = false, cyclic = true }),
-                    augnew({
+                    augend.constant.new({ elements = { "true", "false" }, word = true, cyclic = true }),
+                    augend.constant.new({ elements = { "and", "or", "not" }, word = true, cyclic = true }),
+                    augend.constant.new({ elements = { "if", "else" }, word = true, cyclic = true }),
+                    augend.constant.new({ elements = { "yes", "no" }, word = true, cyclic = true }),
+                    augend.constant.new({ elements = { "on", "off" }, word = true, cyclic = true }),
+                    augend.constant.new({ elements = { "left", "right" }, word = true, cyclic = true }),
+                    augend.constant.new({ elements = { "out", "in" }, word = true, cyclic = true }),
+                    augend.constant.new({ elements = { "up", "down" }, word = true, cyclic = true }),
+                    augend.constant.new({ elements = { "disable", "enable" }, word = true, cyclic = true }),
+                    augend.constant.new({ elements = { "output", "input" }, word = true, cyclic = true }),
+                    augend.constant.new({ elements = { "front", "rear" }, word = true, cyclic = true }),
+                    augend.constant.new({ elements = { "start", "end" }, word = true, cyclic = true }),
+                    augend.constant.new({ elements = { "+", "-" }, word = false, cyclic = true }),
+                    augend.constant.new({ elements = { "*", "/" }, word = false, cyclic = true }),
+                    augend.constant.new({ elements = { ">", "<" }, word = false, cyclic = true }),
+                    augend.constant.new({ elements = { "=", "!=" }, word = false, cyclic = true }),
+                    augend.constant.new({ elements = { "|", "&" }, word = false, cyclic = true }),
+                    augend.constant.new({ elements = { "||", "&&" }, word = false, cyclic = true }),
+                    augend.constant.new({
                         elements = { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9" },
                         word = false,
                         cyclic = true,
@@ -244,9 +243,15 @@ return {
                         only_valid = true,
                         word = false,
                     }),
+                    augend.date.new({
+                        pattern = "%Y-%m-%d",
+                        default_kind = "day",
+                        only_valid = true,
+                        word = false,
+                    }),
                 },
             })
-            vim.keymap.set("n", "<M-b>", function()
+            vim.keymap.set("n", "<M-c>", function()
                 require("dial.map").manipulate("increment", "normal", "chars_dial")
             end, { noremap = true })
             vim.keymap.set("n", "<M-d>", function()
@@ -258,10 +263,10 @@ return {
             vim.keymap.set("n", "<M-g>", function()
                 require("dial.map").manipulate("decrement", "normal", "color_dial")
             end, { noremap = true })
-            vim.keymap.set("n", "<M-z>", function()
+            vim.keymap.set("n", "<M-x>", function()
                 require("dial.map").manipulate("increment", "normal", "date_dial")
             end, { noremap = true })
-            vim.keymap.set("n", "<M-x>", function()
+            vim.keymap.set("n", "<M-y>", function()
                 require("dial.map").manipulate("decrement", "normal", "date_dial")
             end, { noremap = true })
         end,
