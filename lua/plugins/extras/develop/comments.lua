@@ -61,7 +61,7 @@ return {
             { "<leader>tdq", "<cmd>TodoQuickFix<CR>", desc = "Use QuickFix Show Todo Tag" },
             { "<leader>tdl", "<cmd>TodoLocList<CR>", desc = "Use Localist Show Todo Tag" },
         },
-        dependencies = { { "plenary.nvim" }, { "trouble.nvim" } },
+        dependencies = { "plenary.nvim" },
         opts = {
             keywords = {
                 FIX = { icon = " ", color = "#DC2626", alt = { "FIXME", "BUG", "FIXIT", "ISSUE", "!" } },
