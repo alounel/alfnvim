@@ -135,6 +135,7 @@ return {
             require("spectre").setup({
                 open_cmd = "noswapfile vnew",
                 live_update = true,
+                is_block_ui_break = true,
                 mapping = {
                     ["toggle_line"] = {
                         map = "<leader>ra",
