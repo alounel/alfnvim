@@ -52,18 +52,14 @@ return {
                 end,
                 desc = "Next Jump Todo",
             },
-            -- 查找TODO标签
-            { "<leader>tdt", "<cmd>TodoTelescope theme=ivy<CR>", desc = "Find Todo Tag" },
-            -- 筛选关键词
+            { "<leader>tdf", "<cmd>TodoTelescope<CR>", desc = "Find Todo Tag" },
             { "<leader>tdg", ":TodoTelescope keywords=", desc = "Filter keyswords" },
-            -- 指定搜索目录
+            { "<leader>tdt", "<cmd>TodoTrouble<CR>", desc = "List Todo Tag" },
             { "<leader>tdd", ":TodoTrouble cwd=", desc = "Search Specify Directory" },
-            -- 使用快速修复列表显示项目中的所有代办事项
             { "<leader>tdq", "<cmd>TodoQuickFix<CR>", desc = "Use QuickFix Show Todo Projects" },
-            -- 使用位置列表显示项目中的所有代办事项
             { "<leader>tdl", "<cmd>TodoLocList<CR>", desc = "Use Localist Show Todo Projects" },
         },
-        dependencies = { "plenary.nvim" },
+        dependencies = { { "plenary.nvim" }, { "trouble.nvim" } },
         opts = {
             keywords = {
                 FIX = { icon = " ", color = "#DC2626", alt = { "FIXME", "BUG", "FIXIT", "ISSUE", "!" } },
@@ -82,7 +78,6 @@ return {
         lazy = true,
         cmd = "Neogen",
         keys = {
-            { "<leader>eg", "<cmd>Neogen<CR>", desc = "Generate Comment" },
             { "<leader>ef", "<cmd>Neogen func<CR>", desc = "Generate Function Comment" },
             { "<leader>ec", "<cmd>Neogen class<CR>", desc = "Generate Class Comment" },
             { "<leader>et", "<cmd>Neogen type<CR>", desc = "Generate Type Comment" },
