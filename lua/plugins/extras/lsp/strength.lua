@@ -16,7 +16,7 @@ return {
         "smjonas/inc-rename.nvim",
         lazy = true,
         keys = {
-            { "<leader>N", ":IncRename ", desc = "Rename" },
+            { "<leader>in", ":IncRename ", desc = "Rename" },
         },
         config = function()
             require("inc_rename").setup({
@@ -24,32 +24,42 @@ return {
             })
         end,
     },
-    -- 增强Lspconfig插件的效果
+    -- 改善 Neovim LSP 体验
     {
         "nvimdev/lspsaga.nvim",
         lazy = true,
         event = "LspAttach",
         keys = {
-            -- 诊断跳转，<c-o>跳回
-            { "[e", "<cmd>Lspsaga diagnostic_jump_prev<CR>", desc = "Diagnostics Jump Prev" },
-            { "]e", "<cmd>Lspsaga diagnostic_jump_next<CR>", desc = "Diagnostics Jump Next" },
-            { "<leader>lga", "<cmd>Lspsaga code_action<CR>", desc = "Show Code Action" },
-            { "<leader>lgb", "<cmd>Lspsaga show_buf_diagnostics<CR>", desc = "Show Buffer Diagnostics" },
-            { "<leader>lgd", "<cmd>Lspsaga show_cursor_diagnostics<CR>", desc = "Show Cursor Local Diagnostics" },
-            { "<leader>lgr", "<cmd>Lspsaga rename<CR>", desc = "Rename" },
-            { "<leader>lgp", "<cmd>Lspsaga rename ++project<CR>", desc = "Rename Project" },
-            { "<leader>lgf", "<cmd>Lspsaga peek_definition<CR>", desc = "Peek Definition" },
-            { "<leader>lgg", "<cmd>Lspsaga goto_definition<CR>", desc = "Goto Definition" },
-            { "<leader>lgy", "<cmd>Lspsaga peek_type_definition<CR>", desc = "Peek Type Definition,<C-t> BackWard" },
-            { "<leader>lgx", "<cmd>Lspsaga goto_type_definition<CR>", desc = "Goto Type Definition" },
-            { "<leader>lgh", "<cmd>Lspsaga hover_doc<CR>", desc = "Show Hover Doc" },
-            { "<leader>lgk", "<cmd>Lspsaga hover_doc ++keep<CR>", desc = "Hover In Upper Right Corner" },
-            { "<leader>lgl", "<cmd>Lspsaga show_line_diagnostics<CR>", desc = "Show Line Diagnostics" },
-            { "<leader>lgo", "<cmd>Lspsaga outline<CR>", desc = "Toggle Outline" },
+            -- callhierarchy
             { "<Leader>lgi", "<cmd>Lspsaga incoming_calls<CR>", desc = "Call Incoming" },
             { "<Leader>lgt", "<cmd>Lspsaga outgoing_calls<CR>", desc = "Call Outgoing" },
+            -- code action
+            { "<leader>lga", "<cmd>Lspsaga code_action<CR>", desc = "Show Code Action" },
+            -- definition
+            { "<leader>lgf", "<cmd>Lspsaga peek_definition<CR>", desc = "Peek Definition" },
+            { "<leader>lgg", "<cmd>Lspsaga goto_definition<CR>", desc = "Goto Definition" },
+            { "<leader>lgy", "<cmd>Lspsaga peek_type_definition<CR>", desc = "Peek Type Definition" },
+            { "<leader>lgx", "<cmd>Lspsaga goto_type_definition<CR>", desc = "Goto Type Definition" },
+            -- diagnostics
+            { "[e", "<cmd>Lspsaga diagnostic_jump_prev<CR>", desc = "Diagnostics Jump Prev" },
+            { "]e", "<cmd>Lspsaga diagnostic_jump_next<CR>", desc = "Diagnostics Jump Next" },
+            { "<leader>lgb", "<cmd>Lspsaga show_buf_diagnostics<CR>", desc = "Show Buffer Diagnostics" },
+            { "<leader>lgc", "<cmd>Lspsaga show_cursor_diagnostics<CR>", desc = "Show Cursor Diagnostics" },
+            { "<leader>lgl", "<cmd>Lspsaga show_line_diagnostics<CR>", desc = "Show Line Diagnostics" },
+            { "<leader>lgw", "<cmd>Lspsaga show_workspace_diagnostics<CR>", desc = "Show Workspace Diagnostics" },
+            -- finder
+            { "<leader>lgn", "<cmd>Lspsaga finder<CR>", desc = "Shows Results For References And Implementation" },
+            -- hover
+            { "<leader>lgh", "<cmd>Lspsaga hover_doc<CR>", desc = "Show Hover Doc" },
+            { "<leader>lgk", "<cmd>Lspsaga hover_doc ++keep<CR>", desc = "Hover In Upper Right Corner" },
+            -- outline
+            { "<leader>lgo", "<cmd>Lspsaga outline<CR>", desc = "Toggle Outline" },
+            -- rename
+            { "<leader>lgr", "<cmd>Lspsaga rename<CR>", desc = "Rename" },
+            { "<leader>lgp", "<cmd>Lspsaga rename ++project<CR>", desc = "Rename LSP Integration" },
+            { "<leader>lgs", ":Lspsaga project_replace", desc = "Project-wide Replace" },
+            -- terminal
             { "<leader>lgm", "<cmd>Lspsaga term_toggle<CR>", desc = "Float Terminal" },
-            { "<leader>lgn", "<cmd>Lspsaga finder<CR>", desc = "Search Finder Definition,<C-t> BackWard" },
         },
         dependencies = {
             { "nvim-web-devicons" },
@@ -71,30 +81,6 @@ return {
                 require("lspsaga.diagnostic"):goto_next({ severity = vim.diagnostic.severity.ERROR })
             end, { desc = "Goto Next Diagnostics Severity ERROR" })
         end,
-    },
-    -- 显示函数的引用和定义信息
-    {
-        "VidocqH/lsp-lens.nvim",
-        enabled = false,
-        lazy = true,
-        event = "LspAttach",
-        keys = {
-            { "<leader>le", "<cmd>LspLensToggle<CR>", desc = "Toggle Lsp Lens" },
-        },
-        opts = {
-            include_declaration = true,
-            sections = {
-                definition = true,
-            },
-            ignore_filetype = {
-                "markdown",
-                "yaml",
-                "json",
-                "xml",
-                "vim",
-                "toml",
-            },
-        },
     },
     -- 调暗未使用的函数、变量、参数
     {
@@ -154,7 +140,7 @@ return {
             })
         end,
     },
-    -- sensebar
+    -- 浮动导航窗口
     {
         "SmiteshP/nvim-navbuddy",
         lazy = true,

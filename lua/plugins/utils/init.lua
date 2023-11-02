@@ -140,7 +140,7 @@ return {
                 ["<leader>g"] = { name = "+git" },
                 ["<leader>gn"] = { name = "+neogit" },
                 ["<leader>h"] = { name = "+highlight" },
-                ["<leader>i"] = { name = "picker" },
+                ["<leader>i"] = { name = "+icon/rename" },
                 ["<leader>j"] = { name = "+json/splj" },
                 ["<leader>k"] = { name = "+context" },
                 ["<leader>l"] = { name = "+lsp" },

@@ -6,7 +6,7 @@ return {
         ft = { "c", "cpp", "java", "javascript", "lua", "python", "typescript", "vim" },
         opts = {},
         keys = {
-            { "<leader>kr", "<cmd>lua require('hlargs').toggle()<CR>", desc = "Toggle Highlight Args" },
+            { "<leader>ha", "<cmd>lua require('hlargs').toggle()<CR>", desc = "Toggle Highlight Args" },
         },
     },
 }
