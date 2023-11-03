@@ -63,7 +63,7 @@ return {
                 if type(formatter) == "table" then
                     if formatter.extra_args then
                         formatter.prepend_args = formatter.extra_args
-                        require("core.util").deprecate(
+                        require("config.util").deprecate(
                             ("opts.formatters.%s.extra_args"):format(name),
                             ("opts.formatters.%s.prepend_args"):format(name)
                         )

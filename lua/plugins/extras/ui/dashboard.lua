@@ -47,7 +47,7 @@ return {
                             key = "g",
                         },
                         {
-                            action = [[lua require("core.util").telescope.config_files()()]],
+                            action = [[lua require("config.util").telescope.config_files()()]],
                             desc = " Config",
                             icon = " ",
                             key = "c",

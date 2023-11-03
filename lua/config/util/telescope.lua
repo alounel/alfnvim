@@ -1,4 +1,4 @@
-local Util = require("core.util")
+local Util = require("config.util")
 
 local M = setmetatable({}, {
     __call = function(m, ...)

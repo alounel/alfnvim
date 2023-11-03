@@ -58,7 +58,7 @@ return {
             vim.api.nvim_create_autocmd("User", {
                 pattern = "MiniFilesActionRename",
                 callback = function(event)
-                    require("core.util").lsp.on_rename(event.data.from, event.data.to)
+                    require("config.util").lsp.on_rename(event.data.from, event.data.to)
                 end,
             })
         end,

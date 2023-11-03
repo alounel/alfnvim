@@ -1,4 +1,4 @@
-local Util = require("core.util")
+local Util = require("config.util")
 
 local M = setmetatable({}, {
     __call = function(m)
@@ -24,9 +24,6 @@ function M.detectors.lsp(buf)
         local workspace = client.config.workspace_folders
         for _, ws in pairs(workspace or {}) do
             roots[#roots + 1] = vim.uri_to_fname(ws.uri)
-        end
-        if client.config.root_dir then
-            roots[#roots + 1] = client.config.root_dir
         end
     end
     return vim.tbl_filter(function(path)
@@ -79,7 +76,7 @@ function M.detect(opts)
         local paths = M.resolve(spec)(opts.buf)
         paths = paths or {}
         paths = type(paths) == "table" and paths or { paths }
-        local roots = {} ---@type string[]
+        local roots = {}
         for _, p in ipairs(paths) do
             local pp = M.realpath(p)
             if pp and not vim.tbl_contains(roots, pp) then
@@ -103,7 +100,7 @@ function M.info()
     local spec = type(vim.g.root_spec) == "table" and vim.g.root_spec or M.spec
 
     local roots = M.detect({ all = true })
-    local lines = {} ---@type string[]
+    local lines = {}
     local first = true
     for _, root in ipairs(roots) do
         for _, path in ipairs(root.paths) do
@@ -118,47 +115,41 @@ function M.info()
     lines[#lines + 1] = "```lua"
     lines[#lines + 1] = "vim.g.root_spec = " .. vim.inspect(spec)
     lines[#lines + 1] = "```"
-    require("core.util").info(lines, { title = "Alfnvim Roots" })
+    require("config.util").info(lines, { title = "Alfnvim Roots" })
     return roots[1] and roots[1].paths[1] or vim.loop.cwd()
 end
 
-function M.get()
-    local roots = M.detect({ all = false })
-    return roots[1] and roots[1].paths[1] or vim.loop.cwd()
+M.cache = {}
+
+function M.setup()
+    vim.api.nvim_create_user_command("LazyRoot", function()
+        Util.root.info()
+    end, { desc = "Alfnvim roots for the current buffer" })
+
+    vim.api.nvim_create_autocmd({ "LspAttach", "BufWritePost" }, {
+        group = vim.api.nvim_create_augroup("alfnvim_root_cache", { clear = true }),
+        callback = function(event)
+            M.cache[event.buf] = nil
+        end,
+    })
 end
 
-M.pretty_cache = {}
+function M.get(opts)
+    local buf = vim.api.nvim_get_current_buf()
+    local ret = M.cache[buf]
+    if not ret then
+        local roots = M.detect({ all = false })
+        ret = roots[1] and roots[1].paths[1] or vim.loop.cwd()
+        M.cache[buf] = ret
+    end
+    if opts and opts.normalize then
+        return ret
+    end
+    return Util.is_win() and ret:gsub("/", "\\") or ret
+end
+
 function M.pretty_path()
-    local path = vim.fn.expand("%:p")
-    if path == "" then
-        return ""
-    end
-
-    path = Util.norm(path)
-    if M.pretty_cache[path] then
-        return M.pretty_cache[path]
-    end
-    local cache_key = path
-    local cwd = M.realpath(vim.loop.cwd()) or ""
-
-    if path:find(cwd, 1, true) == 1 then
-        path = path:sub(#cwd + 2)
-    else
-        local roots = M.detect({ spec = { ".git" } })
-        local root = roots[1] and roots[1].paths[1] or nil
-        if root then
-            path = path:sub(#vim.fs.dirname(root) + 2)
-        end
-    end
-
-    local sep = package.config:sub(1, 1)
-    local parts = vim.split(path, "[\\/]")
-    if #parts > 3 then
-        parts = { parts[1], "…", parts[#parts - 1], parts[#parts] }
-    end
-    local ret = table.concat(parts, sep)
-    M.pretty_cache[cache_key] = ret
-    return ret
+    return ""
 end
 
 return M

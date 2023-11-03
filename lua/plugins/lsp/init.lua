@@ -22,26 +22,23 @@ return {
                 config = false,
                 dependencies = { "nvim-lspconfig" },
             },
-            -- 连接mason.nvim和lspconfig的桥梁
             {
                 "williamboman/mason-lspconfig.nvim",
                 lazy = true,
                 cmd = { "LspInstall", "LspUninstall" },
                 dependencies = { "mason.nvim" },
-                -- 不使用mason安装的：tsserver,clangd,neocmake,pyright,yamlls,jsonls,bashls
-                -- 缘由：
-                -- tsserver:无法单独使用tsc,所以使用包管理器安装
-                -- clangd:存在clang-tools-extra包，直接安装比较好
-                -- neocmake:未安装cargo
-                -- pyright,yamlls,json-lsp,bashls:mason安装带来不必要的node_modules或site-packages
                 opts = {
                     ensure_installed = { "jdtls", "lua_ls", "vimls", "marksman", "lemminx" },
                     automatic_installation = false,
                 },
             },
         },
-        config = function()
-            vim.diagnostic.config({
+        opts = {
+            diagnostics = {
+                signs = true,
+                underline = true,
+                update_in_insert = false,
+                severity_sort = true,
                 virtual_text = {
                     spacing = 4,
                     prefix = "●",
@@ -50,14 +47,24 @@ return {
                 float = {
                     source = "if_many",
                 },
-                signs = true,
-                underline = true,
-                update_in_insert = false,
-                severity_sort = true,
-            })
-            vim.lsp.set_log_level("error")
+            },
+            inlay_hints = {
+                enabled = false,
+            },
+        },
+        config = function(_, opts)
+            local Util = require("config.util")
+            local inlay_hint = vim.lsp.buf.inlay_hint or vim.lsp.inlay_hint
 
-            local Util = require("core.util")
+            if opts.inlay_hints.enabled and inlay_hint then
+                Util.lsp.on_attach(function(client, buffer)
+                    if client.supports_method("textDocument/inlayHint") then
+                        inlay_hint(buffer, true)
+                    end
+                end)
+            end
+            vim.diagnostic.config(vim.deepcopy(opts.diagnostics))
+            vim.lsp.set_log_level("error")
 
             if Util.has("neoconf.nvim") then
                 local plugin = require("lazy.core.config").spec.plugins["neoconf.nvim"]
@@ -160,68 +167,9 @@ return {
                     capabilities = capabilities,
                 })
             end
-            vim.keymap.set("n", "<leader>lw", vim.diagnostic.open_float, { desc = "Float Window View Diagnostic" })
-            vim.keymap.set("n", "[n", vim.diagnostic.goto_prev, { desc = "Prev Diagnostic For Location" })
-            vim.keymap.set("n", "]n", vim.diagnostic.goto_next, { desc = "Next Diagnostic For Location" })
-            vim.keymap.set("n", "<leader>lq", vim.diagnostic.setloclist, { desc = "QuickFix Window View Diagnostic" })
-            vim.api.nvim_create_autocmd("LspAttach", {
-                group = vim.api.nvim_create_augroup("UserLspConifg", {}),
-                callback = function(ev)
-                    vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
-                    vim.keymap.set(
-                        { "n", "v" },
-                        "<leader>lc",
-                        vim.lsp.buf.code_action,
-                        { buffer = ev.buf, desc = "Code Action" }
-                    )
-                    vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { buffer = ev.buf, desc = "Goto Declaration" })
-                    vim.keymap.set(
-                        "n",
-                        "<leader>gd",
-                        vim.lsp.buf.definition,
-                        { buffer = ev.buf, desc = "Goto Definition" }
-                    )
-                    vim.keymap.set(
-                        "n",
-                        "<leader>lt",
-                        vim.lsp.buf.type_definition,
-                        { buffer = ev.buf, desc = "Type Definition" }
-                    )
-                    vim.keymap.set(
-                        "n",
-                        "gI",
-                        vim.lsp.buf.implementation,
-                        { buffer = ev.buf, desc = "Goto Implementation" }
-                    )
-                    vim.keymap.set("n", "<leader>lh", vim.lsp.buf.hover, { buffer = ev.buf, desc = "Hover" })
-                    vim.keymap.set(
-                        "n",
-                        "<leader>ls",
-                        vim.lsp.buf.signature_help,
-                        { buffer = ev.buf, desc = "Signature Help" }
-                    )
-                    vim.keymap.set(
-                        "n",
-                        "<leader>la",
-                        vim.lsp.buf.add_workspace_folder,
-                        { buffer = ev.buf, desc = "Add Workspace Folder" }
-                    )
-                    vim.keymap.set(
-                        "n",
-                        "<leader>lm",
-                        vim.lsp.buf.remove_workspace_folder,
-                        { buffer = ev.buf, desc = "Remove Workspace Folder" }
-                    )
-                    vim.keymap.set("n", "<leader>ll", function()
-                        print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-                    end, { buffer = ev.buf, desc = "Print Workspace Folder List" })
-                    vim.keymap.set("n", "<leader>ln", vim.lsp.buf.rename, { buffer = ev.buf, desc = "Rename" })
-                    vim.keymap.set("n", "<leader>lr", vim.lsp.buf.references, { buffer = ev.buf, desc = "References" })
-                    vim.keymap.set("n", "<leader>lf", function()
-                        vim.lsp.buf.format({ async = true })
-                    end, { buffer = ev.buf, desc = "Async Format" })
-                end,
-            })
+
+            -- 设置按键绑定
+            require("plugins.lsp.keymaps")
         end,
     },
     -- lsp增强插件

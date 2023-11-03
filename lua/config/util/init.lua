@@ -23,11 +23,11 @@ setmetatable(M, {
         if dep then
             local mod = type(dep) == "table" and dep[1] or dep
             local key = type(dep) == "table" and dep[2] or k
-            M.deprecate([[require("core.util").]] .. k, [[require("core.util").]] .. mod .. "." .. key)
-            t[mod] = require("core.util." .. mod)
+            M.deprecate([[require("config.util").]] .. k, [[require("config.util").]] .. mod .. "." .. key)
+            t[mod] = require("config.util." .. mod)
             return t[mod][key]
         end
-        t[k] = require("core.util." .. k)
+        t[k] = require("config.util." .. k)
         return t[k]
     end,
 })

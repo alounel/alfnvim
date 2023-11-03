@@ -1,4 +1,4 @@
-local Util = require("core.util")
+local Util = require("config.util")
 return {
     -- 文件目录树
     {

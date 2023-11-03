@@ -23,7 +23,7 @@ return {
             {
                 "<leader>kt",
                 function()
-                    local Util = require("core.util")
+                    local Util = require("config.util")
                     local tsc = require("treesitter-context")
                     tsc.toggle()
                     if Util.inject.get_upvalue(tsc.toggle, "enabled") then

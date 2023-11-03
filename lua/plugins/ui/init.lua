@@ -83,7 +83,7 @@ return {
             },
         },
         init = function()
-            local Util = require("core.util")
+            local Util = require("config.util")
             if not Util.has("noice.nvim") then
                 Util.on_very_lazy(function()
                     vim.notify = require("notify")

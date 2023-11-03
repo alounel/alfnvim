@@ -69,15 +69,6 @@ require("lazy").setup({
         },
     },
 })
--- 管理界面
-vim.keymap.set({ "n", "v" }, "<leader>ml", "<cmd>Lazy<CR>", { desc = "Open Lazy Manager Interface" })
--- 浮动终端
-local Util = require("core.util")
-local map = Util.safe_keymap_set
-local lazyterm = function()
-    Util.terminal(nil, { cwd = Util.root() })
-end
-map("n", "<leader>tl", lazyterm, { desc = "Lazy Terminal (root dir)" })
-map("n", "<leader>tL", function()
-    Util.terminal()
-end, { desc = "Lazy Terminal (cwd)" })
+
+-- lazy.nvim按键绑定
+require("boot.keymaps")

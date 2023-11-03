@@ -1,4 +1,4 @@
-local Util = require("core.util")
+local Util = require("config.util")
 
 return {
     -- bufferline

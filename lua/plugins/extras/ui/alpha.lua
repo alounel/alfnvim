@@ -18,7 +18,7 @@ return {
                 dashboard.button(
                     "c",
                     " " .. " Config",
-                    "<cmd> lua require('core.util').telescope.config_files()() <CR>"
+                    "<cmd> lua require('config.util').telescope.config_files()() <CR>"
                 ),
                 dashboard.button("r", " " .. " Recent files", "<cmd> Telescope oldfiles <CR>"),
                 dashboard.button("g", " " .. " Find text", "<cmd> Telescope live_grep <CR>"),
