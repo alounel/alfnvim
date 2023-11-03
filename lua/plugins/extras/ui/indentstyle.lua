@@ -23,6 +23,7 @@ return {
                         "mason",
                         "notify",
                         "toggleterm",
+                        "lazyterm",
                     },
                 },
             })

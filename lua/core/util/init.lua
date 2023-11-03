@@ -8,6 +8,7 @@ local deprecated = {
     on_rename = "lsp",
     root_patterns = { "root", "patterns" },
     get_root = { "root", "get" },
+    float_term = { "terminal", "open" },
     toggle_diagnostics = { "toggle", "diagnostics" },
     toggle_number = { "toggle", "number" },
     fg = "ui",
@@ -23,7 +24,7 @@ setmetatable(M, {
             local mod = type(dep) == "table" and dep[1] or dep
             local key = type(dep) == "table" and dep[2] or k
             M.deprecate([[require("core.util").]] .. k, [[require("core.util").]] .. mod .. "." .. key)
-            t[mod] = require("core.util." .. mod) -- load here to prevent loops
+            t[mod] = require("core.util." .. mod)
             return t[mod][key]
         end
         t[k] = require("core.util." .. k)
@@ -55,7 +56,7 @@ end
 
 function M.deprecate(old, new)
     M.warn(("`%s` is deprecated. Please use `%s` instead"):format(old, new), {
-        title = "LazyVim",
+        title = "Alfnvim",
         once = true,
         stacktrace = true,
         stacklevel = 6,

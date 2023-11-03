@@ -118,7 +118,7 @@ function M.info()
     lines[#lines + 1] = "```lua"
     lines[#lines + 1] = "vim.g.root_spec = " .. vim.inspect(spec)
     lines[#lines + 1] = "```"
-    require("lazyvim.util").info(lines, { title = "LazyVim Roots" })
+    require("core.util").info(lines, { title = "Alfnvim Roots" })
     return roots[1] and roots[1].paths[1] or vim.loop.cwd()
 end
 

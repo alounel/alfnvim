@@ -8,6 +8,13 @@ vim.api.nvim_create_autocmd({ "FocusGained", "TermClose", "TermLeave" }, {
     command = "checktime",
 })
 
+vim.api.nvim_create_autocmd("TextYankPost", {
+    group = augroup("highlight_yank"),
+    callback = function()
+        vim.highlight.on_yank()
+    end,
+})
+
 vim.api.nvim_create_autocmd({ "VimResized" }, {
     group = augroup("resize_splits"),
     callback = function()
@@ -25,6 +32,7 @@ vim.api.nvim_create_autocmd("BufReadPost", {
         if vim.tbl_contains(exclude, vim.bo[buf].filetype) or vim.b[buf].alfnvim_last_loc then
             return
         end
+        vim.b[buf].alfnvim_last_loc = true
         local mark = vim.api.nvim_buf_get_mark(buf, '"')
         local lcount = vim.api.nvim_buf_line_count(buf)
         if mark[1] > 0 and mark[1] <= lcount then

@@ -36,6 +36,14 @@ return {
                             return vim.api.nvim_win_get_config(win).relative == ""
                         end,
                     },
+                    {
+                        ft = "lazyterm",
+                        title = "LazyTerm",
+                        size = { height = 0.4 },
+                        filter = function(buf)
+                            return not vim.b[buf].lazyterm_cmd
+                        end,
+                    },
                     "Trouble",
                     {
                         ft = "trouble",

@@ -6,8 +6,10 @@ vim.fn.sign_define("DiagnosticSignHint", { text = " ", texthl = "DiagnosticSi
 
 local M = {}
 
--- 代码补全图标
 M.icons = {
+    misc = {
+        dots = "󰇘",
+    },
     kinds = {
         Array = " ",
         Boolean = " ",

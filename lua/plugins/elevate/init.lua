@@ -82,9 +82,24 @@ return {
                     win_vheight = 12,
                     delay_syntax = 80,
                     border = { "┏", "━", "┓", "┃", "┛", "━", "┗", "┃" },
-                    show_title = false,
+                    show_title = true,
+                    should_preview_cb = function(bufnr, qwinid)
+                        local ret = true
+                        local bufname = vim.api.nvim_buf_get_name(bufnr)
+                        local fsize = vim.fn.getfsize(bufname)
+                        if fsize > 100 * 1024 then
+                            ret = false
+                        elseif bufname:match("^fugitive://") then
+                            ret = false
+                        end
+                        return ret
+                    end,
                 },
                 func_map = {
+                    drop = "o",
+                    openc = "O",
+                    split = "<C-s>",
+                    tabdrop = "<C-t>",
                     vsplit = "",
                     ptogglemode = "z,",
                     stoggleup = "",

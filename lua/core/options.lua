@@ -1,6 +1,8 @@
 -- 设置leader
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
+-- 根目录检测
+vim.g.root_spec = { "lsp", { ".git", "lua" }, "cwd" }
 -- 控制隐藏文本级别
 vim.opt.conceallevel = 3
 -- 防止包裹
@@ -32,6 +34,8 @@ vim.opt.fileencodings = { "ucs-bom", "utf-8", "utf-16", "utf-32", "gb18030", "gb
 vim.opt.fileformats = { "unix", "dos" }
 -- 显示左侧图标指示列
 vim.opt.signcolumn = "yes"
+-- 状态指示器
+vim.opt.statuscolumn = [[%!v:lua.require'core.util'.ui.statuscolumn()]]
 -- 搜索设置
 -- -- 搜索忽略大小写
 vim.opt.ignorecase = true
@@ -104,6 +108,7 @@ vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 vim.opt.foldenable = true
 vim.opt.foldlevel = 99
 vim.opt.foldlevelstart = 99
+vim.opt.foldtext = "v:lua.require'core.util'.ui.foldtext()"
 -- -- 设定指示折叠的列宽度
 vim.opt.foldcolumn = "1"
 -- 筛选设置

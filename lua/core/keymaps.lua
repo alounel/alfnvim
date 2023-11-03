@@ -32,10 +32,10 @@ vim.keymap.set("n", "<leader>wv", "<C-W>v", { desc = "Horizontal addition window
 vim.keymap.set("n", "<leader>ws", "<C-W>s", { desc = "Vertical addition window", remap = true })
 vim.keymap.set("n", "<leader>ww", "<C-W>p", { desc = "Other window", remap = true })
 vim.keymap.set("n", "<leader>wd", "<C-W>c", { desc = "Delete window", remap = true })
-vim.keymap.set("n", "<M-1>", "<c-w><", { desc = "Decrease window width" })
-vim.keymap.set("n", "<M-0>", "<c-w>>", { desc = "Increase window width" })
-vim.keymap.set("n", "<M-->", "<c-w>-", { desc = "Decrease window height" })
-vim.keymap.set("n", "<M-=>", "<c-w>+", { desc = "Increase window height" })
+vim.keymap.set("n", "<C-Up>", "<cmd>resize +2<cr>", { desc = "Increase Window Height" })
+vim.keymap.set("n", "<C-Down>", "<cmd>resize -2<cr>", { desc = "Decrease Window Height" })
+vim.keymap.set("n", "<C-Left>", "<cmd>vertical resize -2<cr>", { desc = "Decrease Window Width" })
+vim.keymap.set("n", "<C-Right>", "<cmd>vertical resize +2<cr>", { desc = "Increase Window Width" })
 
 -- tabs
 vim.keymap.set("n", "<leader><tab>l", "<cmd>tablast<CR>", { desc = "Last Tab" })

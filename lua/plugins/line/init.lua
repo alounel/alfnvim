@@ -7,8 +7,11 @@ return {
         version = "*",
         event = "VeryLazy",
         keys = {
-            { "<M-p>", "<cmd>BufferLineCyclePrev<CR>", desc = "Goto Prev Buffer" },
-            { "<M-n>", "<cmd>BufferLineCycleNext<CR>", desc = "Goto Next Buffer" },
+            { "<leader>bp", "<Cmd>BufferLineTogglePin<CR>", desc = "Toggle pin" },
+            { "<S-h>", "<cmd>BufferLineCyclePrev<cr>", desc = "Prev buffer" },
+            { "<S-l>", "<cmd>BufferLineCycleNext<cr>", desc = "Next buffer" },
+            { "[b", "<cmd>BufferLineCyclePrev<cr>", desc = "Prev buffer" },
+            { "]b", "<cmd>BufferLineCycleNext<cr>", desc = "Next buffer" },
             { "<leader>bl", "<cmd>BufferLineCloseLeft<CR>", desc = "Close Left Buffer" },
             { "<leader>br", "<cmd>BufferLineCloseRight<CR>", desc = "Close Right Buffer" },
         },
