@@ -1,16 +1,16 @@
 return {
     {
-        "glepnir/dashboard-nvim",
+        "nvimdev/dashboard-nvim",
         event = "VimEnter",
         opts = function()
             local logo = [[
-                ███╗   ██╗ ███████╗ ██████╗  ██╗   ██╗ ██╗ ███╗   ███╗
-                ████╗  ██║ ██╔════╝██╔═══██╗ ██║   ██║ ██║ ████╗ ████║
-                ██╔██╗ ██║ █████╗  ██║   ██║ ██║   ██║ ██║ ██╔████╔██║
-                ██║╚██╗██║ ██╔══╝  ██║   ██║ ╚██╗ ██╔╝ ██║ ██║╚██╔╝██║
-                ██║ ╚████║ ███████╗╚██████╔╝  ╚████╔╝  ██║ ██║ ╚═╝ ██║
-                ╚═╝  ╚═══╝ ╚══════╝ ╚═════╝    ╚═══╝   ╚═╝ ╚═╝     ╚═╝
-                ]]
+                ███╗   ██╗ ███████╗ ██████╗  ██╗   ██╗ ██╗ ███╗   ███╗            ▒█▒
+                ████╗  ██║ ██╔════╝██╔═══██╗ ██║   ██║ ██║ ████╗ ████║         ▄▒▀  ▀▄
+                ██╔██╗ ██║ █████╗  ██║   ██║ ██║   ██║ ██║ ██╔████╔██║        ▄▒ ⢀⣄  ▒
+                ██║╚██╗██║ ██╔══╝  ██║   ██║ ╚██╗ ██╔╝ ██║ ██║╚██╔╝██║        █ ⠼⣁⠀⡱ █
+                ██║ ╚████║ ███████╗╚██████╔╝  ╚████╔╝  ██║ ██║ ╚═╝ ██║       ██  ⠛⠻ ▒▒
+                ╚═╝  ╚═══╝ ╚══════╝ ╚═════╝    ╚═══╝   ╚═╝ ╚═╝     ╚═╝       ▒▒    █▀█
+            ]]
 
             logo = string.rep("\n", 2) .. logo .. "\n\n"
 
@@ -29,10 +29,10 @@ return {
                             key = "f",
                         },
                         {
-                            action = "ene | startinsert",
-                            desc = " New file",
-                            icon = " ",
-                            key = "n",
+                            action = "Telescope projects",
+                            desc = " Find projects",
+                            icon = " ",
+                            key = "p",
                         },
                         {
                             action = "Telescope oldfiles",
@@ -47,7 +47,7 @@ return {
                             key = "g",
                         },
                         {
-                            action = "e $MYVIMRC",
+                            action = [[lua require("core.util").telescope.config_files()()]],
                             desc = " Config",
                             icon = " ",
                             key = "c",
@@ -83,6 +83,7 @@ return {
 
             for _, button in ipairs(opts.config.center) do
                 button.desc = button.desc .. string.rep(" ", 43 - #button.desc)
+                button.key_format = "  %s"
             end
 
             if vim.o.filetype == "lazy" then

@@ -182,12 +182,12 @@ return {
         -- {
         --     import = "plugins.extras.ui.starter",
         -- },
-        {
-            import = "plugins.extras.ui.alpha",
-        },
         -- {
-        --     import = "plugins.extras.ui.dashboard",
+        --     import = "plugins.extras.ui.alpha",
         -- },
+        {
+            import = "plugins.extras.ui.dashboard",
+        },
     },
     -- 预定义布局
     {
