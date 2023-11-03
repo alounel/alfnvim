@@ -19,13 +19,13 @@ return {
         "hrsh7th/nvim-cmp",
         event = { "InsertEnter", "CmdlineEnter" },
         dependencies = {
-            { "saadparwaiz1/cmp_luasnip", lazy = true },
-            { "hrsh7th/cmp-nvim-lsp", lazy = true },
-            { "hrsh7th/cmp-buffer", lazy = true },
-            { "hrsh7th/cmp-cmdline", lazy = true },
-            { "FelipeLema/cmp-async-path", lazy = true },
-            { "lukas-reineke/cmp-rg", lazy = true },
-            { "f3fora/cmp-spell", lazy = true },
+            "saadparwaiz1/cmp_luasnip",
+            "hrsh7th/cmp-nvim-lsp",
+            "hrsh7th/cmp-buffer",
+            "hrsh7th/cmp-cmdline",
+            "FelipeLema/cmp-async-path",
+            "lukas-reineke/cmp-rg",
+            "f3fora/cmp-spell",
         },
         config = function()
             local cmp_autopairs = require("nvim-autopairs.completion.cmp")

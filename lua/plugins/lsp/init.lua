@@ -161,8 +161,8 @@ return {
                 })
             end
             vim.keymap.set("n", "<leader>lw", vim.diagnostic.open_float, { desc = "Float Window View Diagnostic" })
-            vim.keymap.set("n", "[n", vim.diagnostic.goto_prev, { desc = "Goto Prev Diagnostic Location" })
-            vim.keymap.set("n", "]n", vim.diagnostic.goto_next, { desc = "Goto Next Diagnostic Location" })
+            vim.keymap.set("n", "[n", vim.diagnostic.goto_prev, { desc = "Prev Diagnostic For Location" })
+            vim.keymap.set("n", "]n", vim.diagnostic.goto_next, { desc = "Next Diagnostic For Location" })
             vim.keymap.set("n", "<leader>lq", vim.diagnostic.setloclist, { desc = "QuickFix Window View Diagnostic" })
             vim.api.nvim_create_autocmd("LspAttach", {
                 group = vim.api.nvim_create_augroup("UserLspConifg", {}),
@@ -174,31 +174,26 @@ return {
                         vim.lsp.buf.code_action,
                         { buffer = ev.buf, desc = "Code Action" }
                     )
+                    vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { buffer = ev.buf, desc = "Goto Declaration" })
                     vim.keymap.set(
                         "n",
-                        "<leader>le",
-                        vim.lsp.buf.declaration,
-                        { buffer = ev.buf, desc = "View Declaration" }
-                    )
-                    vim.keymap.set(
-                        "n",
-                        "<leader>ld",
+                        "<leader>gd",
                         vim.lsp.buf.definition,
-                        { buffer = ev.buf, desc = "Show Definition" }
+                        { buffer = ev.buf, desc = "Goto Definition" }
                     )
                     vim.keymap.set(
                         "n",
                         "<leader>lt",
                         vim.lsp.buf.type_definition,
-                        { buffer = ev.buf, desc = "Show Type Definition" }
+                        { buffer = ev.buf, desc = "Type Definition" }
                     )
                     vim.keymap.set(
                         "n",
-                        "<leader>li",
+                        "gI",
                         vim.lsp.buf.implementation,
-                        { buffer = ev.buf, desc = "Implementation" }
+                        { buffer = ev.buf, desc = "Goto Implementation" }
                     )
-                    vim.keymap.set("n", "<leader>lh", vim.lsp.buf.hover, { buffer = ev.buf, desc = "Show Hover" })
+                    vim.keymap.set("n", "<leader>lh", vim.lsp.buf.hover, { buffer = ev.buf, desc = "Hover" })
                     vim.keymap.set(
                         "n",
                         "<leader>ls",

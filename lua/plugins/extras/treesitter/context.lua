@@ -20,14 +20,28 @@ return {
         lazy = true,
         event = { "BufReadPost", "BufNewFile" },
         keys = {
-            { "<leader>kt", "<cmd>TSContextToggle<CR>", desc = "Toggle Context" },
+            {
+                "<leader>kt",
+                function()
+                    local Util = require("core.util")
+                    local tsc = require("treesitter-context")
+                    tsc.toggle()
+                    if Util.inject.get_upvalue(tsc.toggle, "enabled") then
+                        Util.info("Enabled Treesitter Context", { title = "Option" })
+                    else
+                        Util.warn("Disabled Treesitter Context", { title = "Option" })
+                    end
+                end,
+                desc = "Toggle Treesitter Context",
+            },
         },
-        dependencies = { "nvim-treesitter" },
         config = function()
-            require("treesitter-context").setup()
+            require("treesitter-context").setup({
+                max_lines = 3,
+            })
             vim.keymap.set("n", "[c", function()
                 require("treesitter-context").go_to_context()
-            end, { desc = "Jump Context" })
+            end, { silent = true, desc = "Jump Context" })
         end,
     },
 }

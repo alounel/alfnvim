@@ -46,9 +46,9 @@ return {
     {
         import = "plugins.extras.develop.bigfile",
     },
-    -- 选择器
+    -- 图标选择
     {
-        import = "plugins.extras.develop.picker",
+        import = "plugins.extras.develop.font-icon",
     },
     -- 重构代码
     {
