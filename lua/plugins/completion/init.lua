@@ -2,8 +2,8 @@ return {
     -- 片段支持
     {
         "L3MON4D3/luasnip",
-        version = "2.*",
         build = "make install_jsregexp",
+        lazy = true,
         event = "InsertEnter",
         dependencies = { "rafamadriz/friendly-snippets" },
         config = function()
