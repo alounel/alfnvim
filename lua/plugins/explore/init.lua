@@ -12,14 +12,14 @@ return {
                 function()
                     require("neo-tree.command").execute({ toggle = true, dir = Util.root() })
                 end,
-                desc = "Explorer NeoTree (root)",
+                desc = "Explorer NeoTree (Root Dir)",
             },
             {
                 "<leader>nG",
                 function()
                     require("neo-tree.command").execute({ toggle = true, dir = vim.loop.cwd() })
                 end,
-                desc = "Explorer NeoTree (cwd)",
+                desc = "Explorer NeoTree (CWD)",
             },
             {
                 "<leader>ne",
@@ -70,6 +70,7 @@ return {
                 "Outline",
                 "aerial",
                 "sagaoutline",
+                "lazyterm",
             },
             default_component_configs = {
                 indent = {

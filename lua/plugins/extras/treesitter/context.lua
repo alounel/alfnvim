@@ -4,7 +4,6 @@ return {
         "haringsrob/nvim_context_vt",
         lazy = true,
         ft = { "c", "cpp", "java", "lua", "python", "typescript", "javascript", "typescriptreact", "javascriptreact" },
-        dependencies = { "nvim-treesitter" },
         opts = {
             prefix = "",
             disable_ft = { "markdown" },
@@ -39,7 +38,7 @@ return {
             require("treesitter-context").setup({
                 max_lines = 3,
             })
-            vim.keymap.set("n", "[c", function()
+            vim.keymap.set("n", "[x", function()
                 require("treesitter-context").go_to_context()
             end, { silent = true, desc = "Jump Context" })
         end,

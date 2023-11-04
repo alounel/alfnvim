@@ -52,16 +52,23 @@ end
 function M.get_kind_filter(buf)
     buf = (buf == nil or buf == 0) and vim.api.nvim_get_current_buf() or buf
     local ft = vim.bo[buf].filetype
-    if M.kind_filter == false then
+    if M.filter.kind_filter == false then
         return
     end
-    if M.kind_filter[ft] == false then
+    if M.filter.kind_filter[ft] == false then
         return
     end
-    return type(M.kind_filter) == "table"
+    return type(M.filter.kind_filter) == "table"
             and type(M.filter.kind_filter.default) == "table"
             and M.filter.kind_filter.default
         or nil
+end
+
+function M.sign()
+    for name, icon in pairs(require("core.magic").icons.diagnostics) do
+        name = "DiagnosticSign" .. name
+        vim.fn.sign_define(name, { text = icon, texthl = name, numhl = "" })
+    end
 end
 
 return M

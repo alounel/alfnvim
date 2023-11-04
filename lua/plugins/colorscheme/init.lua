@@ -27,11 +27,9 @@ return {
                     comments = { italic = true },
                     keywords = { italic = false, bold = true },
                     functions = { bold = true },
-                    variables = {},
-                    sidebars = "dark",
-                    floats = "dark",
+                    variables = { bold = true },
                 },
-                sidebars = { "qf", "terminal" },
+                sidebars = { "qf", "terminal", "neo-tree", "toggleterm", "lazyterm" },
             })
             vim.cmd("colorscheme tokyonight")
         end,

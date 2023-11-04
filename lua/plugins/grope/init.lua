@@ -112,31 +112,52 @@ return {
             require("telescope").load_extension("noice")
         end,
         keys = {
-            { "<leader>fc", "<cmd>Telescope commands<CR>", desc = "Find Commands" },
-            { "<leader>fC", "<cmd>Telescope command_history<CR>", desc = "Find Command History" },
-            { "<leader>fi", "<cmd>Telescope registers<CR>", desc = "Find Registers" },
-            { "<leader>f<space>", Util.telescope("files"), desc = "Find Files (root dir)" },
-            { "<leader>fw", "<cmd>Telescope find_files theme=ivy<CR>", desc = "Find Files" },
-            { "<leader>fg", "<cmd>Telescope live_grep theme=ivy<CR>", desc = "Grep Word" },
             {
                 "<leader>fb",
                 "<cmd>Telescope buffers sort_mru=true sort_lastused=true theme=ivy<CR>",
                 desc = "Find Buffers",
             },
+            { "<leader>fc", "<cmd>Telescope commands<CR>", desc = "Find Commands" },
+            { "<leader>fC", "<cmd>Telescope command_history<CR>", desc = "Find Command History" },
+            { "<leader>ff", Util.telescope("files"), desc = "Find Files (Root Dir)" },
+            { "<leader>fF", Util.telescope("files", { cwd = false }), desc = "Find Files (CWD)" },
             { "<leader>fh", "<cmd>Telescope help_tags theme=ivy<CR>", desc = "Find Help Tags" },
-            { "<leader>fo", "<cmd>Telescope oldfiles theme=ivy<CR>", desc = "Find Old Files" },
+            { "<leader>fg", Util.telescope("live_grep"), desc = "Grep Text (Root Dir)" },
+            { "<leader>fG", Util.telescope("live_grep", { cwd = false }), desc = "Grep Text (CWD)" },
             { "<leader>fm", "<cmd>Telescope marks theme=ivy<CR>", desc = "Find Marks" },
+            { "<leader>fr", "<cmd>Telescope oldfiles theme=ivy<CR>", desc = "Find Old Files" },
             {
                 "<leader>fd",
                 Util.telescope("colorscheme", { enable_preview = true }),
                 desc = "Colorscheme with preview",
             },
+            { "<leader>fi", "<cmd>Telescope registers<CR>", desc = "Find Registers" },
             { "<leader>fn", "<cmd>Telescope notify theme=ivy<CR>", desc = "Notify History" },
             { "<leader>fp", "<cmd>Telescope projects<CR>", desc = "Find Projects" },
+            { "<leader>fw", Util.telescope("grep_string", { word_match = "-w" }), desc = "Word (Root Dir)" },
+            { "<leader>fo", "<cmd>Telescope vim_options<cr>", desc = "Find Options" },
             {
                 "<leader>fe",
                 "<cmd>Telescope file_browser path=%:p:h select_buffer=true<CR>",
                 desc = "Use Buffer Location Open Browser",
+            },
+            {
+                "<leader>fl",
+                function()
+                    require("telescope.builtin").lsp_document_symbols({
+                        symbols = require("config.confinit").get_kind_filter(),
+                    })
+                end,
+                desc = "Goto Symbol",
+            },
+            {
+                "<leader>fL",
+                function()
+                    require("telescope.builtin").lsp_dynamic_workspace_symbols({
+                        symbols = require("config.confinit").get_kind_filter(),
+                    })
+                end,
+                desc = "Goto Symbol (Workspace)",
             },
             -- { "<leader>fr", "<cmd>Telescope frecency theme=ivy<CR>", desc = "Find Frecency" },
         },

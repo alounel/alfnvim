@@ -27,13 +27,13 @@ return {
             "lukas-reineke/cmp-rg",
             "f3fora/cmp-spell",
         },
-        config = function()
-            local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+        opts = function()
             local defaults = require("cmp.config.default")()
             local luasnip = require("luasnip")
             local cmp = require("cmp")
             vim.api.nvim_set_hl(0, "CmpGhostText", { link = "Comment", default = true })
-            cmp.setup({
+
+            return {
                 snippet = {
                     expand = function(args)
                         luasnip.lsp_expand(args.body)
@@ -47,39 +47,13 @@ return {
                     { name = "luasnip" },
                     { name = "nvim_lsp" },
                     { name = "async_path" },
-                    {
-                        name = "buffer",
-                        option = {
-                            keyword_pattern = [[\k\+]],
-                            get_bufnrs = function()
-                                local buf = vim.api.nvim_get_current_buf()
-                                local byte_size = vim.api.nvim_buf_get_offset(buf, vim.api.nvim_buf_line_count(buf))
-                                if byte_size > 1024 * 1024 * 2 then
-                                    return {}
-                                end
-                                return { buf }
-                            end,
-                        },
-                    },
+                    { name = "buffer" },
                     {
                         name = "rg",
                         keyword_length = 3,
                     },
                     { name = "spell" },
                 }),
-                -- 格式化补全菜单
-                -- formatting = {
-                --     format = require("lspkind").cmp_format({
-                --         mode = "symbol_text",
-                --         with_text = true,
-                --         maxwidth = 50,
-                --         ellipsis_char = "...",
-                --         before = function(entry, vim_item)
-                --             vim_item.menu = "[" .. string.upper(entry.source.name) .. "]"
-                --             return vim_item
-                --         end,
-                --     }),
-                -- },
                 formatting = {
                     format = function(entry, vim_item)
                         vim_item.kind =
@@ -101,14 +75,13 @@ return {
                         hl_group = "CmpGhostText",
                     },
                 },
-                -- 对补全建议排序
                 sorting = defaults.sorting,
-                -- 绑定补全相关的按键
+
                 mapping = cmp.mapping.preset.insert({
-                    ["<C-b>"] = cmp.mapping.scroll_docs(-4), --Up
-                    ["<C-f>"] = cmp.mapping.scroll_docs(4), --Down
+                    ["<C-b>"] = cmp.mapping.scroll_docs(-4),
+                    ["<C-f>"] = cmp.mapping.scroll_docs(4),
                     ["<C-Space>"] = cmp.mapping.complete(),
-                    ["<C-e>"] = cmp.mapping.abort(), --关闭补全
+                    ["<C-e>"] = cmp.mapping.abort(),
                     ["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }), --选择上一个
                     ["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }), --选择下一个
                     ["<CR>"] = cmp.mapping.confirm({ --确认选择
@@ -134,7 +107,15 @@ return {
                         end
                     end, { "i", "s" }),
                 }),
-            })
+            }
+        end,
+        config = function(_, opts)
+            local cmp = require("cmp")
+            for _, source in ipairs(opts.sources) do
+                source.group_index = source.group_index or 1
+            end
+            cmp.setup(opts)
+
             cmp.setup.cmdline({ "/", "?" }, {
                 mapping = cmp.mapping.preset.cmdline(),
                 sources = cmp.config.sources({
@@ -149,7 +130,8 @@ return {
                     { name = "cmdline" },
                 }),
             })
-            cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
+
+            cmp.event:on("confirm_done", require("nvim-autopairs.completion.cmp").on_confirm_done())
         end,
     },
 }

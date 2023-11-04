@@ -32,6 +32,10 @@ setmetatable(M, {
     end,
 })
 
+function M.is_win()
+    return vim.loop.os_uname().sysname:find("Windows") ~= nil
+end
+
 function M.has(plugin)
     return require("lazy.core.config").spec.plugins[plugin] ~= nil
 end
@@ -124,7 +128,7 @@ function M.safe_keymap_set(mode, lhs, rhs, opts)
     if #modes > 0 then
         opts = opts or {}
         opts.silent = opts.silent ~= false
-        if opts.remap and not vim.g.vscode then
+        if opts.remap then
             opts.remap = nil
         end
         vim.keymap.set(modes, lhs, rhs, opts)

@@ -144,33 +144,22 @@ return {
         "RRethy/vim-illuminate",
         lazy = true,
         event = { "BufReadPost", "BufNewFile" },
-        config = function()
-            require("illuminate").configure({
-                providers = {
-                    "lsp",
-                    "treesitter",
-                },
-                delay = 200,
-                large_file_cutoff = 2000,
-                large_file_overrides = {
-                    providers = {
-                        "lsp",
-                        "treesitter",
-                    },
-                },
-            })
-            vim.keymap.set(
-                "n",
-                "[l",
-                "<cmd>lua require('illuminate').goto_prev_reference()<CR>",
-                { desc = "Goto Prev Referencce" }
-            )
-            vim.keymap.set(
-                "n",
-                "]l",
-                "<cmd>lua require('illuminate').goto_next_reference()<CR>",
-                { desc = "Goto Next Referencce" }
-            )
+        opts = {
+            providers = { "lsp", "treesitter" },
+            delay = 200,
+            large_file_cutoff = 2000,
+            large_file_overrides = {
+                providers = { "lsp", "treesitter" },
+            },
+        },
+        config = function(_, opts)
+            require("illuminate").configure(opts)
+            vim.keymap.set("n", "[l", function()
+                require("illuminate").goto_prev_reference()
+            end, { desc = "Prev Match Word" })
+            vim.keymap.set("n", "]l", function()
+                require("illuminate").goto_next_reference()
+            end, { desc = "Next Match Word" })
         end,
         keys = {
             { "<leader>hi", "<cmd>IlluminateToggle<CR>", desc = "Toggle Overall Word Illuminate" },

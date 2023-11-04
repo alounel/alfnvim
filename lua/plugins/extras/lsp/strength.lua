@@ -41,8 +41,8 @@ return {
             { "<leader>lgy", "<cmd>Lspsaga peek_type_definition<CR>", desc = "Peek Type Definition" },
             { "<leader>lgx", "<cmd>Lspsaga goto_type_definition<CR>", desc = "Goto Type Definition" },
             -- diagnostics
-            { "[e", "<cmd>Lspsaga diagnostic_jump_prev<CR>", desc = "Diagnostics Jump Prev" },
-            { "]e", "<cmd>Lspsaga diagnostic_jump_next<CR>", desc = "Diagnostics Jump Next" },
+            { "[e", "<cmd>Lspsaga diagnostic_jump_prev<CR>", desc = "Prev Diagnostics" },
+            { "]e", "<cmd>Lspsaga diagnostic_jump_next<CR>", desc = "Next Diagnostics" },
             { "<leader>lgb", "<cmd>Lspsaga show_buf_diagnostics<CR>", desc = "Show Buffer Diagnostics" },
             { "<leader>lgc", "<cmd>Lspsaga show_cursor_diagnostics<CR>", desc = "Show Cursor Diagnostics" },
             { "<leader>lgl", "<cmd>Lspsaga show_line_diagnostics<CR>", desc = "Show Line Diagnostics" },
@@ -73,23 +73,20 @@ return {
                     extend_gitsigns = true,
                 },
             })
-            -- 带过滤器的诊断跳转，如之跳转到错误处
+            -- 带过滤器的诊断跳转
             vim.keymap.set("n", "[E", function()
                 require("lspsaga.diagnostic"):goto_prev({ severity = vim.diagnostic.severity.ERROR })
-            end, { desc = "Goto Prev Diagnostics Severity ERROR" })
+            end, { desc = "Prev Diagnostics ERROR" })
             vim.keymap.set("n", "]E", function()
                 require("lspsaga.diagnostic"):goto_next({ severity = vim.diagnostic.severity.ERROR })
-            end, { desc = "Goto Next Diagnostics Severity ERROR" })
+            end, { desc = "Next Diagnostics ERROR" })
+            vim.keymap.set("n", "[W", function()
+                require("lspsaga.diagnostic"):goto_prev({ severity = vim.diagnostic.severity.WARN })
+            end, { desc = "Prev Diagnostics WARN" })
+            vim.keymap.set("n", "]W", function()
+                require("lspsaga.diagnostic"):goto_next({ severity = vim.diagnostic.severity.WARN })
+            end, { desc = "Next Diagnostics WARN" })
         end,
-    },
-    -- 调暗未使用的函数、变量、参数
-    {
-        -- depend = 0.10.0
-        "zbirenbaum/neodim",
-        enabled = false,
-        lazy = true,
-        event = "LspAttach",
-        opts = {},
     },
     -- 代码大纲
     {

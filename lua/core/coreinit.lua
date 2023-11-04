@@ -4,5 +4,5 @@ require("core.options")
 require("core.keymaps")
 -- 自动命令
 require("core.autocmds")
--- 自定义图标或高亮
+-- 自定义图标
 require("core.magic")

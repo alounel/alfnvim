@@ -10,18 +10,8 @@ return {
             { "<leader>ur", "<cmd>LspRestart<CR>", desc = "Restart LspConfig" },
         },
         dependencies = {
-            {
-                "folke/neodev.nvim",
-                lazy = true,
-                opts = {},
-            },
-            {
-                "folke/neoconf.nvim",
-                lazy = true,
-                cmd = "Neoconf",
-                config = false,
-                dependencies = { "nvim-lspconfig" },
-            },
+            { "folke/neodev.nvim", opts = {} },
+            { "folke/neoconf.nvim", cmd = "Neoconf", config = false, dependencies = { "nvim-lspconfig" } },
             {
                 "williamboman/mason-lspconfig.nvim",
                 lazy = true,
@@ -74,10 +64,10 @@ return {
             local lspconfig = require("lspconfig")
             local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-            local clangd_capabilities = vim.tbl_deep_extend("keep", {}, capabilities, {
+            local clangd_capabilities = vim.tbl_deep_extend("force", {}, capabilities, {
                 offsetEncoding = { "utf-16" },
             })
-            local json_capabilities = vim.tbl_deep_extend("keep", {}, capabilities, {
+            local json_capabilities = vim.tbl_deep_extend("force", {}, capabilities, {
                 textDocument = {
                     completion = {
                         completionItem = {
@@ -168,7 +158,6 @@ return {
                 })
             end
 
-            -- 设置按键绑定
             require("plugins.lsp.keymaps")
         end,
     },

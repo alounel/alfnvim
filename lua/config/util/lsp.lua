@@ -1,3 +1,5 @@
+local Util = require("config.util")
+
 local M = {}
 
 function M.get_clients(opts)
@@ -60,6 +62,43 @@ function M.disable(server, cond)
             end
         end
     )
+end
+
+function M.formatter(opts)
+    opts = opts or {}
+    local filter = opts.filter or {}
+    filter = type(filter) == "string" and { name = filter } or filter
+    local ret = {
+        name = "LSP",
+        primary = true,
+        priority = 1,
+        format = function(buf)
+            M.format(Util.merge(filter, { bufnr = buf }))
+        end,
+        sources = function(buf)
+            local clients = M.get_clients(Util.merge(filter, { bufnr = buf }))
+            local ret = vim.tbl_filter(function(client)
+                return client.supports_method("textDocument/formatting")
+                    or client.supports_method("textDocument/rangeFormatting")
+            end, clients)
+            return vim.tbl_map(function(client)
+                return client.name
+            end, ret)
+        end,
+    }
+    return Util.merge(ret, opts)
+end
+
+function M.format(opts)
+    opts = vim.tbl_deep_extend("force", {}, opts or {}, require("config.util").opts("nvim-lspconfig").format or {})
+    local ok, conform = pcall(require, "conform")
+    if ok then
+        opts.formatters = {}
+        opts.lsp_fallback = true
+        conform.format(opts)
+    else
+        vim.lsp.buf.format(opts)
+    end
 end
 
 return M

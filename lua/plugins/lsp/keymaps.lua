@@ -1,6 +1,6 @@
 vim.keymap.set("n", "<leader>lw", vim.diagnostic.open_float, { desc = "Float Window View Diagnostic" })
-vim.keymap.set("n", "[n", vim.diagnostic.goto_prev, { desc = "Prev Diagnostic For Location" })
-vim.keymap.set("n", "]n", vim.diagnostic.goto_next, { desc = "Next Diagnostic For Location" })
+vim.keymap.set("n", "[n", vim.diagnostic.goto_prev, { desc = "Prev Diagnostic Location" })
+vim.keymap.set("n", "]n", vim.diagnostic.goto_next, { desc = "Next Diagnostic Location" })
 vim.keymap.set("n", "<leader>lq", vim.diagnostic.setloclist, { desc = "QuickFix Window View Diagnostic" })
 vim.api.nvim_create_autocmd("LspAttach", {
     group = vim.api.nvim_create_augroup("UserLspConifg", {}),
