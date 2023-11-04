@@ -146,7 +146,7 @@ return {
                         end,
                     },
                 },
-                extensions = { "neo-tree", "lazy", "mason" },
+                extensions = { "neo-tree", "lazy" },
             }
         end,
     },
