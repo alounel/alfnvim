@@ -31,7 +31,7 @@ return {
                         {
                             action = "Telescope projects",
                             desc = " Find projects",
-                            icon = " ",
+                            icon = " ",
                             key = "p",
                         },
                         {

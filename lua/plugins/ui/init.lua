@@ -122,16 +122,16 @@ return {
                 GitChange = { color = "#D89D80" },
                 GitDelete = { color = "#AB56B5" },
             },
-            excluded_buftypes = { "terminal", "nofile" },
+            excluded_buftypes = { "terminal", "nofile", "prompt", "popup", "quickfix" },
             excluded_filetypes = {
                 "cmp_docs",
                 "cmp_menu",
                 "noice",
-                "prompt",
                 "TelescopePrompt",
                 "alpha",
                 "dashboard",
                 "starter",
+                "qf",
             },
             handlers = {
                 gitsigns = true,

@@ -13,6 +13,7 @@ return {
                 local exclude_filetypes = {
                     "neo-tree",
                     "Trouble",
+                    "trouble",
                     "Outline",
                     "aerial",
                     "sagaoutline",

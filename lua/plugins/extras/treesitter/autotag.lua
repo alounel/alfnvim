@@ -3,15 +3,7 @@ return {
     {
         "windwp/nvim-ts-autotag",
         lazy = true,
-        ft = {
-            "xml",
-            "html",
-            "markdown",
-            "javascript",
-            "typescript",
-            "javascriptreact",
-            "typescriptreact",
-        },
+        ft = { "xml", "html", "markdown", "javascript", "typescript", "javascriptreact", "typescriptreact" },
         opts = {
             enable = true,
             enable_rename = true,

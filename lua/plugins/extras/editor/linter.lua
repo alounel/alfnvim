@@ -15,12 +15,7 @@ return {
                 dependencies = { "mason.nvim" },
                 config = function()
                     require("mason-null-ls").setup({
-                        ensure_installed = {
-                            "cmake_format",
-                            "markdownlint",
-                            "shellcheck",
-                            "jsonlint",
-                        },
+                        ensure_installed = { "cmake_format", "markdownlint", "shellcheck", "jsonlint" },
                         automatic_installation = false,
                     })
                 end,
@@ -45,10 +40,10 @@ return {
 
             local conf_sources = {
                 diagnostics.typos.with({
-                    disabled_filetypes = { "help", "log", "markdown", "norg", "tex", "text", "vimdoc" },
+                    disabled_filetypes = { "help", "log", "markdown", "norg", "tex", "text" },
                 }),
                 diagnostics.editorconfig_checker.with({
-                    disabled_filetypes = { "help", "log", "markdown", "norg", "tex", "text", "vimdoc" },
+                    disabled_filetypes = { "help", "log", "markdown", "norg", "tex", "text" },
                 }),
             }
 
@@ -75,7 +70,7 @@ return {
             })
         end,
     },
-    -- 对某些文件不使用类似代码注入方式诊断的代码诊断
+    -- 不使用类似代码注入方式诊断的代码诊断
     {
         "mfussenegger/nvim-lint",
         lazy = true,
@@ -156,15 +151,93 @@ return {
     {
         "folke/trouble.nvim",
         lazy = true,
+        cmd = "TroubleToggle",
         keys = {
-            { "<leader>xt", "<cmd>TroubleToggle<CR>", desc = "Toggle Diagnostics List" },
             { "<leader>xr", "<cmd>TroubleRefresh<CR>", desc = "Refresh Action List" },
-            { "<leader>xw", "<cmd>TroubleToggle workspace_diagnostics<CR>", desc = "Lsp Workspace Diagnostics" },
-            { "<leader>xd", "<cmd>TroubleToggle document_diagnostics<CR>", desc = "Lsp Document Diagnostics" },
-            { "<leader>xn", "<cmd>TroubleToggle lsp_definitions<CR>", desc = "Lsp Cursor Word Definition" },
-            { "<leader>xf", "<cmd>TroubleToggle lsp_references<CR>", desc = "Lsp Cursor Word References" },
-            { "<leader>xq", "<cmd>TroubleToggle quickfix<CR>", desc = "Window Quickfix Project" },
-            { "<leader>xl", "<cmd>TroubleToggle loclist<CR>", desc = "Window Local List Project" },
+            {
+                "<leader>xg",
+                function()
+                    require("trouble").toggle()
+                end,
+                desc = "Toggle Diagnostics List",
+            },
+            {
+                "<leader>xw",
+                function()
+                    require("trouble").toggle("workspace_diagnostics")
+                end,
+                desc = "Lsp Workspace Diagnostics",
+            },
+            {
+                "<leader>xd",
+                function()
+                    require("trouble").toggle("document_diagnostics")
+                end,
+                desc = "Lsp Document Diagnostics",
+            },
+            {
+                "<leader>xn",
+                function()
+                    require("trouble").toggle("lsp_definitions")
+                end,
+                desc = "Lsp Word Definition",
+            },
+            {
+                "<leader>xt",
+                function()
+                    require("trouble").toggle("lsp_type_definitions")
+                end,
+                desc = "Lsp Word Type Definition",
+            },
+            {
+                "<leader>xq",
+                function()
+                    require("trouble").toggle("quickfix")
+                end,
+                desc = "Quickfix list For Trouble",
+            },
+            {
+                "<leader>xl",
+                function()
+                    require("trouble").toggle("loclist")
+                end,
+                desc = "Local List For Trouble",
+            },
+            {
+                "gR",
+                function()
+                    require("trouble").toggle("lsp_references")
+                end,
+                desc = "Goto References For Trouble",
+            },
+            {
+                "[Q",
+                function()
+                    if require("trouble").is_open() then
+                        require("trouble").previous({ skip_groups = true, jump = true })
+                    else
+                        local ok, err = pcall(vim.cmd.cprev)
+                        if not ok then
+                            vim.notify(err, vim.log.levels.ERROR)
+                        end
+                    end
+                end,
+                desc = "Previous Trouble/Quickfix Item",
+            },
+            {
+                "[Q",
+                function()
+                    if require("trouble").is_open() then
+                        require("trouble").next({ skip_groups = true, jump = true })
+                    else
+                        local ok, err = pcall(vim.cmd.cprev)
+                        if not ok then
+                            vim.notify(err, vim.log.levels.ERROR)
+                        end
+                    end
+                end,
+                desc = "Next Trouble/Quickfix Item",
+            },
         },
         opts = {
             action_keys = {

@@ -1,4 +1,5 @@
 local Util = require("config.util")
+
 return {
     -- telescope模糊查找
     {
@@ -28,11 +29,27 @@ return {
                     end)
                 end,
             },
-            { "nvim-telescope/telescope-file-browser.nvim", lazy = true },
-            { "nvim-telescope/telescope-ui-select.nvim", lazy = true },
+            {
+                "nvim-telescope/telescope-file-browser.nvim",
+                lazy = true,
+                config = function()
+                    Util.on_load("telescope.nvim", function()
+                        require("telescope").load_extension("file_browser")
+                    end)
+                end,
+            },
+            {
+                "nvim-telescope/telescope-ui-select.nvim",
+                lazy = true,
+                config = function()
+                    Util.on_load("telescope.nvim", function()
+                        require("telescope").load_extension("ui-select")
+                    end)
+                end,
+            },
             { "plenary.nvim" },
         },
-        config = function()
+        opts = function()
             local actions = require("telescope.actions")
 
             local open_with_trouble = function(...)
@@ -52,7 +69,7 @@ return {
                 Util.telescope("find_files", { hidden = true, default_text = line })()
             end
 
-            require("telescope").setup({
+            return {
                 defaults = {
                     prompt_prefix = " ",
                     selection_caret = " ",
@@ -84,68 +101,41 @@ return {
                         },
                     },
                 },
-                pickers = {
-                    find_files = {
-                        theme = "ivy",
-                    },
-                },
+                pickers = {},
                 extensions = {
-                    file_browser = {
-                        theme = "ivy",
-                        hijack_netrw = true,
-                    },
-                    fzf = {
-                        fuzzy = true,
-                        override_generic_sorter = true,
-                        override_file_sorter = true,
-                        case_mode = "smart_case",
-                    },
                     ["ui-select"] = {
                         require("telescope.themes").get_dropdown({}),
                     },
                 },
-            })
-            require("telescope").load_extension("ui-select")
-            require("telescope").load_extension("file_browser")
-            require("telescope").load_extension("projects")
-            require("telescope").load_extension("notify")
-            require("telescope").load_extension("noice")
+            }
         end,
         keys = {
-            {
-                "<leader>fb",
-                "<cmd>Telescope buffers sort_mru=true sort_lastused=true theme=ivy<CR>",
-                desc = "Find Buffers",
-            },
+            -- stylua: ignore
+            { "<leader>fb", "<cmd>Telescope buffers sort_mru=true sort_lastused=true theme=ivy<CR>", desc = "Find Buffers" },
+            { "<leader>fB", "<cmd>Telescope scope buffers<CR>", desc = "Find Scope buffers" },
             { "<leader>fc", "<cmd>Telescope commands<CR>", desc = "Find Commands" },
             { "<leader>fC", "<cmd>Telescope command_history<CR>", desc = "Find Command History" },
+            -- stylua: ignore
+            { "<leader>fd", Util.telescope("colorscheme", { enable_preview = true }), desc = "Colorscheme with preview" },
             { "<leader>ff", Util.telescope("files"), desc = "Find Files (Root Dir)" },
             { "<leader>fF", Util.telescope("files", { cwd = false }), desc = "Find Files (CWD)" },
-            { "<leader>fh", "<cmd>Telescope help_tags theme=ivy<CR>", desc = "Find Help Tags" },
             { "<leader>fg", Util.telescope("live_grep"), desc = "Grep Text (Root Dir)" },
             { "<leader>fG", Util.telescope("live_grep", { cwd = false }), desc = "Grep Text (CWD)" },
-            { "<leader>fm", "<cmd>Telescope marks theme=ivy<CR>", desc = "Find Marks" },
-            { "<leader>fr", "<cmd>Telescope oldfiles theme=ivy<CR>", desc = "Find Old Files" },
-            {
-                "<leader>fd",
-                Util.telescope("colorscheme", { enable_preview = true }),
-                desc = "Colorscheme with preview",
-            },
+            { "<leader>fh", "<cmd>Telescope help_tags<CR>", desc = "Find Help Tags" },
             { "<leader>fi", "<cmd>Telescope registers<CR>", desc = "Find Registers" },
-            { "<leader>fn", "<cmd>Telescope notify theme=ivy<CR>", desc = "Notify History" },
-            { "<leader>fp", "<cmd>Telescope projects<CR>", desc = "Find Projects" },
+            { "<leader>fm", "<cmd>Telescope marks<CR>", desc = "Find Marks" },
+            { "<leader>fn", "<cmd>Telescope vim_options<cr>", desc = "Find Vim Options" },
+            { "<leader>fr", "<cmd>Telescope oldfiles theme=ivy<CR>", desc = "Find Old Files" },
+            { "<leader>ft", "<cmd>Telescope file_browser theme=ivy<CR>", desc = "Open File Tree" },
+            -- stylua: ignore
+            { "<leader>fT", "<cmd>Telescope file_browser path=%:p:h select_buffer=true theme=ivy<CR>", desc = "Open File Tree(CWD)" },
+            -- stylua: ignore
             { "<leader>fw", Util.telescope("grep_string", { word_match = "-w" }), desc = "Word (Root Dir)" },
-            { "<leader>fo", "<cmd>Telescope vim_options<cr>", desc = "Find Options" },
-            {
-                "<leader>fe",
-                "<cmd>Telescope file_browser path=%:p:h select_buffer=true<CR>",
-                desc = "Use Buffer Location Open Browser",
-            },
             {
                 "<leader>fl",
                 function()
                     require("telescope.builtin").lsp_document_symbols({
-                        symbols = require("config.confinit").get_kind_filter(),
+                        symbols = require("config.confstrap").get_kind_filter(),
                     })
                 end,
                 desc = "Goto Symbol",
@@ -154,12 +144,11 @@ return {
                 "<leader>fL",
                 function()
                     require("telescope.builtin").lsp_dynamic_workspace_symbols({
-                        symbols = require("config.confinit").get_kind_filter(),
+                        symbols = require("config.confstrap").get_kind_filter(),
                     })
                 end,
                 desc = "Goto Symbol (Workspace)",
             },
-            -- { "<leader>fr", "<cmd>Telescope frecency theme=ivy<CR>", desc = "Find Frecency" },
         },
     },
     -- fzf模糊查找

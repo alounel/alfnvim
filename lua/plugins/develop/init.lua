@@ -4,8 +4,24 @@ return {
         "ahmedkhalf/project.nvim",
         lazy = true,
         event = "VeryLazy",
-        config = function()
-            require("project_nvim").setup()
+        opts = {
+            manual_mode = true,
+        },
+        config = function(_, opts)
+            require("project_nvim").setup(opts)
+        end,
+    },
+    -- projects的telescope可选项
+    {
+        "nvim-telescope/telescope.nvim",
+        optional = true,
+        keys = {
+            { "<leader>fp", "<cmd>Telescope projects<CR>", desc = "File Projects" },
+        },
+        opts = function()
+            require("config.util").on_load("telescope.nvim", function()
+                require("telescope").load_extension("projects")
+            end)
         end,
     },
     -- 会话管理

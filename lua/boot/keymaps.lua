@@ -46,5 +46,5 @@ map("n", "<leader>ot", function()
 end, { desc = "Toggle Treesitter Highlight" })
 
 -- 插件加载完成后执行
-require("config.confinit").setup()
-require("config.confinit").sign()
+require("config.confstrap").setup()
+require("config.confstrap").sign()
