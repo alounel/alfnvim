@@ -65,7 +65,7 @@ function M.get_kind_filter(buf)
 end
 
 function M.sign()
-    for name, icon in pairs(require("core.magic").icons.diagnostics) do
+    for name, icon in pairs(require("core.icons").icons.diagnostics) do
         name = "DiagnosticSign" .. name
         vim.fn.sign_define(name, { text = icon, texthl = name, numhl = "" })
     end

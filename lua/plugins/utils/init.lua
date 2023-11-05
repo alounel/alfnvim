@@ -152,7 +152,7 @@ return {
                 ["<leader>q"] = { name = "+session" },
                 ["<leader>r"] = { name = "+replace" },
                 ["<leader>rr"] = { name = "+muren" },
-                ["<leader>s"] = { name = "+show/style" },
+                ["<leader>s"] = { name = "+show/search" },
                 ["<leader>sc"] = { name = "+clangdinfo" },
                 ["<leader>t"] = { name = "+terminal/todo" },
                 ["<leader>td"] = { name = "+todo" },

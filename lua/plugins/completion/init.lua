@@ -57,7 +57,7 @@ return {
                 formatting = {
                     format = function(entry, vim_item)
                         vim_item.kind =
-                            string.format("%s %s", require("core.magic").icons.kinds[vim_item.kind], vim_item.kind)
+                            string.format("%s %s", require("core.icons").icons.kinds[vim_item.kind], vim_item.kind)
                         vim_item.menu = ({
                             buffer = "[Buffer]",
                             nvim_lsp = "[LSP]",

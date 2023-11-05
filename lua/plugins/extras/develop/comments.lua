@@ -85,6 +85,7 @@ return {
             { "<leader>et", "<cmd>Neogen type<CR>", desc = "Generate Type Comment" },
             { "<leader>ei", "<cmd>Neogen file<CR>", desc = "Generate File Comment" },
         },
+        dependencies = { "nvim-treesitter" },
         opts = {
             snippet_engine = "luasnip",
         },

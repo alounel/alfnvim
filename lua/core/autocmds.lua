@@ -1,4 +1,3 @@
--- Configuration implement auto commands
 local function augroup(name)
     return vim.api.nvim_create_augroup("alfnvim_" .. name, { clear = true })
 end
@@ -6,13 +5,6 @@ end
 vim.api.nvim_create_autocmd({ "FocusGained", "TermClose", "TermLeave" }, {
     group = augroup("checktime"),
     command = "checktime",
-})
-
-vim.api.nvim_create_autocmd("TextYankPost", {
-    group = augroup("highlight_yank"),
-    callback = function()
-        vim.highlight.on_yank()
-    end,
 })
 
 vim.api.nvim_create_autocmd({ "VimResized" }, {
@@ -72,11 +64,3 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
         vim.fn.mkdir(vim.fn.fnamemodify(file, ":p:h"), "p")
     end,
 })
-
--- vim.api.nvim_create_autocmd({ "FileType" }, {
---     group = augroup("treesiter_highlight"),
---     pattern = "help",
---     callback = function()
---         vim.treesitter.start()
---     end,
--- })

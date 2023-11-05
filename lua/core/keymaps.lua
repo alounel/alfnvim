@@ -65,7 +65,7 @@ vim.keymap.set("n", "<leader>K", "<cmd>norm! K<CR>", { desc = "Keywordprg" })
 
 -- search/highlight
 vim.keymap.set("n", "<leader>se", "/\\<lt>\\><left><left>")
-vim.keymap.set("n", "<leader>ss", vim.show_pos, { desc = "Inspect Pos" })
+vim.keymap.set("n", "<leader>so", vim.show_pos, { desc = "Inspect Pos" })
 vim.keymap.set({ "i", "n" }, "<esc>", "<cmd>noh<CR><esc>", { desc = "Escape and clear hlsearch" })
 vim.keymap.set(
     "n",
