@@ -9,9 +9,13 @@ return {
             require("rainbow-delimiters.setup").setup({
                 strategy = {
                     [""] = rainbow_delimiters.strategy["global"],
+                    vim = rainbow_delimiters.strategy["local"],
                 },
                 query = {
                     [""] = "rainbow-delimiters",
+                    lua = "rainbow-blocks",
+                    javascript = "rainbow-delimiters-react",
+                    tsx = "rainbow-parens",
                 },
                 highlight = {
                     "RainbowDelimiterRed",
