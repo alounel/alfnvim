@@ -55,6 +55,7 @@ require("lazy").setup({
                 "shada_plugin",
                 "spellfile",
                 "spellfile_plugin",
+                "synmenu",
                 "syntax",
                 "tar",
                 "tarPlugin",
