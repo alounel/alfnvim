@@ -62,8 +62,8 @@ return {
             end
 
             local lspconfig = require("lspconfig")
-            local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
+            local capabilities = require("cmp_nvim_lsp").default_capabilities()
             local clangd_capabilities = vim.tbl_deep_extend("force", {}, capabilities, {
                 offsetEncoding = { "utf-16" },
             })
@@ -76,6 +76,14 @@ return {
                     },
                 },
             })
+            local neocmake_capabilities = vim.tbl_deep_extend("force", {}, capabilities, {
+                workspace = {
+                    didChangeWatchedFiles = {
+                        dynamicRegistration = true,
+                    },
+                },
+            })
+
             local servers = { "pyright", "vimls", "bashls", "marksman", "lemminx" }
 
             lspconfig["clangd"].setup({
@@ -111,7 +119,7 @@ return {
                         enable = false,
                     },
                 },
-                capabilities = capabilities,
+                capabilities = neocmake_capabilities,
             })
 
             lspconfig["lua_ls"].setup({

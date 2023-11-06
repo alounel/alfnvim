@@ -1,13 +1,20 @@
 {
+    "organizeImports": {
+        "enabled": true
+    },
     "formatter": {
         "enabled": true,
         "formatWithErrors": true,
         "indentStyle": "space",
         "indentSize": 4,
+        "indentWidth": 4,
         "lineWidth": 120
     },
     "linter": {
-        "enabled": false
+        "enabled": true,
+        "rules": {
+            "recommended": true
+        }
     },
     "javascript": {
         "parser": {
@@ -15,12 +22,21 @@
         },
         "formatter": {
             "semicolons": "asNeeded",
-            "arrowParentheses": "asNeeded"
+            "arrowParentheses": "asNeeded",
+            "indentStyle": "space",
+            "indentSize": 4,
+            "lineWidth": 120
         }
     },
     "json": {
         "parser": {
-            "allowComments": true
+            "allowComments": true,
+            "allowTrailingCommas": true
+        },
+        "formatter": {
+            "indentStyle": "space",
+            "indentSize": 4,
+            "lineWidth": 120
         }
     }
 }
