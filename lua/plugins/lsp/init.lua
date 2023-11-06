@@ -84,7 +84,7 @@ return {
                 },
             })
 
-            local servers = { "pyright", "vimls", "bashls", "marksman", "lemminx" }
+            local servers = { "pyright", "vimls", "bashls", "marksman", "lemminx", "ast_grep" }
 
             lspconfig["clangd"].setup({
                 cmd = {
