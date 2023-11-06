@@ -34,6 +34,9 @@ return {
             vim.api.nvim_set_hl(0, "CmpGhostText", { link = "Comment", default = true })
 
             return {
+                completion = {
+                    completeopt = "menu,menuone,noinsert",
+                },
                 snippet = {
                     expand = function(args)
                         luasnip.lsp_expand(args.body)
@@ -44,8 +47,8 @@ return {
                     documentation = cmp.config.window.bordered(),
                 },
                 sources = cmp.config.sources({
-                    { name = "luasnip" },
                     { name = "nvim_lsp" },
+                    { name = "luasnip" },
                     { name = "async_path" },
                     { name = "buffer" },
                     {
@@ -82,15 +85,13 @@ return {
                     ["<C-f>"] = cmp.mapping.scroll_docs(4),
                     ["<C-Space>"] = cmp.mapping.complete(),
                     ["<C-e>"] = cmp.mapping.abort(),
-                    ["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }), --选择上一个
-                    ["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }), --选择下一个
                     ["<CR>"] = cmp.mapping.confirm({ --确认选择
                         behavior = cmp.ConfirmBehavior.Replace,
                         select = true,
                     }),
                     ["<Tab>"] = cmp.mapping(function(fallback)
                         if cmp.visible() then
-                            cmp.select_next_item()
+                            cmp.select_next_item({ behavior = cmp.SelectBehavior.Insert })
                         elseif luasnip.expand_or_jumpable() then
                             luasnip.expand_or_jump()
                         else
@@ -99,7 +100,7 @@ return {
                     end, { "i", "s" }),
                     ["<S-Tab>"] = cmp.mapping(function(fallback)
                         if cmp.visible() then
-                            cmp.select_prev_item()
+                            cmp.select_prev_item({ behavior = cmp.SelectBehavior.Insert })
                         elseif luasnip.jumpable(-1) then
                             luasnip.jump(-1)
                         else
