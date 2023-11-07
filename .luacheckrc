@@ -5,7 +5,6 @@ stds.nvim = {
         "jit",
         "os",
         "env",
-        "bufnr",
         "vim",
         "vim.o",
         "vim.g",

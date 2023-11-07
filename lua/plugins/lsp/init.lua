@@ -53,6 +53,19 @@ return {
                     end
                 end)
             end
+
+            if type(opts.diagnostics.virtual_text) == "table" and opts.diagnostics.virtual_text.prefix == "icons" then
+                opts.diagnostics.virtual_text.prefix = vim.fn.has("nvim-0.10.0") == 0 and "●"
+                    or function(diagnostic)
+                        local icons = require("lazyvim.config").icons.diagnostics
+                        for d, icon in pairs(icons) do
+                            if diagnostic.severity == vim.diagnostic.severity[d:upper()] then
+                                return icon
+                            end
+                        end
+                    end
+            end
+
             vim.diagnostic.config(vim.deepcopy(opts.diagnostics))
             vim.lsp.set_log_level("error")
 
@@ -84,7 +97,7 @@ return {
                 },
             })
 
-            local servers = { "pyright", "vimls", "bashls", "marksman", "lemminx", "ast_grep" }
+            local servers = { "pyright", "vimls", "bashls", "marksman", "lemminx", "ast_grep", "lua_ls" }
 
             lspconfig["clangd"].setup({
                 cmd = {
@@ -120,21 +133,6 @@ return {
                     },
                 },
                 capabilities = neocmake_capabilities,
-            })
-
-            lspconfig["lua_ls"].setup({
-                settings = {
-                    diagnostics = {
-                        globals = { "vim" },
-                    },
-                    completion = {
-                        callSnippet = "Both",
-                    },
-                    workspace = {
-                        checkThirdParrty = false,
-                    },
-                },
-                capabilities = capabilities,
             })
 
             lspconfig["jsonls"].setup({

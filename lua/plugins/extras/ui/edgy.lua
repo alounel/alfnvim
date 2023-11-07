@@ -102,6 +102,15 @@ return {
                         open = "Neotree document_symbols",
                     },
                     "neo-tree",
+                    {
+                        title = "Aerial",
+                        ft = "aerial",
+                        pinned = true,
+                        open = "AerialOpen",
+                    },
+                },
+                right = {
+                    { title = "Outline", ft = "sagaoutline" },
                 },
                 keys = {
                     -- increase width

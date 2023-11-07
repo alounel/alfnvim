@@ -11,5 +11,12 @@
                 "enabled": true
             }
         }
+    },
+    "lspconfig": {
+        "lua_ls": {
+            "Lua.completion.callSnippet": "Both",
+            "Lua.diagnostics.globals": ["vim"],
+            "Lua.workspace.checkThirdParty": false
+        }
     }
 }

@@ -40,7 +40,7 @@ return {
             })
             vim.keymap.set("n", "[x", function()
                 require("treesitter-context").go_to_context()
-            end, { silent = true, desc = "Jump Context" })
+            end, { silent = true, desc = "Goto Code Context Start" })
         end,
     },
 }
