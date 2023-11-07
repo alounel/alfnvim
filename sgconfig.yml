@@ -1,3 +1,6 @@
 ---
 ruleDirs:
   - rules
+id: no-await-in-loop
+severity: warning
+language: c,cpp,java,javascript,lua,python,tsx,typescript

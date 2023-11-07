@@ -280,6 +280,31 @@ return {
         config = function()
             require("mini.trailspace").setup()
         end,
+        init = function()
+            vim.api.nvim_create_autocmd("FileType", {
+                pattern = {
+                    "aerial",
+                    "alpha",
+                    "dashboard",
+                    "help",
+                    "jqx",
+                    "lazy",
+                    "lazyterm",
+                    "mason",
+                    "neo-tree",
+                    "notify",
+                    "qf",
+                    "sagaoutline",
+                    "starter",
+                    "Trouble",
+                    "trouble",
+                    "toggleterm",
+                },
+                callback = function()
+                    vim.b.minitrailspace_disable = true
+                end,
+            })
+        end,
         keys = {
             { "<leader>rb", "<cmd>lua MiniTrailspace.trim()<CR>", desc = "Trail All End of Line Space" },
             { "<leader>rc", "<cmd>lua MiniTrailspace.trim_last_lines()<CR>", desc = "Trail All Blank Line" },
