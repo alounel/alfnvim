@@ -36,10 +36,6 @@ return {
             { "<leader>jo", "<cmd>JqxList object<CR>", desc = "Json Object List" },
             { "<leader>jb", "<cmd>JqxList boolean<CR>", desc = "Json Boolean List" },
             { "<leader>jq", "<cmd>JqxQuery<CR>", desc = "Json Query" },
-            { "<leader>jj", "<cmd>JqxQuery json<CR>", desc = "Json Query Json" },
-            { "<leader>jt", "<cmd>JqxQuery linter<CR>", desc = "Json Query Linter" },
-            { "<leader>jf", "<cmd>JqxQuery formatter<CR>", desc = "Json Query Formatter" },
-            { "<leader>ji", "<cmd>JqxQuery organizeImports<CR>", desc = "Json Query Organize Imports" },
         },
     },
     {
