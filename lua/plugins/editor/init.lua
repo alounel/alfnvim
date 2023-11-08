@@ -123,6 +123,7 @@ return {
     -- 文本替换
     {
         "nvim-pack/nvim-spectre",
+        build = false,
         lazy = true,
         cmd = "Spectre",
         keys = {
@@ -328,29 +329,5 @@ return {
             { "<leader>rb", "<cmd>lua MiniTrailspace.trim()<CR>", desc = "Trail All End of Line Space" },
             { "<leader>rc", "<cmd>lua MiniTrailspace.trim_last_lines()<CR>", desc = "Trail All Blank Line" },
         },
-    },
-    -- 格式化
-    {
-        import = "plugins.extras.editor.formatter",
-    },
-    -- 诊断
-    {
-        import = "plugins.extras.editor.linter",
-    },
-    -- 参数替换
-    {
-        import = "plugins.extras.editor.replacer",
-    },
-    -- 自动处理工具
-    {
-        import = "plugins.extras.editor.autotools",
-    },
-    -- 修改定界符
-    {
-        import = "plugins.extras.editor.surround",
-    },
-    -- 文本标记
-    {
-        import = "plugins.extras.editor.stamps",
     },
 }

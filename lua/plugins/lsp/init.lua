@@ -167,12 +167,4 @@ return {
             require("plugins.lsp.keymaps")
         end,
     },
-    -- lsp增强插件
-    {
-        import = "plugins.extras.lsp.strength",
-    },
-    -- 语言增强插件
-    {
-        import = "plugins.extras.lsp.extensions",
-    },
 }

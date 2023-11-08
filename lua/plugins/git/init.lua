@@ -31,8 +31,4 @@ return {
             { "<leader>gd", "<cmd>Gitsigns diffthis<CR>", desc = "Gitsigns This Diif" },
         },
     },
-    -- gitsins的补充
-    {
-        import = "plugins.extras.git",
-    },
 }

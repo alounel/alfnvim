@@ -157,8 +157,4 @@ return {
             },
         },
     },
-    -- fzf模糊查找
-    {
-        import = "plugins.extras.search.fzf",
-    },
 }

@@ -150,16 +150,4 @@ return {
             }
         end,
     },
-    -- 状态栏
-    {
-        import = "plugins.extras.line.statusline",
-    },
-    -- tabline
-    {
-        import = "plugins.extras.line.tabline",
-    },
-    -- 侧边栏
-    {
-        import = "plugins.extras.line.sideline",
-    },
 }

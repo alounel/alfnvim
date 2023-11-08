@@ -12,6 +12,4 @@
 
 - `plugins/{$DirName}/init.lua`文件都能加载
 
-- 也可以在可加载的文件下使用`import = "plugins.yourpath.xxx"`
-
 - 可以自由使用这些方法

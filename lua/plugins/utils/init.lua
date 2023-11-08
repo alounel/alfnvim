@@ -241,8 +241,4 @@ return {
         },
         opts = {},
     },
-    -- 测量启动时间
-    {
-        import = "plugins.extras.utils.startuptime",
-    },
 }

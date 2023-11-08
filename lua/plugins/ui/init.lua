@@ -166,40 +166,4 @@ return {
             { "<leader>hb", "<cmd>IlluminateToggleBuf<CR>", desc = "Toggle Local Buffer Word Illuminate" },
         },
     },
-    -- 启动界面
-    {
-        -- {
-        --     import = "plugins.extras.ui.starter",
-        -- },
-        -- {
-        --     import = "plugins.extras.ui.alpha",
-        -- },
-        {
-            import = "plugins.extras.ui.dashboard",
-        },
-    },
-    -- 预定义布局
-    {
-        import = "plugins.extras.ui.edgy",
-    },
-    -- 彩虹括号
-    {
-        import = "plugins.extras.ui.rainbow",
-    },
-    -- 16进制颜色
-    {
-        import = "plugins.extras.ui.colorizer",
-    },
-    -- 搜索高亮条目
-    {
-        import = "plugins.extras.ui.hlslens",
-    },
-    -- 缩进样式
-    {
-        import = "plugins.extras.ui.indentstyle",
-    },
-    -- 注释美化
-    -- {
-    --     import = "plugins.extras.ui.annotbox",
-    -- },
 }

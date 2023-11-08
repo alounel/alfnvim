@@ -222,12 +222,4 @@ return {
             },
         },
     },
-    -- 增强选项卡范围
-    {
-        import = "plugins.extras.elevate.scope",
-    },
-    -- 平滑滚动
-    {
-        import = "plugins.extras.elevate.scroll",
-    },
 }

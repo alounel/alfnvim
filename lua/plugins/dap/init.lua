@@ -186,9 +186,4 @@ return {
             end)
         end,
     },
-    ------ 特定语言调试需要用到的插件 ------
-    -- neovim lua
-    {
-        import = "plugins.extras.dap.luadap",
-    },
 }

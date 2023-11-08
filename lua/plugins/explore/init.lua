@@ -117,8 +117,4 @@ return {
             })
         end,
     },
-    -- 更多文件浏览器
-    {
-        import = "plugins.extras.browser",
-    },
 }

@@ -50,24 +50,4 @@ return {
             },
         },
     },
-    -- 快速注释
-    {
-        import = "plugins.extras.develop.comments",
-    },
-    -- 构建和运行代码
-    {
-        import = "plugins.extras.develop.compiler",
-    },
-    -- 大文件控制
-    {
-        import = "plugins.extras.develop.bigfile",
-    },
-    -- 图标选择
-    {
-        import = "plugins.extras.develop.font-icon",
-    },
-    -- 重构代码
-    {
-        import = "plugins.extras.develop.refactor",
-    },
 }

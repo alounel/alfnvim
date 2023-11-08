@@ -178,20 +178,4 @@ return {
             require("nvim-treesitter.configs").setup(opts)
         end,
     },
-    -- 上下文环境
-    {
-        import = "plugins.extras.treesitter.context",
-    },
-    -- 分割/合并代码块
-    {
-        import = "plugins.extras.treesitter.spj",
-    },
-    -- 自动关闭和重命名标签
-    {
-        import = "plugins.extras.treesitter.autotag",
-    },
-    -- 根据光标在文件中的位置设置注释字符串
-    {
-        import = "plugins.extras.treesitter.commentstring",
-    },
 }
