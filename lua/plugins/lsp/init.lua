@@ -18,7 +18,7 @@ return {
                 cmd = { "LspInstall", "LspUninstall" },
                 dependencies = { "mason.nvim" },
                 opts = {
-                    ensure_installed = { "jdtls", "lua_ls", "vimls", "marksman", "lemminx" },
+                    ensure_installed = { "jdtls", "vimls", "marksman", "lemminx" },
                     automatic_installation = false,
                 },
             },
@@ -97,7 +97,7 @@ return {
                 },
             })
 
-            local servers = { "pyright", "vimls", "bashls", "marksman", "lemminx", "ast_grep", "lua_ls" }
+            local servers = { "pyright", "vimls", "bashls", "marksman", "lemminx", "lua_ls" }
 
             lspconfig["clangd"].setup({
                 cmd = {
