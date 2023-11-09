@@ -4,7 +4,7 @@ return {
         "Wansmer/treesj",
         lazy = true,
         keys = {
-            { "<leader>jg", "<cmd>TSJToggle<CR>", desc = "Toggle Node" },
+            { "<leader>kg", "<cmd>TSJToggle<CR>", desc = "Toggle Node" },
         },
         config = function()
             require("treesj").setup({

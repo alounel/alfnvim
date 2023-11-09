@@ -38,6 +38,19 @@ return {
             { "<leader>jq", "<cmd>JqxQuery<CR>", desc = "Json Query" },
         },
     },
+    -- yaml
+    {
+        "cuducos/yaml.nvim",
+        lazy = true,
+        ft = "yaml",
+        keys = {
+            { "<leader>jv", "<cmd>YAMLView<CR>", desc = "YAML Current Value/Key Paris Full Path" },
+            { "<leader>jf", "<cmd>YAMLQuickfix<CR>", desc = "YAML Generates Quickfix Key/Value Pairs" },
+            { "<leader>jt", "<cmd>YAMLTelescope<CR>", desc = "YAML Find Key/Value Pairs" },
+        },
+        dependencies = { { "nvim-treesitter" }, { "telescope.nvim" } },
+    },
+    -- json,yaml
     {
         "b0o/SchemaStore.nvim",
         lazy = true,
