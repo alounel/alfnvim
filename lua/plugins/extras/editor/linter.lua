@@ -33,7 +33,7 @@ return {
                 table.insert(default_sources, code_actions[action])
             end
 
-            local diagnostics_servers = { "cmake_lint", "selene", "ltrs", "zsh" }
+            local diagnostics_servers = { "cmake_lint", "ltrs", "selene", "zsh" }
             for _, diag in ipairs(diagnostics_servers) do
                 table.insert(default_sources, diagnostics[diag])
             end
