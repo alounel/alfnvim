@@ -6,7 +6,7 @@ return {
         lazy = true,
         ft = { "c", "cpp" },
         config = function()
-            require("ftplugin.cld")
+            require("ftconfig.cld")
             vim.keymap.set("n", "<leader>scs", "<cmd>ClangdSymbolInfo<CR>", { desc = "Show Cursor Local Symbol Info" })
             -- stylua: ignore
             vim.keymap.set("n", "<leader>scl", "<cmd>ClangdTypeHierarchy<CR>", { desc = "Show Cursor Local Type Hierarchy" })
@@ -20,7 +20,7 @@ return {
         lazy = true,
         ft = "java",
         config = function()
-            require("ftplugin.java")
+            require("ftconfig.java")
         end,
     },
     -- json,yaml
@@ -62,7 +62,7 @@ return {
         ft = { "typescript", "javascript", "javascriptreact", "typescriptreact" },
         dependencies = { { "plenary.nvim" }, { "nvim-lspconfig" } },
         config = function()
-            require("ftplugin.tst")
+            require("ftconfig.tst")
         end,
     },
 }

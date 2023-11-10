@@ -64,7 +64,31 @@ return {
 
             vim.o.qftf = "{info -> v:lua._G.qftf(info)}"
         end,
-        config = function()
+        opts = {
+            auto_enable = true,
+            auto_resize_height = true,
+            preview = {
+                delay_syntax = 80,
+                border = { "┏", "━", "┓", "┃", "┛", "━", "┗", "┃" },
+                show_title = true,
+            },
+            func_map = {
+                drop = "o",
+                openc = "O",
+                split = "<C-s>",
+                tabdrop = "<C-t>",
+                vsplit = "",
+                ptogglemode = "z,",
+                stoggleup = "",
+            },
+            filter = {
+                fzf = {
+                    action_for = { ["ctrl-s"] = "split", ["ctrl-t"] = "tab drop" },
+                    extra_opts = { "--bind", "ctrl-o:toggle-all", "--delimiter", "│" },
+                },
+            },
+        },
+        config = function(_, opts)
             vim.cmd([[
                 hi BqfPreviewBorder guifg=#3e8e2d ctermfg=71
                 hi BqfPreviewTitle guifg=#3e8e2d ctermfg=71
@@ -74,43 +98,7 @@ return {
                 hi link BqfPreviewRange Search
             ]])
 
-            require("bqf").setup({
-                auto_enable = true,
-                auto_resize_height = true,
-                preview = {
-                    win_height = 12,
-                    win_vheight = 12,
-                    delay_syntax = 80,
-                    border = { "┏", "━", "┓", "┃", "┛", "━", "┗", "┃" },
-                    show_title = true,
-                    should_preview_cb = function(bufnr, qwinid)
-                        local ret = true
-                        local bufname = vim.api.nvim_buf_get_name(bufnr)
-                        local fsize = vim.fn.getfsize(bufname)
-                        if fsize > 100 * 1024 then
-                            ret = false
-                        elseif bufname:match("^fugitive://") then
-                            ret = false
-                        end
-                        return ret
-                    end,
-                },
-                func_map = {
-                    drop = "o",
-                    openc = "O",
-                    split = "<C-s>",
-                    tabdrop = "<C-t>",
-                    vsplit = "",
-                    ptogglemode = "z,",
-                    stoggleup = "",
-                },
-                filter = {
-                    fzf = {
-                        action_for = { ["ctrl-s"] = "split", ["ctrl-t"] = "tab drop" },
-                        extra_opts = { "--bind", "ctrl-o:toggle-all", "--delimiter", "│" },
-                    },
-                },
-            })
+            require("bqf").setup(opts)
         end,
     },
     -- 增强了w,e,b,ge的功能

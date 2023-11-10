@@ -13,7 +13,7 @@ return {
                 },
                 sidebars = { "qf", "terminal", "neo-tree", "toggleterm", "lazyterm" },
             })
-            vim.cmd("colorscheme tokyonight")
+            vim.cmd.colorscheme("tokyonight")
         end,
     },
 }
