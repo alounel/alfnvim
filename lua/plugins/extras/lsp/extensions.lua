@@ -6,7 +6,7 @@ return {
         lazy = true,
         ft = { "c", "cpp" },
         config = function()
-            require("ftconfig.cld")
+            require("ftconfig.clangd")
             vim.keymap.set("n", "<leader>scs", "<cmd>ClangdSymbolInfo<CR>", { desc = "Show Cursor Local Symbol Info" })
             -- stylua: ignore
             vim.keymap.set("n", "<leader>scl", "<cmd>ClangdTypeHierarchy<CR>", { desc = "Show Cursor Local Type Hierarchy" })
