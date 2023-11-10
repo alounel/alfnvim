@@ -34,6 +34,7 @@ require("lazy").setup({
         -- elevate
         { import = "plugins.extras.elevate.scope" }, -- 增强选项卡范围
         { import = "plugins.extras.elevate.scroll" }, -- 平滑滚动
+        { import = "plugins.extras.elevate.substitute" }, -- 代替内置substitute
         -- explorer
         { import = "plugins.extras.browser" }, -- 更多文件浏览工具
         -- git
