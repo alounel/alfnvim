@@ -29,3 +29,7 @@ policies:
     enabled: true
   ProhibitUsingUndeclaredVariable:
     enabled: true
+  ProhibitAbbreviationOption:
+    enabled: true
+  ProhibitImplicitScopeVariable:
+    enabled: true
