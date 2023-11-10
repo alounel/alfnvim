@@ -112,23 +112,6 @@ return {
             { "ge", "<cmd>lua require('spider').motion('ge')<CR>", mode = { "n", "o", "x" }, desc = "Spider-ge" },
         },
     },
-    -- 代替substitute
-    {
-        "chrisgrieser/nvim-alt-substitute",
-        lazy = true,
-        keys = {
-            { "<leader>sa", mode = { "n", "x" }, desc = "󱗘 :AltSubstitute" },
-            { "<leader>sA", mode = { "n", "x" }, desc = "󱗘 :AltSubstitute (word under cursor)" },
-        },
-        dependencies = { "dressing.nvim" },
-        config = function()
-            require("alt-substitute").setup()
-            vim.keymap.set({ "n", "x" }, "<leader>sa", [[:S ///g<Left><Left><Left>]])
-            vim.keymap.set({ "n", "x" }, "<leader>sA", function()
-                return ":S /" .. vim.fn.expand("<cword>") .. "//g<Left><Left>"
-            end, { expr = true })
-        end,
-    },
     -- 更加便捷文件操作
     {
         "chrisgrieser/nvim-genghis",
