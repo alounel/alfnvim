@@ -26,8 +26,6 @@ require("lazy").setup({
         -- editor
         { import = "plugins.extras.editor.autotools" }, -- 自动处理工具
         { import = "plugins.extras.editor.replacer" }, -- 参数替换
-        { import = "plugins.extras.editor.formatter" }, -- 格式化
-        { import = "plugins.extras.editor.linter" }, -- 代码诊断
         { import = "plugins.extras.editor.stamps" }, -- 文本标记
         { import = "plugins.extras.editor.surround" }, -- 修改定界符
         -- { import = "plugins.extras.develop.refactor" }, -- 代码重构
@@ -36,7 +34,7 @@ require("lazy").setup({
         { import = "plugins.extras.elevate.scroll" }, -- 平滑滚动
         { import = "plugins.extras.elevate.substitute" }, -- 代替内置substitute
         -- explorer
-        { import = "plugins.extras.browser" }, -- 更多文件浏览工具
+        { import = "plugins.extras.explorer" }, -- 更多文件浏览工具
         -- git
         { import = "plugins.extras.git" }, -- 优秀git工具
         -- line
