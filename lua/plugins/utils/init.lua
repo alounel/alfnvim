@@ -169,55 +169,6 @@ return {
             wk.register(opts.defaults)
         end,
     },
-    -- 模式切换
-    {
-        "max397574/better-escape.nvim",
-        lazy = true,
-        event = "InsertEnter",
-        opts = {
-            mapping = { "jk", "jj" },
-            timeout = vim.go.timeoutlen,
-            clear_empty_lines = false,
-            keys = "<Esc>",
-        },
-    },
-    -- 改进位置列表导航
-    {
-        "cbochs/portal.nvim",
-        lazy = true,
-        cmd = "Portal",
-        keys = {
-            { "<leader>pb", "<cmd>Portal jumplist backward<CR>", desc = "Jumplist Backward" },
-            { "<leader>pc", "<cmd>Portal jumplist forward<CR>", desc = "Jumplist Forward" },
-            { "<leader>pd", "<cmd>Portal quickfix forward<CR>", desc = "Quickfix Forward" },
-            { "<leader>pe", "<cmd>Portal quickfix backward<CR>", desc = "Quickfix Backward" },
-            { "<leader>pf", "<cmd>Portal changelist backward<CR>", desc = "Changelist Backward" },
-            { "<leader>pg", "<cmd>Portal changelist forward<CR>", desc = "Changelist Forward" },
-            { "<leader>ph", "<cmd>Portal harpoon backward<CR>", desc = "Harpoon Backward" },
-            { "<leader>pi", "<cmd>Portal harpoon forward<CR>", desc = "Harpoon Forward" },
-        },
-        opts = {
-            log_level = "error",
-            window_options = {
-                border = "rounded",
-            },
-        },
-    },
-    -- 改进缓冲区删除
-    {
-        "ojroques/nvim-bufdel",
-        lazy = true,
-        keys = {
-            { "<leader>bd", "<cmd>BufDel<CR>", desc = "Close Current Buffer" },
-            { "<leader>bi", "<cmd>BufDel!<CR>", desc = "Close Current Buffer And Ignore Modify" },
-            { "<leader>ba", "<cmd>BufDelAll<CR>", desc = "Close All Buffers" },
-            { "<leader>bo", "<cmd>BufDelOthers<CR>", desc = "Close Others Buffer" },
-            { "<leader>bs", ":BufDel ", desc = "Close Specify Buffer(Name Number Use '')" },
-        },
-        opts = {
-            quit = false,
-        },
-    },
     -- 非活动代码变暗
     {
         "folke/twilight.nvim",

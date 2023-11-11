@@ -27,10 +27,12 @@ require("lazy").setup({
         { import = "plugins.extras.editor.autotools" }, -- 自动处理工具
         { import = "plugins.extras.editor.replacer" }, -- 参数替换
         { import = "plugins.extras.editor.stamps" }, -- 文本标记
+        { import = "plugins.extras.editor.portal" }, -- 位置列表导航
         { import = "plugins.extras.editor.surround" }, -- 修改定界符
         -- { import = "plugins.extras.develop.refactor" }, -- 代码重构
         -- elevate
         { import = "plugins.extras.elevate.scope" }, -- 增强选项卡范围
+        { import = "plugins.extras.elevate.escape" }, -- 更好的模式切换
         { import = "plugins.extras.elevate.scroll" }, -- 平滑滚动
         { import = "plugins.extras.elevate.substitute" }, -- 代替内置substitute
         -- explorer
@@ -122,3 +124,4 @@ require("lazy").setup({
 
 -- lazy.nvim按键绑定
 require("boot.keymaps")
+

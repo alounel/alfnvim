@@ -112,6 +112,21 @@ return {
             { "ge", "<cmd>lua require('spider').motion('ge')<CR>", mode = { "n", "o", "x" }, desc = "Spider-ge" },
         },
     },
+    -- 改进缓冲区删除
+    {
+        "ojroques/nvim-bufdel",
+        lazy = true,
+        keys = {
+            { "<leader>bd", "<cmd>BufDel<CR>", desc = "Close Current Buffer" },
+            { "<leader>bi", "<cmd>BufDel!<CR>", desc = "Close Current Buffer And Ignore Modify" },
+            { "<leader>ba", "<cmd>BufDelAll<CR>", desc = "Close All Buffers" },
+            { "<leader>bo", "<cmd>BufDelOthers<CR>", desc = "Close Others Buffer" },
+            { "<leader>bs", ":BufDel ", desc = "Close Specify Buffer(Name Number Use '')" },
+        },
+        opts = {
+            quit = false,
+        },
+    },
     -- 更加便捷文件操作
     {
         "chrisgrieser/nvim-genghis",
