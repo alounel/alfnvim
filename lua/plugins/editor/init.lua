@@ -326,8 +326,21 @@ return {
             })
         end,
         keys = {
-            { "<leader>rb", "<cmd>lua MiniTrailspace.trim()<CR>", desc = "Trail All End of Line Space" },
-            { "<leader>rc", "<cmd>lua MiniTrailspace.trim_last_lines()<CR>", desc = "Trail All Blank Line" },
+            {
+                "<leader>rb",
+                function()
+                    require("mini.trailspace").trim()
+                end,
+                desc = "Trail All End of Line Space",
+            },
+            {
+                "<leader>rc",
+                function()
+                    require("mini.trailspace").trim_last_lines()
+                end,
+                desc = "Trail All Blank Line",
+            },
         },
     },
 }
+
