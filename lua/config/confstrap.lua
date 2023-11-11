@@ -39,6 +39,11 @@ M.filter = {
 }
 
 function M.setup()
+    for name, icon in pairs(require("core.icons").icons.diagnostics) do
+        name = "DiagnosticSign" .. name
+        vim.fn.sign_define(name, { text = icon, texthl = name, numhl = "" })
+    end
+
     local group = vim.api.nvim_create_augroup("Alfnvim", { clear = true })
     vim.api.nvim_create_autocmd("User", {
         group = group,
@@ -62,13 +67,6 @@ function M.get_kind_filter(buf)
             and type(M.filter.kind_filter.default) == "table"
             and M.filter.kind_filter.default
         or nil
-end
-
-function M.sign()
-    for name, icon in pairs(require("core.icons").icons.diagnostics) do
-        name = "DiagnosticSign" .. name
-        vim.fn.sign_define(name, { text = icon, texthl = name, numhl = "" })
-    end
 end
 
 return M

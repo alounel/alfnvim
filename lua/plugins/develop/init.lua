@@ -34,17 +34,17 @@ return {
         },
         keys = {
             {
-                "<leader>qs",
+                "<leader>qr",
                 "<cmd>lua require('persistence').load()<CR>",
                 desc = "Restore The Session For The Current Directory",
             },
             {
-                "<leader>ql",
+                "<leader>qt",
                 "<cmd>lua require('persistence').load({ last = true })<CR>",
                 desc = "Restore The Last Session",
             },
             {
-                "<leader>qd",
+                "<leader>qs",
                 "<cmd>lua require('persistence').stop()<CR>",
                 desc = "Session Won't Be Saved On Exit",
             },

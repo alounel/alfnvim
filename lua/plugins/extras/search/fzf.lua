@@ -4,11 +4,11 @@ return {
         lazy = true,
         cmd = "FzfLua",
         keys = {
-            { "<leader>ss", "<cmd>FzfLua<CR>", desc = "Fzf" },
+            { "<leader>qq", "<cmd>FzfLua<CR>", desc = "Fuzzy List" },
+            { "<leader>qf", "<cmd>FzfLua files<CR>", desc = "Fuzzy Files" },
+            { "<leader>qg", "<cmd>FzfLua live_grep<CR>", desc = "Fuzzy Text" },
         },
-        dependencies = {
-            { "nvim-web-devicons" },
-        },
+        dependencies = { "nvim-web-devicons" },
         config = function()
             require("fzf-lua").setup({
                 winopts = {

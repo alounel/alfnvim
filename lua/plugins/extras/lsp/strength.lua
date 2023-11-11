@@ -61,10 +61,7 @@ return {
             -- terminal
             { "<leader>lgm", "<cmd>Lspsaga term_toggle<CR>", desc = "Float Terminal" },
         },
-        dependencies = {
-            { "nvim-web-devicons" },
-            { "nvim-treesitter" },
-        },
+        dependencies = { { "nvim-web-devicons" }, { "nvim-treesitter" } },
         config = function()
             require("lspsaga").setup({
                 code_action = {
@@ -87,6 +84,33 @@ return {
                 require("lspsaga.diagnostic"):goto_next({ severity = vim.diagnostic.severity.WARN })
             end, { desc = "Next Diagnostics WARN" })
         end,
+    },
+    -- 显示光标下相同词汇
+    {
+        "RRethy/vim-illuminate",
+        lazy = true,
+        event = { "BufReadPost", "BufNewFile" },
+        opts = {
+            providers = { "lsp", "treesitter" },
+            delay = 200,
+            large_file_cutoff = 2000,
+            large_file_overrides = {
+                providers = { "lsp", "treesitter" },
+            },
+        },
+        config = function(_, opts)
+            require("illuminate").configure(opts)
+            vim.keymap.set("n", "[l", function()
+                require("illuminate").goto_prev_reference()
+            end, { desc = "Prev Match Word" })
+            vim.keymap.set("n", "]l", function()
+                require("illuminate").goto_next_reference()
+            end, { desc = "Next Match Word" })
+        end,
+        keys = {
+            { "<leader>hi", "<cmd>IlluminateToggle<CR>", desc = "Toggle Overall Word Illuminate" },
+            { "<leader>hb", "<cmd>IlluminateToggleBuf<CR>", desc = "Toggle Local Buffer Word Illuminate" },
+        },
     },
     -- 代码大纲
     {
@@ -141,17 +165,28 @@ return {
                         "trouble",
                         "spectre_panel",
                         "notify",
+                        "noice",
                     },
                 },
                 on_attach = function(bufnr)
-                    vim.keymap.set("n", "[a", "<cmd>AerialPrev<CR>", { buffer = bufnr, desc = "Goto Prev Aerial" })
-                    vim.keymap.set("n", "]a", "<cmd>AerialNext<CR>", { buffer = bufnr, desc = "Goto Next Aerial" })
+                    vim.keymap.set(
+                        "n",
+                        "[a",
+                        "<cmd>AerialPrev<CR>",
+                        { buffer = bufnr, desc = "Goto Prev Aerial Symbol" }
+                    )
+                    vim.keymap.set(
+                        "n",
+                        "]a",
+                        "<cmd>AerialNext<CR>",
+                        { buffer = bufnr, desc = "Goto Next Aerial Symbol" }
+                    )
                 end,
             }
             return opts
         end,
     },
-    -- Telescope integration
+    -- aerial的telescope可选配置
     {
         "nvim-telescope/telescope.nvim",
         optional = true,
@@ -173,7 +208,7 @@ return {
         "SmiteshP/nvim-navbuddy",
         lazy = true,
         keys = {
-            { "<leader>ny", "<cmd>Navbuddy<CR>", desc = "Show Navbuddy Interface" },
+            { "<leader>ny", "<cmd>Navbuddy<CR>", desc = "Navbuddy Float Outline" },
         },
         dependencies = {
             {
@@ -187,7 +222,6 @@ return {
                 },
             },
             { "nvim-lspconfig" },
-            { "nui.nvim" },
         },
         opts = {
             window = {

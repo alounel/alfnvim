@@ -169,13 +169,8 @@ return {
         keys = {
             { "<leader>yr", "<cmd>YankyRingHistory<CR>", desc = "Show Yanky History" },
             { "<leader>yc", "<cmd>YankyClearHistory<CR>", desc = "clear Yanky History" },
-            {
-                "<leader>yt",
-                function()
-                    require("telescope").extensions.yank_history.yank_history({})
-                end,
-                desc = "Open Yank History",
-            },
+            -- stylua: ignore
+            { "<leader>yt", function() require("telescope").extensions.yank_history.yank_history({}) end, desc = "Open Yank History" },
             { "y", "<Plug>(YankyYank)", mode = { "n", "x" }, desc = "Yank Text" },
             { "[y", "<Plug>(YankyCycleForward)", desc = "Cycle forward through yank history" },
             { "]y", "<Plug>(YankyCycleBackward)", desc = "Cycle backward through yank history" },

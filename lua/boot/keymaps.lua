@@ -1,10 +1,10 @@
--- Lazy管理界面
-vim.keymap.set({ "n", "v" }, "<leader>ml", "<cmd>Lazy<CR>", { desc = "Open Lazy Manager Interface" })
-
--- Lazy浮动终端
 local Util = require("config.util")
 local map = Util.safe_keymap_set
 
+-- lazy界面
+map("n", "<leader>ml", "<cmd>Lazy<CR>", { desc = "Open Lazy Manager Interface" })
+
+-- lazy终端
 local lazyterm = function()
     Util.terminal(nil, { cwd = Util.root() })
 end
@@ -47,4 +47,3 @@ end, { desc = "Toggle Treesitter Highlight" })
 
 -- 插件加载完成后执行
 require("config.confstrap").setup()
-require("config.confstrap").sign()

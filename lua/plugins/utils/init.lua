@@ -149,7 +149,7 @@ return {
                 ["<leader>n"] = { name = "+filetree" },
                 ["<leader>o"] = { name = "+option" },
                 ["<leader>p"] = { name = "+portal" },
-                ["<leader>q"] = { name = "+session" },
+                ["<leader>q"] = { name = "+fuzzy/session" },
                 ["<leader>r"] = { name = "+replace" },
                 ["<leader>rr"] = { name = "+muren" },
                 ["<leader>s"] = { name = "+show/search" },
