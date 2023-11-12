@@ -15,6 +15,7 @@
     "lspconfig": {
         "lua_ls": {
             "Lua.completion.callSnippet": "Both",
+            "Lua.completion.keywordSnippet": "Both",
             "Lua.workspace.checkThirdParty": false
         }
     }

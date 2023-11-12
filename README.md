@@ -13,15 +13,13 @@
 - 搜索插件依赖:make,fd,rg,fzf
 - 数据库依赖:sqlite3
 
-1. rnvimr插件:用于在浮动窗口调用ranger,由于windows用户无法使用ranger,则需要删除此插件或者屏蔽此插件
+1. nvim-genghis插件:在trashFile的配置中改为自己的绝对目录
 
-2. nvim-genghis插件:在trashFile的配置中改为自己的绝对目录
+2. sqlite.lua插件:由于yanky.nvim,以及一些其它功能需要sqlite,所以请在[sqlite.lua](https://github.com/kkharji/sqlite.lua)网站中查看详细配置
 
-3. sqlite.lua插件:由于yanky.nvim,以及一些其它功能需要sqlite,所以请在[sqlite.lua](https://github.com/kkharji/sqlite.lua)网站中查看详细配置
+3. Windows下推荐使用Msys2安装基础工具,官网:[msys2](https://www.msys2.org)
 
-4. Windows下推荐使用Msys2安装基础工具,官网:[msys2](https://www.msys2.org)
-
-5. 确保系统能正常连接国际互联网,即能正常访问github
+4. 确保系统能正常连接国际互联网,即能正常访问github
 
 ## 本配置的插件安装及其使用
 
@@ -55,29 +53,29 @@
 
 1. 去nvim-lspconfig的语言服务列表[server](https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md)中查看
 
-### nvim-cmp
+### completion
 
-- 代码补全已经设置,想要更加优化可以去[nvim-cmp](https://github.com/hrsh7th/nvim-cmp/wiki)查看
+- 代码补全配置在plugins/completion/init.lua,想要更加优化可以去[nvim-cmp](https://github.com/hrsh7th/nvim-cmp/wiki)查看
 
 ### nvim-dap
 
-- Neovim没有官方的nvim-dapconfig插件,插件来源于第三方作者,可能不是那么好用,本人只完成了lua,c/c++,bash的调试配置
+- Neovim没有官方的nvim-dapconfig插件,插件来源于第三方作者,不是那么好用,本人只完成了lua,c/c++,bash的调试配置
 
 - 自行配置
 
-1. 在debugger/lang/文件夹中, 添加或删除调试器配置,可以看[dapInstall](https://github.com/mfussenegger/nvim-dap/wiki/Debug-Adapter-installation),自己选择自己需要的适配器,然后修改就可以了.
+1. 在debugger/lang/文件夹中,添加或删除调试器配置,可以看[dapInstall](https://github.com/mfussenegger/nvim-dap/wiki/Debug-Adapter-installation),自己选择自己需要的适配器,然后修改就可以了.
 2. c/c++调试:来源于lldb-vscode
-3. lua调试:来源于一个插件.dap-lua.lua文件基本上不用修改.
+3. lua调试:来源于一个插件.luadap.lua文件基本上不用修改.
 4. bash调试,使用的是mason安装调试器,毕竟作者推荐的就是这个.
-5. 如果不想neovim实现调试功能,则可以删除debugger文件夹及内部所有文件,以及plugins/dap/init.lua文件.
+5. 如果不想neovim实现调试功能,则可以删除debugger文件夹,plugins/dap文件夹，并且在boot/bootstrap.lua文件中删除`{import = "plugins.extras.dap.luadap"}`.
 
 ### Diagnostics
 
-- 使用null-ls插件来诊断,诊断程序及其配置在plugins/editor/linter/init.lua文件,对于不用的诊断程序可以删除,也可以自行添加.
+- 使用none-ls.nvim和nvim-lint插件来诊断,诊断程序及其配置在plugins/linter/init.lua文件,对于不用的诊断程序可以删除,也可以自行添加.
 
 ### Formatter
 
-- 使用conform.nvim可以对单个文件同时调用多个格式化程序进行格式化.
+- 使用conform.nvim插件进行格式化,配置文件在plugins/formatter/init.lua,不需要的格式化程序可以直接删除.
 
 ### treesitter
 

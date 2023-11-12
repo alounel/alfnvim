@@ -38,7 +38,7 @@ return {
                 lua = { "stylua" },
                 markdown = { "markdownlint", "injected" },
                 norg = { "injected" },
-                python = { "isort", "black" },
+                python = { "ruff_format", "ruff_fix" },
                 sh = { "shellharden", "shfmt" },
                 toml = { "taplo" },
                 yaml = { "yamlfmt" },

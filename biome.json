@@ -6,7 +6,6 @@
         "enabled": true,
         "formatWithErrors": true,
         "indentStyle": "space",
-        "indentSize": 4,
         "indentWidth": 4,
         "lineWidth": 120
     },
@@ -22,21 +21,13 @@
         },
         "formatter": {
             "semicolons": "asNeeded",
-            "arrowParentheses": "asNeeded",
-            "indentStyle": "space",
-            "indentSize": 4,
-            "lineWidth": 120
+            "arrowParentheses": "asNeeded"
         }
     },
     "json": {
         "parser": {
             "allowComments": true,
             "allowTrailingCommas": true
-        },
-        "formatter": {
-            "indentStyle": "space",
-            "indentSize": 4,
-            "lineWidth": 120
         }
     }
 }

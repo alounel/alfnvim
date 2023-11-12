@@ -1,7 +1,14 @@
-select = ["E", "F", "B", "Q"]
-
-
+indent-width = 4
 line-length = 120
-
-
 target-version = "py311"
+
+[lint]
+select = ["B", "E", "F", "Q"]
+
+[format]
+indent-style = "space"
+line-ending = "lf"
+quote-style = "double"
+
+[lint.isort]
+case-sensitive = true
