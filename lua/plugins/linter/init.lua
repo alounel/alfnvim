@@ -1,5 +1,5 @@
 return {
-    -- 使用lua注入诊断、格式化、补全服务
+    -- 使用lua注入诊断
     {
         "nvimtools/none-ls.nvim",
         lazy = true,
@@ -28,7 +28,7 @@ return {
 
             local default_sources = {}
 
-            local code_actions_servers = { "ltrs", "shellcheck" }
+            local code_actions_servers = { "eslint", "ltrs" }
             for _, action in ipairs(code_actions_servers) do
                 table.insert(default_sources, code_actions[action])
             end
