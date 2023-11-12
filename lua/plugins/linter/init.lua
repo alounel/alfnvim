@@ -1,3 +1,5 @@
+local uv = vim.loop or vim.uv
+
 return {
     -- 使用lua注入诊断
     {
@@ -110,7 +112,7 @@ return {
             lint.linters_by_ft = opts.linters_by_ft
 
             function M.debounce(ms, fn)
-                local timer = vim.loop.new_timer()
+                local timer = uv.new_timer()
                 return function(...)
                     local argv = { ... }
                     timer:start(ms, 0, function()

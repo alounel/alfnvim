@@ -1,5 +1,7 @@
+local uv = vim.loop or vim.uv
+
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
+if not uv.fs_stat(lazypath) then
     vim.fn.system({
         "git",
         "clone",
@@ -124,4 +126,3 @@ require("lazy").setup({
 
 -- lazy.nvim按键绑定
 require("boot.keymaps")
-

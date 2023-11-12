@@ -1,3 +1,4 @@
+local uv = vim.loop or vim.uv
 local LazyUtil = require("lazy.core.util")
 
 local M = {}
@@ -33,7 +34,7 @@ setmetatable(M, {
 })
 
 function M.is_win()
-    return vim.loop.os_uname().sysname:find("Windows") ~= nil
+    return uv.os_uname().sysname:find("Windows") ~= nil
 end
 
 function M.has(plugin)
@@ -76,8 +77,8 @@ function M.lazy_notify()
     local orig = vim.notify
     vim.notify = temp
 
-    local timer = vim.loop.new_timer()
-    local check = assert(vim.loop.new_check())
+    local timer = uv.new_timer()
+    local check = assert(uv.new_check())
 
     local replay = function()
         timer:stop()

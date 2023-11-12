@@ -1,3 +1,4 @@
+local uv = vim.loop or vim.uv
 local Util = require("config.util")
 
 local M = setmetatable({}, {
@@ -13,14 +14,14 @@ function M.telescope(builtin, opts)
         opts = params.opts
         opts = vim.tbl_deep_extend("force", { cwd = Util.root() }, opts or {})
         if builtin == "files" then
-            if vim.loop.fs_stat((opts.cwd or vim.loop.cwd()) .. "/.git") then
+            if uv.fs_stat((opts.cwd or uv.cwd()) .. "/.git") then
                 opts.show_untracked = true
                 builtin = "git_files"
             else
                 builtin = "find_files"
             end
         end
-        if opts.cwd and opts.cwd ~= vim.loop.cwd() then
+        if opts.cwd and opts.cwd ~= uv.cwd() then
             opts.attach_mappings = function(_, map)
                 map("i", "<a-c>", function()
                     local action_state = require("telescope.actions.state")

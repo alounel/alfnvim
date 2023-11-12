@@ -1,3 +1,5 @@
+local uv = vim.loop or vim.uv
+
 local M = {}
 
 function M.get_signs(buf, lnum)
@@ -118,7 +120,7 @@ function M.fg(name)
 end
 
 M.skip_foldexpr = {}
-local skip_check = assert(vim.loop.new_check())
+local skip_check = assert(uv.new_check())
 
 function M.foldexpr()
     local buf = vim.api.nvim_get_current_buf()

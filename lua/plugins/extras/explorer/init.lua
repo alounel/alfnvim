@@ -1,3 +1,5 @@
+local uv = vim.loop or vim.uv
+
 return {
     -- 文件浏览和导航
     {
@@ -15,7 +17,7 @@ return {
             {
                 "<leader>nM",
                 function()
-                    require("mini.files").open(vim.loop.cwd(), true)
+                    require("mini.files").open(uv.cwd(), true)
                 end,
                 desc = "Open MiniFiles (CWD)",
             },

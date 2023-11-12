@@ -1,3 +1,4 @@
+local uv = vim.loop or vim.uv
 local Util = require("config.util")
 
 local M = setmetatable({}, {
@@ -11,7 +12,7 @@ M.spec = { "lsp", { ".git", "lua" }, "cwd" }
 M.detectors = {}
 
 function M.detectors.cwd()
-    return { vim.loop.cwd() }
+    return { uv.cwd() }
 end
 
 function M.detectors.lsp(buf)
@@ -34,7 +35,7 @@ end
 
 function M.detectors.pattern(buf, patterns)
     patterns = type(patterns) == "string" and { patterns } or patterns
-    local path = M.bufpath(buf) or vim.loop.cwd()
+    local path = M.bufpath(buf) or uv.cwd()
     local pattern = vim.fs.find(patterns, { path = path, upward = true })[1]
     return pattern and { vim.fs.dirname(pattern) } or {}
 end
@@ -44,14 +45,14 @@ function M.bufpath(buf)
 end
 
 function M.cwd()
-    return M.realpath(vim.loop.cwd()) or ""
+    return M.realpath(uv.cwd()) or ""
 end
 
 function M.realpath(path)
     if path == "" or path == nil then
         return nil
     end
-    path = vim.loop.fs_realpath(path) or path
+    path = uv.fs_realpath(path) or path
     return Util.norm(path)
 end
 
@@ -116,7 +117,7 @@ function M.info()
     lines[#lines + 1] = "vim.g.root_spec = " .. vim.inspect(spec)
     lines[#lines + 1] = "```"
     require("config.util").info(lines, { title = "Alfnvim Roots" })
-    return roots[1] and roots[1].paths[1] or vim.loop.cwd()
+    return roots[1] and roots[1].paths[1] or uv.cwd()
 end
 
 M.cache = {}
@@ -139,7 +140,7 @@ function M.get(opts)
     local ret = M.cache[buf]
     if not ret then
         local roots = M.detect({ all = false })
-        ret = roots[1] and roots[1].paths[1] or vim.loop.cwd()
+        ret = roots[1] and roots[1].paths[1] or uv.cwd()
         M.cache[buf] = ret
     end
     if opts and opts.normalize then
