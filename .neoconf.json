@@ -16,6 +16,7 @@
         "lua_ls": {
             "Lua.completion.callSnippet": "Both",
             "Lua.completion.keywordSnippet": "Both",
+            "Lua.runtime.version": "LuaJIT",
             "Lua.workspace.checkThirdParty": false
         }
     }
