@@ -56,7 +56,7 @@ return {
             },
         },
         init = function()
-            vim.bo.formatexpr = "v:lua.require'conform'.formatexpr()"
+            vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
         end,
         config = function(_, opts)
             for name, formatter in pairs(opts.formatters or {}) do
