@@ -17,7 +17,11 @@ require("lazy").setup({
     spec = {
         { import = "plugins" },
         -- colorscheme
-        -- { import = "plugins.extras.colorscheme" },
+        -- { import = "plugins.extras.colorscheme.kanagawa" },
+        -- { import = "plugins.extras.colorscheme.monokaipro" },
+        -- { import = "plugins.extras.colorscheme.nightfox" },
+        -- { import = "plugins.extras.colorscheme.onedarkpro" },
+        -- { import = "plugins.extras.colorscheme.onenord" },
         -- dap
         { import = "plugins.extras.dap.luadap" }, -- 特定语言调试插件
         -- develop
@@ -45,9 +49,19 @@ require("lazy").setup({
         -- { import = "plugins.extras.line.sideline" }, -- 侧边栏
         -- { import = "plugins.extras.line.statusLine" }, -- 状态栏
         -- { import = "plugins.extras.line.tabline" }, -- tabline
-        -- lsp
-        { import = "plugins.extras.lsp.strength" }, -- lsp增强插件
-        { import = "plugins.extras.lsp.extensions" }, -- 语言扩展插件
+        -- lsp lang
+        { import = "plugins.extras.lsp.lang.clangd" },
+        { import = "plugins.extras.lsp.lang.java" },
+        { import = "plugins.extras.lsp.lang.jqx" },
+        { import = "plugins.extras.lsp.lang.typescript" },
+        -- lsp strength
+        { import = "plugins.extras.lsp.strength.aerial" }, -- 代码大纲
+        -- { import = "plugins.extras.lsp.strength.dropbar" },
+        { import = "plugins.extras.lsp.strength.fidget" }, -- LSP 进度提示
+        { import = "plugins.extras.lsp.strength.illuminate" }, -- 显示光标下相同词汇
+        { import = "plugins.extras.lsp.strength.increname" }, -- 基于LSP带有即时视觉反馈的重命名
+        { import = "plugins.extras.lsp.strength.lspsaga" }, -- 改善 Neovim LSP 体验
+        { import = "plugins.extras.lsp.strength.naybuddy" }, -- 浮动导航窗口
         -- search
         { import = "plugins.extras.search.fzf" }, -- fzf搜索
         -- treesitter

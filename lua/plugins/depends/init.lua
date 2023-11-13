@@ -20,6 +20,12 @@ return {
         "kkharji/sqlite.lua",
         lazy = true,
     },
+    -- 提供对json,yaml文件的schemascore访问
+    {
+
+        "b0o/SchemaStore.nvim",
+        lazy = true,
+    },
     -- 管理lsp,dap,diagnostics,formatting服务的安装
     {
         "williamboman/mason.nvim",

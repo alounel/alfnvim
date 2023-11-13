@@ -8,6 +8,4 @@
 
 - debugger 存放debug配置
 
-- ftconfig 特定语言插件调用的配置
-
 - plugins 插件安装及其配置
