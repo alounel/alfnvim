@@ -228,7 +228,7 @@ return {
                 desc = "Previous Trouble/Quickfix Item",
             },
             {
-                "[Q",
+                "]Q",
                 function()
                     if require("trouble").is_open() then
                         require("trouble").next({ skip_groups = true, jump = true })
