@@ -52,7 +52,6 @@ return {
                 "gitcommit",
                 "gitignore",
                 "python",
-                "java",
                 "javascript",
                 "json",
                 "jsonc",
