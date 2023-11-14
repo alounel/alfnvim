@@ -18,7 +18,7 @@ return {
                 cmd = { "LspInstall", "LspUninstall" },
                 dependencies = { "mason.nvim" },
                 opts = {
-                    ensure_installed = { "jdtls", "vimls", "marksman", "lemminx" },
+                    ensure_installed = { "vimls", "marksman", "lemminx" },
                     automatic_installation = false,
                 },
             },

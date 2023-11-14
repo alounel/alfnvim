@@ -50,7 +50,7 @@ require("lazy").setup({
         -- { import = "plugins.extras.line.tabline" }, -- tabline
         -- lsp lang
         { import = "plugins.extras.lsp.lang.clangd" },
-        { import = "plugins.extras.lsp.lang.java" },
+        -- { import = "plugins.extras.lsp.lang.java" },
         { import = "plugins.extras.lsp.lang.jqx" },
         { import = "plugins.extras.lsp.lang.typescript" },
         -- lsp strength
