@@ -20,7 +20,6 @@ require("lazy").setup({
         -- { import = "plugins.extras.colorscheme.kanagawa" },
         -- { import = "plugins.extras.colorscheme.monokaipro" },
         -- { import = "plugins.extras.colorscheme.nightfox" },
-        -- { import = "plugins.extras.colorscheme.onedarkpro" },
         -- { import = "plugins.extras.colorscheme.onenord" },
         -- dap
         { import = "plugins.extras.dap.luadap" }, -- 特定语言调试插件
