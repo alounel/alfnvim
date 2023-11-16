@@ -1,8 +1,13 @@
+-- neovim基础选项设置
+-- 日志等级级别: "TRACE","DEBUG","INFO","WARN","ERROR","OFF"
+
 -- 设置leader
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 -- 根目录检测
 vim.g.root_spec = { "lsp", { ".git", "lua" }, "cwd" }
+-- 设置python3_host_prog地址
+vim.g.python3_host_prog = "/usr/bin/python3"
 -- 控制隐藏文本级别
 vim.opt.conceallevel = 3
 -- 防止包裹
@@ -64,13 +69,13 @@ vim.opt.list = true
 vim.opt.listchars = { space = "·", tab = "▸ ", eol = "↴", trail = "•" }
 -- 操作填充字符
 vim.opt.fillchars = { foldopen = "", foldclose = "", fold = " ", foldsep = " ", diff = "╱", eob = " " }
--- 终端24位色彩支持
+-- 终端真颜色支持
 vim.opt.termguicolors = true
 -- 设置缩进
 -- -- 保证在折行时维持缩进不变
 vim.opt.breakindent = true
 -- -- 根据上一行决定新行的缩进
-vim.opt.autoindent = true
+vim.opt.smartindent = true
 -- -- tab占用的空格数量
 vim.opt.tabstop = 4
 -- -- 缩进的空白长度指示
@@ -101,13 +106,17 @@ vim.opt.showmode = false
 -- 屏幕重绘时间
 vim.opt.redrawtime = 5000
 -- 菜单栏语言
--- vim.opt.langmenu = "en_US.UTF-8"
+-- vim.opt.langmenu = "zh_CN.UTF-8"
 -- 代码折叠
+vim.opt.foldenable = true
+-- -- 折叠方法
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
-vim.opt.foldenable = true
+-- -- 当前打开文件的折叠级别
 vim.opt.foldlevel = 99
+-- -- 文件初始打开的折叠级别
 vim.opt.foldlevelstart = 99
+-- -- 折叠文本
 vim.opt.foldtext = "v:lua.require'config.util'.ui.foldtext()"
 -- -- 设定指示折叠的列宽度
 vim.opt.foldcolumn = "1"
@@ -136,7 +145,3 @@ vim.opt.sidescrolloff = 8
 vim.opt.laststatus = 3
 -- 窗口最小宽度
 vim.opt.winminwidth = 5
--- 设置python地址
-vim.g.python3_host_prog = "/usr/bin/python"
--- 日志等级级别
--- "TRACE","DEBUG","INFO","WARN","ERROR","OFF"
