@@ -4,7 +4,7 @@ return {
         build = { ":TSUpdate" },
         lazy = true,
         event = { "BufReadPost", "BufNewFile" },
-        cmd = { "TSUpdate", "TSUpdateSync" },
+        cmd = { "TSUpdate", "TSUpdateSync", "TSUninstall" },
         init = function(plugin)
             require("lazy.core.loader").add_to_rtp(plugin)
             require("nvim-treesitter.query_predicates")
