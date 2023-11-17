@@ -121,7 +121,7 @@ return {
                 swap = {
                     enable = true,
                     swap_next = {
-                        ["<leaer>ab"] = { query = "@block.outer", desc = "Swap next block" },
+                        ["<leader>ab"] = { query = "@block.outer", desc = "Swap next block" },
                         ["<leader>af"] = { query = "@function.outer", desc = "Swap next function" },
                         ["<leader>ap"] = { query = "@parameter.inner", desc = "Swap next argument" },
                     },
