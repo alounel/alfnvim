@@ -5,7 +5,8 @@ Language: Cpp
 BasedOnStyle: LLVM
 # 访问说明符(public、private等)的偏移
 AccessModifierOffset: -4
-# 左括号(左圆括号、左尖括号、左方括号)后的对齐: Align, DontAlign, AlwaysBreak(总是在左括号后换行)
+# 左括号(左圆括号、左尖括号、左方括号)后的对齐
+# Align, DontAlign, AlwaysBreak(总是在左括号后换行)
 AlignAfterOpenBracket: Align
 # 对齐结构体数组
 AlignArrayOfStructures: Left
@@ -90,7 +91,8 @@ BraceWrapping:
   SplitEmptyFunction: false
   SplitEmptyRecord: false
   SplitEmptyNamespace: false
-# 在二元运算符前换行: None(在操作符后换行), NonAssignment(在非赋值的操作符前换行), All(在操作符前换行)
+# 在二元运算符前换行
+# None(在操作符后换行), NonAssignment(在非赋值的操作符前换行), All(在操作符前换行)
 BreakBeforeBinaryOperators: None
 # 概念声明换行规则
 BreakBeforeConceptDeclarations: Never
@@ -235,7 +237,7 @@ SpacesInLineCommentPrefix:
   Maximum: -1
 # 在圆括号的(后和)前添加空格
 SpacesInParentheses: false
-# 在方括号的[后和]前添加空格，lamda表达式和未指明大小的数组的声明不受影响
+# 在方括号的[后和]前添加空格，lambda表达式和未指明大小的数组的声明不受影响
 SpacesInSquareBrackets: false
 # C++标准
 Standard: Latest
