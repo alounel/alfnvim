@@ -7,10 +7,15 @@
 - 基础工具安装如下:
 
 - 基础依赖:git
+
 - lsp依赖:Node,Python
+
 - treesitter依赖:gcc/clang
+
 - mason依赖:unzip,gzip,wget,curl,tar,
+
 - 搜索插件依赖:make,fd,rg,fzf
+
 - 数据库依赖:sqlite3
 
 1. nvim-genghis插件:在trashFile的配置中改为自己的绝对目录
@@ -64,9 +69,13 @@
 - 自行配置
 
 1. 在debugger/lang/文件夹中,添加或删除调试器配置,可以看[dapInstall](https://github.com/mfussenegger/nvim-dap/wiki/Debug-Adapter-installation),自己选择自己需要的适配器,然后修改就可以了.
+
 2. c/c++调试:来源于lldb-vscode
+
 3. lua调试:来源于一个插件.luadap.lua文件基本上不用修改.
+
 4. bash调试,使用的是mason安装调试器,毕竟作者推荐的就是这个.
+
 5. 如果不想neovim实现调试功能,则可以删除debugger文件夹,plugins/dap文件夹，并且在boot/bootstrap.lua文件中删除`{import = "plugins.extras.dap.luadap"}`.
 
 ### Diagnostics
@@ -94,4 +103,3 @@
 ## 自定义配置
 
 - 如果想自己安装插件或者修改配置只要在相应位置修改即可.
-
