@@ -237,6 +237,29 @@ return {
                     augend.constant.new({ elements = { "output", "input" }, word = true, cyclic = true }),
                     augend.constant.new({ elements = { "front", "rear" }, word = true, cyclic = true }),
                     augend.constant.new({ elements = { "start", "end" }, word = true, cyclic = true }),
+                    augend.constant.new({
+                        elements = {
+                            "January",
+                            "February",
+                            "March",
+                            "April",
+                            "May",
+                            "June",
+                            "July",
+                            "August",
+                            "September",
+                            "October",
+                            "November",
+                            "December",
+                        },
+                        word = true,
+                        cyclic = true,
+                    }),
+                    augend.constant.new({
+                        elements = { "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" },
+                        word = true,
+                        cyclic = true,
+                    }),
                     augend.constant.new({ elements = { "+", "-" }, word = false, cyclic = true }),
                     augend.constant.new({ elements = { "*", "/" }, word = false, cyclic = true }),
                     augend.constant.new({ elements = { ">", "<" }, word = false, cyclic = true }),
@@ -343,4 +366,3 @@ return {
         },
     },
 }
-
