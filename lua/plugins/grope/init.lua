@@ -39,6 +39,15 @@ return {
                 end,
             },
             {
+                "fdschmidt93/telescope-egrepify.nvim",
+                lazy = true,
+                config = function()
+                    Util.on_load("telescope.nvim", function()
+                        require("telescope").load_extension("egrepify")
+                    end)
+                end,
+            },
+            {
                 "nvim-telescope/telescope-ui-select.nvim",
                 lazy = true,
                 config = function()
@@ -51,6 +60,7 @@ return {
         },
         opts = function()
             local actions = require("telescope.actions")
+            local egrep_actions = require("telescope._extensions.egrepify.actions")
 
             local open_with_trouble = function(...)
                 return require("trouble.providers.telescope").open_with_trouble(...)
@@ -112,6 +122,29 @@ return {
                     ["ui-select"] = {
                         require("telescope.themes").get_dropdown({}),
                     },
+                    egrepify = {
+                        AND = true,
+                        permutations = false,
+                        lnum = true,
+                        lnum_hl = "EgrepifyLnum",
+                        col = false,
+                        col_hl = "EgrepifyCol",
+                        title = true,
+                        filename_hl = "EgrepifyFile",
+                        prefixes = {
+                            ["!"] = {
+                                flag = "invert-match",
+                            },
+                            ["^"] = false,
+                        },
+                        mappings = {
+                            i = {
+                                ["<C-z>"] = egrep_actions.toggle_prefixes,
+                                ["<C-a>"] = egrep_actions.toggle_and,
+                                ["<C-r>"] = egrep_actions.toggle_permutations,
+                            },
+                        },
+                    },
                 },
             }
         end,
@@ -123,6 +156,7 @@ return {
             { "<leader>fC", "<cmd>Telescope command_history<CR>", desc = "Find Command History" },
             -- stylua: ignore
             { "<leader>fd", Util.telescope("colorscheme", { enable_preview = true }), desc = "Colorscheme with preview" },
+            { "<leader>fe", "<cmd>Telescope egrepify<CR>", desc = "Egrepify Live Grep" },
             { "<leader>ff", Util.telescope("files"), desc = "Find Files (Root Dir)" },
             { "<leader>fF", Util.telescope("files", { cwd = false }), desc = "Find Files (CWD)" },
             { "<leader>fg", Util.telescope("live_grep"), desc = "Grep Text (Root Dir)" },
