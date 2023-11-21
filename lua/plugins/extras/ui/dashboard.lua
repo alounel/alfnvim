@@ -41,7 +41,7 @@ return {
                             key = "r",
                         },
                         {
-                            action = "Telescope live_grep",
+                            action = "Telescope egrepify",
                             desc = " Find text",
                             icon = " ",
                             key = "g",
