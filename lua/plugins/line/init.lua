@@ -7,13 +7,13 @@ return {
         version = "*",
         event = "VeryLazy",
         keys = {
+            { "<leader>bl", "<cmd>BufferLineCloseLeft<CR>", desc = "Close Left Buffer" },
+            { "<leader>br", "<cmd>BufferLineCloseRight<CR>", desc = "Close Right Buffer" },
             { "<leader>bp", "<Cmd>BufferLineTogglePin<CR>", desc = "Toggle pin" },
             { "<S-h>", "<cmd>BufferLineCyclePrev<cr>", desc = "Prev buffer" },
             { "<S-l>", "<cmd>BufferLineCycleNext<cr>", desc = "Next buffer" },
             { "[b", "<cmd>BufferLineCyclePrev<cr>", desc = "Prev buffer" },
             { "]b", "<cmd>BufferLineCycleNext<cr>", desc = "Next buffer" },
-            { "<leader>bl", "<cmd>BufferLineCloseLeft<CR>", desc = "Close Left Buffer" },
-            { "<leader>br", "<cmd>BufferLineCloseRight<CR>", desc = "Close Right Buffer" },
         },
         dependencies = { "nvim-web-devicons" },
         opts = {
@@ -137,6 +137,7 @@ return {
                         },
                     },
                     lualine_y = {
+                        { "encoding" },
                         { "progress", separator = " ", padding = { left = 1, right = 0 } },
                         { "location", padding = { left = 0, right = 1 } },
                     },
