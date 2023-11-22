@@ -137,7 +137,7 @@ return {
                         },
                     },
                     lualine_y = {
-                        { "encoding" },
+                        { "encoding", separator = "|" },
                         { "progress", separator = " ", padding = { left = 1, right = 0 } },
                         { "location", padding = { left = 0, right = 1 } },
                     },

@@ -6,6 +6,6 @@
 
 - core 存放基础设置和按键绑定
 
-- debugger 存放debug配置
+- debugger 存放调试配置
 
 - plugins 插件安装及其配置
