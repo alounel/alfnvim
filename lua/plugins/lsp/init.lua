@@ -77,10 +77,12 @@ return {
             local lspconfig = require("lspconfig")
 
             local capabilities = require("cmp_nvim_lsp").default_capabilities()
-            local clangd_capabilities = vim.tbl_deep_extend("force", {}, capabilities, {
+
+            -- 作为添加项而不是代替项
+            local clangd_capabilities = vim.tbl_deep_extend("keep", {}, capabilities, {
                 offsetEncoding = { "utf-16" },
             })
-            local json_capabilities = vim.tbl_deep_extend("force", {}, capabilities, {
+            local json_capabilities = vim.tbl_deep_extend("keep", {}, capabilities, {
                 textDocument = {
                     completion = {
                         completionItem = {
@@ -89,7 +91,7 @@ return {
                     },
                 },
             })
-            local neocmake_capabilities = vim.tbl_deep_extend("force", {}, capabilities, {
+            local neocmake_capabilities = vim.tbl_deep_extend("keep", {}, capabilities, {
                 workspace = {
                     didChangeWatchedFiles = {
                         dynamicRegistration = true,
