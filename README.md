@@ -1,8 +1,8 @@
-# Neovim配置
+# NeoVim配置
 
-> 简介:个人Neovim配置文件,主要用于Linux/WSL,如果在Windows下使用,可能会有些卡顿
+> 简介:个人NeoVim配置文件,主要用于Linux/WSL,如果在Windows下使用,可能会有些卡顿
 
-- **注意:在将此配置使用之前,需要先修改一下这些设置,否则neovim使用会报错**
+- **注意:在将此配置使用之前,需要先修改一下这些设置,否则NeoVim使用会报错**
 
 - 基础工具安装如下:
 
@@ -22,7 +22,7 @@
 
 2. sqlite.lua插件:由于yanky.nvim,以及一些其它功能需要sqlite,所以请在[sqlite.lua](https://github.com/kkharji/sqlite.lua)网站中查看详细配置
 
-3. Windows下推荐使用Msys2安装基础工具,官网:[msys2](https://www.msys2.org)
+3. Windows下推荐使用msys2安装基础工具,官网:[msys2](https://www.msys2.org)
 
 4. 确保系统能正常连接国际互联网,即能正常访问github
 
@@ -76,7 +76,7 @@
 
 4. bash调试,使用的是mason安装调试器,毕竟作者推荐的就是这个.
 
-5. 如果不想neovim实现调试功能,则可以删除debugger文件夹,plugins/dap文件夹，并且在boot/bootstrap.lua文件中删除`{import = "plugins.extras.dap.luadap"}`.
+5. 如果不想NeoVim实现调试功能,则可以删除debugger文件夹,plugins/dap文件夹，并且在boot/bootstrap.lua文件中删除`{import = "plugins.extras.dap.luadap"}`.
 
 ### Diagnostics
 
@@ -86,15 +86,15 @@
 
 - 使用conform.nvim插件进行格式化,配置文件在plugins/formatter/init.lua,不需要的格式化程序可以直接删除.
 
-### treesitter
+### tree-sitter
 
 - treesitter语法高亮感觉比自带的好多了,不过要感觉更好看,还需要搭配一套好看的主题.
 
 - 如果想更换主题,可以去treesitter的插件官网[Colorschemes](https://github.com/nvim-treesitter/nvim-treesitter/wiki/Colorschemes)查看
 
-### 更多neovim插件
+### 更多NeoVim插件
 
-- 插件集合[neovim-awesome](https://github.com/rockerBOO/awesome-neovim)
+- 插件集合[awesome-neovim](https://github.com/rockerBOO/awesome-neovim)
 
 ## 启动优化
 
