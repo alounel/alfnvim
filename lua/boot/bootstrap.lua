@@ -62,7 +62,7 @@ require("lazy").setup({
         { import = "plugins.extras.lsp.strength.lspsaga" }, -- 改善 Neovim LSP 体验
         { import = "plugins.extras.lsp.strength.naybuddy" }, -- 浮动导航窗口
         -- search
-        { import = "plugins.extras.search.fzf" }, -- fzf搜索
+        { import = "plugins.extras.fzf" }, -- fzf搜索
         -- treesitter
         { import = "plugins.extras.treesitter.treesj" }, -- 分割/合并代码
         { import = "plugins.extras.treesitter.context" }, -- 上下文环境
