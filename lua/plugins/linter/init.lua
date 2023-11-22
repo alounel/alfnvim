@@ -80,7 +80,6 @@ return {
         opts = {
             events = { "BufWritePost", "BufReadPost", "InsertLeave" },
             linters_by_ft = {
-                env = { "dotenv_linter" },
                 javascript = { "eslint", "biomejs" },
                 javascriptreact = { "eslint", "biomejs" },
                 typescript = { "eslint", "biomejs" },
@@ -90,7 +89,7 @@ return {
                 lua = { "luacheck" },
                 markdown = { "markdownlint" },
                 python = { "ruff" },
-                sh = { "shellcheck" },
+                sh = { "shellcheck", "dotenv_linter" },
                 vim = { "vint" },
                 yaml = { "yamllint" },
                 zsh = { "zsh" },
