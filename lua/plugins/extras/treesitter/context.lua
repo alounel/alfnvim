@@ -10,7 +10,7 @@ return {
             disable_virtual_lines_ft = { "yaml", "toml" },
         },
         keys = {
-            { "<leader>kv", "<cmd>NvimContextVtToggle<CR>", desc = "Toggle Context Virtual Text" },
+            { "<leader>ov", "<cmd>NvimContextVtToggle<CR>", desc = "Toggle Context Virtual Text" },
         },
     },
     -- 将函数头显示在界面前几行
@@ -20,7 +20,7 @@ return {
         event = { "BufReadPost", "BufNewFile" },
         keys = {
             {
-                "<leader>kt",
+                "<leader>oc",
                 function()
                     local Util = require("config.util")
                     local tsc = require("treesitter-context")

@@ -142,7 +142,7 @@ return {
                 ["<leader>h"] = { name = "+highlight" },
                 ["<leader>i"] = { name = "+icon/rename" },
                 ["<leader>j"] = { name = "+json/yaml" },
-                ["<leader>k"] = { name = "+context/spj" },
+                ["<leader>k"] = { name = "+fzf" },
                 ["<leader>l"] = { name = "+lsp" },
                 ["<leader>lg"] = { name = "+lspsaga" },
                 ["<leader>m"] = { name = "+manager/mark" },

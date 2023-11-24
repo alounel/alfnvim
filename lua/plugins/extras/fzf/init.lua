@@ -4,9 +4,10 @@ return {
         lazy = true,
         cmd = "FzfLua",
         keys = {
-            { "<leader>qq", "<cmd>FzfLua<CR>", desc = "Fuzzy List" },
-            { "<leader>qf", "<cmd>FzfLua files<CR>", desc = "Fuzzy Files" },
-            { "<leader>qg", "<cmd>FzfLua live_grep<CR>", desc = "Fuzzy Text" },
+            { "<leader>kl", "<cmd>FzfLua<CR>", desc = "Fuzzy List" },
+            { "<leader>kf", "<cmd>FzfLua files<CR>", desc = "Fuzzy Find Files" },
+            { "<leader>kg", "<cmd>FzfLua live_grep<CR>", desc = "Fuzzy Find Text" },
+            { "<leader>kc", "<cmd>FzfLua colorschemes<CR>", desc = "Fuzzy Find Colorschemes" },
         },
         dependencies = { "nvim-web-devicons" },
         config = function()
