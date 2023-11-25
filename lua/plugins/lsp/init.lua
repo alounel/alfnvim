@@ -133,6 +133,7 @@ return {
                     format = {
                         enable = false,
                     },
+                    scan_cmake_in_package = true,
                 },
                 capabilities = neocmake_capabilities,
             })
