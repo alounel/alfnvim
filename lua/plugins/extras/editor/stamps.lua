@@ -36,7 +36,18 @@ return {
         },
         opts = {
             save_on_toggle = true,
-            excluded_filetypes = { "harpoon", "neo-tree", "qf", "Trouble", "aerial", "alpha", "starter", "dashboard" },
+            excluded_filetypes = {
+                "aerial",
+                "alpha",
+                "dashboard",
+                "harpoon",
+                "neo-tree",
+                "Outline",
+                "qf",
+                "starter",
+                "Trouble",
+                "trouble",
+            },
         },
     },
     -- 行标记

@@ -61,6 +61,7 @@ require("lazy").setup({
         { import = "plugins.extras.lsp.strength.increname" }, -- 基于LSP带有即时视觉反馈的重命名
         { import = "plugins.extras.lsp.strength.lspsaga" }, -- 改善 Neovim LSP 体验
         { import = "plugins.extras.lsp.strength.naybuddy" }, -- 浮动导航窗口
+        { import = "plugins.extras.lsp.strength.outline" }, -- 符号大纲
         -- search
         { import = "plugins.extras.fzf" }, -- fzf搜索
         -- treesitter
@@ -139,3 +140,4 @@ require("lazy").setup({
 
 -- lazy.nvim按键绑定
 require("boot.keymaps")
+

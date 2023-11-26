@@ -336,6 +336,7 @@ return {
                     "mason",
                     "neo-tree",
                     "notify",
+                    "Outline",
                     "qf",
                     "sagaoutline",
                     "starter",
