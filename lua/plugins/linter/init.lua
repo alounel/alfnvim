@@ -13,7 +13,7 @@ return {
             {
                 "jay-babu/mason-null-ls.nvim",
                 lazy = true,
-                cmd = { "NullLsInstall", "NullLsUninstall" },
+                cmd = { "NoneLsInstall", "NoneLsUninstall" },
                 dependencies = { "mason.nvim" },
                 config = function()
                     require("mason-null-ls").setup({
