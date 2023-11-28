@@ -110,7 +110,18 @@ return {
                     },
                 },
                 right = {
-                    { title = "Outline", ft = "sagaoutline" },
+                    {
+                        title = "Lsapsaga Outline",
+                        ft = "sagaoutline",
+                        pinned = true,
+                        open = "Lspsaga outline",
+                    },
+                    {
+                        title = "Outline",
+                        ft = "Outline",
+                        pinned = true,
+                        open = "Outline",
+                    },
                 },
                 keys = {
                     -- increase width
