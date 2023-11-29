@@ -108,35 +108,53 @@ return {
     {
         "petertriho/nvim-scrollbar",
         event = "VeryLazy",
-        opts = {
-            handle = { color = "#892E42" },
-            marks = {
-                Cursor = { color = "#FD5622" },
-                Search = { color = "#FFC860" },
-                Error = { color = "#FD6883" },
-                Warn = { color = "#FFD886" },
-                Info = { color = "#A9DC76" },
-                Hint = { color = "#78DCE8" },
-                Misc = { color = "#AB9DF2" },
-                GitAdd = { color = "#E85236" },
-                GitChange = { color = "#D89D80" },
-                GitDelete = { color = "#AB56B5" },
-            },
-            excluded_buftypes = { "terminal", "nofile", "prompt", "popup", "quickfix" },
-            excluded_filetypes = {
-                "cmp_docs",
-                "cmp_menu",
-                "noice",
-                "notify",
-                "TelescopePrompt",
-                "alpha",
-                "dashboard",
-                "starter",
-            },
-            handlers = {
-                gitsigns = true,
-                search = true,
-            },
-        },
+        config = function()
+            local colors = require("tokyonight.colors").setup()
+            require("scrollbar").setup({
+                -- if colorscheme not tokyonight,use custom color
+                -- handle = { color = "#892E42" },
+                -- marks = {
+                --     Cursor = { color = "#FD5622" },
+                --     Search = { color = "#FFC860" },
+                --     Error = { color = "#FD6883" },
+                --     Warn = { color = "#FFD886" },
+                --     Info = { color = "#A9DC76" },
+                --     Hint = { color = "#78DCE8" },
+                --     Misc = { color = "#AB9DF2" },
+                --     GitAdd = { color = "#E85236" },
+                --     GitChange = { color = "#D89D80" },
+                --     GitDelete = { color = "#AB56B5" },
+                -- },
+
+                handle = { color = "#892E42" },
+                marks = {
+                    Cursor = { color = "#FD5622" },
+                    Search = { color = colors.orange },
+                    Error = { color = colors.error },
+                    Warn = { color = colors.warning },
+                    Info = { color = colors.info },
+                    Hint = { color = colors.hint },
+                    Misc = { color = colors.purple },
+                    GitAdd = { color = "#E85236" },
+                    GitChange = { color = "#D89D80" },
+                    GitDelete = { color = "#AB56B5" },
+                },
+                excluded_buftypes = { "terminal", "nofile", "prompt", "popup", "quickfix" },
+                excluded_filetypes = {
+                    "cmp_docs",
+                    "cmp_menu",
+                    "noice",
+                    "notify",
+                    "TelescopePrompt",
+                    "alpha",
+                    "dashboard",
+                    "starter",
+                },
+                handlers = {
+                    gitsigns = true,
+                    search = true,
+                },
+            })
+        end,
     },
 }

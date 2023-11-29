@@ -6,7 +6,9 @@ return {
             { "<leader>ao", "<cmd>Outline<CR>", desc = "Toggle Outline" },
         },
         opts = {
-            show_number = true,
+            outline_window = {
+                show_numbers = true,
+            },
             preview_window = {
                 open_hover_on_preview = true,
             },
