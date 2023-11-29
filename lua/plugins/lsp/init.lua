@@ -152,7 +152,7 @@ return {
                     yaml = {
                         schemaStore = {
                             enable = false,
-                            url = "https://www.schemastore.org/api/json/catalog.json",
+                            url = "",
                         },
                         schemas = require("schemastore").yaml.schemas(),
                         validate = true,
