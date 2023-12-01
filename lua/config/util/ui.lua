@@ -3,11 +3,17 @@ local uv = vim.loop or vim.uv
 local M = {}
 
 function M.get_signs(buf, lnum)
-    local signs = vim.tbl_map(function(sign)
-        local ret = vim.fn.sign_getdefined(sign.name)[1]
-        ret.priority = sign.priority
-        return ret
-    end, vim.fn.sign_getplaced(buf, { group = "*", lnum = lnum })[1].signs)
+    local signs = {}
+
+    if vim.fn.has("nvim-0.10") == 0 then
+        for _, sign in ipairs(vim.fn.sign_getplaced(buf, { group = "*", lnum = lnum })[1].signs) do
+            local ret = vim.fn.sign_getdefined(sign.name)[1]
+            if ret then
+                ret.priority = sign.priority
+                signs[#signs + 1] = ret
+            end
+        end
+    end
 
     local extmarks = vim.api.nvim_buf_get_extmarks(
         buf,

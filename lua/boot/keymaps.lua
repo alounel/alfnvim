@@ -37,6 +37,11 @@ end, { desc = "Toggle Line Numbers" })
 map("n", "<leader>od", function()
     Util.toggle.diagnostics()
 end, { desc = "Toggle Diagnostics" })
+if vim.lsp.buf.inlay_hint or vim.lsp.inlay_hint then
+    map("n", "<leader>oh", function()
+        Util.toggle.inlay_hints()
+    end, { desc = "Toggle Inlay Hints" })
+end
 map("n", "<leader>ot", function()
     if vim.b.ts_highlight then
         vim.treesitter.stop()
