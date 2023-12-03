@@ -333,6 +333,7 @@ return {
                     "jqx",
                     "lazy",
                     "lazyterm",
+                    "lspinfo",
                     "mason",
                     "neo-tree",
                     "notify",
