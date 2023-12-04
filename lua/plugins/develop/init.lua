@@ -1,28 +1,25 @@
 return {
     -- 工程管理
     {
-        "ahmedkhalf/project.nvim",
-        lazy = true,
-        event = "VeryLazy",
-        opts = {
-            manual_mode = true,
+        "telescope.nvim",
+        dependencies = {
+            {
+                "ahmedkhalf/project.nvim",
+                event = "VeryLazy",
+                opts = {
+                    manual_mode = true,
+                },
+                config = function(_, opts)
+                    require("project_nvim").setup(opts)
+                    require("config.util").on_load("telescope.nvim", function()
+                        require("telescope").load_extension("projects")
+                    end)
+                end,
+                keys = {
+                    { "<leader>fp", "<cmd>Telescope projects<CR>", desc = "Projects" },
+                },
+            },
         },
-        config = function(_, opts)
-            require("project_nvim").setup(opts)
-        end,
-    },
-    -- projects的telescope可选项
-    {
-        "nvim-telescope/telescope.nvim",
-        optional = true,
-        keys = {
-            { "<leader>fp", "<cmd>Telescope projects<CR>", desc = "File Projects" },
-        },
-        opts = function()
-            require("config.util").on_load("telescope.nvim", function()
-                require("telescope").load_extension("projects")
-            end)
-        end,
     },
     -- 会话管理
     {
