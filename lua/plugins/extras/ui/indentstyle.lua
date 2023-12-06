@@ -16,6 +16,7 @@ return {
                     filetypes = {
                         "aerial",
                         "alpha",
+                        "checkhealth",
                         "dashboard",
                         "help",
                         "jqx",
@@ -28,6 +29,7 @@ return {
                         "Outline",
                         "qf",
                         "sagaoutline",
+                        "spectre_panel",
                         "starter",
                         "Trouble",
                         "trouble",
@@ -51,6 +53,7 @@ return {
                 pattern = {
                     "aerial",
                     "alpha",
+                    "checkhealth",
                     "dashboard",
                     "help",
                     "jqx",
@@ -63,6 +66,7 @@ return {
                     "Outline",
                     "qf",
                     "sagaoutline",
+                    "spectre_panel",
                     "starter",
                     "Trouble",
                     "trouble",
