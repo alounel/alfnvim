@@ -18,10 +18,8 @@ return {
                     end)
                 end,
             },
-            -- 暂时和noice.nvim插件冲突 2023-10-11,23:12
             {
                 "nvim-telescope/telescope-frecency.nvim",
-                enabled = false,
                 lazy = true,
                 config = function()
                     Util.on_load("telescope.nvim", function()
@@ -166,6 +164,7 @@ return {
             { "<leader>fm", "<cmd>Telescope marks<CR>", desc = "Find Marks" },
             { "<leader>fn", "<cmd>Telescope vim_options<cr>", desc = "Find Vim Options" },
             { "<leader>fr", "<cmd>Telescope oldfiles theme=ivy<CR>", desc = "Find Old Files" },
+            { "<leader>fR", "<cmd>Telescope frecency theme=ivy<CR>", desc = "Find Frecency Files" },
             { "<leader>ft", "<cmd>Telescope file_browser theme=ivy<CR>", desc = "Open File Tree" },
             -- stylua: ignore
             { "<leader>fT", "<cmd>Telescope file_browser path=%:p:h select_buffer=true theme=ivy<CR>", desc = "Open File Tree(CWD)" },
