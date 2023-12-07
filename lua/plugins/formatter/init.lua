@@ -51,7 +51,9 @@ return {
                     options = { ignore_errors = true },
                 },
                 shfmt = {
-                    prepend_args = { "-i", "4" },
+                    prepend_args = function(self, ctx)
+                        return { "-i", "4" }
+                    end,
                 },
             },
         },
