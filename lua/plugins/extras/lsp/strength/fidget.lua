@@ -4,8 +4,11 @@ return {
         lazy = true,
         event = "LspAttach",
         opts = {
-            window = {
-                border = "rounded",
+            notification = {
+                override_vim_notify = true,
+                window = {
+                    border = "rounded",
+                },
             },
             logger = {
                 level = vim.log.levels.ERROR,

@@ -18,8 +18,10 @@ return {
                     end)
                 end,
             },
+            -- 和noice插件有冲突 2023-12-07 18:48
             {
                 "nvim-telescope/telescope-frecency.nvim",
+                enabled = false,
                 lazy = true,
                 config = function()
                     Util.on_load("telescope.nvim", function()
