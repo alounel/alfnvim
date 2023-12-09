@@ -7,7 +7,7 @@ vim.g.maplocalleader = "\\"
 -- 根目录检测
 vim.g.root_spec = { "lsp", { ".git", "lua" }, "cwd" }
 -- 设置python3_host_prog地址
-vim.g.python3_host_prog = "/usr/bin/python3"
+vim.g.python3_host_prog = "/usr/bin/python"
 -- 控制隐藏文本级别
 vim.opt.conceallevel = 3
 -- 防止包裹
@@ -132,7 +132,7 @@ vim.opt.formatoptions = "jcroqlnt"
 -- 会话
 vim.opt.sessionoptions = { "buffers", "curdir", "tabpages", "winsize", "help", "globals", "skiprtp", "folds" }
 -- 短消息显示
-vim.opt.shortmess:append({ W = true, I = true, c = true })
+vim.opt.shortmess:append({ W = true, I = true, c = true, C = true })
 -- 命令行高度
 -- vim.opt.cmdheight = 0
 -- 增量预览
