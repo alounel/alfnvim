@@ -140,4 +140,3 @@ require("lazy").setup({
 
 -- lazy.nvim按键绑定
 require("boot.keymaps")
-
