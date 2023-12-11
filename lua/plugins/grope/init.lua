@@ -190,6 +190,27 @@ return {
                 end,
                 desc = "Goto Symbol (Workspace)",
             },
+            {
+                "<leader>fD",
+                function()
+                    require("telescope.builtin").lsp_definitions({ reuse_win = true })
+                end,
+                desc = "Goto Definition",
+            },
+            {
+                "<leader>fy",
+                function()
+                    require("telescope.builtin").lsp_type_definitions({ reuse_win = true })
+                end,
+                desc = "Goto T[y]pe Definition",
+            },
+            {
+                "<leader>fI",
+                function()
+                    require("telescope.builtin").lsp_implementations({ reuse_win = true })
+                end,
+                desc = "Goto Implementation",
+            },
         },
     },
 }
