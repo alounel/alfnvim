@@ -98,7 +98,7 @@ return {
                 },
             })
 
-            local servers = { "pyright", "vimls", "bashls", "marksman", "lemminx", "lua_ls" }
+            local servers = { "vimls", "bashls", "marksman", "lemminx", "lua_ls" }
 
             lspconfig["clangd"].setup({
                 cmd = {
@@ -155,6 +155,20 @@ return {
                         },
                         schemas = require("schemastore").yaml.schemas(),
                         validate = true,
+                    },
+                },
+                capabilities = capabilities,
+            })
+
+            lspconfig["pyright"].setup({
+                settings = {
+                    python = {
+                        analysis = {
+                            autoSearchPaths = true,
+                            diagnosticMode = "openFilesOnly",
+                            typeCheckingMode = "strict",
+                            useLibraryCodeForTypes = true,
+                        },
                     },
                 },
                 capabilities = capabilities,
