@@ -31,8 +31,8 @@ type = "any"
 [[assert.equals.args]]
 type = "any"
 [[assert.equals.args]]
-type = "any"
 required = false
+type = "any"
 
 [[assert.same.args]]
 type = "any"
