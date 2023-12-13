@@ -1,6 +1,24 @@
+fix = true
 indent-width = 4
 line-length = 120
+show_fixes = true
 target-version = "py311"
+task-tags = [
+  "BUG",
+  "FIX",
+  "FIXIT",
+  "FIXME",
+  "HACK",
+  "INFO",
+  "ISSUE",
+  "NOTE",
+  "OPTIM",
+  "PERF",
+  "TODO",
+  "WARN",
+  "WARNING",
+  "XXX",
+]
 
 [lint]
 select = ["B", "E", "F", "Q"]
