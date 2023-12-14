@@ -165,7 +165,7 @@ return {
                     python = {
                         analysis = {
                             autoSearchPaths = true,
-                            diagnosticMode = "openFilesOnly",
+                            diagnosticMode = "workspace",
                             typeCheckingMode = "strict",
                             useLibraryCodeForTypes = true,
                         },
