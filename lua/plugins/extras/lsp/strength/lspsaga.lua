@@ -38,6 +38,10 @@ return {
         dependencies = { { "nvim-web-devicons" }, { "nvim-treesitter" } },
         config = function()
             require("lspsaga").setup({
+                -- neovim version >= 0.10,use dropbar.nvim,turn off this option
+                -- symbol_in_winbar = {
+                --     enable = true,
+                -- },
                 code_action = {
                     num_shortcut = true,
                     show_server_name = true,

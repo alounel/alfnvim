@@ -25,6 +25,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
         vim.keymap.set("n", "<leader>ls", vim.lsp.buf.signature_help, { buffer = ev.buf, desc = "Signature Help" })
         vim.keymap.set("n", "<leader>ln", vim.lsp.buf.rename, { buffer = ev.buf, desc = "Rename" })
         vim.keymap.set("n", "<leader>lr", vim.lsp.buf.references, { buffer = ev.buf, desc = "References" })
+        vim.keymap.set("n", "<leader>li", vim.lsp.buf.incoming_calls, { buffer = ev.buf, desc = "Incoming" })
+        vim.keymap.set("n", "<leader>lo", vim.lsp.buf.outgoing_calls, { buffer = ev.buf, desc = "Outgoing" })
         vim.keymap.set(
             "n",
             "<leader>la",
