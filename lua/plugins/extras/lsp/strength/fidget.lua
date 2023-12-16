@@ -5,7 +5,6 @@ return {
         event = "LspAttach",
         opts = {
             notification = {
-                override_vim_notify = true,
                 window = {
                     border = "rounded",
                 },
