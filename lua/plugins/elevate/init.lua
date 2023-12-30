@@ -158,7 +158,7 @@ return {
             vim.keymap.set("n", "<leader>yn", genghis.createNewFile)
             vim.keymap.set("n", "<leader>yu", genghis.duplicateFile)
             vim.keymap.set("n", "<leader>yR", function()
-                genghis.trashFile({ trashLocation = "/home/colin/.cache/.Trash/" })
+                genghis.trashFile({ trashLocation = "/home/alour/.cache/.Trash/" })
             end)
             vim.keymap.set("x", "<leader>ys", genghis.moveSelectionToNewFile)
         end,
