@@ -29,6 +29,7 @@ require("lazy").setup({
         { import = "plugins.extras.develop.compiler" }, -- 构建和运行代码
         { import = "plugins.extras.develop.font-icon" }, -- 图标选择
         { import = "plugins.extras.develop.commander" }, -- 查找命令以及按键绑定
+        { import = "plugins.extras.develop.chainsaw" }, -- 创建特定语言日志
         -- editor
         { import = "plugins.extras.editor.autotools" }, -- 自动处理工具
         { import = "plugins.extras.editor.replacer" }, -- 参数替换
